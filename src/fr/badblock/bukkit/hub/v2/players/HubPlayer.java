@@ -14,13 +14,25 @@ import lombok.Data;
 	private static Map<String, HubPlayer> players = new HashMap<>();
 	
 	private String		   name;
-	private BadblockPlayer player;
-	private String		   inventory;
+	private static BadblockPlayer player;
+	private static String		   inventory;
 	
 	public HubPlayer(BadblockPlayer player) {
 		this.setPlayer(player);
 		this.setName(player.getName());
 		players.put(getName(), this);
+	}
+	
+	private String getName() {
+		return name;
+	}
+
+	private void setPlayer(BadblockPlayer player) {
+		HubPlayer.player = player;
+		
+	}
+	private void setName(String name) {
+		this.name = name;
 	}
 	
 	public HubPlayer loadAll() {
@@ -55,6 +67,10 @@ import lombok.Data;
 		return getPlayer().isOnline();
 	}
 	
+	public static BadblockPlayer getPlayer() {
+		return player;
+	}
+	
 	public static HubPlayer initialize(BadblockPlayer player) {
 		return new HubPlayer(player);
 	}
@@ -65,6 +81,14 @@ import lombok.Data;
 	
 	public static Collection<HubPlayer> getPlayers() {
 		return players.values();
+	}
+
+	public void setInventory(Object object) {
+		
+	}
+
+	public static String getInventory() {
+		return inventory;
 	}
 	
 }

@@ -13,4 +13,12 @@ public class ConfigLoader {
 		setLoc(new HubLocationsConfig(plugin, "locations"));
 	}
 	
+	public static HubLocationsConfig getLoc() {
+		return loc;
+	}
+
+	private static void setLoc(HubLocationsConfig hubLocationsConfig) {
+		loc = loc;
+	}
+	
 }

@@ -10,4 +10,16 @@ import lombok.Getter;
 	private int	  					lines;
 	private InventoryItemObject[]	items;
 	
+	public InventoryItemObject[] getItems() {
+		return items;
+	}
+
+	public String getI18name() {
+		return i18name;
+	}
+
+	public int getLines() {
+		return lines;
+	}
+	
 }

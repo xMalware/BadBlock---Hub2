@@ -21,6 +21,7 @@ public class InventoriesLoader {
 	@Getter private static InventoriesConfig			config		= null;
 	@Getter private static Map<String, InventoryObject> inventories = new HashMap<>();
 	
+	
 	public static void loadInventories(BadblockPlugin plugin) {
 		File pluginFolder = plugin.getDataFolder();
 		// Gestion de la configuration niventories.json
@@ -58,12 +59,23 @@ public class InventoriesLoader {
 		HubPlayer.getPlayers().forEach(hubPlayer -> hubPlayer.giveDefaultInventory());
 	}
 	
+	private static Map<String, InventoryObject> getInventories() {
+		return inventories;
+	}
+
+	@SuppressWarnings("static-access")
 	public static InventoryObject getDefaultInventory() {
 		return getInventory(getConfig().getJoinDefaultInventory());
 	}
 	
+	public static InventoriesConfig getConfig() {
+		return config;
+	}
+
 	public static InventoryObject getInventory(String name) {
 		return inventories.get(name);
 	}
+
+	
 	
 }

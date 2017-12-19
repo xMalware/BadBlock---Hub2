@@ -5,6 +5,10 @@ import lombok.Getter;
 @Getter
 public class InventoriesConfig {
 
-	private String joinDefaultInventory = "joinInventory";
+	private static String joinDefaultInventory = "joinInventory";
+
+	public static String getJoinDefaultInventory() {
+		return joinDefaultInventory;
+	}
 	
 }

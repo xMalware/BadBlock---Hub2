@@ -9,7 +9,7 @@ import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import fr.badblock.sentry.SEntry;
+import fr.badblock.gameapi.sentry.SEntry;
 
 public class InventoryActionManager {
 

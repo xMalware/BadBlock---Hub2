@@ -33,14 +33,23 @@ public enum ItemAction {
 		return null;
 	}
 
+	private static InventoryAction getAssignedInventoryAction() {
+		return assignedInventoryAction;
+	}
+
 	@Setter
-	private InventoryAction assignedInventoryAction;
+	private static InventoryAction assignedInventoryAction;
 
 	ItemAction() {
 	}
 
+	@SuppressWarnings("static-access")
 	ItemAction(InventoryAction assignedInventoryAction) {
 		this.setAssignedInventoryAction(assignedInventoryAction);
+	}
+
+	private static void setAssignedInventoryAction(InventoryAction assignedInventoryAction) {
+		assignedInventoryAction = assignedInventoryAction;
 	}
 
 }
