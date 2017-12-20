@@ -13,6 +13,7 @@ import fr.badblock.gameapi.sentry.SEntry;
 
 public class InventoryActionManager {
 
+	@SuppressWarnings("static-access")
 	public static void handle(BadblockPlayer player, String inventoryName, InventoryItemObject object, InventoryActionType type) {
 		// No defined type
 		if (type == null) return;

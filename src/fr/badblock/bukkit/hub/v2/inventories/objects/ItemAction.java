@@ -25,6 +25,7 @@ public enum ItemAction {
 		return null;
 	}
 
+	@SuppressWarnings("static-access")
 	public static ItemAction get(InventoryAction inventoryAction) {
 		for (ItemAction itemAction : values())
 			if (itemAction.getAssignedInventoryAction() != null

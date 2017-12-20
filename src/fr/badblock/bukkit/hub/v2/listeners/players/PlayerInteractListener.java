@@ -14,6 +14,7 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class PlayerInteractListener extends BadListener {
 
+	@SuppressWarnings("static-access")
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
