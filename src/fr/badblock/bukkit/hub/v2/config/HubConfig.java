@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data public class HubConfig {
 	
-	private YamlConfiguration 		config;
+	private static YamlConfiguration 		config;
 	
 	public HubConfig(BadblockPlugin plugin, String fileName) {
 		File file = new File(plugin.getDataFolder(), fileName + ".yml");
@@ -26,6 +26,10 @@ import lombok.Data;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static YamlConfiguration getConfig() {
+		return config;
 	}
 	
 }
