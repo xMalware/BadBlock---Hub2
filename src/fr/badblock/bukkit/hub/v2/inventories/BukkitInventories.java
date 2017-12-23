@@ -53,6 +53,7 @@ public class BukkitInventories {
 		return inventory;
 	}
 	
+	@SuppressWarnings("static-access")
 	public static Inventory getDefaultInventory(BadblockPlayer player) {
 		return getInventory(player, InventoriesLoader.getConfig().getJoinDefaultInventory());
 	}
