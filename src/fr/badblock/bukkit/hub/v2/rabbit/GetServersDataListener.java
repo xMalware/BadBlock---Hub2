@@ -6,7 +6,6 @@ import java.util.Map;
 import com.google.gson.Gson;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.docker.factories.GameAliveFactory;
 import fr.badblock.gameapi.technologies.RabbitAPIListener;
 import fr.badblock.gameapi.technologies.RabbitListenerType;
 
