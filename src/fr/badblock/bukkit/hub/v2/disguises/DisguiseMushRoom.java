@@ -4,12 +4,12 @@ import org.bukkit.entity.EntityType;
 
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class DisguiseEndermite extends CustomDisguise
+public class DisguiseMushRoom extends CustomDisguise
 {
 	
-	public DisguiseEndermite(BadblockPlayer player)
+	public DisguiseMushRoom(BadblockPlayer player)
 	{
-		super(player, EntityType.ENDERMITE);
+		super(player, EntityType.MUSHROOM_COW);
 	}
 
 }

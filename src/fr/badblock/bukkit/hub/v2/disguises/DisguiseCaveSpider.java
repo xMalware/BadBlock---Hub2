@@ -2,25 +2,14 @@ package fr.badblock.bukkit.hub.v2.disguises;
 
 import org.bukkit.entity.EntityType;
 
-import fr.badblock.gameapi.disguise.Disguise;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class DisguiseCaveSpider {
+public class DisguiseCaveSpider extends CustomDisguise
+{
 	
-	private BadblockPlayer player;
-	private Disguise disguise;
-	
-	public DisguiseCaveSpider(BadblockPlayer player) {
-		this.player = player;
-		this.disguise = new Disguise(EntityType.CAVE_SPIDER, null, true, true);
+	public DisguiseCaveSpider(BadblockPlayer player)
+	{
+		super(player, EntityType.CAVE_SPIDER);
 	}
 	
-	public void disguise() {
-		this.player.disguise(disguise);
-	}
-	
-	public void undisguise() {
-		this.player.undisguise();
-	}
-
 }

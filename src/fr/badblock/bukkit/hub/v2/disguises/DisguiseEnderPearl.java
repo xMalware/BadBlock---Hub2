@@ -2,25 +2,14 @@ package fr.badblock.bukkit.hub.v2.disguises;
 
 import org.bukkit.entity.EntityType;
 
-import fr.badblock.gameapi.disguise.Disguise;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class DisguiseEnderPearl {
+public class DisguiseEnderPearl extends CustomDisguise
+{
 	
-	private BadblockPlayer player;
-	private Disguise disguise;
-	
-	public DisguiseEnderPearl(BadblockPlayer player) {
-		this.player = player;
-		this.disguise = new Disguise(EntityType.ENDER_PEARL, null, true, true);
-	}
-	
-	public void disguise() {
-		this.player.disguise(disguise);
-	}
-	
-	public void undisguise() {
-		this.player.undisguise();
+	public DisguiseEnderPearl(BadblockPlayer player)
+	{
+		super(player, EntityType.ENDER_PEARL);
 	}
 
 }

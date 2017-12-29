@@ -2,25 +2,14 @@ package fr.badblock.bukkit.hub.v2.disguises;
 
 import org.bukkit.entity.EntityType;
 
-import fr.badblock.gameapi.disguise.Disguise;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class DisguisePig {
+public class DisguisePig extends CustomDisguise
+{
 	
-	private BadblockPlayer player;
-	private Disguise disguise;
-	
-	public DisguisePig(BadblockPlayer player) {
-		this.player = player;
-		this.disguise = new Disguise(EntityType.PIG, null, true, true);
-	}
-	
-	public void disguise() {
-		this.player.disguise(disguise);
-	}
-	
-	public void undisguise() {
-		this.player.undisguise();
+	public DisguisePig(BadblockPlayer player)
+	{
+		super(player, EntityType.PIG);
 	}
 
 }
