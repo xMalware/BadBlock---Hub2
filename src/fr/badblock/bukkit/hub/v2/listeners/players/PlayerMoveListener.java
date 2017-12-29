@@ -8,7 +8,7 @@ import fr.badblock.gameapi.particles.ParticleEffect;
 import fr.badblock.gameapi.particles.ParticleEffectType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PlayerMooveListener extends BadListener{
+public class PlayerMoveListener extends BadListener{
 	
 	ParticleEffect effect;
 	Disguise disguise;
