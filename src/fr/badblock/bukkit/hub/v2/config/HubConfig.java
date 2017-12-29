@@ -8,28 +8,33 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import fr.badblock.gameapi.BadblockPlugin;
 import lombok.Data;
 
-@Data public class HubConfig {
-	
-	private static YamlConfiguration 		config;
-	
-	public HubConfig(BadblockPlugin plugin, String fileName) {
+@Data
+public class HubConfig
+{
+
+	private YamlConfiguration 		config;
+
+	public HubConfig(BadblockPlugin plugin, String fileName)
+	{
 		File file = new File(plugin.getDataFolder(), fileName + ".yml");
 		if (!file.exists())
-			try {
+			try
+		{
 				file.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 		config = new YamlConfiguration();
-		try {
+		try
+		{
 			config.load(file);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
-	
-	public static YamlConfiguration getConfig() {
-		return config;
-	}
-	
+
 }

@@ -5,20 +5,13 @@ import fr.badblock.gameapi.BadblockPlugin;
 import lombok.Getter;
 import lombok.Setter;
 
-public class ConfigLoader {
+public class ConfigLoader 
+{
 
-	@Getter@Setter public static HubLocationsConfig loc;
+	@Getter @Setter public static HubLocationsConfig loc;
 	
 	public static void load(BadblockPlugin plugin) {
 		setLoc(new HubLocationsConfig(plugin, "locations"));
-	}
-	
-	public static HubLocationsConfig getLoc() {
-		return loc;
-	}
-
-	private static void setLoc(HubLocationsConfig hubLocationsConfig) {
-		loc = loc;
 	}
 	
 }

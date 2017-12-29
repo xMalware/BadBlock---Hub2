@@ -11,15 +11,19 @@ import fr.badblock.gameapi.utils.ConfigUtils;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data@EqualsAndHashCode(callSuper = false) public class HubLocationsConfig extends HubConfig {
+@Data@EqualsAndHashCode(callSuper = false)
+public class HubLocationsConfig extends HubConfig
+{
 
 	private Map<String, Location>	locations = new HashMap<>();
 	
-	public HubLocationsConfig(BadblockPlugin plugin, String fileName) {
+	public HubLocationsConfig(BadblockPlugin plugin, String fileName)
+	{
 		super(plugin, fileName);
 	}
 
-	public Location getLocation(String name) {
+	public Location getLocation(String name)
+	{
 		String key = "loc_" + name;
 		if (locations.containsKey(key)) return locations.get(key);
 		String data = getConfig().getString(name);
@@ -28,7 +32,8 @@ import lombok.EqualsAndHashCode;
 		return location;
 	}
 	
-	public Location getBlockLocation(String name) {
+	public Location getBlockLocation(String name)
+	{
 		String key = "locBlock_" + name;
 		if (locations.containsKey(key)) return locations.get(key);
 		String data = getConfig().getString(name);
