@@ -35,7 +35,7 @@ import lombok.Data;
 		this.name = name;
 	}
 	
-	public HubPlayer loadAll() {
+	public HubPlayer loadEverything() {
 		loadData();
 		loadPlayer();
 		return this;

@@ -7,12 +7,14 @@ import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.events.api.PlayerLoadedEvent;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PlayerLoadedListener extends BadListener {
+public class PlayerLoadedListener extends BadListener
+{
 
 	@EventHandler
-	public void onPlayerLoaded(PlayerLoadedEvent event) {
+	public void onPlayerLoaded(PlayerLoadedEvent event)
+	{
 		BadblockPlayer player = event.getPlayer();
-		HubPlayer.initialize(player).loadAll();
+		HubPlayer.initialize(player).loadEverything();
 	}
 	
 }
