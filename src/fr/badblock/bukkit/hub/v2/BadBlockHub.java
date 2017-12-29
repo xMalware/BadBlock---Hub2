@@ -19,6 +19,7 @@ import lombok.Setter;
 	@Override
 	public void onEnable(RunType runType) {
 		setInstance(this);
+		instance = this;
 		// No game, no life :3
 		if (runType.equals(RunType.GAME)) return;
 		// Load Gson
