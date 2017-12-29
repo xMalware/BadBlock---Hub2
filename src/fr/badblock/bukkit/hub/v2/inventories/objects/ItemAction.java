@@ -1,10 +1,10 @@
 package fr.badblock.bukkit.hub.v2.inventories.objects;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryAction;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public enum ItemAction {
@@ -25,7 +25,6 @@ public enum ItemAction {
 		return null;
 	}
 
-	@SuppressWarnings("static-access")
 	public static ItemAction get(InventoryAction inventoryAction) {
 		for (ItemAction itemAction : values())
 			if (itemAction.getAssignedInventoryAction() != null
@@ -34,23 +33,14 @@ public enum ItemAction {
 		return null;
 	}
 
-	private static InventoryAction getAssignedInventoryAction() {
-		return assignedInventoryAction;
-	}
-
 	@Setter
-	private static InventoryAction assignedInventoryAction;
+	private InventoryAction assignedInventoryAction;
 
 	ItemAction() {
 	}
 
-	@SuppressWarnings("static-access")
 	ItemAction(InventoryAction assignedInventoryAction) {
-		this.setAssignedInventoryAction(assignedInventoryAction);
-	}
-
-	private static void setAssignedInventoryAction(InventoryAction assignedInventoryAction) {
-		assignedInventoryAction = assignedInventoryAction;
+		setAssignedInventoryAction(assignedInventoryAction);
 	}
 
 }

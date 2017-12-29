@@ -14,7 +14,6 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class PlayerInteractListener extends BadListener {
 
-	@SuppressWarnings("static-access")
 	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
@@ -22,19 +21,26 @@ public class PlayerInteractListener extends BadListener {
 		// default inventory
 		ItemStack handItem = player.getInventory().getItemInHand();
 		InventoryActionType actionType = InventoryActionType.get(event.getAction());
-		if (handItem != null) {
+		if (handItem != null)
+		{
 			InventoryObject defaultInventory = InventoriesLoader.getDefaultInventory();
-			if (defaultInventory != null) {
+			if (defaultInventory != null)
+			{
 				InventoryItemObject itemObject = null;
-				for (InventoryItemObject item : defaultInventory.getItems()) {
-					if (player.getInventory().getHeldItemSlot() == item.getPlace()) {
+				for (InventoryItemObject item : defaultInventory.getItems())
+				{
+					if (player.getInventory().getHeldItemSlot() == item.getPlace())
+					{
 						itemObject = item;
 						break;
 					}
 				}
-				if (itemObject != null) InventoryActionManager.handle(player, InventoriesLoader.getConfig().getJoinDefaultInventory(), itemObject, actionType);
+				if (itemObject != null) 
+				{
+					InventoryActionManager.handle(player, InventoriesLoader.getConfig().getJoinDefaultInventory(), itemObject, actionType);
+				}
 			}
 		}
 	}
-	
+
 }

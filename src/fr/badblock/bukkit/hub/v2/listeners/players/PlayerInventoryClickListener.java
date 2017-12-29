@@ -30,38 +30,38 @@ public class PlayerInventoryClickListener extends BadListener {
 		InventoryActionType actionType = InventoryActionType.get(itemAction);
 		// Hub player
 		HubPlayer hubPlayer = HubPlayer.get(player);
-		if (itemStack != null) {
+		if (itemStack != null)
+		{
 			String inventoryName = hubPlayer.getInventory();
-			boolean done = false;
-			if (inventoryName != null && !inventoryName.isEmpty() && event.getClickedInventory().getType().equals(InventoryType.CHEST)) {
-				InventoryObject inventory = InventoriesLoader.getInventory(inventoryName);
-				if (inventory != null) {
-					InventoryItemObject itemObject = null;
-					for (InventoryItemObject item : inventory.getItems()) {
-						if (event.getSlot() == item.getPlace()) {
-							itemObject = item;
-							done = true;
-							break;
-						}
-					}
-					if (itemObject != null) InventoryActionManager.handle(player, inventoryName, itemObject, actionType);
-				}
+			// Handling custom inventories
+			if (inventoryName != null && !inventoryName.isEmpty() && event.getClickedInventory().getType().equals(InventoryType.CHEST))
+			{
+				handle(event, player, inventoryName, actionType, InventoriesLoader.getInventory(inventoryName));
+				return;
 			}
-			if (!done) {
-				InventoryObject defaultInventory = InventoriesLoader.getDefaultInventory();
-				if (defaultInventory != null) {
-					InventoryItemObject itemObject = null;
-					for (InventoryItemObject item : defaultInventory.getItems()) {
-						if (event.getSlot() == item.getPlace()) {
-							itemObject = item;
-							done = true;
-							break;
-						}
-					}
-					if (itemObject != null) InventoryActionManager.handle(player, InventoriesLoader.getConfig().getJoinDefaultInventory(), itemObject, actionType);
-				}
+			// Default join inventory handling
+			handle(event, player, InventoriesLoader.getConfig().getJoinDefaultInventory(), actionType, InventoriesLoader.getDefaultInventory());
+		}
+	}
+
+	private boolean handle(InventoryClickEvent event, BadblockPlayer player, String inventoryName, InventoryActionType actionType, InventoryObject inventoryObject)
+	{
+		boolean done = false;
+		if (inventoryObject == null)
+			return false;
+		InventoryItemObject itemObject = null;
+		for (InventoryItemObject item : inventoryObject.getItems()) {
+			if (event.getSlot() == item.getPlace()) {
+				done = true;
+				itemObject = item;
+				break;
 			}
 		}
+		if (itemObject != null)
+		{
+			InventoryActionManager.handle(player, inventoryName, itemObject, actionType);
+		}
+		return done;
 	}
 
 }

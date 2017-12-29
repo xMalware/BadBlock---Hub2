@@ -8,13 +8,16 @@ import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class InventoryCloseListener extends BadListener {
+public class InventoryCloseListener extends BadListener
+{
 
 	@EventHandler
-	public void onInventoryClose(InventoryCloseEvent event) {
+	public void onInventoryClose(InventoryCloseEvent event)
+	{
 		if (!(event.getPlayer() instanceof Player)) return;
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 		HubPlayer hubPlayer = HubPlayer.get(player);
+		// On met son dernier inventaire à null
 		hubPlayer.setInventory(null);
 	}
 
