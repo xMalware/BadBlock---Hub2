@@ -5,22 +5,22 @@ import java.lang.reflect.Field;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPig;
-import org.bukkit.entity.Pig;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPigZombie;
+import org.bukkit.entity.PigZombie;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.EntityPig;
+import net.minecraft.server.v1_8_R3.EntityPigZombie;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountPig extends EntityPig{
+public class MountZombiePigman extends EntityPigZombie{
 
 	protected Field FIELD_JUMP = null;
 	
-	public MountPig(World world) {
+	public MountZombiePigman(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -82,14 +82,14 @@ public class MountPig extends EntityPig{
         }
     }
 	
-	public static Pig spawnEntity(Location location) {
+	public static PigZombie spawnEntity(Location location) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountPig pig = new MountPig(world);
-		pig.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) pig.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(pig, SpawnReason.CUSTOM);
-		pig.setCustomName("");
-		pig.setCustomNameVisible(false);
-		return (CraftPig) pig.getBukkitEntity();
+		MountZombiePigman pigzombie = new MountZombiePigman(world);
+		pigzombie.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) pigzombie.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(pigzombie, SpawnReason.CUSTOM);
+		pigzombie.setCustomName("");
+		pigzombie.setCustomNameVisible(false);
+		return (CraftPigZombie) pigzombie.getBukkitEntity();
 	}
 }

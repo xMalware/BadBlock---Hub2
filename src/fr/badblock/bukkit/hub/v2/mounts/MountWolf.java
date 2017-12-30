@@ -5,22 +5,23 @@ import java.lang.reflect.Field;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPig;
-import org.bukkit.entity.Pig;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftWolf;
+import org.bukkit.entity.Wolf;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.EntityPig;
+import net.minecraft.server.v1_8_R3.EntityWolf;
+import net.minecraft.server.v1_8_R3.EnumColor;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountPig extends EntityPig{
+public class MountWolf extends EntityWolf{
 
 	protected Field FIELD_JUMP = null;
 	
-	public MountPig(World world) {
+	public MountWolf(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -82,14 +83,15 @@ public class MountPig extends EntityPig{
         }
     }
 	
-	public static Pig spawnEntity(Location location) {
+	public static Wolf spawnEntity(Location location, EnumColor enumcolor) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountPig pig = new MountPig(world);
-		pig.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) pig.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(pig, SpawnReason.CUSTOM);
-		pig.setCustomName("");
-		pig.setCustomNameVisible(false);
-		return (CraftPig) pig.getBukkitEntity();
+		MountWolf wolf = new MountWolf(world);
+		wolf.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) wolf.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(wolf, SpawnReason.CUSTOM);
+		wolf.setCustomName("");
+		wolf.setCustomNameVisible(false);
+		wolf.setCollarColor(enumcolor);
+		return (CraftWolf) wolf.getBukkitEntity();
 	}
 }

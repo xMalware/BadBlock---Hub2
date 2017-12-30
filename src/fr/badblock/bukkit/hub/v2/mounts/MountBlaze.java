@@ -4,23 +4,23 @@ import java.lang.reflect.Field;
 
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftBlaze;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPig;
-import org.bukkit.entity.Pig;
+import org.bukkit.entity.Blaze;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import net.minecraft.server.v1_8_R3.EntityBlaze;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.EntityPig;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountPig extends EntityPig{
+public class MountBlaze extends EntityBlaze{
 
 	protected Field FIELD_JUMP = null;
 	
-	public MountPig(World world) {
+	public MountBlaze(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -82,14 +82,14 @@ public class MountPig extends EntityPig{
         }
     }
 	
-	public static Pig spawnEntity(Location location) {
+	public static Blaze spawnEntity(Location location) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountPig pig = new MountPig(world);
-		pig.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) pig.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(pig, SpawnReason.CUSTOM);
-		pig.setCustomName("");
-		pig.setCustomNameVisible(false);
-		return (CraftPig) pig.getBukkitEntity();
+		MountBlaze blaze = new MountBlaze(world);
+		blaze.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) blaze.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(blaze, SpawnReason.CUSTOM);
+		blaze.setCustomName("");
+		blaze.setCustomNameVisible(false);
+		return (CraftBlaze) blaze.getBukkitEntity();
 	}
 }

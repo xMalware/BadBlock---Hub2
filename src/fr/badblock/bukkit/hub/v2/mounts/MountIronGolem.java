@@ -4,9 +4,9 @@ import java.lang.reflect.Field;
 
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftIronGolem;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPig;
-import org.bukkit.entity.Pig;
+import org.bukkit.entity.IronGolem;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -16,11 +16,11 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountPig extends EntityPig{
+public class MountIronGolem extends EntityPig{
 
 	protected Field FIELD_JUMP = null;
 	
-	public MountPig(World world) {
+	public MountIronGolem(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -82,14 +82,14 @@ public class MountPig extends EntityPig{
         }
     }
 	
-	public static Pig spawnEntity(Location location) {
+	public static IronGolem spawnEntity(Location location) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountPig pig = new MountPig(world);
-		pig.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) pig.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(pig, SpawnReason.CUSTOM);
-		pig.setCustomName("");
-		pig.setCustomNameVisible(false);
-		return (CraftPig) pig.getBukkitEntity();
+		MountIronGolem golem = new MountIronGolem(world);
+		golem.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) golem.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(golem, SpawnReason.CUSTOM);
+		golem.setCustomName("");
+		golem.setCustomNameVisible(false);
+		return (CraftIronGolem) golem.getBukkitEntity();
 	}
 }
