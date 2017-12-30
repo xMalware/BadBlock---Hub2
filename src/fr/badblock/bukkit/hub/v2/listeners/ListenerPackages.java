@@ -12,7 +12,11 @@ import fr.badblock.gameapi.utils.BukkitUtils;
 public class ListenerPackages {
 
 	private static String[] string = new String[] {
-		"fr.xmalware.badblock.hub.listeners.players"
+		"fr.xmalware.badblock.hub.listeners.players"	
+	};
+	
+	private static String[] string1 = new String[] {
+		"fr.badblock.bukkit.hub.v2.listeners.entities"	
 	};
 	
 	public static void load(BadblockPlugin plugin) {
@@ -24,6 +28,7 @@ public class ListenerPackages {
 	private static void loadBukkitListeners(BadblockPlugin plugin) {
 		try {
 			BukkitUtils.instanciateListenersAndCommandsFrom(plugin, string);
+			BukkitUtils.instanciateListenersAndCommandsFrom(plugin, string1);
 		} catch (IOException e) {
 			e.printStackTrace();
 			Bukkit.shutdown();

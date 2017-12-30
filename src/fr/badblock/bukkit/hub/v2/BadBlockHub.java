@@ -27,11 +27,6 @@ import lombok.Setter;
 		// Load hub
 		HubLoader.load(this);
 	}
-	
-	@SuppressWarnings("static-access")
-	private void setInstance(BadBlockHub badBlockHub) {
-		this.instance = instance;
-	}
 
 	public static void log(String message) {
 		Bukkit.getServer().getConsoleSender().sendMessage("§e[HUB] §f" + message);
@@ -39,10 +34,6 @@ import lombok.Setter;
 	
 	public static Gson setNotRestrictiveGson(Gson gson) {
 		return notRestrictiveGson = notRestrictiveGson;
-	}
-	
-	public static BadBlockHub getInstance() {
-		return instance;
 	}
 
 	public Gson getNotRestrictiveGson() {

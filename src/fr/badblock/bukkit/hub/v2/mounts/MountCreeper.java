@@ -4,23 +4,23 @@ import java.lang.reflect.Field;
 
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftCreeper;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPig;
-import org.bukkit.entity.Pig;
+import org.bukkit.entity.Creeper;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import net.minecraft.server.v1_8_R3.EntityCreeper;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.EntityPig;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountPig extends EntityPig{
+public class MountCreeper extends EntityCreeper{
 
 	protected Field FIELD_JUMP = null;
 	
-	public MountPig(World world) {
+	public MountCreeper(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -82,14 +82,14 @@ public class MountPig extends EntityPig{
         }
     }
 	
-	public static Pig spawnEntity(Location location) {
+	public static Creeper spawnEntity(Location location) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountPig pig = new MountPig(world);
-		pig.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) pig.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(pig, SpawnReason.CUSTOM);
-		pig.setCustomName("");
-		pig.setCustomNameVisible(false);
-		return (CraftPig) pig.getBukkitEntity();
+		MountCreeper creeper = new MountCreeper(world);
+		creeper.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) creeper.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(creeper, SpawnReason.CUSTOM);
+		creeper.setCustomName("");
+		creeper.setCustomNameVisible(false);
+		return (CraftCreeper) creeper.getBukkitEntity();
 	}
 }
