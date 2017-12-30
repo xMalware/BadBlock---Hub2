@@ -31,5 +31,6 @@ public abstract class CustomDisguise
 		getPlayer().undisguise();
 	}
 
+	public abstract CustomDisguiseEffect getEffect();
 
 }

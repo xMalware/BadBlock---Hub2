@@ -11,5 +11,10 @@ public class DisguiseBat extends CustomDisguise
 	{
 		super(player, EntityType.BAT);
 	}
+
+	@Override
+	public CustomDisguiseEffect getEffect() {
+		return null;
+	}
 	
 }

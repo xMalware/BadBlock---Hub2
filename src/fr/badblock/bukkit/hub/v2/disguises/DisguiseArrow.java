@@ -12,4 +12,10 @@ public class DisguiseArrow extends CustomDisguise
 		super(player, EntityType.ARROW);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
