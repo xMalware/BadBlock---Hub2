@@ -11,5 +11,10 @@ public class DisguiseChicken extends CustomDisguise
 	{
 		super(player, EntityType.CHICKEN);
 	}
+
+	@Override
+	public CustomDisguiseEffect getEffect() {
+		return null;
+	}
 	
 }

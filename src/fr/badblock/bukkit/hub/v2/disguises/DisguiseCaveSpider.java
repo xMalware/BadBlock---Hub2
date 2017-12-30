@@ -11,5 +11,10 @@ public class DisguiseCaveSpider extends CustomDisguise
 	{
 		super(player, EntityType.CAVE_SPIDER);
 	}
+
+	@Override
+	public CustomDisguiseEffect getEffect() {
+		return null;
+	}
 	
 }

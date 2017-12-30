@@ -12,4 +12,10 @@ public class DisguiseSkeleton extends CustomDisguise
 		super(player, EntityType.SKELETON);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

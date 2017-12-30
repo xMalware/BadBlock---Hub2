@@ -12,4 +12,10 @@ public class DisguiseSilverfish extends CustomDisguise
 		super(player, EntityType.SILVERFISH);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

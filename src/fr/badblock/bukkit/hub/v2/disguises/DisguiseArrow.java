@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.disguises;
 
 import org.bukkit.entity.EntityType;
 
+import fr.badblock.gameapi.particles.ParticleEffectType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class DisguiseArrow extends CustomDisguise
@@ -14,8 +15,7 @@ public class DisguiseArrow extends CustomDisguise
 
 	@Override
 	public CustomDisguiseEffect getEffect() {
-		// TODO Auto-generated method stub
-		return null;
+		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 1);
 	}
 
 }

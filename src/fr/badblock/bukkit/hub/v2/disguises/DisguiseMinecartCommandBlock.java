@@ -12,4 +12,10 @@ public class DisguiseMinecartCommandBlock extends CustomDisguise
 		super(player, EntityType.MINECART_COMMAND);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

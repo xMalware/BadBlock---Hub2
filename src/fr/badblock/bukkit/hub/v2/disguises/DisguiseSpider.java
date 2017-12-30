@@ -12,4 +12,10 @@ public class DisguiseSpider extends CustomDisguise
 		super(player, EntityType.SPIDER);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

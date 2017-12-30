@@ -12,4 +12,10 @@ public class DisguiseSheep extends CustomDisguise
 		super(player, EntityType.SHEEP);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

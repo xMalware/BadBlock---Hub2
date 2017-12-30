@@ -12,4 +12,10 @@ public class DisguiseMinecartFurnace extends CustomDisguise
 		super(player, EntityType.MINECART_FURNACE);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

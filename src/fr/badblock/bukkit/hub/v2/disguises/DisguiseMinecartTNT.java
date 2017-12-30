@@ -12,4 +12,10 @@ public class DisguiseMinecartTNT extends CustomDisguise
 		super(player, EntityType.MINECART_TNT);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

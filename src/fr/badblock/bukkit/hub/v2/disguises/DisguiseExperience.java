@@ -12,4 +12,9 @@ public class DisguiseExperience extends CustomDisguise
 		super(player, EntityType.EXPERIENCE_ORB);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect() {
+		return null;
+	}
+
 }

@@ -12,4 +12,10 @@ public class DisguiseMinecartMobSpawner extends CustomDisguise
 		super(player, EntityType.MINECART_MOB_SPAWNER);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }

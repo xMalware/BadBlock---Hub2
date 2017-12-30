@@ -12,4 +12,10 @@ public class DisguiseEXPBottle extends CustomDisguise
 		super(player, EntityType.THROWN_EXP_BOTTLE);
 	}
 
+	@Override
+	public CustomDisguiseEffect getEffect()
+	{
+		return null;
+	}
+
 }
