@@ -1,24 +1,26 @@
 package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
+
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftBat;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Bat;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftMushroomCow;
+import org.bukkit.entity.MushroomCow;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import net.minecraft.server.v1_8_R3.EntityBat;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
+import net.minecraft.server.v1_8_R3.EntityMushroomCow;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountBat extends EntityBat{
+public class MountMooshroom extends EntityMushroomCow{
 
 	protected Field FIELD_JUMP = null;
-	public MountBat(World world) {
+	
+	public MountMooshroom(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -80,14 +82,14 @@ public class MountBat extends EntityBat{
         }
     }
 	
-	public static Bat spawnEntity(Location location) {
+	public static MushroomCow spawnEntity(Location location) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountBat bat = new MountBat(world);
-		bat.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) bat.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(bat, SpawnReason.CUSTOM);
-		bat.setCustomName("");
-		bat.setCustomNameVisible(false);
-		return (CraftBat) bat.getBukkitEntity();
+		MountMooshroom mcow = new MountMooshroom(world);
+		mcow.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) mcow.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(mcow, SpawnReason.CUSTOM);
+		mcow.setCustomName("");
+		mcow.setCustomNameVisible(false);
+		return (CraftMushroomCow) mcow.getBukkitEntity();
 	}
 }

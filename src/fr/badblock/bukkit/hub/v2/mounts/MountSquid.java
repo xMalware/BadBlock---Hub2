@@ -3,22 +3,23 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftBat;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Bat;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSquid;
+import org.bukkit.entity.Squid;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-import net.minecraft.server.v1_8_R3.EntityBat;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
+import net.minecraft.server.v1_8_R3.EntitySquid;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountBat extends EntityBat{
+public class MountSquid extends EntitySquid{
 
 	protected Field FIELD_JUMP = null;
-	public MountBat(World world) {
+	
+	public MountSquid(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -80,14 +81,14 @@ public class MountBat extends EntityBat{
         }
     }
 	
-	public static Bat spawnEntity(Location location) {
+	public static Squid spawnEntity(Location location) {
 		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountBat bat = new MountBat(world);
-		bat.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) bat.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(bat, SpawnReason.CUSTOM);
-		bat.setCustomName("");
-		bat.setCustomNameVisible(false);
-		return (CraftBat) bat.getBukkitEntity();
+		MountSquid squid = new MountSquid(world);
+		squid.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
+		((CraftLivingEntity) squid.getBukkitEntity()).setRemoveWhenFarAway(false);
+		world.addEntity(squid, SpawnReason.CUSTOM);
+		squid.setCustomName("");
+		squid.setCustomNameVisible(false);
+		return (CraftSquid) squid.getBukkitEntity();
 	}
 }

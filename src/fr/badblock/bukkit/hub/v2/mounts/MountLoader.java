@@ -25,6 +25,13 @@ public class MountLoader {
 		NMSUtils.registerEntity("MountZombiePigman", 57, EntityPigZombie.class, MountZombiePigman.class);
 		NMSUtils.registerEntity("MountVillager", 120, EntityVillager.class, MountVillager.class);
 		NMSUtils.registerEntity("MountEndermite", 67, EntityEndermite.class, MountEndermite.class);
+		NMSUtils.registerEntity("MountSheep", 91, EntitySheep.class, MountSheep.class);
+		NMSUtils.registerEntity("MountSnowMan", 97, EntitySnowman.class, MountSnowMan.class);
+		NMSUtils.registerEntity("MountWither", 64, EntityWither.class, MountWither.class);
+		NMSUtils.registerEntity("MountRabbit", 101, EntityRabbit.class, MountRabbit.class);
+		NMSUtils.registerEntity("MountHorse", 100, EntityHorse.class, MountHorse.class);
+		NMSUtils.registerEntity("MountMooshroom", 96, EntityMushroomCow.class, MountMooshroom.class);
+		NMSUtils.registerEntity("MountChicken", 93, EntityChicken.class, MountChicken.class);
 	}
 
 	
