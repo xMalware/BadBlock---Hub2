@@ -84,7 +84,7 @@ import lombok.Data;
 	}
 
 	public void setInventory(Object object) {
-		
+		this.inventory = inventory;
 	}
 
 	public static String getInventory() {
