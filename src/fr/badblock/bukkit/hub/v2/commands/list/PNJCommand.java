@@ -1,7 +1,9 @@
 package fr.badblock.bukkit.hub.v2.commands.list;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.entity.ArmorStand;
@@ -32,36 +34,45 @@ public class PNJCommand extends AbstractCommand{
 		BadblockPlayer p = (BadblockPlayer)sender;
 		final ArmorStand armor = (ArmorStand) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
 		final Villager ent = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
-		if(args.length == 0) {
-			if(p.hasAdminMode()) {
-				sendTranslatedMessage(sender, "commands.pnj.help");
-			} else {
-				sendTranslatedMessage(sender, "commands.pnj.nopermission");
-			}
-		} else if(args.length == 1 || args.length == 2 || args.length == 3) {
-			if(args[0].equalsIgnoreCase("create")) 
-			{
-				if(args.length == 2 || args.length == 3) {
-					gameName = "";
-					gameName = gameName + args[1];
-					developer = "";
-					developer = developer + args[2];
-					armor.setVisible(false);
-					armor.setGravity(false);
-					armor.getEquipment().setHelmet(setHeadofPlayer(developer));
-					armor.setCustomName("§b§lMaître du jeu: §a"+gameName);
-					armor.setCustomNameVisible(true);
-					ent.setAdult();
-					ent.setCustomName("");
-					ent.setCustomNameVisible(false);
-					disableAI(ent);
-				}
-			} else if(args[0].equalsIgnoreCase("remove")) {
-				
-			}
-		} else if(!(args.length == 1 || args.length == 2)) {
-			sendTranslatedMessage(sender, "commands.pnj.error.namerequired");
+		if (args.length == 0) {
+			sendTranslatedMessage(sender, "commands.pnj.help");
+		} else {
+		if (args[0].equalsIgnoreCase("create")) {
+			if (args.length == 2 && args.length == 3) {
+			
+			gameName = "";
+			gameName = gameName + args[1];
+			developer = "";
+			developer = developer + args[2];
+
+			armor.setVisible(false);
+			armor.setGravity(false);
+			armor.setCustomName("§b§lMaître du jeu : §a" + gameName);
+			armor.setCustomNameVisible(true);
+									
+			ent.setAdult();
+			ent.getEquipment().setHelmet(setHeadofPlayer(developer));
+			ent.setCustomName(null);
+			ent.setCustomNameVisible(false);
+										
+			disableAI(ent);
+			} else if (args.length == 2 && args.length != 3) {
+				sendTranslatedMessage(sender, "commands.pnj.developer.required");
+			} else if (args.length != 2 && args.length != 3){
+				sendTranslatedMessage(sender, "commands.pnj.nameanddeveloper.required");
 		}
+		} else if (args[0].equalsIgnoreCase("remove")) {
+			for (World w : Bukkit.getWorlds()) {
+				for (org.bukkit.entity.Entity e : w.getEntities()) {
+				if (e instanceof ArmorStand) {
+				((ArmorStand) e).damage(20);
+				}
+				}
+				}
+
+			sendTranslatedMessage(sender, "commands.pnj.removeall.success");
+		}
+	}
 		return true;
 	}
 	
