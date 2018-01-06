@@ -21,20 +21,27 @@ public class InventoriesLoader {
 	@Getter private static InventoriesConfig			config		= null;
 	@Getter private static Map<String, InventoryObject> inventories = new HashMap<>();
 	
-	public static void loadInventories(BadblockPlugin plugin) {
+	public static void loadInventories(BadblockPlugin plugin)
+	{
 		File pluginFolder = plugin.getDataFolder();
 		// Gestion de la configuration niventories.json
 		File inventoriesConfig = new File(pluginFolder, "inventories.json");
-		if (!inventoriesConfig.exists()) {
-			try {
+		if (!inventoriesConfig.exists())
+		{
+			try
+			{
 				inventoriesConfig.createNewFile();
-			} catch (IOException e) {
+			}
+			catch (IOException e)
+			{
 				e.printStackTrace();
 			}
 			config = new InventoriesConfig();
 			JsonFile.saveFile(inventoriesConfig, config);
 			BadBlockHub.log("Loaded new inventory configuration!");
-		}else{
+		}
+		else
+		{
 			config = JsonFile.getFile(inventoriesConfig, InventoriesConfig.class);
 			BadBlockHub.log("Loaded inventory configuration!");
 		}
@@ -52,18 +59,20 @@ public class InventoriesLoader {
 		});
 	}
 	
-	public static void reloadInventories(BadblockPlugin plugin) {
+	public static void reloadInventories(BadblockPlugin plugin)
+	{
 		getInventories().clear();
 		loadInventories(plugin);
 		HubPlayer.getPlayers().forEach(hubPlayer -> hubPlayer.giveDefaultInventory());
 	}
 
-	@SuppressWarnings("static-access")
-	public static InventoryObject getDefaultInventory() {
+	public static InventoryObject getDefaultInventory()
+	{
 		return getInventory(getConfig().getJoinDefaultInventory());
 	}
 	
-	public static InventoryObject getInventory(String name) {
+	public static InventoryObject getInventory(String name)
+	{
 		return inventories.get(name);
 	}
 	
