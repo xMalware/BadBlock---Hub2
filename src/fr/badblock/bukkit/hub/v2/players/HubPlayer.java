@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
+import fr.badblock.bukkit.hub.v2.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
@@ -14,27 +15,17 @@ import lombok.Data;
 	private static Map<String, HubPlayer> players = new HashMap<>();
 	
 	private String		   name;
-	private static BadblockPlayer player;
-	private static String		   inventory;
+	private BadblockPlayer player;
+	private String		   inventory;
+	
+	private CustomDisguise disguise;
 	
 	public HubPlayer(BadblockPlayer player) {
 		this.setPlayer(player);
 		this.setName(player.getName());
 		players.put(getName(), this);
 	}
-	
-	private String getName() {
-		return name;
-	}
 
-	private void setPlayer(BadblockPlayer player) {
-		HubPlayer.player = player;
-		
-	}
-	private void setName(String name) {
-		this.name = name;
-	}
-	
 	public HubPlayer loadEverything() {
 		loadData();
 		loadPlayer();
@@ -67,10 +58,6 @@ import lombok.Data;
 		return getPlayer().isOnline();
 	}
 	
-	public static BadblockPlayer getPlayer() {
-		return player;
-	}
-	
 	public static HubPlayer initialize(BadblockPlayer player) {
 		return new HubPlayer(player);
 	}
@@ -83,12 +70,4 @@ import lombok.Data;
 		return players.values();
 	}
 
-	public void setInventory(Object object) {
-		
-	}
-
-	public static String getInventory() {
-		return inventory;
-	}
-	
 }
