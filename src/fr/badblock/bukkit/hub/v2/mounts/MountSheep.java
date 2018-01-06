@@ -2,11 +2,10 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSheep;
-import org.bukkit.entity.Sheep;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -18,6 +17,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountSheep extends EntitySheep{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountSheep(World world) {
@@ -82,15 +82,14 @@ public class MountSheep extends EntitySheep{
         }
     }
 	
-	public static Sheep spawnEntity(Location location, EnumColor enumcolor) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountSheep sheep = new MountSheep(world);
-		sheep.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) sheep.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(sheep, SpawnReason.CUSTOM);
-		sheep.setCustomName("");
-		sheep.setCustomNameVisible(false);
+	@SuppressWarnings("null")
+	public CustomCreature spawnEntity(Location location, EntityType type, EnumColor enumcolor) {
+		CustomCreature creature;
+		MountSheep sheep = null;
+		creature = spawnEntity(player.getLocation(), EntityType.SHEEP, null);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
 		sheep.setColor(enumcolor);
-		return (CraftSheep) sheep.getBukkitEntity();
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

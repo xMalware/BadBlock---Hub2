@@ -3,11 +3,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEnderman;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Enderman;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityEnderman;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -18,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountEnderman extends EntityEnderman{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountEnderman(World world) {
@@ -82,14 +81,10 @@ public class MountEnderman extends EntityEnderman{
         }
     }
 	
-	public static Enderman spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountEnderman enderman = new MountEnderman(world);
-		enderman.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) enderman.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(enderman, SpawnReason.CUSTOM);
-		enderman.setCustomName("");
-		enderman.setCustomNameVisible(false);
-		return (CraftEnderman) enderman.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.ENDERMAN);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

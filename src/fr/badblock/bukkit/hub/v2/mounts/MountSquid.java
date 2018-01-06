@@ -2,11 +2,10 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSquid;
-import org.bukkit.entity.Squid;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -17,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountSquid extends EntitySquid{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountSquid(World world) {
@@ -81,14 +81,11 @@ public class MountSquid extends EntitySquid{
         }
     }
 	
-	public static Squid spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountSquid squid = new MountSquid(world);
-		squid.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) squid.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(squid, SpawnReason.CUSTOM);
-		squid.setCustomName("");
-		squid.setCustomNameVisible(false);
-		return (CraftSquid) squid.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.SQUID);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

@@ -2,11 +2,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHorse;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Horse;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHorse;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -17,6 +15,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountHorse extends EntityHorse{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountHorse(World world) {
@@ -81,16 +80,10 @@ public class MountHorse extends EntityHorse{
         }
     }
 	
-	public static Horse spawnEntity(Location location, boolean flag, int i) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountHorse horse = new MountHorse(world);
-		horse.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) horse.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(horse, SpawnReason.CUSTOM);
-		horse.setCustomName("");
-		horse.setCustomNameVisible(false);
-		horse.setHasChest(flag);
-		horse.setType(i);
-		return (CraftHorse) horse.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.HORSE);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

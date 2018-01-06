@@ -1,13 +1,10 @@
 package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
-
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEndermite;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Endermite;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityEndermite;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -18,6 +15,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountEndermite extends EntityEndermite{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountEndermite(World world) {
@@ -82,14 +80,10 @@ public class MountEndermite extends EntityEndermite{
         }
     }
 	
-	public static Endermite spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountEndermite endermite = new MountEndermite(world);
-		endermite.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) endermite.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(endermite, SpawnReason.CUSTOM);
-		endermite.setCustomName("");
-		endermite.setCustomNameVisible(false);
-		return (CraftEndermite) endermite.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.ENDERMITE);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

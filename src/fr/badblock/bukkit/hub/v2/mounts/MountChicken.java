@@ -2,11 +2,10 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftChicken;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Chicken;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
 import net.minecraft.server.v1_8_R3.EntityChicken;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -17,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountChicken extends EntityChicken{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountChicken(World world) {
@@ -81,14 +81,11 @@ public class MountChicken extends EntityChicken{
         }
     }
 	
-	public static Chicken spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountChicken chicken = new MountChicken(world);
-		chicken.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) chicken.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(chicken, SpawnReason.CUSTOM);
-		chicken.setCustomName("");
-		chicken.setCustomNameVisible(false);
-		return (CraftChicken) chicken.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.CHICKEN);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

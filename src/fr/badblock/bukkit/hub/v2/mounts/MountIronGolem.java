@@ -3,11 +3,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftIronGolem;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.IronGolem;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -18,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountIronGolem extends EntityPig{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountIronGolem(World world) {
@@ -82,14 +81,10 @@ public class MountIronGolem extends EntityPig{
         }
     }
 	
-	public static IronGolem spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountIronGolem golem = new MountIronGolem(world);
-		golem.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) golem.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(golem, SpawnReason.CUSTOM);
-		golem.setCustomName("");
-		golem.setCustomNameVisible(false);
-		return (CraftIronGolem) golem.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.IRON_GOLEM);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

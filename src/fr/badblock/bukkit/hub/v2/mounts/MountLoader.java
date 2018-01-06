@@ -34,6 +34,7 @@ public class MountLoader {
 		NMSUtils.registerEntity("MountHorse", 100, EntityHorse.class, MountHorse.class);
 		NMSUtils.registerEntity("MountMooshroom", 96, EntityMushroomCow.class, MountMooshroom.class);
 		NMSUtils.registerEntity("MountChicken", 93, EntityChicken.class, MountChicken.class);
+		NMSUtils.registerEntity("MountOcelot", 98, EntityOcelot.class, MountOcelot.class);
 	}
 
 	

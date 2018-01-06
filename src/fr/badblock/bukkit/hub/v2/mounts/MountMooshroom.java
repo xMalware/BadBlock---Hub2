@@ -3,11 +3,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftMushroomCow;
-import org.bukkit.entity.MushroomCow;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -18,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountMooshroom extends EntityMushroomCow{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountMooshroom(World world) {
@@ -82,14 +81,10 @@ public class MountMooshroom extends EntityMushroomCow{
         }
     }
 	
-	public static MushroomCow spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountMooshroom mcow = new MountMooshroom(world);
-		mcow.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) mcow.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(mcow, SpawnReason.CUSTOM);
-		mcow.setCustomName("");
-		mcow.setCustomNameVisible(false);
-		return (CraftMushroomCow) mcow.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.MUSHROOM_COW);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

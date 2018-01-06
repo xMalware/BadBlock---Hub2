@@ -2,22 +2,21 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSheep;
-import org.bukkit.entity.Sheep;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
 import net.minecraft.server.v1_8_R3.EntitySheep;
-import net.minecraft.server.v1_8_R3.EnumColor;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
 public class MountDiscoSheep extends EntitySheep{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountDiscoSheep(World world) {
@@ -82,15 +81,13 @@ public class MountDiscoSheep extends EntitySheep{
         }
     }
 	
-	public static Sheep spawnEntity(Location location, EnumColor enumcolor) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountDiscoSheep sheep = new MountDiscoSheep(world);
-		sheep.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) sheep.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(sheep, SpawnReason.CUSTOM);
-		sheep.setCustomName("jeb_");
-		sheep.setCustomNameVisible(false);
-		sheep.setColor(enumcolor);
-		return (CraftSheep) sheep.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.SHEEP);
+		creature.getBukkit().setCustomName("jeb_");
+		creature.getBukkit().setCustomNameVisible(false);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

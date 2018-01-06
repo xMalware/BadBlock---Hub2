@@ -2,11 +2,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftZombie;
-import org.bukkit.entity.Zombie;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -17,6 +15,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountZombie extends EntityZombie{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountZombie(World world) {
@@ -81,14 +80,10 @@ public class MountZombie extends EntityZombie{
         }
     }
 	
-	public static Zombie spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountZombie zombie = new MountZombie(world);
-		zombie.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) zombie.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(zombie, SpawnReason.CUSTOM);
-		zombie.setCustomName("");
-		zombie.setCustomNameVisible(false);
-		return (CraftZombie) zombie.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.ZOMBIE);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

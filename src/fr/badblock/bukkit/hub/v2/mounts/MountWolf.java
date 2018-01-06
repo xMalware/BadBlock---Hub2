@@ -3,11 +3,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftWolf;
-import org.bukkit.entity.Wolf;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -19,6 +17,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountWolf extends EntityWolf{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountWolf(World world) {
@@ -83,15 +82,13 @@ public class MountWolf extends EntityWolf{
         }
     }
 	
-	public static Wolf spawnEntity(Location location, EnumColor enumcolor) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountWolf wolf = new MountWolf(world);
-		wolf.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) wolf.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(wolf, SpawnReason.CUSTOM);
-		wolf.setCustomName("");
-		wolf.setCustomNameVisible(false);
+	@SuppressWarnings("null")
+	public CustomCreature spawnEntity(Location location, EntityType type, EnumColor enumcolor) {
+		CustomCreature creature;
+		MountWolf wolf = null;
+		creature = spawnEntity(player.getLocation(), EntityType.WOLF, null);
 		wolf.setCollarColor(enumcolor);
-		return (CraftWolf) wolf.getBukkitEntity();
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

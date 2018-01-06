@@ -3,12 +3,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftSlime;
-import org.bukkit.entity.Slime;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
-
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -19,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountSlime extends EntitySlime{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountSlime(World world) {
@@ -83,15 +81,13 @@ public class MountSlime extends EntitySlime{
         }
     }
 	
-	public static Slime spawnEntity(Location location, int Mountsize) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountSlime slime = new MountSlime(world);
-		slime.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) slime.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(slime, SpawnReason.CUSTOM);
-		slime.setCustomName("");
-		slime.setCustomNameVisible(false);
-		slime.setSize(Mountsize);
-		return (CraftSlime) slime.getBukkitEntity();
+	@SuppressWarnings("null")
+	public CustomCreature spawnEntity(Location location, EntityType type, int i) {
+		CustomCreature creature;
+		MountSlime slime = null;
+		creature = spawnEntity(player.getLocation(), EntityType.SLIME, (Integer) null);
+		slime.setSize(i);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

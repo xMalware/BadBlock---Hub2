@@ -2,11 +2,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftRabbit;
-import org.bukkit.entity.Rabbit;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -17,6 +15,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountRabbit extends EntityRabbit{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountRabbit(World world) {
@@ -81,15 +80,10 @@ public class MountRabbit extends EntityRabbit{
         }
     }
 	
-	public static Rabbit spawnEntity(Location location, int i) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountRabbit rabbit = new MountRabbit(world);
-		rabbit.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) rabbit.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(rabbit, SpawnReason.CUSTOM);
-		rabbit.setCustomName("");
-		rabbit.setCustomNameVisible(false);
-		rabbit.setRabbitType(i);
-		return (CraftRabbit) rabbit.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.RABBIT);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }
