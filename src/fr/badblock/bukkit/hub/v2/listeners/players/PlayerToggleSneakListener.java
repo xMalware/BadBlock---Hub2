@@ -9,16 +9,19 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PlayerToggleSneakListener extends BadListener{
+public class PlayerToggleSneakListener extends BadListener
+{
 	
 	public static HashMap<BadblockPlayer, Entity> mount = new HashMap<>();
 	
 	@EventHandler
-	public void sneak(PlayerToggleSneakEvent e) {
-		BadblockPlayer p = (BadblockPlayer) e.getPlayer();
-		if(mount.containsKey(p)) {
-			mount.get(p).remove();
-			mount.remove(p);
+	public void sneak(PlayerToggleSneakEvent event)
+	{
+		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+		if (mount.containsKey(player))
+		{
+			mount.get(player).remove();
+			mount.remove(player);
 		}
 	}
 

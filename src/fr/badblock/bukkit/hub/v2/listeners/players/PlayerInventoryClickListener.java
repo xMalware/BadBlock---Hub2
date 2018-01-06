@@ -18,7 +18,6 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class PlayerInventoryClickListener extends BadListener {
 
-	@SuppressWarnings("static-access")
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event) {
 		if (!(event.getWhoClicked() instanceof Player)) return;
