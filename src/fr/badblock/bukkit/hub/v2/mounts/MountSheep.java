@@ -1,25 +1,26 @@
 package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
-
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
-import net.minecraft.server.v1_8_R3.EntityCreeper;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
+import net.minecraft.server.v1_8_R3.EntitySheep;
+import net.minecraft.server.v1_8_R3.EnumColor;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountCreeper extends EntityCreeper{
+public class MountSheep extends EntitySheep{
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
-	public MountCreeper(World world) {
+	public MountSheep(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -81,9 +82,13 @@ public class MountCreeper extends EntityCreeper{
         }
     }
 	
-	public CustomCreature spawnEntity(Location location, EntityType type) {
+	@SuppressWarnings("null")
+	public CustomCreature spawnEntity(Location location, EntityType type, EnumColor enumcolor) {
 		CustomCreature creature;
-		creature = spawnEntity(player.getLocation(), EntityType.CREEPER);
+		MountSheep sheep = null;
+		creature = spawnEntity(player.getLocation(), EntityType.SHEEP, null);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
+		sheep.setColor(enumcolor);
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}

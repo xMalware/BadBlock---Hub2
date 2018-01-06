@@ -3,11 +3,9 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftMagmaCube;
-import org.bukkit.entity.MagmaCube;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -18,6 +16,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountMagmaCube extends EntityMagmaCube{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountMagmaCube(World world) {
@@ -82,15 +81,13 @@ public class MountMagmaCube extends EntityMagmaCube{
         }
     }
 	
-	public static MagmaCube spawnEntity(Location location, int Mountsize) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountMagmaCube magmacube = new MountMagmaCube(world);
-		magmacube.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) magmacube.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(magmacube, SpawnReason.CUSTOM);
-		magmacube.setCustomName("");
-		magmacube.setCustomNameVisible(false);
-		magmacube.setSize(Mountsize);
-		return (CraftMagmaCube) magmacube.getBukkitEntity();
+	@SuppressWarnings("null")
+	public CustomCreature spawnEntity(Location location, EntityType type, int i) {
+		CustomCreature creature;
+		MountMagmaCube mcube = null;
+		creature = spawnEntity(player.getLocation(), EntityType.MAGMA_CUBE, (Integer) null);
+		mcube.setSize(i);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

@@ -1,12 +1,12 @@
 package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
-
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
-import net.minecraft.server.v1_8_R3.EntityCreeper;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
+import net.minecraft.server.v1_8_R3.EntityChicken;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -14,12 +14,12 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountCreeper extends EntityCreeper{
+public class MountChicken extends EntityChicken{
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
-	public MountCreeper(World world) {
+	public MountChicken(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -83,7 +83,8 @@ public class MountCreeper extends EntityCreeper{
 	
 	public CustomCreature spawnEntity(Location location, EntityType type) {
 		CustomCreature creature;
-		creature = spawnEntity(player.getLocation(), EntityType.CREEPER);
+		creature = spawnEntity(player.getLocation(), EntityType.CHICKEN);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}

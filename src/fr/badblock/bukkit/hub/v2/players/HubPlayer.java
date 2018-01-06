@@ -69,5 +69,5 @@ import lombok.Data;
 	public static Collection<HubPlayer> getPlayers() {
 		return players.values();
 	}
-
+	
 }

@@ -1,13 +1,10 @@
 package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
-
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftWitch;
-import org.bukkit.entity.Witch;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -18,6 +15,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountWitch extends EntityWitch{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountWitch(World world) {
@@ -82,14 +80,10 @@ public class MountWitch extends EntityWitch{
         }
     }
 	
-	public static Witch spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountWitch witch = new MountWitch(world);
-		witch.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) witch.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(witch, SpawnReason.CUSTOM);
-		witch.setCustomName("");
-		witch.setCustomNameVisible(false);
-		return (CraftWitch) witch.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.WITCH);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }

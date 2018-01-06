@@ -3,11 +3,11 @@ package fr.badblock.bukkit.hub.v2.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftBlaze;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.Blaze;
-import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
+import org.bukkit.entity.EntityType;
+
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.entities.CustomCreature;
+import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
 import net.minecraft.server.v1_8_R3.EntityBlaze;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -18,6 +18,7 @@ import net.minecraft.server.v1_8_R3.World;
 
 public class MountBlaze extends EntityBlaze{
 
+	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
 	public MountBlaze(World world) {
@@ -82,14 +83,11 @@ public class MountBlaze extends EntityBlaze{
         }
     }
 	
-	public static Blaze spawnEntity(Location location) {
-		World world = (World) ((CraftWorld) location.getWorld()).getHandle();
-		MountBlaze blaze = new MountBlaze(world);
-		blaze.setLocation(location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
-		((CraftLivingEntity) blaze.getBukkitEntity()).setRemoveWhenFarAway(false);
-		world.addEntity(blaze, SpawnReason.CUSTOM);
-		blaze.setCustomName("");
-		blaze.setCustomNameVisible(false);
-		return (CraftBlaze) blaze.getBukkitEntity();
+	public CustomCreature spawnEntity(Location location, EntityType type) {
+		CustomCreature creature;
+		creature = spawnEntity(player.getLocation(), EntityType.BLAZE);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
+		creature.getBukkit().setPassenger(player);
+		return creature;
 	}
 }
