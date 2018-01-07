@@ -1,26 +1,25 @@
 package fr.badblock.bukkit.hub.v2.mounts;
 
 import java.lang.reflect.Field;
+
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
-import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
+import net.minecraft.server.v1_8_R3.EntityEnderman;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.EntitySheep;
-import net.minecraft.server.v1_8_R3.EnumColor;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountSheepSwitched extends EntitySheep{
+public class MountEndermanSwitched extends EntityEnderman{
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
-	public MountSheepSwitched(World world) {
+	public MountEndermanSwitched(World world) {
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -82,14 +81,11 @@ public class MountSheepSwitched extends EntitySheep{
         }
     }
 	
-	@SuppressWarnings("null")
-	public CustomCreature spawnEntity(Location location, EntityType type, EnumColor enumcolor) {
+	public CustomCreature spawnEntity(Location location, EntityType type) {
 		CustomCreature creature;
-		MountSheepSwitched sheep = null;
-		creature = spawnEntity(player.getLocation(), EntityType.SHEEP, null);
+		creature = spawnEntity(player.getLocation(), EntityType.ENDERMAN);
 		creature.getBukkit().setCustomName("Dinnerbone");
 		creature.getBukkit().setCustomNameVisible(false);
-		sheep.setColor(enumcolor);
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}
