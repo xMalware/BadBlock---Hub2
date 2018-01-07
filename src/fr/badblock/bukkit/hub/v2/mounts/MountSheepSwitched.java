@@ -89,6 +89,7 @@ public class MountSheepSwitched extends EntitySheep{
 		creature = spawnEntity(player.getLocation(), EntityType.SHEEP, null);
 		creature.getBukkit().setCustomName("Dinnerbone");
 		creature.getBukkit().setCustomNameVisible(false);
+		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
 		sheep.setColor(enumcolor);
 		creature.getBukkit().setPassenger(player);
 		return creature;
