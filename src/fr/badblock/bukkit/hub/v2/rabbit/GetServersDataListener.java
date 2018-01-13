@@ -10,7 +10,7 @@ import fr.badblock.gameapi.technologies.RabbitAPIListener;
 import fr.badblock.gameapi.technologies.RabbitListenerType;
 
 public class GetServersDataListener extends RabbitAPIListener {
-
+//
 	private static Map<String, GameAliveFactory> data = new HashMap<>();
 	
 	public GetServersDataListener() {
