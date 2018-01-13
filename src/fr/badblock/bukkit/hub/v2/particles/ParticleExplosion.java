@@ -9,7 +9,7 @@ import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.particles.ParticleEffect;
 import fr.badblock.gameapi.particles.ParticleEffectType;
 import fr.badblock.gameapi.players.BadblockPlayer;
-
+//
 public class ParticleExplosion  {
 	double i = 0;
 	Player player;
