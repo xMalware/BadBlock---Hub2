@@ -10,7 +10,7 @@ import fr.badblock.gameapi.utils.BukkitUtils;
 public class CommandsLoader {
 
 	private static String[] string = new String[] {
-			"fr.xmalware.badblock.hub.commands.list"
+			"fr.badblock.badblock.hub.v2.commands.list"
 	};
 
 	public static void load(BadblockPlugin plugin) {
