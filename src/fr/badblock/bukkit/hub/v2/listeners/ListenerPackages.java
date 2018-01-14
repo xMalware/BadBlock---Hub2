@@ -12,7 +12,7 @@ import fr.badblock.gameapi.utils.BukkitUtils;
 public class ListenerPackages {
 
 	private static String[] string = new String[] {
-		"fr.badblock.badblock.hub.v2.listeners.players"	
+		"fr.badblock.bukkit.hub.v2.listeners.players"	
 	};
 	
 	public static void load(BadblockPlugin plugin) {
