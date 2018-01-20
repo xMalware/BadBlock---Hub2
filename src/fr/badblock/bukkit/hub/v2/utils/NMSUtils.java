@@ -12,6 +12,18 @@ import net.minecraft.server.v1_8_R3.EntityTypes;
 
 public class NMSUtils {
 	 
+	/**
+	 * Register Mounts 
+	 * @param name
+	 *       Name of the Class
+	 * @param id
+	 *       Entity ID
+	 * @param nmsClass
+	 *       Entity Class
+	 * @param customClass
+	 *       Mount Class
+	 */
+	
     public static void registerEntity(String name, int id, Class<? extends EntityInsentient> nmsClass, Class<? extends EntityInsentient> customClass) {
         try {
 
