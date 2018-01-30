@@ -4,9 +4,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
+import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
 
@@ -17,6 +19,7 @@ import lombok.Data;
 	private String		   name;
 	private BadblockPlayer player;
 	private String		   inventory;
+	private HubStoredPlayer sPlayer;
 	
 	private CustomDisguise disguise;
 	
@@ -33,14 +36,16 @@ import lombok.Data;
 	}
 	
 	public HubPlayer loadData() {
-		// TODO: load HubStoredPlayer
+		sPlayer.loadData();
 		return this;
 	}
 	
 	public HubPlayer loadPlayer() {
-		// TODO: load player : locations/inventories...
+		// TODO: load player : locations
 		if (!isOnline()) return this;
 		getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
+		getPlayer().sendTranslatedBossBar("hubplayer.bossbar");
+		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
 		return this;
 	}

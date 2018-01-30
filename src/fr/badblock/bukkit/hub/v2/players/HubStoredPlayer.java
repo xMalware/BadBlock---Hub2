@@ -5,8 +5,10 @@ import fr.badblock.gameapi.players.data.GameData;
 
 public class HubStoredPlayer  implements GameData {
 	
-	private void loadData() {
-		
+	BadblockPlayer player;
+	
+	void loadData() {
+		get(player);
 	}
 	
 	public static HubStoredPlayer get(BadblockPlayer player) {
