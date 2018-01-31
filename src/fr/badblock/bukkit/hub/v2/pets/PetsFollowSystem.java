@@ -12,6 +12,16 @@ import net.minecraft.server.v1_8_R3.EntityInsentient;
 public class PetsFollowSystem {
 	
 	public static ArrayList<PetsFollowSystem> task = new ArrayList<>();
+
+	/**
+	 * Deploy a Pet and following the BadBlockPlayer
+	 * @param player
+	 *       Player who Receiving
+	 * @param entity
+	 *       Entity Pet
+	 * @param d
+	 *       Speed of the Pet
+	 */
 	
 	public void followPlayer(BadblockPlayer player, LivingEntity entity, double d) {
         final LivingEntity e = entity;
