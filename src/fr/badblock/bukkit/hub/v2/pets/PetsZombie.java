@@ -1,15 +1,15 @@
 package fr.badblock.bukkit.hub.v2.pets;
 
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Pig;
+import org.bukkit.entity.Zombie;
 
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PetsPig extends PetsFollowSystem{
+public class PetsZombie extends PetsFollowSystem{
 	
 	
 	public void deploy(BadblockPlayer player) {
-		LivingEntity entity = player.getWorld().spawn(player.getLocation(), Pig.class);
+		LivingEntity entity = player.getWorld().spawn(player.getLocation(), Zombie.class);
 		followPlayer(player, entity, 1);
 	}
 	

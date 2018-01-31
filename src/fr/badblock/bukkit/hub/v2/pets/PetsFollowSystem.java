@@ -13,7 +13,7 @@ public class PetsFollowSystem {
 	
 	public static ArrayList<PetsFollowSystem> task = new ArrayList<>();
 	
-	public static void followPlayer(BadblockPlayer player, LivingEntity entity, double d) {
+	public void followPlayer(BadblockPlayer player, LivingEntity entity, double d) {
         final LivingEntity e = entity;
         final BadblockPlayer p = player;
         final float f = (float) d;

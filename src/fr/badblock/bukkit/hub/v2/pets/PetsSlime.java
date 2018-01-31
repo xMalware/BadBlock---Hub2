@@ -1,15 +1,24 @@
 package fr.badblock.bukkit.hub.v2.pets;
 
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Pig;
-
+import org.bukkit.entity.Slime;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PetsPig extends PetsFollowSystem{
+public class PetsSlime extends PetsFollowSystem{
 	
+	Slime slime;
 	
-	public void deploy(BadblockPlayer player) {
-		LivingEntity entity = player.getWorld().spawn(player.getLocation(), Pig.class);
+	/**
+	 * Deploy Slime Mount
+	 * @param player
+	 *       Player receiving
+	 * @param arg0
+	 *       size of the Slime
+	 */
+	
+	public void deploy(BadblockPlayer player, int arg0) {
+		LivingEntity entity = player.getWorld().spawn(player.getLocation(), Slime.class);
+		slime.setSize(arg0);
 		followPlayer(player, entity, 1);
 	}
 	
