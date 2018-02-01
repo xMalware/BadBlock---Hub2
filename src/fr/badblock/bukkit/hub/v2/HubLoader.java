@@ -4,10 +4,10 @@ import java.io.File;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
+import fr.badblock.bukkit.hub.v2.cosmetics.mounts.MountLoader;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
 import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
-import fr.badblock.bukkit.hub.v2.mounts.MountLoader;
 import fr.badblock.bukkit.hub.v2.rabbit.RabbitLoader;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;

@@ -3,7 +3,7 @@ package fr.badblock.bukkit.hub.v2.listeners.players;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import fr.badblock.bukkit.hub.v2.disguises.CustomDisguiseEffect;
+import fr.badblock.bukkit.hub.v2.cosmetics.disguises.CustomDisguiseEffect;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;

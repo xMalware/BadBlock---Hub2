@@ -6,7 +6,7 @@ import java.util.Map;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
-import fr.badblock.bukkit.hub.v2.disguises.CustomDisguise;
+import fr.badblock.bukkit.hub.v2.cosmetics.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.gameapi.players.BadblockPlayer;
