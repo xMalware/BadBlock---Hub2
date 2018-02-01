@@ -1,14 +1,14 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.pets;
 
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Silverfish;
+import org.bukkit.entity.Snowman;
 
-public class PetsSilverfish extends CustomPet
+public class PetsSnowman extends CustomPet
 {
 	
-	public PetsSilverfish()
+	public PetsSnowman()
 	{
-		super(Silverfish.class, true);
+		super(Snowman.class, true);
 	}
 
 	@Override

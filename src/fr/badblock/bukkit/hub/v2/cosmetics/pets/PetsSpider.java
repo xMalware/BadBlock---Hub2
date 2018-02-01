@@ -2,20 +2,19 @@ package fr.badblock.bukkit.hub.v2.cosmetics.pets;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Spider;
-import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PetsSpider extends PetsFollowSystem{
+public class PetsSpider extends CustomPet
+{
 	
-	
-	public void deploy(BadblockPlayer player) {
-		LivingEntity entity = player.getWorld().spawn(player.getLocation(), Spider.class);
-		followPlayer(player, entity, 1);
+	public PetsSpider()
+	{
+		super(Spider.class, true);
 	}
-	
-	@SuppressWarnings("unlikely-arg-type")
-	public void undeploy(BadblockPlayer player) {
-		//NOT FOUND for removing it correctly
-		player.getWorld().getLivingEntities().remove(PetsFollowSystem.task);
+
+	@Override
+	public void onSpawn(LivingEntity livingEntity)
+	{
+		// Nothing there yet
 	}
 
 }
