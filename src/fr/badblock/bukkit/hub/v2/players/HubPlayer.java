@@ -6,7 +6,7 @@ import java.util.Map;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
-import fr.badblock.bukkit.hub.v2.cosmetics.disguises.CustomDisguise;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -15,14 +15,15 @@ import lombok.Data;
 @Data public class HubPlayer
 {
 
-	private static Map<String, HubPlayer> players = new HashMap<>();
+	private static Map<String, HubPlayer>	players = new HashMap<>();
 
-	private String		   name;
-	private BadblockPlayer player;
-	private String		   inventory;
-	private HubStoredPlayer sPlayer;
+	private String							name;
+	private BadblockPlayer					player;
+	private HubStoredPlayer					storedPlayer;
 
-	private CustomDisguise disguise;
+	// Temp values
+	private String							inventory;
+	private CustomDisguise					disguise;
 
 	public HubPlayer(BadblockPlayer player)
 	{
@@ -40,7 +41,7 @@ import lombok.Data;
 
 	public HubPlayer loadData()
 	{
-		sPlayer.loadData();
+		storedPlayer = HubStoredPlayer.get(getPlayer());
 		return this;
 	}
 

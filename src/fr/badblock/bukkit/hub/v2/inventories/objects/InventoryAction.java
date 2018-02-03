@@ -7,10 +7,10 @@ public class InventoryAction
 {
 
 	private InventoryActionType actionType;
-	private CustomItemAction	action;
+	private CustomItemActionType	action;
 	private String			   	actionData;
 	
-	public CustomItemAction getAction()
+	public CustomItemActionType getAction()
 	{
 		return action;
 	}
