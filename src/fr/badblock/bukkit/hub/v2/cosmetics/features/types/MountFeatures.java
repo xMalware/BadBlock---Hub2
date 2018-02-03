@@ -38,7 +38,7 @@ import lombok.Getter;
 @Getter
 public enum MountFeatures implements IFeatureWorker
 {
-
+	
 	BAT					(new MountBat(null)),
 	BLAZE				(new MountBlaze(null)),
 	CAVESPIDER			(new MountCaveSpider(null)),
