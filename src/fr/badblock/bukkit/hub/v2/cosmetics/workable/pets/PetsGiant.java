@@ -6,7 +6,6 @@ import org.bukkit.entity.LivingEntity;
 public class PetsGiant extends CustomPet
 {
 	
-	
 	public PetsGiant()
 	{
 		super(Giant.class, true);
