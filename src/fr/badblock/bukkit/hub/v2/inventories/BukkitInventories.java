@@ -45,7 +45,9 @@ public class BukkitInventories
 			inventory = createInventory(locale, inventoryObject);
 			map.put(locale, inventory);
 			staticInventories.put(inventoryObject, map);
-		}else{
+		}
+		else
+		{
 			Map<Locale, Inventory> map = staticInventories.get(inventoryObject);
 			if (!map.containsKey(locale))
 			{
@@ -107,16 +109,20 @@ public class BukkitInventories
 		return inventory;
 	}
 	
-	public static void giveDefaultInventory(BadblockPlayer player) {
+	public static void giveDefaultInventory(BadblockPlayer player)
+	{
 		player.clearInventory();
 		Inventory defaultInventory = getDefaultInventory(player);
-		if (defaultInventory == null) {
+		if (defaultInventory == null)
+		{
 			BadBlockHub.log("§cUnknown default inventory.");
 			return;
 		}
 		int i = 0;
-		for (ItemStack itemStack : defaultInventory.getContents()) {
-			if (itemStack != null && itemStack.getType() != Material.AIR && itemStack.getType() != null) {
+		for (ItemStack itemStack : defaultInventory.getContents())
+		{
+			if (itemStack != null && itemStack.getType() != Material.AIR && itemStack.getType() != null)
+			{
 				player.getInventory().setItem(i, itemStack);
 			}
 			i++;

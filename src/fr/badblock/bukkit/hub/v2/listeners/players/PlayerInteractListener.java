@@ -12,10 +12,12 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PlayerInteractListener extends BadListener {
+public class PlayerInteractListener extends BadListener
+{
 
 	@EventHandler
-	public void onPlayerInteract(PlayerInteractEvent event) {
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 		event.setCancelled(!player.hasAdminMode());
 		// default inventory
