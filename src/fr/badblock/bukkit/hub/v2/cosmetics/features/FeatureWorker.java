@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.features.types.DisguiseFeatures;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.MountFeatures;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class FeatureWorker
@@ -12,6 +13,9 @@ public class FeatureWorker
 		{
 		case DISGUISE:
 			DisguiseFeatures.work(player, feature);
+			break;
+		case MOUNT:
+			MountFeatures.work(player, feature);
 			break;
 		default:
 			break;
