@@ -3,9 +3,10 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.entity.EntityType;
+
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
+import lombok.Setter;
 import net.minecraft.server.v1_8_R3.EntityCaveSpider;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -14,7 +15,8 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountCaveSpider extends EntityCaveSpider
+@Setter
+public class MountCaveSpider extends EntityCaveSpider implements IMount
 {
 
 	BadblockPlayer player;
@@ -94,10 +96,9 @@ public class MountCaveSpider extends EntityCaveSpider
 		}
 	}
 
-	public CustomCreature spawnEntity(Location location, EntityType type)
+	public CustomCreature spawnEntity(Location location)
 	{
-		CustomCreature creature;
-		creature = spawnEntity(player.getLocation(), EntityType.CAVE_SPIDER);
+		CustomCreature creature = spawnEntity(player.getLocation());
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}

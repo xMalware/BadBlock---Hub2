@@ -1,4 +1,4 @@
-package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
+package fr.badblock.bukkit.hub.v2.cosmetics.features;
 
 import fr.badblock.gameapi.players.BadblockPlayer;
 

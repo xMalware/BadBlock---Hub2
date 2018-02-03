@@ -1,11 +1,13 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts;
 
 import java.lang.reflect.Field;
+
 import org.bukkit.Location;
-import org.bukkit.entity.EntityType;
+
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
 import fr.badblock.gameapi.utils.entities.CustomCreature.CreatureBehaviour;
+import lombok.Setter;
 import net.minecraft.server.v1_8_R3.EntityBat;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -14,7 +16,8 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountBat extends EntityBat
+@Setter
+public class MountBat extends EntityBat implements IMount
 {
 
 	BadblockPlayer player;
@@ -94,12 +97,12 @@ public class MountBat extends EntityBat
 		}
 	}
 
-	public CustomCreature spawnEntity(Location location, EntityType type)
+	public CustomCreature spawnEntity(Location location)
 	{
-		CustomCreature creature;
-		creature = spawnEntity(player.getLocation(), EntityType.BAT);
+		CustomCreature creature = spawnEntity(player.getLocation());
 		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}
+	
 }

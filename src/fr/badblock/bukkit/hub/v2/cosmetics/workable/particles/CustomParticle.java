@@ -8,9 +8,9 @@ import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.particles.ParticleEffect;
 import fr.badblock.gameapi.particles.ParticleEffectType;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public abstract class CustomParticle
 {
 

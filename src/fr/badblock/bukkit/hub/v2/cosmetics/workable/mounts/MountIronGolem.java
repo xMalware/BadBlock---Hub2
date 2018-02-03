@@ -3,9 +3,10 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.entity.EntityType;
+
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
+import lombok.Setter;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityLiving;
@@ -14,7 +15,9 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountIronGolem extends EntityPig{
+@Setter
+public class MountIronGolem extends EntityPig implements IMount
+{
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
@@ -81,9 +84,8 @@ public class MountIronGolem extends EntityPig{
         }
     }
 	
-	public CustomCreature spawnEntity(Location location, EntityType type) {
-		CustomCreature creature;
-		creature = spawnEntity(player.getLocation(), EntityType.IRON_GOLEM);
+	public CustomCreature spawnEntity(Location location) {
+		CustomCreature creature = spawnEntity(player.getLocation());
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}

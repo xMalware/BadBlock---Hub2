@@ -8,7 +8,8 @@ public class MountLoader {
 	
 	
 	// Load entities
-	public static void load(BadblockPlugin plugin) {
+	public static void load(BadblockPlugin plugin)
+	{
 		NMSUtils.registerEntity("MountSlime", 55, EntitySlime.class, MountSlime.class);
 		NMSUtils.registerEntity("MountMagmaCube", 62, EntityMagmaCube.class, MountMagmaCube.class);
 		NMSUtils.registerEntity("MountPig", 90, EntityPig.class, MountPig.class);

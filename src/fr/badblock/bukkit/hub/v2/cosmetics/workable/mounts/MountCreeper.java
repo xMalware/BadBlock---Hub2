@@ -3,9 +3,10 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts;
 import java.lang.reflect.Field;
 
 import org.bukkit.Location;
-import org.bukkit.entity.EntityType;
+
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
+import lombok.Setter;
 import net.minecraft.server.v1_8_R3.EntityCreeper;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
@@ -14,12 +15,15 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountCreeper extends EntityCreeper{
+@Setter
+public class MountCreeper extends EntityCreeper implements IMount
+{
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
-	public MountCreeper(World world) {
+	public MountCreeper(World world)
+	{
 		super(world);
 		if(FIELD_JUMP == null) {
 			try {
@@ -32,7 +36,8 @@ public class MountCreeper extends EntityCreeper{
 	}
 	
 	@Override
-    public void g(float f, float f1) {
+    public void g(float f, float f1)
+	{
         if(this.passenger != null && this.passenger instanceof EntityHuman)
         {
             this.lastYaw = this.yaw = this.passenger.yaw;
@@ -76,14 +81,16 @@ public class MountCreeper extends EntityCreeper{
             }
  
             this.aB += (f4 - this.aB) * 0.4F; this.aC += this.aB;
-        } else {
+        }
+        else
+        {
             this.S = 0.5F; this.aM = 0.02F; super.g(f, f1);
         }
     }
 	
-	public CustomCreature spawnEntity(Location location, EntityType type) {
-		CustomCreature creature;
-		creature = spawnEntity(player.getLocation(), EntityType.CREEPER);
+	public CustomCreature spawnEntity(Location location)
+	{
+		CustomCreature creature = spawnEntity(player.getLocation());
 		creature.getBukkit().setPassenger(player);
 		return creature;
 	}
