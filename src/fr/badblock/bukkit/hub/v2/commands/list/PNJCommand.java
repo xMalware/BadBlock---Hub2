@@ -45,9 +45,11 @@ public class PNJCommand extends AbstractCommand{
 			developer = "";
 			developer = developer + args[2];
 
+			// TODO do something better
+			
 			armor.setVisible(false);
 			armor.setGravity(false);
-			armor.setCustomName("§b§lMaître du jeu : §a" + gameName);
+			armor.setCustomName("Â§bÂ§lMaÃ®tre du jeu : Â§a" + gameName);
 			armor.setCustomNameVisible(true);
 									
 			ent.setAdult();
