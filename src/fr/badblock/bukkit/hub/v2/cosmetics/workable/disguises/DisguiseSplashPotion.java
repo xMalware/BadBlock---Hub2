@@ -10,13 +10,19 @@ public class DisguiseSplashPotion extends CustomDisguise
 	
 	public DisguiseSplashPotion(BadblockPlayer player)
 	{
-		super(player, EntityType.SPLASH_POTION);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.WATER_BUBBLE, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SPLASH_POTION;
 	}
 
 }

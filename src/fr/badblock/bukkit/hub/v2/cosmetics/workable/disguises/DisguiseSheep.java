@@ -9,13 +9,19 @@ public class DisguiseSheep extends CustomDisguise
 	
 	public DisguiseSheep(BadblockPlayer player)
 	{
-		super(player, EntityType.SHEEP);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SHEEP;
 	}
 
 }

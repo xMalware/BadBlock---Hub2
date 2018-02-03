@@ -10,13 +10,19 @@ public class DisguiseSmallFireball extends CustomDisguise
 	
 	public DisguiseSmallFireball(BadblockPlayer player)
 	{
-		super(player, EntityType.SMALL_FIREBALL);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SMALL_FIREBALL;
 	}
 
 }

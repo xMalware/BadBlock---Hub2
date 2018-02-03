@@ -10,13 +10,19 @@ public class DisguiseVillager extends CustomDisguise
 	
 	public DisguiseVillager(BadblockPlayer player)
 	{
-		super(player, EntityType.VILLAGER);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.SMOKE_NORMAL, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.VILLAGER;
 	}
 
 }

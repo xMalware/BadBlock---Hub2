@@ -10,13 +10,19 @@ public class DisguiseBlaze extends CustomDisguise
 	
 	public DisguiseBlaze(BadblockPlayer player)
 	{
-		super(player, EntityType.BLAZE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.BLAZE;
 	}
 
 }

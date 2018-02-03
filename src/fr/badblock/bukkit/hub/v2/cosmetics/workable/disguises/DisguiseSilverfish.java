@@ -9,13 +9,19 @@ public class DisguiseSilverfish extends CustomDisguise
 	
 	public DisguiseSilverfish(BadblockPlayer player)
 	{
-		super(player, EntityType.SILVERFISH);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SILVERFISH;
 	}
 
 }

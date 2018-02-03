@@ -10,13 +10,19 @@ public class DisguiseFirework extends CustomDisguise
 	
 	public DisguiseFirework(BadblockPlayer player)
 	{
-		super(player, EntityType.FIREWORK);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FIREWORKS_SPARK, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.FIREWORK;
 	}
 
 }

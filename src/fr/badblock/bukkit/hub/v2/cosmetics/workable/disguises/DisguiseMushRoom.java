@@ -10,13 +10,19 @@ public class DisguiseMushRoom extends CustomDisguise
 	
 	public DisguiseMushRoom(BadblockPlayer player)
 	{
-		super(player, EntityType.MUSHROOM_COW);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.VILLAGER_ANGRY, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.MUSHROOM_COW;
 	}
 
 }

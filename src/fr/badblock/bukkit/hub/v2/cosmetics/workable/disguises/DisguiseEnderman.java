@@ -10,13 +10,19 @@ public class DisguiseEnderman extends CustomDisguise
 	
 	public DisguiseEnderman(BadblockPlayer player)
 	{
-		super(player, EntityType.ENDERMAN);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.PORTAL, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ENDERMAN;
 	}
 
 }

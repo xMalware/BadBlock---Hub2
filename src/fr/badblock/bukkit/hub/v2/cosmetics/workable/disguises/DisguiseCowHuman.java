@@ -15,7 +15,7 @@ public class DisguiseCowHuman extends CustomDisguise
 	BadblockPlayer player;
 	public DisguiseCowHuman(BadblockPlayer player)
 	{
-		super(player, EntityType.PLAYER);
+		super(player);
 		player.setCustomName("Cirauk_");
 		player.setCustomNameVisible(false);
 	}
@@ -24,6 +24,12 @@ public class DisguiseCowHuman extends CustomDisguise
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 4);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PLAYER;
 	}
 
 }

@@ -10,13 +10,19 @@ public class DisguiseZombie extends CustomDisguise
 	
 	public DisguiseZombie(BadblockPlayer player)
 	{
-		super(player, EntityType.ZOMBIE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.REDSTONE, 2);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ZOMBIE;
 	}
 
 }

@@ -10,13 +10,19 @@ public class DisguiseItemFrame extends CustomDisguise
 	
 	public DisguiseItemFrame(BadblockPlayer player)
 	{
-		super(player, EntityType.ITEM_FRAME);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.CLOUD, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ITEM_FRAME;
 	}
 
 }

@@ -10,13 +10,19 @@ public class DisguiseSnowMan extends CustomDisguise
 	
 	public DisguiseSnowMan(BadblockPlayer player)
 	{
-		super(player, EntityType.SNOWMAN);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.SNOW_SHOVEL, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SNOWMAN;
 	}
 
 }

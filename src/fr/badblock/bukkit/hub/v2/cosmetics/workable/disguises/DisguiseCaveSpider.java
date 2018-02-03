@@ -9,13 +9,19 @@ public class DisguiseCaveSpider extends CustomDisguise
 	
 	public DisguiseCaveSpider(BadblockPlayer player)
 	{
-		super(player, EntityType.CAVE_SPIDER);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.CAVE_SPIDER;
 	}
 	
 }

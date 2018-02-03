@@ -9,13 +9,19 @@ public class DisguiseMinecartMobSpawner extends CustomDisguise
 	
 	public DisguiseMinecartMobSpawner(BadblockPlayer player)
 	{
-		super(player, EntityType.MINECART_MOB_SPAWNER);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.MINECART_MOB_SPAWNER;
 	}
 
 }

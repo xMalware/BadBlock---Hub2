@@ -12,9 +12,10 @@ public class DisguiseLeLanN extends CustomDisguise
 	 */
 	
 	BadblockPlayer player;
+	
 	public DisguiseLeLanN(BadblockPlayer player)
 	{
-		super(player, EntityType.PLAYER);
+		super(player);
 		player.setCustomName("LeLanN");
 		player.setCustomNameVisible(false);
 	}
@@ -23,6 +24,12 @@ public class DisguiseLeLanN extends CustomDisguise
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 4);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PLAYER;
 	}
 
 }

@@ -9,13 +9,19 @@ public class DisguiseMinecartFurnace extends CustomDisguise
 	
 	public DisguiseMinecartFurnace(BadblockPlayer player)
 	{
-		super(player, EntityType.MINECART_FURNACE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.MINECART_FURNACE;
 	}
 
 }

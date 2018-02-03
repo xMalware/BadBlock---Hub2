@@ -14,7 +14,7 @@ public class DisguiseSulfique extends CustomDisguise
 	BadblockPlayer player;
 	public DisguiseSulfique(BadblockPlayer player)
 	{
-		super(player, EntityType.PLAYER);
+		super(player);
 		player.setCustomName("Sulfique");
 		player.setCustomNameVisible(false);
 	}
@@ -23,6 +23,12 @@ public class DisguiseSulfique extends CustomDisguise
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 4);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PLAYER;
 	}
 
 }

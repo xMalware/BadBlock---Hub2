@@ -10,13 +10,19 @@ public class DisguiseGuardian extends CustomDisguise
 	
 	public DisguiseGuardian(BadblockPlayer player)
 	{
-		super(player, EntityType.GUARDIAN);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.WATER_BUBBLE, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.GUARDIAN;
 	}
 
 }

@@ -10,13 +10,19 @@ public class DisguiseWitch extends CustomDisguise
 	
 	public DisguiseWitch(BadblockPlayer player)
 	{
-		super(player, EntityType.WITCH);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.SPELL_WITCH, 4);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.WITCH;
 	}
 
 }

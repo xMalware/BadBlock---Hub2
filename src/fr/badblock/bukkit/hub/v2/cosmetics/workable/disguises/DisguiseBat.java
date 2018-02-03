@@ -10,13 +10,19 @@ public class DisguiseBat extends CustomDisguise
 	
 	public DisguiseBat(BadblockPlayer player)
 	{
-		super(player, EntityType.BAT);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.SMOKE_NORMAL, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.BAT;
 	}
 	
 }

@@ -10,13 +10,19 @@ public class DisguiseCow extends CustomDisguise
 	
 	public DisguiseCow(BadblockPlayer player)
 	{
-		super(player, EntityType.COW);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.SNOW_SHOVEL, 2);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.COW;
 	}
 
 }

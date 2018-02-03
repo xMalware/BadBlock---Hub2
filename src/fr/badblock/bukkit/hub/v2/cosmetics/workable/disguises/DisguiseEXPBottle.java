@@ -9,13 +9,19 @@ public class DisguiseEXPBottle extends CustomDisguise
 	
 	public DisguiseEXPBottle(BadblockPlayer player)
 	{
-		super(player, EntityType.THROWN_EXP_BOTTLE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.THROWN_EXP_BOTTLE;
 	}
 
 }

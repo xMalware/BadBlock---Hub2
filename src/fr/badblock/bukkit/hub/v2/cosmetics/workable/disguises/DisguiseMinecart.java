@@ -9,13 +9,19 @@ public class DisguiseMinecart extends CustomDisguise
 	
 	public DisguiseMinecart(BadblockPlayer player)
 	{
-		super(player, EntityType.MINECART);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.MINECART;
 	}
 
 }

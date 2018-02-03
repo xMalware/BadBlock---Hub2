@@ -10,13 +10,19 @@ public class DisguiseMagmaCube extends CustomDisguise
 	
 	public DisguiseMagmaCube(BadblockPlayer player)
 	{
-		super(player, EntityType.MAGMA_CUBE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 2);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.MAGMA_CUBE;
 	}
 
 }

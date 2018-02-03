@@ -10,13 +10,19 @@ public class DisguiseEndermite extends CustomDisguise
 	
 	public DisguiseEndermite(BadblockPlayer player)
 	{
-		super(player, EntityType.ENDERMITE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.PORTAL, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ENDERMITE;
 	}
 
 }

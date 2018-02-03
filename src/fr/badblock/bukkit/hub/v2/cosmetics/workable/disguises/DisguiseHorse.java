@@ -10,13 +10,19 @@ public class DisguiseHorse extends CustomDisguise
 	
 	public DisguiseHorse(BadblockPlayer player)
 	{
-		super(player, EntityType.HORSE);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.HORSE;
 	}
 
 }

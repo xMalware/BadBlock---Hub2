@@ -14,7 +14,7 @@ public class Feature
 	private String		name;
 	private int			badcoinsNeeded;
 	private int			shopPointsNeeded;
-	private int			xpNeeded;
+	private int			levelNeeded;
 	private long		expire;
 
 }

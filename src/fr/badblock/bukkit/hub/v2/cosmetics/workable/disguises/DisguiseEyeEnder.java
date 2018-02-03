@@ -10,13 +10,19 @@ public class DisguiseEyeEnder extends CustomDisguise
 	
 	public DisguiseEyeEnder(BadblockPlayer player)
 	{
-		super(player, EntityType.ENDER_SIGNAL);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.PORTAL, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ENDER_SIGNAL;
 	}
 
 }

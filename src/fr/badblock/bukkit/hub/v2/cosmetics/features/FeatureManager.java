@@ -12,7 +12,7 @@ public class FeatureManager
 
 	@Getter @Setter
 	private static FeatureManager	instance	= new FeatureManager();
-	
+
 	public void addFeature(HubStoredPlayer hubStoredPlayer, Feature feature)
 	{
 		long start = System.currentTimeMillis();
@@ -33,6 +33,27 @@ public class FeatureManager
 		}
 		ownedFeatures.add(ownedFeature);
 		hubStoredPlayer.getFeatures().put(feature.getType(), ownedFeatures);
+	}
+	
+	public boolean hasFeature(HubStoredPlayer hubStoredPlayer, String featureRawName)
+	{
+		String[] splitter = featureRawName.split("_");
+		if (splitter.length != 2)
+		{	
+			System.out.println("[BadBlockHub] A feature must have this pattern : type_name (" + featureRawName + ")");
+			return false;
+		}
+		FeatureType featureType = FeatureType.get(splitter[0]);
+		if (featureType == null)
+		{
+			System.out.println("[BadBlockHub] Unknown feature type for " + featureRawName);
+			return false;
+		}
+		List<OwnedFeature> features = hubStoredPlayer.getFeatures().get(featureType);
+		// Count available features
+		long count = features.parallelStream().filter(feature -> 
+		feature.getType().getName().toLowerCase().equals(splitter[1]) && feature.getExpire() > System.currentTimeMillis()).count();
+		return count > 0;
 	}
 	
 }

@@ -10,13 +10,19 @@ public class DisguiseWolf extends CustomDisguise
 
 	public DisguiseWolf(BadblockPlayer player)
 	{
-		super(player, EntityType.WOLF);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.CLOUD, 5);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.WOLF;
 	}
 
 }

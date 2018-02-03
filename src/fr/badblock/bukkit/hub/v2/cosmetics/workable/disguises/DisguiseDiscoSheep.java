@@ -10,7 +10,7 @@ public class DisguiseDiscoSheep extends CustomDisguise
 	Sheep sheep;
 	public DisguiseDiscoSheep(BadblockPlayer player)
 	{
-		super(player, EntityType.SHEEP);
+		super(player);
 		sheep.setCustomName("jeb_");
 		sheep.setCustomNameVisible(false);
 	}
@@ -19,6 +19,12 @@ public class DisguiseDiscoSheep extends CustomDisguise
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PLAYER;
 	}
 
 }

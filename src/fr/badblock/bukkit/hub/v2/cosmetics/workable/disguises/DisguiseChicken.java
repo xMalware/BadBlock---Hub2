@@ -9,13 +9,19 @@ public class DisguiseChicken extends CustomDisguise
 	
 	public DisguiseChicken(BadblockPlayer player)
 	{
-		super(player, EntityType.CHICKEN);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.CHICKEN;
 	}
 	
 }

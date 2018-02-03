@@ -10,13 +10,19 @@ public class DisguiseGolem extends CustomDisguise
 	
 	public DisguiseGolem(BadblockPlayer player)
 	{
-		super(player, EntityType.IRON_GOLEM);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 2);		
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.IRON_GOLEM;
 	}
 
 }

@@ -10,13 +10,19 @@ public class DisguisePig extends CustomDisguise
 	
 	public DisguisePig(BadblockPlayer player)
 	{
-		super(player, EntityType.PIG);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PIG;
 	}
 
 }

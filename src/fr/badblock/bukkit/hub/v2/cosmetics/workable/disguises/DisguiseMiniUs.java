@@ -19,7 +19,7 @@ public class DisguiseMiniUs extends CustomDisguise
 	
 	public DisguiseMiniUs(BadblockPlayer player)
 	{
-		super(player, EntityType.ARMOR_STAND);
+		super(player);
 		ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
 	    LeatherArmorMeta meta =  (LeatherArmorMeta) chestplate.getItemMeta();
 	    meta.setColor(Color.GRAY);
@@ -49,6 +49,12 @@ public class DisguiseMiniUs extends CustomDisguise
 		skullm.setOwner(playerName);
 		skull.setItemMeta(skullm);
 		return skull;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ARMOR_STAND;
 	}
 
 }

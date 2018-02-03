@@ -9,13 +9,19 @@ public class DisguiseSkeleton extends CustomDisguise
 	
 	public DisguiseSkeleton(BadblockPlayer player)
 	{
-		super(player, EntityType.SKELETON);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SKELETON;
 	}
 
 }

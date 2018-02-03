@@ -8,13 +8,19 @@ public class DisguisePainting extends CustomDisguise
 	
 	public DisguisePainting(BadblockPlayer player)
 	{
-		super(player, EntityType.PAINTING);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PAINTING;
 	}
 
 }

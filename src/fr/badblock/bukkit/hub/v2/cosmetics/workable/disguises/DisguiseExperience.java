@@ -9,13 +9,19 @@ public class DisguiseExperience extends CustomDisguise
 	
 	public DisguiseExperience(BadblockPlayer player)
 	{
-		super(player, EntityType.EXPERIENCE_ORB);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.EXPERIENCE_ORB;
 	}
 
 }

@@ -10,13 +10,19 @@ public class DisguiseGhast extends CustomDisguise
 	
 	public DisguiseGhast(BadblockPlayer player)
 	{
-		super(player, EntityType.GHAST);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.GHAST;
 	}
 
 }

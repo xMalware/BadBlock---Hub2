@@ -10,13 +10,19 @@ public class DisguiseDroppedItem extends CustomDisguise
 	
 	public DisguiseDroppedItem(BadblockPlayer player)
 	{
-		super(player, EntityType.DROPPED_ITEM);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.DROPPED_ITEM;
 	}
 
 }

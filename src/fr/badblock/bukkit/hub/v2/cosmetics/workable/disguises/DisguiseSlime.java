@@ -10,13 +10,19 @@ public class DisguiseSlime extends CustomDisguise
 	
 	public DisguiseSlime(BadblockPlayer player)
 	{
-		super(player, EntityType.SLIME);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.SLIME, 5);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SLIME;
 	}
 
 }

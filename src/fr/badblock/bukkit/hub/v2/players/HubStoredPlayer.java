@@ -15,6 +15,12 @@ public class HubStoredPlayer  implements GameData
 	
 	private Map<FeatureType, List<OwnedFeature>>	features;
 	
+	public void save(BadblockPlayer player)
+	{
+		player.getPlayerData().saveData();
+		player.saveGameData();
+	}
+	
 	public static HubStoredPlayer get(BadblockPlayer player)
 	{
 		HubStoredPlayer hubStoredPlayer = player.getPlayerData().gameData("hub", HubStoredPlayer.class);

@@ -10,13 +10,19 @@ public class DisguiseEnderCrystal extends CustomDisguise
 	
 	public DisguiseEnderCrystal(BadblockPlayer player)
 	{
-		super(player, EntityType.ENDER_CRYSTAL);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.PORTAL, 5);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ENDER_CRYSTAL;
 	}
 
 }

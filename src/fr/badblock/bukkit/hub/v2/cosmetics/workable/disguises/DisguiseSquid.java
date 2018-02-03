@@ -10,13 +10,19 @@ public class DisguiseSquid extends CustomDisguise
 	
 	public DisguiseSquid(BadblockPlayer player)
 	{
-		super(player, EntityType.SQUID);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.WATER_BUBBLE, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.SQUID;
 	}
 
 }

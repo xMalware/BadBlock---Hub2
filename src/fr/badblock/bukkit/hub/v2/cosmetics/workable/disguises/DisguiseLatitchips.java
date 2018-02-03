@@ -14,7 +14,7 @@ public class DisguiseLatitchips extends CustomDisguise
 	BadblockPlayer player;
 	public DisguiseLatitchips(BadblockPlayer player)
 	{
-		super(player, EntityType.PLAYER);
+		super(player);
 		player.setCustomName("Latitchips");
 		player.setCustomNameVisible(false);
 	}
@@ -23,6 +23,12 @@ public class DisguiseLatitchips extends CustomDisguise
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 4);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.PLAYER;
 	}
 
 }

@@ -7,16 +7,22 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class DisguiseArrow extends CustomDisguise
 {
-	
+
 	public DisguiseArrow(BadblockPlayer player)
 	{
-		super(player, EntityType.ARROW);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 1);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.ARROW;
 	}
 
 }

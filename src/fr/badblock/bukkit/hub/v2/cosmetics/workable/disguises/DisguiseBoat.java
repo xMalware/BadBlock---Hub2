@@ -10,13 +10,19 @@ public class DisguiseBoat extends CustomDisguise
 	
 	public DisguiseBoat(BadblockPlayer player)
 	{
-		super(player, EntityType.BOAT);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.WATER_BUBBLE, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.BOAT;
 	}
 	
 }

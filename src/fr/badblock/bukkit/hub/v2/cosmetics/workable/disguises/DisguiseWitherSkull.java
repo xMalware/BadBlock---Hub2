@@ -10,13 +10,19 @@ public class DisguiseWitherSkull extends CustomDisguise
 	
 	public DisguiseWitherSkull(BadblockPlayer player)
 	{
-		super(player, EntityType.WITHER_SKULL);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.ENCHANTMENT_TABLE, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.WITHER_SKULL;
 	}
 
 }

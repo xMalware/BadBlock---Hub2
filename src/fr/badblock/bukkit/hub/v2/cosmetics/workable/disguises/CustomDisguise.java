@@ -12,15 +12,25 @@ import lombok.EqualsAndHashCode;
 public abstract class CustomDisguise
 {
 
-	private BadblockPlayer player;
-	private Disguise disguise;
+	private BadblockPlayer	player;
+	private Disguise		disguise;
 
-	public CustomDisguise(BadblockPlayer player, EntityType entityType)
+	public CustomDisguise()
+	{
+		setDisguise(new Disguise(getEntityType(), null, true, true));
+	}
+	
+	public CustomDisguise(BadblockPlayer player)
+	{
+		this();
+		own(player);
+	}
+	
+	public void own(BadblockPlayer player)
 	{
 		setPlayer(player);
-		setDisguise(new Disguise(entityType, null, true, true));
 	}
-
+	
 	public void disguise()
 	{
 		getPlayer().disguise(disguise);
@@ -31,6 +41,8 @@ public abstract class CustomDisguise
 		getPlayer().undisguise();
 	}
 
+	public abstract EntityType			 getEntityType();
+	
 	public abstract CustomDisguiseEffect getEffect();
 
 }

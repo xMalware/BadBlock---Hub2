@@ -10,13 +10,19 @@ public class DisguiseGiant extends CustomDisguise
 	
 	public DisguiseGiant(BadblockPlayer player)
 	{
-		super(player, EntityType.GIANT);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 3);
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.GIANT;
 	}
 
 }

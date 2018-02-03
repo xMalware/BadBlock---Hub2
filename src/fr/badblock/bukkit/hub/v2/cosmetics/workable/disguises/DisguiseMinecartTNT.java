@@ -9,13 +9,19 @@ public class DisguiseMinecartTNT extends CustomDisguise
 	
 	public DisguiseMinecartTNT(BadblockPlayer player)
 	{
-		super(player, EntityType.MINECART_TNT);
+		super(player);
 	}
 
 	@Override
 	public CustomDisguiseEffect getEffect()
 	{
 		return null;
+	}
+
+	@Override
+	public EntityType getEntityType()
+	{
+		return EntityType.MINECART_TNT;
 	}
 
 }
