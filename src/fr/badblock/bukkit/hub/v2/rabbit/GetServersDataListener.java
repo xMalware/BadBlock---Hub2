@@ -9,18 +9,24 @@ import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.gameapi.technologies.RabbitAPIListener;
 import fr.badblock.gameapi.technologies.RabbitListenerType;
 
-public class GetServersDataListener extends RabbitAPIListener {
-//
+public class GetServersDataListener extends RabbitAPIListener
+{
+
 	private static Map<String, GameAliveFactory> data = new HashMap<>();
-	
-	public GetServersDataListener() {
+
+	public GetServersDataListener()
+	{
 		super("networkdocker.instance.keepalive", RabbitListenerType.SUBSCRIBER, false);
 	}
 
 	@Override
-	public void onPacketReceiving(String body) {
+	public void onPacketReceiving(String body)
+	{
 		// No data
-		if (body == null) return;
+		if (body == null)
+		{
+			return;
+		}
 		Gson gson = BadBlockHub.getInstance().getNotRestrictiveGson();
 		GameAliveFactory gameAliveFactory = gson.fromJson(body, GameAliveFactory.class);
 		data.put(gameAliveFactory.getName(), gameAliveFactory);

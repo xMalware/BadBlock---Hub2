@@ -1,11 +1,12 @@
 package fr.badblock.bukkit.hub.v2.rabbit;
 
-public class GameAliveFactory {
+public class GameAliveFactory
+{
 
 	String name;
 	
-	public String getName() {
-		// TODO Auto-generated method stub
+	public String getName()
+	{
 		return name;
 	}
 

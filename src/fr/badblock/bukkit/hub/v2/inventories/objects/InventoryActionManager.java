@@ -13,20 +13,25 @@ import fr.badblock.gameapi.sentry.SEntry;
 
 public class InventoryActionManager {
 
-	@SuppressWarnings("static-access")
 	public static void handle(BadblockPlayer player, String inventoryName, InventoryItemObject object, InventoryActionType type) {
 		// No defined type
-		if (type == null) return;
-		for (InventoryAction inventoryAction : object.getActions()) {
+		if (type == null)
+		{
+			return;
+		}
+		for (InventoryAction inventoryAction : object.getActions())
+		{
 			if (!inventoryAction.getActionType().equals(type)) continue;
 			CustomItemAction action = inventoryAction.getAction();
-			if (action == null) {
+			if (action == null)
+			{
 				BadBlockHub.log("§cUnknown action set on this object (Position: " + object.getPlace() + " / InventoryName: " + inventoryName + ").");
 				return;
 			}
 			// TODO: do antispam
 			String actionData = inventoryAction.getActionData();
-			switch (action) {
+			switch (action)
+			{
 			case EXECUTE_COMMAND:
 				executeCommand(player, action, actionData);
 				break;
@@ -55,10 +60,12 @@ public class InventoryActionManager {
 		}
 	}
 
-	private static void openInventory(BadblockPlayer player, CustomItemAction action, String actionData) {
+	private static void openInventory(BadblockPlayer player, CustomItemAction action, String actionData)
+	{
 		String inventoryName = actionData;
 		Inventory inventory = BukkitInventories.getInventory(player, inventoryName);
-		if (inventory == null) {
+		if (inventory == null)
+		{
 			closeInventory(player, action, null);
 			return;
 		}
@@ -68,8 +75,10 @@ public class InventoryActionManager {
 		hubPlayer.setInventory(inventoryName);
 	}
 
-	private static void closeInventory(BadblockPlayer player, CustomItemAction action, String actionData) {
-		if (actionData != null && !actionData.isEmpty()) {
+	private static void closeInventory(BadblockPlayer player, CustomItemAction action, String actionData)
+	{
+		if (actionData != null && !actionData.isEmpty())
+		{
 			// TODO: do another action ?
 		}
 		HubPlayer hubPlayer = HubPlayer.get(player);
@@ -77,24 +86,29 @@ public class InventoryActionManager {
 		player.closeInventory();
 	}
 
-	private static void teleportServer(BadblockPlayer player, CustomItemAction action, String actionData) {
+	private static void teleportServer(BadblockPlayer player, CustomItemAction action, String actionData)
+	{
 		player.sendPlayer(actionData);
 	}
 
-	private static void teleportLoc(BadblockPlayer player, CustomItemAction action, String actionData) {
+	private static void teleportLoc(BadblockPlayer player, CustomItemAction action, String actionData)
+	{
 		Location location = ConfigLoader.getLoc().getLocation(actionData);
-		if (location == null) {
+		if (location == null)
+		{
 			BadBlockHub.log("§cUnknown location name '" + actionData + "'");
 			return;
 		}
 		player.teleport(location);
 	}
 
-	private static void executeCommand(BadblockPlayer player, CustomItemAction action, String actionData) {
+	private static void executeCommand(BadblockPlayer player, CustomItemAction action, String actionData)
+	{
 		player.performCommand(actionData);
 	}
 
-	private static void waitingLine(BadblockPlayer player, CustomItemAction action, String actionData) {
+	private static void waitingLine(BadblockPlayer player, CustomItemAction action, String actionData)
+	{
 		SEntry sentry = new SEntry(player.getName(), actionData, false);
 		GameAPI.getAPI().getRabbitSpeaker().sendAsyncUTF8Publisher("networkdocker.sentry.join", BadBlockHub.getInstance().getNotRestrictiveGson().toJson(sentry), 5000, false);
 	}

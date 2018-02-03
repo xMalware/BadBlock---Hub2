@@ -5,12 +5,17 @@ import java.util.List;
 
 import org.bukkit.ChatColor;
 
-public class ChatColorUtils {
+public class ChatColorUtils
+{
 
-	public static List<String> getTranslatedMessages(String[] messages) {
+	public static List<String> getTranslatedMessages(String[] messages)
+	{
 		List<String> result = new ArrayList<>();
-		for (String message : messages) result.add(ChatColor.translateAlternateColorCodes('&', message));
+		for (String message : messages)
+		{
+			result.add(ChatColor.translateAlternateColorCodes('&', message));
+		}
 		return result;
 	}
-	
+
 }

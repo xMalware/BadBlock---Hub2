@@ -14,7 +14,8 @@ import fr.badblock.gameapi.GameAPI;
 
 public class HubLoader {
 
-	public static void load(BadblockPlugin plugin) {
+	public static void load(BadblockPlugin plugin)
+	{
 		// Load configuration
 		ConfigLoader.load(plugin);
 		// Linked servers

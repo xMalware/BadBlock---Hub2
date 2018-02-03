@@ -12,6 +12,7 @@ public class DisguiseAdminMCSM extends CustomDisguise
 	 */
 	
 	BadblockPlayer player;
+	
 	public DisguiseAdminMCSM(BadblockPlayer player)
 	{
 		super(player, EntityType.PLAYER);

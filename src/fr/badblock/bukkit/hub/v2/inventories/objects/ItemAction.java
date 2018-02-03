@@ -7,8 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-public enum ItemAction {
-	
+public enum ItemAction
+{
+
 	INVENTORY_DROP(InventoryAction.DROP_ONE_SLOT), 
 	INVENTORY_LEFT_CLICK(InventoryAction.PICKUP_ALL),
 	INVENTORY_RIGHT_CLICK(InventoryAction.PICKUP_HALF),
@@ -18,28 +19,40 @@ public enum ItemAction {
 	RIGHT_CLICK_AIR,
 	RIGHT_CLICK_BLOCK;
 
-	public static ItemAction get(Action action) {
+	public static ItemAction get(Action action)
+	{
 		for (ItemAction itemAction : values())
+		{
 			if (itemAction.name().equals(action.name()))
+			{
 				return itemAction;
+			}
+		}
 		return null;
 	}
 
-	public static ItemAction get(InventoryAction inventoryAction) {
+	public static ItemAction get(InventoryAction inventoryAction)
+	{
 		for (ItemAction itemAction : values())
+		{
 			if (itemAction.getAssignedInventoryAction() != null
 					&& itemAction.getAssignedInventoryAction().equals(inventoryAction))
+			{
 				return itemAction;
+			}
+		}
 		return null;
 	}
 
 	@Setter
 	private InventoryAction assignedInventoryAction;
 
-	ItemAction() {
+	ItemAction()
+	{
 	}
 
-	ItemAction(InventoryAction assignedInventoryAction) {
+	ItemAction(InventoryAction assignedInventoryAction)
+	{
 		setAssignedInventoryAction(assignedInventoryAction);
 	}
 

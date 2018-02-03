@@ -16,11 +16,16 @@ import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class PlayerInventoryClickListener extends BadListener {
+public class PlayerInventoryClickListener extends BadListener
+{
 
 	@EventHandler
-	public void onInventoryClick(InventoryClickEvent event) {
-		if (!(event.getWhoClicked() instanceof Player)) return;
+	public void onInventoryClick(InventoryClickEvent event)
+	{
+		if (!(event.getWhoClicked() instanceof Player))
+		{
+			return;
+		}
 		BadblockPlayer player = (BadblockPlayer) event.getWhoClicked();
 		event.setCancelled(!player.hasAdminMode());
 		// default inventory
@@ -47,10 +52,14 @@ public class PlayerInventoryClickListener extends BadListener {
 	{
 		boolean done = false;
 		if (inventoryObject == null)
+		{
 			return false;
+		}
 		InventoryItemObject itemObject = null;
-		for (InventoryItemObject item : inventoryObject.getItems()) {
-			if (event.getSlot() == item.getPlace()) {
+		for (InventoryItemObject item : inventoryObject.getItems())
+		{
+			if (event.getSlot() == item.getPlace())
+			{
 				done = true;
 				itemObject = item;
 				break;

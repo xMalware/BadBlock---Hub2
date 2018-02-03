@@ -18,13 +18,15 @@ public class HubConfig
 	{
 		File file = new File(plugin.getDataFolder(), fileName + ".yml");
 		if (!file.exists())
+		{
 			try
-		{
+			{
 				file.createNewFile();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		config = new YamlConfiguration();
 		try

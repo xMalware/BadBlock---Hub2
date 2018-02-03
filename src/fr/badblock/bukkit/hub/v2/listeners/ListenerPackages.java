@@ -11,17 +11,20 @@ import fr.badblock.gameapi.utils.BukkitUtils;
 
 public class ListenerPackages {
 
-	private static String[] string = new String[] {
+	private static String[] string = new String[]
+			{
 		"fr.badblock.bukkit.hub.v2.listeners.players"	
 	};
 	
-	public static void load(BadblockPlugin plugin) {
+	public static void load(BadblockPlugin plugin)
+	{
 		loadBukkitListeners(plugin);
 		loadRabbitListeners();
 	}
 	
 	// Load bukkit listeners
-	private static void loadBukkitListeners(BadblockPlugin plugin) {
+	private static void loadBukkitListeners(BadblockPlugin plugin)
+	{
 		try {
 			BukkitUtils.instanciateListenersAndCommandsFrom(plugin, string);
 		} catch (IOException e) {
@@ -30,11 +33,13 @@ public class ListenerPackages {
 		}
 	}
 	
-	private static void loadRabbitListeners() {
+	private static void loadRabbitListeners()
+	{
 		loadRabbitListener(GetServersDataListener.class);
 	}
 	
-	private static void loadRabbitListener(Class<? extends RabbitAPIListener> listener) {
+	private static void loadRabbitListener(Class<? extends RabbitAPIListener> listener)
+	{
 		try {
 			listener.newInstance();
 		} catch (Exception e) {

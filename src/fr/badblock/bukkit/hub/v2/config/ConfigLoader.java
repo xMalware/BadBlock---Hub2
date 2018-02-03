@@ -10,7 +10,8 @@ public class ConfigLoader
 
 	@Getter @Setter public static HubLocationsConfig loc;
 	
-	public static void load(BadblockPlugin plugin) {
+	public static void load(BadblockPlugin plugin)
+	{
 		setLoc(new HubLocationsConfig(plugin, "locations"));
 	}
 	

@@ -4,21 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-@Getter public class InventoryObject {
+@Getter public class InventoryObject
+{
 
 	private String 					i18name;
 	private int	  					lines;
 	private InventoryItemObject[]	items;
 	
-	public InventoryItemObject[] getItems() {
+	public InventoryItemObject[] getItems()
+	{
 		return items;
 	}
 
-	public String getI18name() {
+	public String getI18name()
+	{
 		return i18name;
 	}
 
-	public int getLines() {
+	public int getLines()
+	{
 		return lines;
 	}
 	
