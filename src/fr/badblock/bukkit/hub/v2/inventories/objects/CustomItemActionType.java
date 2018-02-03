@@ -1,10 +1,12 @@
 package fr.badblock.bukkit.hub.v2.inventories.objects;
 
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBuyFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionCloseInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommand;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionOpenInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionUseFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionWaitingLine;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
@@ -19,12 +21,9 @@ public enum CustomItemActionType
 	TELEPORT_LOC		(new ItemActionTeleportLocation()),
 	EXECUTE_COMMAND		(new ItemActionExecuteCommand()),
 	WAITING_LINE		(new ItemActionWaitingLine()),
-	NOTHING				(null)
-	/*
-	 * TODO for cosmetics!
-	 * BUY_FEATURE
-	 * USE_FEATURE
-	 */;
+	BUY_FEATURE			(new ItemActionBuyFeature()),
+	USE_FEATURE			(new ItemActionUseFeature()),
+	NOTHING				(null);
 
 	private CustomItemAction action;
 
