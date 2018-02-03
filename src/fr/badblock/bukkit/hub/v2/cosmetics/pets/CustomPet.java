@@ -46,7 +46,8 @@ public abstract class CustomPet
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(BadBlockHub.getInstance(), new Runnable()
 		{
 			@Override
-			public void run() {
+			public void run()
+			{
 				((EntityInsentient) ((CraftEntity) e).getHandle()).getNavigation().a(p.getLocation().getX(), p.getLocation().getY(), p.getLocation().getZ(), f);
 			}
 		}, 0 * 20, 2 * 20);
