@@ -10,15 +10,18 @@ import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer.GamePermission;
 import fr.badblock.gameapi.utils.i18n.TranslatableString;
 
-public class RInvCommand extends AbstractCommand {
+public class RInvCommand extends AbstractCommand
+{
 	
-	public RInvCommand() {
+	public RInvCommand()
+	{
 		super("rinv", new TranslatableString("commands.rinv.usage"), GamePermission.ADMIN, GamePermission.ADMIN, GamePermission.ADMIN);
 		this.allowConsole(true);
 	}
 
 	@Override
-	public boolean executeCommand(CommandSender sender, String[] args) {
+	public boolean executeCommand(CommandSender sender, String[] args)
+	{
 		BadBlockHub instance = BadBlockHub.getInstance();
 		// Reload i18n
 		Bukkit.getServer().dispatchCommand(sender, "/i18n reload");
