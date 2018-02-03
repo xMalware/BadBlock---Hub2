@@ -12,13 +12,13 @@ import org.bukkit.inventory.meta.SkullMeta;
 import fr.badblock.gameapi.particles.ParticleEffectType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class DisguiseMiniUs extends CustomDisguise{
+public class DisguiseMiniUs extends CustomDisguise
+{
 
 	ArmorStand armorStand;
 	
-	
-	
-	public DisguiseMiniUs(BadblockPlayer player) {
+	public DisguiseMiniUs(BadblockPlayer player)
+	{
 		super(player, EntityType.ARMOR_STAND);
 		ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
 	    LeatherArmorMeta meta =  (LeatherArmorMeta) chestplate.getItemMeta();
@@ -37,12 +37,13 @@ public class DisguiseMiniUs extends CustomDisguise{
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
-		// TODO Auto-generated method stub
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.LAVA, 3);
 	}
 	
-	public ItemStack setHeadofPlayer(String playerName) {
+	public ItemStack setHeadofPlayer(String playerName)
+	{
 		ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
 		SkullMeta skullm = (SkullMeta) skull.getItemMeta();
 		skullm.setOwner(playerName);

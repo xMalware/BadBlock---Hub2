@@ -14,7 +14,8 @@ public class DisguiseFireball extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 3);
 	}
 

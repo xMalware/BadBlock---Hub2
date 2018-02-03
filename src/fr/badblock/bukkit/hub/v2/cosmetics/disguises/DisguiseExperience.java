@@ -13,7 +13,8 @@ public class DisguiseExperience extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return null;
 	}
 

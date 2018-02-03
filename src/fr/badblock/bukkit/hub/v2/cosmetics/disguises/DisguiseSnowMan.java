@@ -14,7 +14,8 @@ public class DisguiseSnowMan extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.SNOW_SHOVEL, 3);
 	}
 

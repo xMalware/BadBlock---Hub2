@@ -14,7 +14,8 @@ public class DisguiseMagmaCube extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.FLAME, 2);
 	}
 

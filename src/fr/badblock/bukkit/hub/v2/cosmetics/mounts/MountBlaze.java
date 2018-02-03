@@ -16,26 +16,33 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.MathHelper;
 import net.minecraft.server.v1_8_R3.World;
 
-public class MountBlaze extends EntityBlaze{
+public class MountBlaze extends EntityBlaze
+{
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
 	
-	public MountBlaze(World world) {
+	public MountBlaze(World world)
+	{
 		super(world);
-		if(FIELD_JUMP == null) {
-			try {
+		if (FIELD_JUMP == null)
+		{
+			try
+			{
 				FIELD_JUMP = EntityLiving.class.getDeclaredField("aY");
 				FIELD_JUMP.setAccessible(true);
-			} catch(NoSuchFieldException e) {
+			}
+			catch(NoSuchFieldException e)
+			{
 				e.printStackTrace();
 			}
 		}
 	}
 	
 	@Override
-    public void g(float f, float f1) {
-        if(this.passenger != null && this.passenger instanceof EntityHuman)
+    public void g(float f, float f1)
+	{
+        if (this.passenger != null && this.passenger instanceof EntityHuman)
         {
             this.lastYaw = this.yaw = this.passenger.yaw;
             this.pitch = this.passenger.pitch * 0.5F;
@@ -49,7 +56,8 @@ public class MountBlaze extends EntityBlaze{
                 f1 *= 0.25F;
             }
               try {
-                if (FIELD_JUMP.getBoolean(this.passenger) && this.onGround) {
+                if (FIELD_JUMP.getBoolean(this.passenger) && this.onGround)
+                {
                     this.motY += 0.5F;
                     this.ai = true;
                     if (f1 > 0.0F)
@@ -61,7 +69,9 @@ public class MountBlaze extends EntityBlaze{
                         this.motZ += 0.4F * f3 * ((EntityInsentient) this).br();
                     }
                 }
-            } catch (IllegalArgumentException | IllegalAccessException e) {
+            }
+              catch (IllegalArgumentException | IllegalAccessException e)
+              {
                 e.printStackTrace();
             }
  
@@ -78,12 +88,15 @@ public class MountBlaze extends EntityBlaze{
             }
  
             this.aB += (f4 - this.aB) * 0.4F; this.aC += this.aB;
-        } else {
+        }
+        else
+        {
             this.S = 0.5F; this.aM = 0.02F; super.g(f, f1);
         }
     }
 	
-	public CustomCreature spawnEntity(Location location, EntityType type) {
+	public CustomCreature spawnEntity(Location location, EntityType type)
+	{
 		CustomCreature creature;
 		creature = spawnEntity(player.getLocation(), EntityType.BLAZE);
 		creature.setCreatureBehaviour(CreatureBehaviour.FLYING);

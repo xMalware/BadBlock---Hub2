@@ -14,7 +14,8 @@ public class DisguiseWolf extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.CLOUD, 5);
 	}
 

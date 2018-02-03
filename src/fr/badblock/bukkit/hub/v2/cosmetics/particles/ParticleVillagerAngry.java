@@ -5,7 +5,7 @@ import org.bukkit.util.Vector;
 
 import fr.badblock.gameapi.particles.ParticleEffectType;
 
-public class ParticleSlime extends CustomParticle
+public class ParticleVillagerAngry extends CustomParticle
 {
 
 	double i = 0;
@@ -13,7 +13,7 @@ public class ParticleSlime extends CustomParticle
 	@Override
 	public ParticleEffectType getParticleEffectType()
 	{
-		return ParticleEffectType.SLIME;
+		return ParticleEffectType.VILLAGER_ANGRY;
 	}
 	
 	@Override

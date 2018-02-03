@@ -14,7 +14,8 @@ public class DisguiseBoat extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.WATER_BUBBLE, 3);
 	}
 	

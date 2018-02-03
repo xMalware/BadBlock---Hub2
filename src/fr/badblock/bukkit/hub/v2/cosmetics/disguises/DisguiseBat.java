@@ -14,7 +14,8 @@ public class DisguiseBat extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.SMOKE_NORMAL, 1);
 	}
 	

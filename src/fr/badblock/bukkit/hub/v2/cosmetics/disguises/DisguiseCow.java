@@ -14,7 +14,8 @@ public class DisguiseCow extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.SNOW_SHOVEL, 2);
 	}
 

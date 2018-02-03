@@ -14,7 +14,8 @@ public class DisguiseEnderman extends CustomDisguise
 	}
 
 	@Override
-	public CustomDisguiseEffect getEffect() {
+	public CustomDisguiseEffect getEffect()
+	{
 		return new CustomDisguiseEffect(ParticleEffectType.PORTAL, 1);
 	}
 

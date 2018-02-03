@@ -10,14 +10,16 @@ import fr.badblock.gameapi.run.RunType;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter@Setter public class BadBlockHub extends BadblockPlugin {
+@Getter@Setter public class BadBlockHub extends BadblockPlugin
+{
 	
 	@Getter@Setter public static BadBlockHub instance;
 	
 	private Gson notRestrictiveGson;
 
 	@Override
-	public void onEnable(RunType runType) {
+	public void onEnable(RunType runType)
+	{
 		setInstance(this);
 		instance = this;
 		// No game, no life :3
@@ -28,7 +30,8 @@ import lombok.Setter;
 		HubLoader.load(this);
 	}
 
-	public static void log(String message) {
+	public static void log(String message)
+	{
 		Bukkit.getServer().getConsoleSender().sendMessage("§e[HUB] §f" + message);
 	}
 	
