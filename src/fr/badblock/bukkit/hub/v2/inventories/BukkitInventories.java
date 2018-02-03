@@ -66,7 +66,7 @@ public class BukkitInventories
 		return getInventory(player, InventoriesLoader.getConfig().getJoinDefaultInventory());
 	}
 	
-	@SuppressWarnings({ "deprecation", "static-access" })
+	@SuppressWarnings("deprecation")
 	private static Inventory createInventory(Locale locale, InventoryObject inventoryObject)
 	{
 		String name = GameAPI.i18n().get(locale, inventoryObject.getI18name())[0];
