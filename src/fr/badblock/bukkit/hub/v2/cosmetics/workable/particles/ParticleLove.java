@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
 import fr.badblock.gameapi.particles.ParticleEffectType;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ParticleLove extends CustomParticle
 {
@@ -17,10 +18,10 @@ public class ParticleLove extends CustomParticle
 	}
 	
 	@Override
-	public void run()
+	public void run(BadblockPlayer player)
 	{
 		
-		Location location = getPlayer().getLocation();
+		Location location = player.getLocation();
 		Location location2 = location.clone();
 		double radius = 1.1d;
 		double radius2 = 1.1d;

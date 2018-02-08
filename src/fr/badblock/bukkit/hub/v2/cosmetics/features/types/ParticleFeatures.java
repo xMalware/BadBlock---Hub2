@@ -57,7 +57,6 @@ public enum ParticleFeatures implements IFeatureWorker
 	@Override
 	public void work(BadblockPlayer player)
 	{
-		customParticle.setPlayer(player);
 		String uuid = "particle-" + UUID.randomUUID().toString();
 		TaskManager.scheduleSyncRepeatingTask(uuid, new Runnable()
 		{
@@ -70,7 +69,7 @@ public enum ParticleFeatures implements IFeatureWorker
 					TaskManager.cancelTaskByName(uuid);
 					return;	
 				}
-				customParticle.playEffect(player.getLocation());
+				getCustomParticle().playEffect(player.getLocation());
 			}
 		}, 5, 5);
 	}

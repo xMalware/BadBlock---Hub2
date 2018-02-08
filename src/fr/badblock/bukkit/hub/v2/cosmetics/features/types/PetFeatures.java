@@ -88,7 +88,7 @@ public enum PetFeatures implements IFeatureWorker
 	@Override
 	public void work(BadblockPlayer player)
 	{
-		customPet.spawn(player);
+		getCustomPet().spawn(player);
 	}
 
 	public static void work(BadblockPlayer player, Feature feature)

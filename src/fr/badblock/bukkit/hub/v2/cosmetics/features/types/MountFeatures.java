@@ -84,8 +84,8 @@ public enum MountFeatures implements IFeatureWorker
 	@Override
 	public void work(BadblockPlayer player)
 	{
-		mount.setPlayer(player);
-		mount.spawnEntity(player.getLocation());
+		getMount().setPlayer(player);
+		getMount().spawnEntity(player.getLocation());
 	}
 	
 	public static void work(BadblockPlayer player, Feature feature)

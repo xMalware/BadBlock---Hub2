@@ -142,8 +142,7 @@ public enum DisguiseFeatures implements IFeatureWorker
 	@Override
 	public void work(BadblockPlayer player)
 	{
-		customDisguise.own(player);
-		customDisguise.disguise();
+		getCustomDisguise().disguise(player);
 	}
 	
 	public static void work(BadblockPlayer player, Feature feature)

@@ -10,6 +10,7 @@ public enum FeatureType
 	GADGET,
 	MOUNT,
 	PARTICLE,
+	HATS,
 	PET;
 	
 	public static FeatureType get(String byName)
