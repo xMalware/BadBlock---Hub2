@@ -5,14 +5,40 @@ import org.bukkit.SkullType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import fr.badblock.gameapi.players.BadblockPlayer;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-public class CustomHats {
+@EqualsAndHashCode(callSuper = false)
+@Data
+public abstract class CustomHats
+{
 	
-	public void setCustomHatOwner(String arg0){
+	private ItemStack	itemStack;
+	
+	public void deploy(BadblockPlayer player)
+	{
+		if (getItemStack() == null)
+		{
+			setItem();
+		}
+		player.getInventory().setHelmet(getItemStack());
+	}
+	
+	public void remove(BadblockPlayer player)
+	{
+		player.getInventory().setHelmet(null);
+	}
+	
+	public void setItem()
+	{
 		ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.PLAYER.ordinal());
 		SkullMeta skullm = (SkullMeta) skull.getItemMeta();
-		skullm.setOwner(arg0);
+		skullm.setOwner(getCustomHatOwner());
 		skull.setItemMeta(skullm);
+		setItemStack(skull);
 	}
+	
+	public abstract String getCustomHatOwner();
 
 }

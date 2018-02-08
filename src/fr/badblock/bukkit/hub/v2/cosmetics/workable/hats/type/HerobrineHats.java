@@ -1,12 +1,13 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
-import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class HerobrineHats extends CustomHats{
+public class HerobrineHats extends CustomHats
+{
 	
-	public void deploy(BadblockPlayer player) {
-		setCustomHatOwner("MHF_Herobrine");
+	public String getCustomHatOwner()
+	{
+		return "MHF_Herobrine";
 	}
 
 }
