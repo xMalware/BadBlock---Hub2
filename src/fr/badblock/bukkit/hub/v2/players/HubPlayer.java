@@ -23,6 +23,7 @@ import lombok.Data;
 
 	// Temp values
 	private String							inventory;
+	private String							buyFeature;
 	private CustomDisguise					disguise;
 
 	public HubPlayer(BadblockPlayer player)
