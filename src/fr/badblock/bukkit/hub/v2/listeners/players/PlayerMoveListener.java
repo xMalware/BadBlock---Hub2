@@ -1,7 +1,10 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
+import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.util.Vector;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguiseEffect;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
@@ -17,6 +20,9 @@ public class PlayerMoveListener extends BadListener
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 		HubPlayer hubPlayer = HubPlayer.get(player);
 		workWithDisguiseEffects(player, hubPlayer);
+		if(event.getTo().getBlock().getRelative(BlockFace.DOWN).getType() == Material.CARPET) {
+			player.setVelocity(player.getLocation().getDirection().multiply(20).add(new Vector(0.5, 3, 0.5)));
+		}
 	}
 	
 	private void workWithDisguiseEffects(BadblockPlayer player, HubPlayer hubPlayer)
