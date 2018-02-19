@@ -7,7 +7,7 @@ public class CrazyProfessorHats extends CustomHats
 
 	public String getCustomHatOwner()
 	{
-		return "drwilly";
+		return "drwily";
 	}
 
 }
