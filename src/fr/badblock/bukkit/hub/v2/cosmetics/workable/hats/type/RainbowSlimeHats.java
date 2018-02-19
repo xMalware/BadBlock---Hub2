@@ -7,7 +7,7 @@ public class RainbowSlimeHats extends CustomHats
 
 	public String getCustomHatOwner() 
 	{
-		return "MySelyn";
+		return "MySelym";
 	}
 
 }
