@@ -2,14 +2,12 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 
-public class SquidHats extends CustomHats
+public class OrangeSheepHats extends CustomHats
 {
-	
-	@Override
-	public String getCustomHatOwner() 
+
+	public String getCustomHatOwner()
 	{
-		return "Creegn";
+		return "The_KRO_Dude";
 	}
-	
 
 }
