@@ -7,7 +7,7 @@ public class HelmetHats extends CustomHats
 
 	public String getCustomHatOwner() 
 	{
-		return "Seba9820";
+		return "TheTastyBrownie";
 	}
 
 }
