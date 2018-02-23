@@ -1,7 +1,7 @@
 package fr.badblock.bukkit.hub.v2.inventories;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,17 +13,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
-import fr.badblock.bukkit.hub.v2.utils.ChatColorUtils;
-import fr.badblock.gameapi.GameAPI;
+import fr.badblock.bukkit.hub.v2.inventories.tags.InventoryTags;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import fr.badblock.gameapi.utils.i18n.Locale;
 import fr.badblock.gameapi.utils.itemstack.ItemStackUtils;
 
 public class BukkitInventories
 {
 
-	private static Map<InventoryObject, Map<Locale, Inventory>> staticInventories = new HashMap<>();
-	
 	public static Inventory getInventory(BadblockPlayer player, String inventoryName)
 	{
 		InventoryObject inventoryObject = InventoriesLoader.getInventory(inventoryName);
@@ -34,44 +30,21 @@ public class BukkitInventories
 		}
 		return getInventory(player, inventoryObject);
 	}
-	
+
 	public static Inventory getInventory(BadblockPlayer player, InventoryObject inventoryObject)
 	{
-		Locale locale = player.getPlayerData().getLocale();
-		Inventory inventory = null;
-		if (!staticInventories.containsKey(inventoryObject))
-		{
-			Map<Locale, Inventory> map = new HashMap<>();
-			inventory = createInventory(locale, inventoryObject);
-			map.put(locale, inventory);
-			staticInventories.put(inventoryObject, map);
-		}
-		else
-		{
-			Map<Locale, Inventory> map = staticInventories.get(inventoryObject);
-			if (!map.containsKey(locale))
-			{
-				inventory = createInventory(locale, inventoryObject);
-				map.put(locale, inventory);
-				staticInventories.put(inventoryObject, map);
-			}
-			else
-			{
-				inventory = map.get(locale);
-			}
-		}
-		return inventory;
+		return createInventory(player, inventoryObject);
 	}
-	
+
 	public static Inventory getDefaultInventory(BadblockPlayer player)
 	{
 		return getInventory(player, InventoriesLoader.getConfig().getJoinDefaultInventory());
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	private static Inventory createInventory(Locale locale, InventoryObject inventoryObject)
+	private static Inventory createInventory(BadblockPlayer player, InventoryObject inventoryObject)
 	{
-		String name = GameAPI.i18n().get(locale, inventoryObject.getI18name())[0];
+		String name = player.getTranslatedMessage(inventoryObject.getI18name())[0];
 		Inventory inventory = Bukkit.createInventory(null, 9 * inventoryObject.getLines(), name);
 		for (InventoryItemObject inventoryItemObject : inventoryObject.getItems())
 		{
@@ -97,18 +70,40 @@ public class BukkitInventories
 			ItemMeta itemMeta = itemStack.getItemMeta();
 			if (inventoryItemObject.getI18name() != null && !inventoryItemObject.getI18name().isEmpty())
 			{
-				itemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', GameAPI.i18n().get(locale, inventoryItemObject.getI18name())[0]));
+				String string = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage(inventoryItemObject.getI18name())[0]);
+				itemMeta.setDisplayName(workWithTags(player, string, inventoryObject));
 			}
 			if (inventoryItemObject.getI18lore() != null && !inventoryItemObject.getI18lore().isEmpty())
 			{
-				itemMeta.setLore(ChatColorUtils.getTranslatedMessages(GameAPI.i18n().get(locale, inventoryItemObject.getI18lore())));
+				List<String> lore = new ArrayList<>();
+				for (String string : player.getTranslatedMessage(inventoryItemObject.getI18lore()))
+				{
+					string = workWithTags(player, ChatColor.translateAlternateColorCodes('&', string), inventoryObject);
+					lore.add(string);
+				}
+				itemMeta.setLore(lore);
 			}
 			itemStack.setItemMeta(itemMeta);
 			inventory.setItem(inventoryItemObject.getPlace(), itemStack);
 		}
 		return inventory;
 	}
-	
+
+	public static String workWithTags(BadblockPlayer player, String string, InventoryObject inventoryObject)
+	{
+		for (InventoryTags inventoryTag : InventoryTags.values())
+		{
+			for (String tag : inventoryTag.getTags())
+			{
+				if (string.contains(tag))
+				{
+					string = inventoryTag.replace(player, string, tag, inventoryObject);
+				}
+			}
+		}
+		return string;
+	}
+
 	public static void giveDefaultInventory(BadblockPlayer player)
 	{
 		player.clearInventory();
@@ -128,5 +123,5 @@ public class BukkitInventories
 			i++;
 		}
 	}
-	
+
 }
