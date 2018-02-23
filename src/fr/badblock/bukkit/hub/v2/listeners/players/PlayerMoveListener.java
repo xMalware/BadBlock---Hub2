@@ -14,26 +14,32 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class PlayerMoveListener extends BadListener
 {
 	
-
-	
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void whenPlayerMoved(PlayerMoveEvent event)
 	{	
 		
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 		HubPlayer hubPlayer = HubPlayer.get(player);
-		Location loc1 = event.getTo();
-		Location loc2 = loc1.clone().add(0, -1, 0);
-		Location loc3 = loc1.clone().add(0, -2, 0);
+		workWithDisguiseEffects(player, hubPlayer);
+		workLaunchpad(player, event.getTo());
+	}
+	
+	private void workLaunchpad(BadblockPlayer player, Location to)
+	{
+		Location loc2 = to.clone().add(0, -1, 0);
+		Location loc3 = to.clone().add(0, -2, 0);
 		Block block1 = loc2.getBlock();
 		Block block2 = loc3.getBlock();
-		workWithDisguiseEffects(player, hubPlayer);
-		if((block1.getType().equals(Material.WOOL) && block1.getData() == 10)
-				|| (block2.getType().equals(Material.WOOL) && block2.getData() == 10)) 
+		if (isLaunchpadBlock(block1) || isLaunchpadBlock(block2)) 
 		{
 			player.setVelocity(player.getLocation().getDirection().multiply(20).add(new Vector(0.5, 3, 0.5)));
 		}
+	}
+	
+	@SuppressWarnings("deprecation")
+	private boolean isLaunchpadBlock(Block block)
+	{
+		return block.getType().equals(Material.WOOL) && block.getData() == 10;
 	}
 	
 	private void workWithDisguiseEffects(BadblockPlayer player, HubPlayer hubPlayer)
