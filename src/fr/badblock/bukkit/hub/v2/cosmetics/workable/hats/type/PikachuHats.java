@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class PikachuHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public PikachuHats() 
 	{
-		return "RusiRu";
+		super("RusiRu");
 	}
 
 }

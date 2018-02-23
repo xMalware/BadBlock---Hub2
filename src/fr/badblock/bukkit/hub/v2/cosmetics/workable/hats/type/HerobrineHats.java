@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class HerobrineHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public HerobrineHats()
 	{
-		return "MHF_Herobrine";
+		super("MHF_Herobrine");
 	}
 
 }

@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class ArticunoHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public ArticunoHats() 
 	{
-		return "Articuno";
+		super("Articuno");
 	}
 
 }

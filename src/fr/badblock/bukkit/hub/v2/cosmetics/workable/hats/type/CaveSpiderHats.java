@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class CaveSpiderHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public CaveSpiderHats() 
 	{
-		return "MHF_CaveSpider";
+		super("MHF_CaveSpider");
 	}
 
 }

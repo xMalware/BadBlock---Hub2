@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class QuestionHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public QuestionHats()
 	{
-		return "MHF_Question";
+		super("MHF_Question");
 	}
 
 }

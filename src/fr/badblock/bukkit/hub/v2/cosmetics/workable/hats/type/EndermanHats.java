@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class EndermanHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public EndermanHats() 
 	{
-		return "MHF_Enderman";
+		super("MHF_Enderman");
 	}
 
 }

@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class CreeperHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public CreeperHats()
 	{
-		return "MHF_Creeper";
+		super("MHF_Creeper");
 	}
 
 }

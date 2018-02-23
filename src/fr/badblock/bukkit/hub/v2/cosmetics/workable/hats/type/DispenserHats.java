@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class DispenserHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public DispenserHats() 
 	{
-		return "TreePuncher105";
+		super("TreePuncher105");
 	}
 	
 }

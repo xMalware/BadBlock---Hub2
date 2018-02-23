@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class CommandBlockHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public CommandBlockHats() 
 	{
-		return "Unknown_Is_Gay";
+		super("Unknown_Is_Gay");
 	}
 
 }

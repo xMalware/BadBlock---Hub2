@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class EmeraldBlockHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public EmeraldBlockHats() 
 	{
-		return "EmeraldFilmz";
+		super("EmeraldFilmz");
 	}
 
 }

@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class RubiksCubeHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public RubiksCubeHats() 
 	{
-		return "skitscape";
+		super("skitscape");
 	}
 
 }

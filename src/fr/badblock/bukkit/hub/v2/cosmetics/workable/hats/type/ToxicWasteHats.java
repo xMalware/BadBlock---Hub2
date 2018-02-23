@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class ToxicWasteHats extends CustomHats 
 {
 
-	public String getCustomHatOwner() 
+	public ToxicWasteHats()
 	{
-		return "Tecno_";
+		super("Tecno_");
 	}
 
 }

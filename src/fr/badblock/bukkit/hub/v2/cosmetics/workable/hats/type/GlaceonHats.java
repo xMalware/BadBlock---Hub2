@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class GlaceonHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public GlaceonHats() 
 	{
-		return "Glaceon";
-	}	
+		super("Glaceon");
+	}
 
 }

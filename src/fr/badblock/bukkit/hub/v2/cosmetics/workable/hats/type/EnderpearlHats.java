@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class EnderpearlHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public EnderpearlHats() 
 	{
-		return "Cypiea";
+		super("Cypiea");
 	}
 	
 

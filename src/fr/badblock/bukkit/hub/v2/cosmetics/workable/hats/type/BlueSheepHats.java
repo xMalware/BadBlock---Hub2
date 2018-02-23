@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class BlueSheepHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public BlueSheepHats() 
 	{
-		return "Sheeplings";
+		super("Sheeplings");
 	}
 
 }

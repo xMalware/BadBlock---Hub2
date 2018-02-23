@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class WitherSkeletonHats extends CustomHats
 {
 	
-	public String getCustomHatOwner() 
+	public WitherSkeletonHats() 
 	{
-		return "MHF_WSkeleton";
+		super("MHF_WSkeleton");
 	}
 	
 

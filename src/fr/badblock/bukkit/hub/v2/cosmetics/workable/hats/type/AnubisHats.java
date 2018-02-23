@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class AnubisHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public AnubisHats() 
 	{
-		return "Anubis25";
+		super("Anubis25");
 	}
 
 }

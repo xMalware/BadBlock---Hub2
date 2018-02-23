@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class IronManHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public IronManHats() 
 	{
-		return "Spinda";
+		super("Spinda");
 	}
 
 }

@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class VillagerHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public VillagerHats()
 	{
-		return "MHF_Villager";
+		super("MHF_Villager");
 	}
 
 }

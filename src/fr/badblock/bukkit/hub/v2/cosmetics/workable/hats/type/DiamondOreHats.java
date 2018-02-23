@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class DiamondOreHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public DiamondOreHats() 
 	{
-		return "Excii";
+		super("Excii");
 	}
 
 }

@@ -14,7 +14,13 @@ import lombok.EqualsAndHashCode;
 public abstract class CustomHats
 {
 	
+	private String		customHatOwner;
 	private ItemStack	itemStack;
+	
+	public CustomHats(String customHatOwner)
+	{
+		setCustomHatOwner(customHatOwner);
+	}
 	
 	public void deploy(BadblockPlayer player)
 	{
@@ -38,7 +44,5 @@ public abstract class CustomHats
 		skull.setItemMeta(skullm);
 		setItemStack(skull);
 	}
-	
-	public abstract String getCustomHatOwner();
 
 }

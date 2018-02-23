@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class EmeraldSteveHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public EmeraldSteveHats() 
 	{
-		return "shubishuti";
+		super("shubishuti");
 	}
 
 }

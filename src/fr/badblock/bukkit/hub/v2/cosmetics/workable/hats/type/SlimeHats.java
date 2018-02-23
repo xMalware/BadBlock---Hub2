@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class SlimeHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public SlimeHats()
 	{
-		return "MHF_Slime";
+		super("MHF_Slime");
 	}
 
 }

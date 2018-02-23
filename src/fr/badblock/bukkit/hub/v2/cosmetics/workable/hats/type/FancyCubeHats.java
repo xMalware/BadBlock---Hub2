@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class FancyCubeHats extends CustomHats
 {
 
-	public String getCustomHatOwner()
+	public FancyCubeHats()
 	{
-		return "Purple_Orchid";
+		super("Purple_Orchid");
 	}
 
 }

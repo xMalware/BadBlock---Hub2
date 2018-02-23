@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class PurpleOrbHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public PurpleOrbHats() 
 	{
-		return "XxAltha4xX";
+		super("XxAltha4xX");
 	}
 
 }

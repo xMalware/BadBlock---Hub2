@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class GreenCoconutHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public GreenCoconutHats() 
 	{
-		return "MHF_CoconutG";
+		super("MHF_CoconutG");
 	}
 
 }

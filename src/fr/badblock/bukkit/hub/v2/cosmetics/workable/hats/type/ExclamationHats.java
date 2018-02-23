@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class ExclamationHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public ExclamationHats()
 	{
-		return "MHF_Exclamation";
+		super("MHF_Exclamation");
 	}
 
 }

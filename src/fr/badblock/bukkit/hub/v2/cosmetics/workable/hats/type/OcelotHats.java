@@ -5,10 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class OcelotHats extends CustomHats
 {
 
-	@Override
-	public String getCustomHatOwner() 
+	public OcelotHats() 
 	{
-		return "MHF_Ocelot";
+		super("MHF_Ocelot");
 	}
 
 }

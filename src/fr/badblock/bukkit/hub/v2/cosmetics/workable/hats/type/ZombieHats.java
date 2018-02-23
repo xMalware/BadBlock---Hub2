@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class ZombieHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public ZombieHats()
 	{
-		return "MHF_Zombie";
+		super("MHF_Zombie");
 	}
 
 }

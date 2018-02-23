@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class MelonHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public MelonHats()
 	{
-		return "MHF_Melon";
+		super("MHF_Melon");
 	}
 
 }

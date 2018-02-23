@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class EnderZombieHats extends CustomHats
 {
 
-	public String getCustomHatOwner()
+	public EnderZombieHats()
 	{
-		return "pablopunchwod";
+		super("pablopunchwod");
 	}
 	
 

@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class PistonHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public PistonHats() 
 	{
-		return "SkillOuTes";
+		super("SkillOuTes");
 	}
 
 }

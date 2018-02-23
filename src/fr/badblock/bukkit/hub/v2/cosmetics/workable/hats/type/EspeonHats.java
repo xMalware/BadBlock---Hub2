@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class EspeonHats extends CustomHats
 {
 
-	public String getCustomHatOwner()
+	public EspeonHats()
 	{
-		return "espeon";
+		super("espeon");
 	}
 
 }

@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class LavaSlimeHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public LavaSlimeHats()
 	{
-		return "MHF_LavaSlime";
+		super("MHF_LavaSlime");
 	}
 
 }

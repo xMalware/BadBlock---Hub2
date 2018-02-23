@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class PinkPotionHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public PinkPotionHats() 
 	{
-		return "purpleglass";
+		super("purpleglass");
 	}
 
 }

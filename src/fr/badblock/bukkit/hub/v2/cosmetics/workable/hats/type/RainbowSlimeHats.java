@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class RainbowSlimeHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public RainbowSlimeHats() 
 	{
-		return "MySelym";
+		super("MySelym");
 	}
 
 }

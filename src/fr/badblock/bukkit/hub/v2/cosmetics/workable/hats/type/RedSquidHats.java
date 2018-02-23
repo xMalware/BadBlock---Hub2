@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class RedSquidHats extends CustomHats
 {
 
-	public String getCustomHatOwner() 
+	public RedSquidHats() 
 	{
-		return "swickfamily6";
+		super("swickfamily6");
 	}
 
 }

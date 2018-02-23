@@ -5,9 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class GolemHats extends CustomHats
 {
 	
-	public String getCustomHatOwner()
+	public GolemHats()
 	{
-		return "MHF_Golem";
+		super("MHF_Golem");
 	}
 
 }

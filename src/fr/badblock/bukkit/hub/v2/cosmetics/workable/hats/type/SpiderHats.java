@@ -5,10 +5,9 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 public class SpiderHats extends CustomHats
 {
 
-	@Override
-	public String getCustomHatOwner() 
+	public SpiderHats() 
 	{
-		return "MHF_Spider";
+		super("MHF_Spider");
 	}
 
 }
