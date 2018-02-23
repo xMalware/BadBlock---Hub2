@@ -10,23 +10,26 @@ import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
+import lombok.Getter;
 
-public class InventoryConfirm extends CustomInventory
+public class CustomInventoryBuyConfirm extends CustomInventory
 {
 
+	@Getter static CustomInventoryBuyConfirm instance = new CustomInventoryBuyConfirm();
+	
 	@Override
-	public void work(BadblockPlayer player, ItemStack itemStack)
+	public boolean work(BadblockPlayer player, ItemStack itemStack)
 	{
 		HubPlayer hubPlayer = HubPlayer.get(player);
 		// Unknown buy feature
 		if (hubPlayer.getBuyFeature() == null)
 		{
-			return;
+			return false;
 		}
 		// Unknown item stack
 		if (itemStack == null)
 		{
-			return;
+			return false;
 		}
 		// Get feature raw
 		String featureRawName = hubPlayer.getBuyFeature();
@@ -36,16 +39,17 @@ public class InventoryConfirm extends CustomInventory
 		if (itemStack.getType().equals(Material.REDSTONE_BLOCK))
 		{
 			player.sendTranslatedMessage("buy.cancelled");
-			return;
+			return true;
 		}
 		// Confirm
 		if (itemStack.getType().equals(Material.EMERALD_BLOCK))
 		{
 			player.sendTranslatedMessage("buy.confirm");
 			confirm(player, hubPlayer, featureRawName);
-			return;		
+			return true;
 		}
 		player.sendTranslatedMessage("buy.unknownaction");
+		return true;
 	}
 	
 	private void confirm(BadblockPlayer player, HubPlayer hubPlayer, String featureRawName)
@@ -93,6 +97,5 @@ public class InventoryConfirm extends CustomInventory
 		// Send bought message
 		player.sendTranslatedMessage("hub.buy.bought", player.getTranslatedMessage("hub.features." + featureRawName + ".name")[0]);
 	}
-	
 
 }

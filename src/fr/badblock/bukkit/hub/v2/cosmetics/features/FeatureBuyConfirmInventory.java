@@ -9,6 +9,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventoryBuyConfirm;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
@@ -37,6 +38,7 @@ public class FeatureBuyConfirmInventory
 		
 		// Open it
 		player.openInventory(inventory);
+		hubPlayer.setCustomInventory(CustomInventoryBuyConfirm.getInstance());
 	}
 	
 	public static ItemStack getCancelItem(BadblockPlayer player)

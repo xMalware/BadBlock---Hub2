@@ -20,6 +20,7 @@ public class InventoryCloseListener extends BadListener
 		// On met son dernier inventaire à null
 		hubPlayer.setInventory(null);
 		hubPlayer.setBuyFeature(null);
+		hubPlayer.setCustomInventory(null);
 	}
 
 }

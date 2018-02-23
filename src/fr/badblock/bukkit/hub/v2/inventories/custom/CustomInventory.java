@@ -7,6 +7,12 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public abstract class CustomInventory
 {
 
-	public abstract void work(BadblockPlayer player, ItemStack itemStack);
+	/**
+	 * @param player
+	 * @param itemStack
+	 * @return true : handle
+	 * false : not handle
+	 */
+	public abstract boolean work(BadblockPlayer player, ItemStack itemStack);
 	
 }

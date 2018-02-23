@@ -27,28 +27,50 @@ public class PlayerInventoryClickListener extends BadListener
 			return;
 		}
 		BadblockPlayer player = (BadblockPlayer) event.getWhoClicked();
+		// Set cancelled
 		event.setCancelled(!player.hasAdminMode());
-		// default inventory
+		// Get basic objects
 		ItemStack itemStack = event.getCurrentItem();
+		HubPlayer hubPlayer = HubPlayer.get(player);
+		
+		// Work with custom inventories in priority
+		if (workCustomInventories(player, hubPlayer, itemStack))
+		{
+			return;
+		}
+		
+		// Work with basic inventories
+		workBasicInventories(player, hubPlayer, itemStack, event);
+	}
+	
+	private boolean workCustomInventories(BadblockPlayer player, HubPlayer hubPlayer, ItemStack itemStack)
+	{
+		if (hubPlayer.getCustomInventory() != null)
+		{
+			return hubPlayer.getCustomInventory().work(player, itemStack);
+		}
+		return false;
+	}
+
+	private boolean workBasicInventories(BadblockPlayer player, HubPlayer hubPlayer, ItemStack itemStack, InventoryClickEvent event)
+	{
 		ItemAction itemAction = ItemAction.get(event.getAction());
 		InventoryActionType actionType = InventoryActionType.get(itemAction);
-		// Hub player
-		HubPlayer hubPlayer = HubPlayer.get(player);
 		if (itemStack != null)
 		{
 			String inventoryName = hubPlayer.getInventory();
 			// Handling custom inventories
 			if (inventoryName != null && !inventoryName.isEmpty() && event.getClickedInventory().getType().equals(InventoryType.CHEST))
 			{
-				handle(event, player, inventoryName, actionType, InventoriesLoader.getInventory(inventoryName));
-				return;
+				return handleInventoryManager(event, player, inventoryName, actionType, InventoriesLoader.getInventory(inventoryName));
 			}
 			// Default join inventory handling
-			handle(event, player, InventoriesLoader.getConfig().getJoinDefaultInventory(), actionType, InventoriesLoader.getDefaultInventory());
+			return handleInventoryManager(event, player, InventoriesLoader.getConfig().getJoinDefaultInventory(), actionType, InventoriesLoader.getDefaultInventory());
 		}
+		return false;
 	}
 
-	private boolean handle(InventoryClickEvent event, BadblockPlayer player, String inventoryName, InventoryActionType actionType, InventoryObject inventoryObject)
+	private boolean handleInventoryManager(InventoryClickEvent event, BadblockPlayer player, String inventoryName, InventoryActionType actionType, InventoryObject inventoryObject)
 	{
 		boolean done = false;
 		if (inventoryObject == null)

@@ -9,6 +9,7 @@ import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
+import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
 
@@ -25,6 +26,7 @@ import lombok.Data;
 	private String							inventory;
 	private String							buyFeature;
 	private CustomDisguise					disguise;
+	private CustomInventory					customInventory;
 
 	public HubPlayer(BadblockPlayer player)
 	{
