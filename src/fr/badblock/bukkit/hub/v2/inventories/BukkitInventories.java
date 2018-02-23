@@ -71,14 +71,14 @@ public class BukkitInventories
 			if (inventoryItemObject.getI18name() != null && !inventoryItemObject.getI18name().isEmpty())
 			{
 				String string = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage(inventoryItemObject.getI18name())[0]);
-				itemMeta.setDisplayName(workWithTags(player, string, inventoryObject));
+				itemMeta.setDisplayName(workWithTags(player, string, inventoryItemObject));
 			}
 			if (inventoryItemObject.getI18lore() != null && !inventoryItemObject.getI18lore().isEmpty())
 			{
 				List<String> lore = new ArrayList<>();
 				for (String string : player.getTranslatedMessage(inventoryItemObject.getI18lore()))
 				{
-					string = workWithTags(player, ChatColor.translateAlternateColorCodes('&', string), inventoryObject);
+					string = workWithTags(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
 					lore.add(string);
 				}
 				itemMeta.setLore(lore);
@@ -89,7 +89,7 @@ public class BukkitInventories
 		return inventory;
 	}
 
-	public static String workWithTags(BadblockPlayer player, String string, InventoryObject inventoryObject)
+	public static String workWithTags(BadblockPlayer player, String string, InventoryItemObject inventoryItemObject)
 	{
 		for (InventoryTags inventoryTag : InventoryTags.values())
 		{
@@ -97,7 +97,7 @@ public class BukkitInventories
 			{
 				if (string.contains(tag))
 				{
-					string = inventoryTag.replace(player, string, tag, inventoryObject);
+					string = inventoryTag.replace(player, string, tag, inventoryItemObject);
 				}
 			}
 		}
