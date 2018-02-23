@@ -14,7 +14,20 @@ public class PlayerQuitListener extends BadListener
 	public void onPlayerQuit(PlayerQuitEvent event)
 	{
 		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+		// Remove default quit message
+		removeDefaultQuitMessage(event);
+		// Unload player
+		unloadPlayer(player);
+	}
+	
+	private void unloadPlayer(BadblockPlayer player)
+	{
 		HubPlayer.get(player).unload();
+	}
+	
+	private void removeDefaultQuitMessage(PlayerQuitEvent event)
+	{
+		event.setQuitMessage(null);
 	}
 	
 }
