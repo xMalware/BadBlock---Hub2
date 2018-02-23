@@ -25,11 +25,14 @@ public class ItemActionUseFeature extends CustomItemAction
 			System.out.println("[BadBlockHub] Unknown feature '" + featureRawName + "'.");
 			return;
 		}
+		
 		// Get info
 		HubPlayer hubPlayer = HubPlayer.get(player);
 		HubStoredPlayer hubStoredPlayer = hubPlayer.getStoredPlayer();
+		
 		// Get feature
 		Feature feature = featuresConfig.getFeatures().get(featureRawName);
+		
 		// Check needed level
 		if (!FeatureManager.getInstance().hasFeature(hubStoredPlayer, featureRawName))
 		{
@@ -42,7 +45,6 @@ public class ItemActionUseFeature extends CustomItemAction
 		
 		// Do what we should
 		FeatureWorker.work(player, feature);
-		
 	}
 
 }
