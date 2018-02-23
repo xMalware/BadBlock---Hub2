@@ -35,6 +35,10 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		String featureRawName = hubPlayer.getBuyFeature();
 		// Close inventory
 		player.closeInventory();
+		// Remove temp buy feature
+		hubPlayer.setBuyFeature(null);
+		// Remove custom inventory
+		hubPlayer.setCustomInventory(null);
 		// Cancel
 		if (itemStack.getType().equals(Material.REDSTONE_BLOCK))
 		{
