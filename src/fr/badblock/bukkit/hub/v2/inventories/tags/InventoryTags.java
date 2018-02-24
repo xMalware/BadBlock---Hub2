@@ -9,6 +9,7 @@ import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoins;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoinsMultiplier;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoinsNeeded;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagGroupPrefix;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagGroupSuffix;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagIgnoreNumber;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLanguage;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevelNeeded;
@@ -43,6 +44,7 @@ public enum InventoryTags
 	IGNORE_NUMBER(new InventoryTagIgnoreNumber(), "{Ignore_Number}"),
 	PING(new InventoryTagPing(), "{Ping}"),
 	GROUP_PREFIX(new InventoryTagGroupPrefix(), "{Group_Prefix}"),
+	GROUP_SUFFIX(new InventoryTagGroupSuffix(), "{Group_Suffix}"),
 	// Price
 	BADCOINS_NEEDED(new InventoryTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new InventoryTagLevelNeeded(), "{levelNeeded}"),
