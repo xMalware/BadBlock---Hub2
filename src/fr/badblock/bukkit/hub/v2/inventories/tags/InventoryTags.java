@@ -6,15 +6,20 @@ import java.util.List;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTag;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoins;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoinsMultiplier;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoinsNeeded;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagGroupPrefix;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagIgnoreNumber;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLanguage;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevelNeeded;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevels;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPercentLevel;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPing;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPlayerName;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagShopPoints;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagShopPointsNeeded;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagXP;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagXPMultiplier;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagXPNeededForNextLevel;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
@@ -26,13 +31,18 @@ public enum InventoryTags
 
 	// Player info
 	BADCOINS(new InventoryTagBadcoins(), "{badcoins}"),
+	BADCOINS_MULTIPLIER(new InventoryTagBadcoinsMultiplier(), "{badcoins_multiplier}"),
 	LEVELS(new InventoryTagLevels(), "{levels}"),
 	PERCENT_LEVEL(new InventoryTagPercentLevel(), "{percentLevel}"),
 	PLAYERNAME(new InventoryTagPlayerName(), "{playerName}"),
 	SHOP_POINTS(new InventoryTagShopPoints(), "{shopPoints}"),
 	XP(new InventoryTagXP(), "{Xp}"),
+	XP_MULTIPLIER(new InventoryTagXPMultiplier(), "{Xp_Multiplier}"),
 	LANGUAGE(new InventoryTagLanguage(), "{Language}"),
 	BOOSTER_NUMBER(new InventoryTagLanguage(), "{Booster_Number}"),
+	IGNORE_NUMBER(new InventoryTagIgnoreNumber(), "{Ignore_Number}"),
+	PING(new InventoryTagPing(), "{Ping}"),
+	GROUP_PREFIX(new InventoryTagGroupPrefix(), "{Group_Prefix}"),
 	// Price
 	BADCOINS_NEEDED(new InventoryTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new InventoryTagLevelNeeded(), "{levelNeeded}"),
