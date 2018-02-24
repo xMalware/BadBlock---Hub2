@@ -7,7 +7,7 @@ public class PigHats extends CustomHats
 	
 	public PigHats()
 	{
-		super("MHF_Pig");
+		super("Pork");
 	}
 
 }
