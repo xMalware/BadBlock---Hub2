@@ -9,8 +9,8 @@ public class InventoryTagPercentLevel extends InventoryTag
 	@Override
 	public String getTag(BadblockPlayer player, InventoryItemObject object) 
 	{
-		// TODO: Found method for the percent
-		return Integer.toString(player.getPlayerData().getLevel());
+		double calc = (double) player.getPlayerData().getXp() / (double) player.getPlayerData().getXpUntilNextLevel();
+		return Double.toString((double) (calc * 100.0D));
 	}
 
 }
