@@ -4,7 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
-import fr.badblock.bukkit.hub.v2.inventories.tags.custom.*;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTag;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoins;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagBadcoinsNeeded;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLanguage;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevelNeeded;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevels;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPercentLevel;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPlayerName;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagShopPoints;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagShopPointsNeeded;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagXP;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagXPNeededForNextLevel;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,18 +24,15 @@ import lombok.Setter;
 public enum InventoryTags
 {
 
-	// Badcoins
+	// Player info
 	BADCOINS(new InventoryTagBadcoins(), "{badcoins}"),
-	// Levels
 	LEVELS(new InventoryTagLevels(), "{levels}"),
-	// Percent Levels
 	PERCENT_LEVEL(new InventoryTagPercentLevel(), "{percentLevel}"),
-	// Player name
 	PLAYERNAME(new InventoryTagPlayerName(), "{playerName}"),
-	// Shop Points
 	SHOP_POINTS(new InventoryTagShopPoints(), "{shopPoints}"),
-	// XP
 	XP(new InventoryTagXP(), "{Xp}"),
+	LANGUAGE(new InventoryTagLanguage(), "{Language}"),
+	BOOSTER_NUMBER(new InventoryTagLanguage(), "{Booster_Number}"),
 	// Price
 	BADCOINS_NEEDED(new InventoryTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new InventoryTagLevelNeeded(), "{levelNeeded}"),
