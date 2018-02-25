@@ -11,6 +11,7 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 	private BadblockPlayer player;
 	private CustomObjective objective;
 	
+	@SuppressWarnings("unused")
 	public  HubScoreboard()
 	{
 		
@@ -25,7 +26,14 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 	@Override
 	public void generate() 
 	{
-		objective.changeLine(15, lang("hub.scoreboard.common", 0));
+		double calc = (double) player.getPlayerData().getXp() / (double) player.getPlayerData().getXpUntilNextLevel();
+		Double.toString((double) (calc * 100.0D));
+		objective.changeLine(15, lang("hub.scoreboard.common", null));
+		objective.changeLine(14, lang("hub.scoreboard.badcoins", player.getPlayerData().getBadcoins()));
+		objective.changeLine(13, lang("hub.scoreboard.shoppoints", player.getShopPoints()));
+		objective.changeLine(12, lang("hub.scoreboard.level", player.getPlayerData().getLevel()));
+		objective.changeLine(11, lang("hub.scoreboard.rank", player.getGroupPrefix()));
+		objective.changeLine(10, lang("hub.scoreboard.players", HubPlayer.getPlayers().size()));
 	}
 	
 	private String lang(String key, Object args)
