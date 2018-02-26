@@ -9,6 +9,12 @@ public class InventoryTagXPMultiplier extends InventoryTag
 	@Override
 	public String getTag(BadblockPlayer player, InventoryItemObject object) 
 	{
+		return getTag(player);
+	}
+
+	@Override
+	public String getTag(BadblockPlayer player)
+	{
 		return Double.toString(player.getPlayerData().getXpMultiplier());
 	}
 

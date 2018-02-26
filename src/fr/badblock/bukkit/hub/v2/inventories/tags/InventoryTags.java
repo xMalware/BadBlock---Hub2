@@ -73,4 +73,15 @@ public enum InventoryTags
 		return string.replace(tag, newTag);
 	}
 	
+	public String replace(BadblockPlayer player, String string, String tag)
+	{
+		String newTag = getInventoryTag().getTag(player);
+		if (newTag == null)
+		{
+			return string;
+		}
+		// Return replaced string with tag
+		return string.replace(tag, newTag);
+	}
+	
 }

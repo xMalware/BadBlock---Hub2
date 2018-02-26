@@ -5,7 +5,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public abstract class InventoryTag
 {
-	
+
 	public abstract String getTag(BadblockPlayer player, InventoryItemObject object);
+	
+	public abstract String getTag(BadblockPlayer player);
 
 }

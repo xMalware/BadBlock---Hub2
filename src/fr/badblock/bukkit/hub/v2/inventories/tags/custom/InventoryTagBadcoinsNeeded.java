@@ -33,4 +33,10 @@ public class InventoryTagBadcoinsNeeded extends InventoryTag
 		return Integer.toString(feature.getBadcoinsNeeded());
 	}
 
+	@Override
+	public String getTag(BadblockPlayer player)
+	{
+		return null;
+	}
+
 }

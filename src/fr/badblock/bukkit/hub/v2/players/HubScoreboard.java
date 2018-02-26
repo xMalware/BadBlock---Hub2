@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.players;
 
+import fr.badblock.bukkit.hub.v2.inventories.tags.InventoryTags;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.scoreboard.BadblockScoreboardGenerator;
@@ -32,19 +33,27 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 	@Override
 	public void generate() 
 	{
-		double calc = (double) player.getPlayerData().getXp() / (double) player.getPlayerData().getXpUntilNextLevel();
-		Double.toString((double) (calc * 100.0D));
-		objective.changeLine(15, lang("hub.scoreboard.common", null));
-		objective.changeLine(14, lang("hub.scoreboard.badcoins", player.getPlayerData().getBadcoins()));
-		objective.changeLine(13, lang("hub.scoreboard.shoppoints", player.getShopPoints()));
-		objective.changeLine(12, lang("hub.scoreboard.level", player.getPlayerData().getLevel()));
-		objective.changeLine(11, lang("hub.scoreboard.rank", player.getGroupPrefix()));
-		objective.changeLine(10, lang("hub.scoreboard.players", HubPlayer.getPlayers().size()));
+		int i = 16;
+		for (String line : lang("hub.scoreboard.lore"))
+		{
+			for (InventoryTags inventoryTag : InventoryTags.values())
+			{
+				for (String tag : inventoryTag.getTags())
+				{
+					if (line.contains(tag))
+					{
+						line = inventoryTag.replace(player, line, tag);
+					}
+				}
+			}
+			objective.changeLine(i, line);
+			i--;
+		}
 	}
 
-	private String lang(String key, Object args)
+	private String[] lang(String key, Object... object)
 	{
-		return player.getTranslatedMessage(key, args)[0];
+		return player.getTranslatedMessage(key, object);
 	}
 
 }

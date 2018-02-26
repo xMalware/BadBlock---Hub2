@@ -33,4 +33,10 @@ public class InventoryTagShopPointsNeeded extends InventoryTag
 		return Integer.toString(feature.getShopPointsNeeded());
 	}
 
+	@Override
+	public String getTag(BadblockPlayer player)
+	{
+		return null;
+	}
+
 }

@@ -9,6 +9,12 @@ public class InventoryTagBadcoins extends InventoryTag
 	@Override
 	public String getTag(BadblockPlayer player, InventoryItemObject object) 
 	{
+		return getTag(player);
+	}
+
+	@Override
+	public String getTag(BadblockPlayer player)
+	{
 		return Integer.toString(player.getPlayerData().getBadcoins());
 	}
 

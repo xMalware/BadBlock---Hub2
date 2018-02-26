@@ -33,4 +33,10 @@ public class InventoryTagLevelNeeded extends InventoryTag
 		return Integer.toString(feature.getLevelNeeded());
 	}
 
+	@Override
+	public String getTag(BadblockPlayer player)
+	{
+		return null;
+	}
+
 }

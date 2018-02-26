@@ -9,7 +9,13 @@ public class InventoryTagXPNeededForNextLevel extends InventoryTag
 	@Override
 	public String getTag(BadblockPlayer player, InventoryItemObject object) 
 	{
-		return Integer.toString((int) player.getPlayerData().getXpUntilNextLevel());
+		return getTag(player);
+	}
+
+	@Override
+	public String getTag(BadblockPlayer player)
+	{
+		return Long.toString(player.getPlayerData().getXpUntilNextLevel());
 	}
 
 }
