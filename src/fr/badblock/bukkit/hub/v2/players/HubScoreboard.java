@@ -4,16 +4,21 @@ import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.scoreboard.BadblockScoreboardGenerator;
 import fr.badblock.gameapi.players.scoreboard.CustomObjective;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode (callSuper = false)
+@Data
 public class HubScoreboard extends BadblockScoreboardGenerator
 {
-	
+
 	private BadblockPlayer player;
 	private CustomObjective objective;
-	
+
 	@SuppressWarnings("unused")
-	public  HubScoreboard()
+	public HubScoreboard(BadblockPlayer player)
 	{
+		setPlayer(player);
 		objective.showObjective(player);
 		String hubNumber = GameAPI.getServerName();
 		objective.setDisplayName("&b&o" + lang("hub.scoreboard.name", 0));
@@ -22,7 +27,7 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 		doBadblockFooter(objective);
 		generate();
 	}
-	
+
 	@Override
 	public void generate() 
 	{
@@ -35,7 +40,7 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 		objective.changeLine(11, lang("hub.scoreboard.rank", player.getGroupPrefix()));
 		objective.changeLine(10, lang("hub.scoreboard.players", HubPlayer.getPlayers().size()));
 	}
-	
+
 	private String lang(String key, Object args)
 	{
 		return player.getTranslatedMessage(key, args)[0];

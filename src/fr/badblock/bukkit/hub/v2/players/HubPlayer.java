@@ -59,6 +59,7 @@ import lombok.Data;
 		getPlayer().sendTranslatedBossBar("hubplayer.bossbar");
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
+		new HubScoreboard(getPlayer());
 		return this;
 	}
 
