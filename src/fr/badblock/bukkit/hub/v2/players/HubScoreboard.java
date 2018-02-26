@@ -14,13 +14,13 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 	@SuppressWarnings("unused")
 	public  HubScoreboard()
 	{
-		
 		objective.showObjective(player);
 		String hubNumber = GameAPI.getServerName();
 		objective.setDisplayName("&b&o" + lang("hub.scoreboard.name", 0));
 		objective.setGenerator(this);
 		objective.generate();
 		doBadblockFooter(objective);
+		generate();
 	}
 	
 	@Override
