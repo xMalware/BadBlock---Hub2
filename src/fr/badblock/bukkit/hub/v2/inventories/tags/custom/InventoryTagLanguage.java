@@ -15,7 +15,7 @@ public class InventoryTagLanguage extends InventoryTag
 	@Override
 	public String getTag(BadblockPlayer player)
 	{
-		return player.getPlayerData().getLocale().toString();
+		return player.getTranslatedMessage("langs." + player.getPlayerData().getLocale().name().toLowerCase())[0];
 	}
 
 }
