@@ -1,5 +1,5 @@
 name: BadBlockHub
-main: fr.xmalware.badblock.hub.BadBlockHub
+main: fr.badblock.bukkit.hub.v2.BadBlockHub
 version: 2.0
-author: xMalware
+authors: [xMalware, x9nico]
 description: A Hub for BadBlock.
