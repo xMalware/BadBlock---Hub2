@@ -26,7 +26,6 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		{
 			return false;
 		}
-		System.out.println("oo");
 		// Unknown item stack
 		if (itemStack == null)
 		{
@@ -65,7 +64,7 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		// Get feature
 		Feature feature = featuresConfig.getFeatures().get(featureRawName);
 		// Already bought this feature
-		if (featureManager.hasFeature(hubStoredPlayer, featureRawName))
+		if (featureManager.hasFeature(player, hubStoredPlayer, featureRawName))
 		{
 			player.sendTranslatedMessage("hub.features.buy.errors.alreadybought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
 		}

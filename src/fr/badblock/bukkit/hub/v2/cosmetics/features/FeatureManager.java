@@ -3,6 +3,8 @@ package fr.badblock.bukkit.hub.v2.cosmetics.features;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.entity.Player;
+
 import com.google.gson.Gson;
 
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
@@ -30,7 +32,7 @@ public class FeatureManager
 		}
 
 		System.out.println(expire);
-		
+
 		// Add owned feature
 		OwnedFeature ownedFeature = new OwnedFeature(feature, start, expire);
 		List<OwnedFeature> ownedFeatures = hubStoredPlayer.getFeatures().get(feature.getType());
@@ -43,7 +45,7 @@ public class FeatureManager
 		System.out.println(new Gson().toJson(hubStoredPlayer.getFeatures()));
 	}
 
-	public boolean hasFeature(HubStoredPlayer hubStoredPlayer, String featureRawName)
+	public boolean hasFeature(Player player, HubStoredPlayer hubStoredPlayer, String featureRawName)
 	{
 		String[] splitter = featureRawName.split("_");
 		if (splitter.length != 2)
@@ -51,20 +53,51 @@ public class FeatureManager
 			System.out.println("[BadBlockHub] A feature must have this pattern : type_name (" + featureRawName + ")");
 			return false;
 		}
+
 		FeatureType featureType = FeatureType.get(splitter[0]);
 		if (featureType == null)
 		{
 			System.out.println("[BadBlockHub] Unknown feature type for " + featureRawName);
 			return false;
 		}
+
 		List<OwnedFeature> features = hubStoredPlayer.getFeatures().get(featureType);
 		if (features == null)
 		{
 			features = new ArrayList<>();
 		}
+		Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureRawName);
+		// Unknown feature
+		if (feature == null)
+		{
+			return false;
+		}
+
+		FeatureNeeded featureNeeded = feature.getNeeded();
+		if (featureNeeded == null)
+		{
+			return false;
+		}
+
+		if (featureNeeded.isEveryoneHaveThis())
+		{
+			return true;
+		}
+
+		if (featureNeeded.getPermissions() != null)
+		{
+			for (String permission : featureNeeded.getPermissions())
+			{
+				if (player.hasPermission(permission))
+				{
+					return true;
+				}
+			}
+		}
+
 		// Count available features
-		long count = features.parallelStream().filter(feature -> 
-		feature.getType().getName().toLowerCase().equals(featureRawName) && ((feature.getExpire() == -1) || (feature.getExpire() != 1 && feature.getExpire() > System.currentTimeMillis()))).count();
+		long count = features.parallelStream().filter(f -> 
+		f.getType().getName().toLowerCase().equals(featureRawName) && ((f.getExpire() == -1) || (f.getExpire() != 1 && f.getExpire() > System.currentTimeMillis()))).count();
 		return count > 0;
 	}
 
