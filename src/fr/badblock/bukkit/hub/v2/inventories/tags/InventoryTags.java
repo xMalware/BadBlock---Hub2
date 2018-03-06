@@ -18,6 +18,8 @@ import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagOwned;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPercentLevel;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPing;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPlayerName;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagServerId;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagServerName;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagShopPoints;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagShopPointsNeeded;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagXP;
@@ -47,6 +49,8 @@ public enum InventoryTags
 	PING(new InventoryTagPing(), "{Ping}"),
 	GROUP_PREFIX(new InventoryTagGroupPrefix(), "{Group_Prefix}"),
 	GROUP_SUFFIX(new InventoryTagGroupSuffix(), "{Group_Suffix}"),
+	SERVER_NAME(new InventoryTagServerName(), "{Server_Name}"),
+	SERVER_ID(new InventoryTagServerId(), "{Server_Id}"),
 	// Price
 	OWNED(new InventoryTagOwned(), "{owned}"),
 	BADCOINS_NEEDED(new InventoryTagBadcoinsNeeded(), "{badcoinsNeeded}"),
