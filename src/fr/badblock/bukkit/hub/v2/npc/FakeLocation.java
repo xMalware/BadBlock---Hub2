@@ -1,5 +1,8 @@
 package fr.badblock.bukkit.hub.v2.npc;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+
 import lombok.Data;
 
 @Data
@@ -17,6 +20,16 @@ public class FakeLocation
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+
+	public DBObject toObject()
+	{
+		BasicDBObject dbObject = new BasicDBObject();
+		dbObject.append("world", this.world);
+		dbObject.append("x", this.x);
+		dbObject.append("y", this.y);
+		dbObject.append("z", this.z);
+		return dbObject;
 	}
 	
 }

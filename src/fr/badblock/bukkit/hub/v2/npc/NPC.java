@@ -39,7 +39,7 @@ public class NPC
 		result.append("actions", actions);
 		result.append("vip", vip);
 		result.append("staff", staff);
-		result.append("location", new FakeLocation(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ()));
+		result.append("location", new FakeLocation(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ()).toObject());
 		return result;
 	}
 
