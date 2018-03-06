@@ -23,12 +23,11 @@ public abstract class CustomDisguise
 	public CustomDisguise(BadblockPlayer player)
 	{
 		this();
-		disguise(player);
 	}
 	
 	public void disguise(BadblockPlayer player)
 	{
-		getPlayer().disguise(disguise);
+		player.disguise(disguise);
 	}
 
 	public void undisguise()

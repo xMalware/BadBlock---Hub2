@@ -22,12 +22,14 @@ public class FeaturesConfig extends HubConfig
 		super(plugin, fileName);
 		getConfig().getKeys(false).forEach(string ->
 		{
-			String featurePath = getConfig().getString(string);
+			String featurePath = string;
 			String rawType = getConfig().getString(featurePath + ".type");
+			System.out.println(featurePath + " - " + rawType);
 			FeatureType type = FeatureType.get(rawType);
 			if (type == null)
 			{
 				System.out.println("[BadBlockHub] Unknown feature type : " + rawType);
+				return;
 			}
 			String name = getConfig().getString(featurePath + ".name");
 			int badcoinsNeeded = getConfig().getInt(featurePath + ".badcoinsNeeded");
@@ -35,9 +37,8 @@ public class FeaturesConfig extends HubConfig
 			int levelNeeded = getConfig().getInt(featurePath + ".levelNeeded");
 			long expire = getConfig().getLong(featurePath + ".expire");
 			Feature feature = new Feature(type, name, badcoinsNeeded, shopPointsNeeded, levelNeeded, expire);
-			String rawName = (type.name() + "_" + name).toLowerCase();
-			features.put(rawName, feature);
-			System.out.println("[BadBlockHub] Loaded feature: " + rawName);
+			features.put(name, feature);
+			System.out.println("[BadBlockHub] Loaded feature: " + name);
 		});
 	}
 	

@@ -38,6 +38,7 @@ public class FeatureBuyConfirmInventory
 		
 		// Open it
 		player.openInventory(inventory);
+		hubPlayer.setBuyFeature(featureRawName);
 		hubPlayer.setCustomInventory(CustomInventoryBuyConfirm.getInstance());
 	}
 	

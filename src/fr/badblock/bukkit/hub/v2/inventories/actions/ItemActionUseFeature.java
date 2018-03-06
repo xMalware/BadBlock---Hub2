@@ -16,7 +16,7 @@ public class ItemActionUseFeature extends CustomItemAction
 
 	@Override
 	public void execute(BadblockPlayer player, CustomItemActionType action, String actionData)
-	{
+	{	
 		String featureRawName = actionData.toLowerCase();
 		FeaturesConfig featuresConfig = ConfigLoader.getFeatures();
 		// Unknown feature
@@ -25,6 +25,8 @@ public class ItemActionUseFeature extends CustomItemAction
 			System.out.println("[BadBlockHub] Unknown feature '" + featureRawName + "'.");
 			return;
 		}
+	
+		player.closeInventory();
 		
 		// Get info
 		HubPlayer hubPlayer = HubPlayer.get(player);

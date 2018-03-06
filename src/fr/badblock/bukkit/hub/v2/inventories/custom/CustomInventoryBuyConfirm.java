@@ -22,15 +22,19 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 	{
 		HubPlayer hubPlayer = HubPlayer.get(player);
 		// Unknown buy feature
+		System.out.println("Ao");
+		System.out.println(hubPlayer.getBuyFeature());
 		if (hubPlayer.getBuyFeature() == null)
 		{
 			return false;
 		}
+		System.out.println("oo");
 		// Unknown item stack
 		if (itemStack == null)
 		{
 			return false;
 		}
+		System.out.println("cc");
 		// Get feature raw
 		String featureRawName = hubPlayer.getBuyFeature();
 		// Close inventory

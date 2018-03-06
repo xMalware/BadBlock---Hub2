@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.players;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,10 +14,14 @@ import lombok.Data;
 public class HubStoredPlayer  implements GameData
 {
 	
-	private Map<FeatureType, List<OwnedFeature>>	features;
+	private Map<FeatureType, List<OwnedFeature>>	features	= new HashMap<>();
 	
 	public void save(BadblockPlayer player)
 	{
+		if (features == null)
+		{
+			features = new HashMap<>();
+		}
 		player.getPlayerData().saveData();
 		player.saveGameData();
 	}
@@ -24,6 +29,10 @@ public class HubStoredPlayer  implements GameData
 	public static HubStoredPlayer get(BadblockPlayer player)
 	{
 		HubStoredPlayer hubStoredPlayer = player.getPlayerData().gameData("hub", HubStoredPlayer.class);
+		if (hubStoredPlayer.features == null)
+		{
+			hubStoredPlayer.features = new HashMap<>();
+		}
 		return hubStoredPlayer;
 	}
 	

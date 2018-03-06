@@ -13,10 +13,11 @@ public class HubConfig
 {
 
 	private YamlConfiguration 		config;
+	private File					file;
 
 	public HubConfig(BadblockPlugin plugin, String fileName)
 	{
-		File file = new File(plugin.getDataFolder(), fileName + ".yml");
+		file = new File(plugin.getDataFolder(), fileName + ".yml");
 		if (!file.exists())
 		{
 			try
