@@ -32,6 +32,7 @@ public enum InventoryTags
 {
 
 	// Player info
+	PLAYER_NAME(new InventoryTagPlayerName(), "{PlayerName}"),
 	BADCOINS(new InventoryTagBadcoins(), "{badcoins}"),
 	BADCOINS_MULTIPLIER(new InventoryTagBadcoinsMultiplier(), "{badcoins_multiplier}"),
 	LEVELS(new InventoryTagLevels(), "{levels}"),
