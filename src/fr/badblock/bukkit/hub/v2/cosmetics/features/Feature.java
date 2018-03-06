@@ -10,11 +10,12 @@ import lombok.EqualsAndHashCode;
 public class Feature
 {
 
-	private FeatureType	type;
-	private String		name;
-	private int			badcoinsNeeded;
-	private int			shopPointsNeeded;
-	private int			levelNeeded;
-	private long		expire;
+	private FeatureType		type;
+	private String			name;
+	private int				badcoinsNeeded;
+	private int				shopPointsNeeded;
+	private int				levelNeeded;
+	private long			expire;
+	private FeatureNeeded	needed;
 
 }

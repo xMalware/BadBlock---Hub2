@@ -1,10 +1,12 @@
 package fr.badblock.bukkit.hub.v2.config.configs;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import fr.badblock.bukkit.hub.v2.config.HubConfig;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureNeeded;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
 import fr.badblock.gameapi.BadblockPlugin;
 import lombok.Data;
@@ -36,7 +38,14 @@ public class FeaturesConfig extends HubConfig
 			int shopPointsNeeded = getConfig().getInt(featurePath + ".shopPointsNeeded");
 			int levelNeeded = getConfig().getInt(featurePath + ".levelNeeded");
 			long expire = getConfig().getLong(featurePath + ".expire");
-			Feature feature = new Feature(type, name, badcoinsNeeded, shopPointsNeeded, levelNeeded, expire);
+			
+			// Feature needeed
+			boolean buyable = getConfig().getBoolean(featurePath + ".needed.buyable");
+			boolean everyoneHaveThis = getConfig().getBoolean(featurePath + ".needed.everyoneHaveThis");
+			List<String> permissions = getConfig().getStringList(featurePath + ".needed.permissions");
+			FeatureNeeded featureNeeded = new FeatureNeeded(buyable, everyoneHaveThis, permissions.stream().toArray(String[]::new));
+			
+			Feature feature = new Feature(type, name, badcoinsNeeded, shopPointsNeeded, levelNeeded, expire, featureNeeded);
 			features.put(name, feature);
 			System.out.println("[BadBlockHub] Loaded feature: " + name);
 		});

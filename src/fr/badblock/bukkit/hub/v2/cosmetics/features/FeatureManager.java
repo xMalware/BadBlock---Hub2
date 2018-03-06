@@ -87,6 +87,10 @@ public class FeatureManager
 		config.getConfig().set(rawName + ".shopPointsNeeded", 0);
 		config.getConfig().set(rawName + ".levelNeeded", 0);
 		config.getConfig().set(rawName + ".expire", -1);
+		// Feature needeed
+		config.getConfig().set(rawName + ".needed.buyable", false);
+		config.getConfig().set(rawName + ".needed.everyoneHaveThis", false);
+		config.getConfig().set(rawName + ".needed.permissions", new ArrayList<>());
 		try
 		{
 			config.getConfig().save(config.getFile());
