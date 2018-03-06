@@ -56,7 +56,7 @@ import lombok.Data;
 			return this;
 		}
 		getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
-		getPlayer().sendTranslatedBossBar("hubplayer.bossbar");
+		getPlayer().sendTranslatedBossBar("hub.players.bossbar");
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
 		new HubScoreboard(getPlayer());

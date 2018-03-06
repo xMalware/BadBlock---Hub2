@@ -43,17 +43,17 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		// Cancel
 		if (itemStack.getType().equals(Material.REDSTONE_BLOCK))
 		{
-			player.sendTranslatedMessage("hub.features.buy.cancelled", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+			player.sendTranslatedMessage("hub.features.buy.cancel.cancelled", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 			return true;
 		}
 		// Confirm
 		if (itemStack.getType().equals(Material.EMERALD_BLOCK))
 		{
-			player.sendTranslatedMessage("hub.features.buy.confirm", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+			player.sendTranslatedMessage("hub.features.buy.confirm.confirmed", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 			confirm(player, hubPlayer, featureRawName);
 			return true;
 		}
-		player.sendTranslatedMessage("hub.features.buy.unknownaction", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+		player.sendTranslatedMessage("hub.features.buy.errors.unknownaction", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 		return true;
 	}
 	
@@ -67,24 +67,24 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		// Already bought this feature
 		if (featureManager.hasFeature(hubStoredPlayer, featureRawName))
 		{
-			player.sendTranslatedMessage("hub.features.buy.alreadybought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
+			player.sendTranslatedMessage("hub.features.buy.errors.alreadybought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
 		}
 		// Check needed level
 		if (feature.getLevelNeeded() > player.getPlayerData().getLevel())
 		{
-			player.sendTranslatedMessage("hub.features.buy.notenoughlevels", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughlevels", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
 			return;
 		}
 		// Check needed badcoins
 		if (feature.getBadcoinsNeeded() > player.getPlayerData().getBadcoins())
 		{
-			player.sendTranslatedMessage("hub.features.buy.notenoughbadcoins", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getBadcoinsNeeded(), player.getPlayerData().getBadcoins());
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughbadcoins", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getBadcoinsNeeded(), player.getPlayerData().getBadcoins());
 			return;
 		}
 		// Check needed shop points
 		if (feature.getShopPointsNeeded() > player.getShopPoints())
 		{
-			player.sendTranslatedMessage("hub.features.buy.notenoughshoppoints", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getShopPointsNeeded(), player.getShopPoints());
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughshoppoints", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getShopPointsNeeded(), player.getShopPoints());
 			return;
 		}
 		// Remove what's needed to

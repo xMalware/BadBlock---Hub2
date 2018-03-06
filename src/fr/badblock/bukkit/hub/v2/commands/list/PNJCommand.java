@@ -40,7 +40,7 @@ public class PNJCommand extends AbstractCommand
 		final Villager ent = (Villager) p.getWorld().spawnEntity(p.getLocation(), EntityType.VILLAGER);
 		if (args.length == 0)
 		{
-			sendTranslatedMessage(sender, "commands.pnj.help");
+			sendTranslatedMessage(sender, "hub.commands.pnj.help");
 			return true;
 		}
 		if (args[0].equalsIgnoreCase("create"))
@@ -57,7 +57,7 @@ public class PNJCommand extends AbstractCommand
 
 				armor.setVisible(false);
 				armor.setGravity(false);
-				armor.setCustomName("§b§lMaître du jeu : §a" + gameName);
+				armor.setCustomName("ï¿½bï¿½lMaï¿½tre du jeu : ï¿½a" + gameName);
 				armor.setCustomNameVisible(true);
 
 				ent.setAdult();
@@ -69,11 +69,11 @@ public class PNJCommand extends AbstractCommand
 			}
 			else if (args.length == 2 && args.length != 3)
 			{
-				sendTranslatedMessage(sender, "commands.pnj.developer.required");
+				sendTranslatedMessage(sender, "hub.commands.pnj.developer.required");
 			}
 			else if (args.length != 2 && args.length != 3)
 			{
-				sendTranslatedMessage(sender, "commands.pnj.nameanddeveloper.required");
+				sendTranslatedMessage(sender, "hub.commands.pnj.nameanddeveloper.required");
 			}
 		}
 		else if (args[0].equalsIgnoreCase("remove"))
@@ -89,7 +89,7 @@ public class PNJCommand extends AbstractCommand
 				}
 			}
 
-			sendTranslatedMessage(sender, "commands.pnj.removeall.success");
+			sendTranslatedMessage(sender, "hub.commands.pnj.removeall.success");
 		}
 		return true;
 	}

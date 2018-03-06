@@ -46,8 +46,8 @@ public class FeatureBuyConfirmInventory
 	{
 		ItemStack itemStack = new ItemStack(Material.REDSTONE_BLOCK, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();
-		itemMeta.setDisplayName(player.getTranslatedMessage("hub.buy.cancelname", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
-		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.buy.cancellore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
+		itemMeta.setDisplayName(player.getTranslatedMessage("hub.features.buy.cancel.name", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
+		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.features.buy.cancel.lore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
@@ -56,8 +56,8 @@ public class FeatureBuyConfirmInventory
 	{
 		ItemStack itemStack = new ItemStack(Material.EMERALD_BLOCK, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();
-		itemMeta.setDisplayName(player.getTranslatedMessage("hub.buy.confirmname", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
-		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.buy.confirmlore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
+		itemMeta.setDisplayName(player.getTranslatedMessage("hub.features.buy.confirm.name", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
+		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.features.buy.confirm.lore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}

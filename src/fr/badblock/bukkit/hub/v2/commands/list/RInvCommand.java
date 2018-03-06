@@ -27,7 +27,7 @@ public class RInvCommand extends AbstractCommand
 		Bukkit.getServer().dispatchCommand(sender, "/i18n reload");
 		// Reload inventories
 		InventoriesLoader.reloadInventories(instance);
-		sendTranslatedMessage(sender, "commands.rinv.reloaded");
+		sendTranslatedMessage(sender, "hub.commands.rinv.reloaded");
 		// Reload locations
 		ConfigLoader.load(instance);
 		return true;
