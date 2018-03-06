@@ -1,10 +1,13 @@
 package fr.badblock.bukkit.hub.v2.players;
 
+import java.util.UUID;
+
 import fr.badblock.bukkit.hub.v2.inventories.tags.InventoryTags;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.scoreboard.BadblockScoreboardGenerator;
 import fr.badblock.gameapi.players.scoreboard.CustomObjective;
+import fr.badblock.gameapi.utils.threading.TaskManager;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,7 +30,21 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 		objective.setGenerator(this);
 		objective.generate();
 		doBadblockFooter(objective);
-		generate();
+
+		String rawTask = "scoreboard." + player.getName() + "." + UUID.randomUUID().toString();
+		TaskManager.scheduleSyncRepeatingTask(rawTask, new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				if (!player.isOnline())
+				{
+					TaskManager.cancelTaskByName(rawTask);
+					return;
+				}
+				generate();
+			}
+		}, 20, 20 * 10);
 	}
 
 	@Override
