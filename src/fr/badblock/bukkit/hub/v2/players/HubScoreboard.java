@@ -23,7 +23,7 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 		this.objective = GameAPI.getAPI().buildCustomObjective("hub");
 		objective.showObjective(player);
 		String hubNumber = GameAPI.getServerName();
-		objective.setDisplayName("&b&o" + lang("hub.scoreboard.name", 0));
+		objective.setDisplayName("&b&o" + lang("hub.scoreboard.name", 0)[0]);
 		objective.setGenerator(this);
 		objective.generate();
 		doBadblockFooter(objective);
@@ -33,7 +33,7 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 	@Override
 	public void generate() 
 	{
-		int i = 16;
+		int i = 15;
 		for (String line : lang("hub.scoreboard.lore"))
 		{
 			for (InventoryTags inventoryTag : InventoryTags.values())
