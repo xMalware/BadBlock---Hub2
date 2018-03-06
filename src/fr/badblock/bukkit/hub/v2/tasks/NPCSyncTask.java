@@ -12,6 +12,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.npc.FakeLocation;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
 import fr.badblock.gameapi.GameAPI;
 import fr.toenga.common.tech.mongodb.MongoService;
@@ -30,7 +31,8 @@ public class NPCSyncTask implements Runnable
 		MongoService mongoService = GameAPI.getAPI().getMongoService();
 		DBCollection collection = mongoService.getDb().getCollection("npc");
 		BasicDBObject dbQuery = new BasicDBObject();
-		collection.insert(new NPC(UUID.randomUUID(), "test", EntityType.BAT, null, false, false, Bukkit.getWorlds().get(0).getSpawnLocation()).toObject());
+		collection.remove(dbQuery);
+		collection.insert(new NPC(UUID.randomUUID(), "test", EntityType.BAT, null, false, false, new FakeLocation(Bukkit.getWorlds().get(0).getSpawnLocation())).toObject());
 		DBCursor cursor = collection.find(dbQuery);
 		
 		List<NPC> list = new ArrayList<>();

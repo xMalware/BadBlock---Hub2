@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 
 import com.mongodb.BasicDBObject;
@@ -28,7 +27,7 @@ public class NPC
 	private InventoryAction[]	actions;
 	private boolean				vip;
 	private boolean				staff;
-	private Location			location;
+	private FakeLocation		location;
 	
 	public DBObject toObject()
 	{
@@ -39,7 +38,7 @@ public class NPC
 		result.append("actions", actions);
 		result.append("vip", vip);
 		result.append("staff", staff);
-		result.append("location", new FakeLocation(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ()).toObject());
+		result.append("location", location.toObject());
 		return result;
 	}
 
