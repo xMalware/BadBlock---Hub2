@@ -38,12 +38,12 @@ public class ItemActionUseFeature extends CustomItemAction
 		// Check needed level
 		if (!FeatureManager.getInstance().hasFeature(hubStoredPlayer, featureRawName))
 		{
-			player.sendTranslatedMessage("hub.features." + featureRawName + ".notowned", player.getTranslatedMessage("hub.features." + featureRawName + ".name")[0]);
+			player.sendTranslatedMessage("hub.features.notowned", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 			return;
 		}
 		
 		// Send use message
-		player.sendTranslatedMessage("hub.features." + featureRawName + ".use", player.getTranslatedMessage("hub.features." + featureRawName + ".name")[0]);
+		player.sendTranslatedMessage("hub.features.use", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 		
 		// Do what we should
 		FeatureWorker.work(player, feature);

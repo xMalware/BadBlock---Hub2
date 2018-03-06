@@ -32,9 +32,9 @@ public class FeatureBuyConfirmInventory
 			{
 				continue;
 			}
-			inventory.setItem(i, getCancelItem(player));
+			inventory.setItem(i, getCancelItem(player, featureRawName));
 		}
-		inventory.setItem(confirmItem, getConfirmItem(player));
+		inventory.setItem(confirmItem, getConfirmItem(player, featureRawName));
 		
 		// Open it
 		player.openInventory(inventory);
@@ -42,22 +42,22 @@ public class FeatureBuyConfirmInventory
 		hubPlayer.setCustomInventory(CustomInventoryBuyConfirm.getInstance());
 	}
 	
-	public static ItemStack getCancelItem(BadblockPlayer player)
+	public static ItemStack getCancelItem(BadblockPlayer player, String featureRawName)
 	{
 		ItemStack itemStack = new ItemStack(Material.REDSTONE_BLOCK, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();
-		itemMeta.setDisplayName(player.getTranslatedMessage("hub.buy.cancelname")[0]);
-		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.buy.cancellore")));
+		itemMeta.setDisplayName(player.getTranslatedMessage("hub.buy.cancelname", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
+		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.buy.cancellore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
 	
-	public static ItemStack getConfirmItem(BadblockPlayer player)
+	public static ItemStack getConfirmItem(BadblockPlayer player, String featureRawName)
 	{
 		ItemStack itemStack = new ItemStack(Material.EMERALD_BLOCK, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();
-		itemMeta.setDisplayName(player.getTranslatedMessage("hub.buy.confirmname")[0]);
-		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.buy.confirmlore")));
+		itemMeta.setDisplayName(player.getTranslatedMessage("hub.buy.confirmname", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
+		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.buy.confirmlore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}

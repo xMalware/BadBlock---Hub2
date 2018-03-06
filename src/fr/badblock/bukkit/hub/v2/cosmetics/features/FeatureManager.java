@@ -3,6 +3,8 @@ package fr.badblock.bukkit.hub.v2.cosmetics.features;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.types.HatsFeatures;
@@ -27,6 +29,8 @@ public class FeatureManager
 			expire = start + (feature.getExpire() * 1000L);
 		}
 
+		System.out.println(expire);
+		
 		// Add owned feature
 		OwnedFeature ownedFeature = new OwnedFeature(feature, start, expire);
 		List<OwnedFeature> ownedFeatures = hubStoredPlayer.getFeatures().get(feature.getType());
@@ -36,6 +40,7 @@ public class FeatureManager
 		}
 		ownedFeatures.add(ownedFeature);
 		hubStoredPlayer.getFeatures().put(feature.getType(), ownedFeatures);
+		System.out.println(new Gson().toJson(hubStoredPlayer.getFeatures()));
 	}
 
 	public boolean hasFeature(HubStoredPlayer hubStoredPlayer, String featureRawName)
@@ -59,7 +64,7 @@ public class FeatureManager
 		}
 		// Count available features
 		long count = features.parallelStream().filter(feature -> 
-		feature.getType().getName().toLowerCase().equals(splitter[1]) && ((feature.getExpire() == -1) || (feature.getExpire() != 1 && feature.getExpire() > System.currentTimeMillis()))).count();
+		feature.getType().getName().toLowerCase().equals(featureRawName) && ((feature.getExpire() == -1) || (feature.getExpire() != 1 && feature.getExpire() > System.currentTimeMillis()))).count();
 		return count > 0;
 	}
 

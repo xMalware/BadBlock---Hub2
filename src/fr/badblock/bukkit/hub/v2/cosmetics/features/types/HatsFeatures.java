@@ -5,8 +5,93 @@ import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.*;
-
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.AnubisHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.AppleHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ArticunoHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.BlazeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.BlueGhostHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.BlueOrbHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.BlueSheepHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CactusHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CaveSpiderHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ChestHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ChickHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ChickenHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ChineseDragonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ChorusPlantHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ColorfulCreeperHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CommandBlockHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CowHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CrazyProfessorHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CreeperHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.CryptonitHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.DeadpoolHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.DemonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.DiamondOreHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.DispenserHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.DreadlordHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EmeraldBlockHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EmeraldSteveHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EmpoleonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EnderCrystalHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EnderZombieHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EnderlordHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EndermanHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EnderpearlHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EspeonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.EvilEyeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ExclamationHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.FancyCubeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.FireCreeperHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.FishHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GhastHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GhostHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GlaceonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GoldenCowHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GoldenSteveHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GolemHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GreenCoconutHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.GrimReaperHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.HelmetHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.HerobrineHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.IronManHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.LavaHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.LavaSlimeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.LionHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.MelonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.MushroomCowHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.OcelotHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.OrangeSheepHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.OrangeSquidHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PenguinHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PigHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PikachuHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PinkPotionHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PinkSheepHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PokeBallHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PumpkinHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.PurpleOrbHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.QuestionHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.RainbowSlimeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.RedSquidHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.RubiksCubeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.SamuraiHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.SharkHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.SheepHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ShrekHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.SlimeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.SoldierHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.SpiderHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.TntHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ToxicWasteHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.VaporeonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.VenomHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.VillagerHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.WereWolfHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.WitherSkeletonHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.WolverineHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.YellowSlimeHats;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.ZombieHats;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 
@@ -122,11 +207,15 @@ public enum HatsFeatures implements IFeatureWorker
 	
 	public static void work(BadblockPlayer player, Feature feature)
 	{
-		String name = feature.getName();
+		String[] splitter = feature.getName().split("_");
+		if (splitter.length != 2)
+		{
+			return;
+		}
 		HatsFeatures finalFeature = null;
 		for (HatsFeatures hatsFeature : values())
 		{
-			if (hatsFeature.name().equalsIgnoreCase(name))
+			if (hatsFeature.name().equalsIgnoreCase(splitter[1]))
 			{
 				finalFeature = hatsFeature;
 				break;
