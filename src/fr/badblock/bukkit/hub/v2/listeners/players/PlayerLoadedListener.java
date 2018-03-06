@@ -30,7 +30,7 @@ public class PlayerLoadedListener extends BadListener
 	{
 		if (player.hasPermission("hub.broadcastjoin"))
 		{
-			new TranslatableString("hub.broadcast", player.getGroupPrefix(), player.getName()).broadcast();
+			new TranslatableString("hub.players.broadcast", player.getGroupPrefix(), player.getName()).broadcast();
 		}
 	}
 	
