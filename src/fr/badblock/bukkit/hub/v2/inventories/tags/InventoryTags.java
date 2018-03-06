@@ -14,6 +14,7 @@ import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagIgnoreNumbe
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLanguage;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevelNeeded;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagLevels;
+import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagOwned;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPercentLevel;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPing;
 import fr.badblock.bukkit.hub.v2.inventories.tags.custom.InventoryTagPlayerName;
@@ -46,12 +47,11 @@ public enum InventoryTags
 	GROUP_PREFIX(new InventoryTagGroupPrefix(), "{Group_Prefix}"),
 	GROUP_SUFFIX(new InventoryTagGroupSuffix(), "{Group_Suffix}"),
 	// Price
+	OWNED(new InventoryTagOwned(), "{owned}"),
 	BADCOINS_NEEDED(new InventoryTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new InventoryTagLevelNeeded(), "{levelNeeded}"),
 	SHOPPOINTS_NEEDED(new InventoryTagShopPointsNeeded(), "{shopPointsNeeded}"),
 	XP_NEEDED_FOR_NEXT_LEVEL(new InventoryTagXPNeededForNextLevel(), "{XpNeededforNextLevel}");
-	
-	
 	
 	@Setter private InventoryTag 	inventoryTag;
 	@Setter private List<String>	tags;
