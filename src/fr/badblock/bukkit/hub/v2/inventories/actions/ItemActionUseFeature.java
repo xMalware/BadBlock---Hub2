@@ -36,7 +36,7 @@ public class ItemActionUseFeature extends CustomItemAction
 		Feature feature = featuresConfig.getFeatures().get(featureRawName);
 		
 		// Check needed level
-		if (!FeatureManager.getInstance().hasFeature(hubStoredPlayer, featureRawName))
+		if (!FeatureManager.getInstance().hasFeature(player, hubStoredPlayer, featureRawName))
 		{
 			player.sendTranslatedMessage("hub.features.notowned", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 			return;
