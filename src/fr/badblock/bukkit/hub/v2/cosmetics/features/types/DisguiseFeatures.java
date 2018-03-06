@@ -1,6 +1,8 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseAdminMCSM;
@@ -126,14 +128,14 @@ public enum DisguiseFeatures implements IFeatureWorker
 	WOLF				(new DisguiseWolf(null)),
 	XMALWARE			(new DisguisexMalware(null)),
 	ZOMBIE				(new DisguiseZombie(null));
-	
+
 	private CustomDisguise customDisguise;
-	
+
 	DisguiseFeatures(CustomDisguise customDisguise)
 	{
 		setCustomDisguise(customDisguise);
 	}
-	
+
 	public void setCustomDisguise(CustomDisguise customDisguise)
 	{
 		this.customDisguise = customDisguise;
@@ -144,7 +146,7 @@ public enum DisguiseFeatures implements IFeatureWorker
 	{
 		getCustomDisguise().disguise(player);
 	}
-	
+
 	public static void work(BadblockPlayer player, Feature feature)
 	{
 		String name = feature.getName();
@@ -163,5 +165,14 @@ public enum DisguiseFeatures implements IFeatureWorker
 		}
 		finalFeature.work(player);
 	}
-	
+
+	public static void generateAll()
+	{
+		for (DisguiseFeatures feature : values())
+		{
+			String rawName = FeatureType.DISGUISE.name().toLowerCase() + "_" + feature.name().toLowerCase();
+			FeatureManager.getInstance().generate(rawName);
+		}
+	}
+
 }

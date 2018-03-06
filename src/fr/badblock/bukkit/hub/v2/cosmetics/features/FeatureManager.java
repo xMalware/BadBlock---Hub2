@@ -3,6 +3,10 @@ package fr.badblock.bukkit.hub.v2.cosmetics.features;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
+import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.DisguiseFeatures;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.HatsFeatures;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import lombok.Getter;
 import lombok.Setter;
@@ -54,6 +58,26 @@ public class FeatureManager
 		long count = features.parallelStream().filter(feature -> 
 		feature.getType().getName().toLowerCase().equals(splitter[1]) && feature.getExpire() > System.currentTimeMillis()).count();
 		return count > 0;
+	}
+
+	public static void generateAll()
+	{
+		DisguiseFeatures.generateAll();
+		HatsFeatures.generateAll();
+	}
+	
+	public void generate(String rawName)
+	{
+		FeaturesConfig config = ConfigLoader.getFeatures();
+		if (!config.getFeatures().containsKey(rawName))
+		{
+			return;
+		}
+		config.getConfig().set(rawName + ".name", rawName);
+		config.getConfig().set(rawName + ".badcoinsNeeded", 0);
+		config.getConfig().set(rawName + ".shopPointsNeeded", 0);
+		config.getConfig().set(rawName + ".levelNeeded", 0);
+		config.getConfig().set(rawName + ".expire", -1);
 	}
 	
 }

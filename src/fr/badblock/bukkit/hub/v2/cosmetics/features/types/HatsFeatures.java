@@ -1,6 +1,8 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.type.*;
@@ -135,6 +137,15 @@ public enum HatsFeatures implements IFeatureWorker
 			return;
 		}
 		finalFeature.work(player);
+	}
+	
+	public static void generateAll()
+	{
+		for (HatsFeatures feature : values())
+		{
+			String rawName = FeatureType.HATS.name().toLowerCase() + "_" + feature.name().toLowerCase();
+			FeatureManager.getInstance().generate(rawName);
+		}
 	}
 	
 }
