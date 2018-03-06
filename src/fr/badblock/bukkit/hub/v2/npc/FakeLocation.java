@@ -1,5 +1,7 @@
 package fr.badblock.bukkit.hub.v2.npc;
 
+import org.bukkit.Location;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
@@ -13,6 +15,11 @@ public class FakeLocation
 	private int		x;
 	private int		y;
 	private int		z;
+	
+	public FakeLocation(Location location)
+	{
+		this(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+	}
 	
 	public FakeLocation(String world, int x, int y, int z)
 	{
