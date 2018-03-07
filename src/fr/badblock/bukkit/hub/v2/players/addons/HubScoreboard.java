@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.players.addons;
 
+import fr.badblock.bukkit.hub.v2.tags.TagManager;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.scoreboard.BadblockScoreboardGenerator;
@@ -12,6 +13,8 @@ import lombok.EqualsAndHashCode;
 public class HubScoreboard extends BadblockScoreboardGenerator
 {
 
+	private static TagManager tagManager = TagManager.getInstance();
+	
 	private BadblockPlayer player;
 	private CustomObjective objective;
 
@@ -33,9 +36,8 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 	{
 		int i = 15;
 		for (String line : lang("hub.scoreboard.lore"))
-		{
-			
-			objective.changeLine(i, line);
+		{		
+			objective.changeLine(i, tagManager.tagify(player, line));
 			i--;
 		}
 	}
