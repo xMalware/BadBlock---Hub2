@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
-import fr.badblock.bukkit.hub.v2.tags.HubTags;
+import fr.badblock.bukkit.hub.v2.tags.TagManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.itemstack.ItemStackUtils;
 
@@ -68,17 +68,19 @@ public class BukkitInventories
 				itemStack = ItemStackUtils.fakeEnchant(itemStack);
 			}
 			ItemMeta itemMeta = itemStack.getItemMeta();
+			TagManager tagManager = TagManager.getInstance();
+			
 			if (inventoryItemObject.getI18name() != null && !inventoryItemObject.getI18name().isEmpty())
 			{
 				String string = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage(inventoryItemObject.getI18name())[0]);
-				itemMeta.setDisplayName(workWithTags(player, string, inventoryItemObject));
+				itemMeta.setDisplayName(tagManager.tagify(player, string, inventoryItemObject));
 			}
 			if (inventoryItemObject.getI18lore() != null && !inventoryItemObject.getI18lore().isEmpty())
 			{
 				List<String> lore = new ArrayList<>();
 				for (String string : player.getTranslatedMessage(inventoryItemObject.getI18lore()))
 				{
-					string = workWithTags(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
+					string = tagManager.tagify(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
 					lore.add(string);
 				}
 				itemMeta.setLore(lore);
@@ -87,21 +89,6 @@ public class BukkitInventories
 			inventory.setItem(inventoryItemObject.getPlace(), itemStack);
 		}
 		return inventory;
-	}
-
-	public static String workWithTags(BadblockPlayer player, String string, InventoryItemObject inventoryItemObject)
-	{
-		for (HubTags inventoryTag : HubTags.values())
-		{
-			for (String tag : inventoryTag.getTags())
-			{
-				if (string.contains(tag))
-				{
-					string = inventoryTag.replace(player, string, tag, inventoryItemObject);
-				}
-			}
-		}
-		return string;
 	}
 
 	public static void giveDefaultInventory(BadblockPlayer player)
