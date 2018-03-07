@@ -2,10 +2,10 @@ package fr.badblock.bukkit.hub.v2.tasks;
 
 import fr.badblock.gameapi.utils.threading.TaskManager;
 
-public abstract class _HubTask implements Runnable
+public abstract class HubTask implements Runnable
 {
 
-	public _HubTask(boolean sync, int delay, int repeat)
+	public HubTask(boolean sync, int delay, int repeat)
 	{
 		if (sync)
 		{

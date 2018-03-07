@@ -17,7 +17,7 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryActionType;
 import fr.badblock.bukkit.hub.v2.npc.FakeLocation;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
-import fr.badblock.bukkit.hub.v2.tasks.NPCSyncTask;
+import fr.badblock.bukkit.hub.v2.tasks.list.NPCSyncTask;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer.GamePermission;
@@ -642,7 +642,6 @@ public class NPCCommand extends AbstractCommand
 			if (rawName.equalsIgnoreCase(entityType.name()))
 			{
 				return entityType;
-
 			}
 		}
 		return null;

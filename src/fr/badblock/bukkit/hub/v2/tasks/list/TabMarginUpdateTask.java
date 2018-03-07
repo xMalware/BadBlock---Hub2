@@ -1,13 +1,14 @@
-package fr.badblock.bukkit.hub.v2.tasks;
+package fr.badblock.bukkit.hub.v2.tasks.list;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.bukkit.hub.v2.tags.TagManager;
+import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class TabMarginUpdateTask extends _HubTask
+public class TabMarginUpdateTask extends HubTask
 {
 	
 	public TabMarginUpdateTask()

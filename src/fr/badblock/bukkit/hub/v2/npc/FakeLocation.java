@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.npc;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import com.mongodb.BasicDBObject;
@@ -27,6 +28,11 @@ public class FakeLocation
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+	
+	public Location toLocation()
+	{
+		return new Location(Bukkit.getWorld(getWorld()), getX(), getY(), getZ());
 	}
 
 	public DBObject toObject()

@@ -1,4 +1,4 @@
-package fr.badblock.bukkit.hub.v2.tasks;
+package fr.badblock.bukkit.hub.v2.tasks.list;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,10 +8,11 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
 import fr.badblock.bukkit.hub.v2.npc.NPC;
+import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.GameAPI;
 import fr.toenga.common.tech.mongodb.MongoService;
 
-public class NPCSyncTask extends _HubTask
+public class NPCSyncTask extends HubTask
 {
 	
 	public NPCSyncTask()
@@ -44,6 +45,7 @@ public class NPCSyncTask extends _HubTask
 			if (!list.containsKey(npc.getUuid()))
 			{
 				// Removed
+				npc.despawn();
 			}
 		}
 		
@@ -52,6 +54,7 @@ public class NPCSyncTask extends _HubTask
 			if (!NPC.getNpcs().containsKey(npc.getUuid()))
 			{
 				// Added
+				npc.spawn();
 			}
 		}
 		

@@ -1,9 +1,10 @@
-package fr.badblock.bukkit.hub.v2.tasks;
+package fr.badblock.bukkit.hub.v2.tasks.list;
 
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
+import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 
-public class ScoreboardUpdateTask extends _HubTask
+public class ScoreboardUpdateTask extends HubTask
 {
 	
 	public ScoreboardUpdateTask()

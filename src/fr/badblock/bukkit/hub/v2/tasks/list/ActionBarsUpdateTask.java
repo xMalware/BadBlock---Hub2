@@ -1,4 +1,4 @@
-package fr.badblock.bukkit.hub.v2.tasks;
+package fr.badblock.bukkit.hub.v2.tasks.list;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,10 +7,11 @@ import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.config.configs.ActionBarsConfig;
 import fr.badblock.bukkit.hub.v2.players.addons.ActionBar;
 import fr.badblock.bukkit.hub.v2.tags.TagManager;
+import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.BukkitUtils;
 
-public class ActionBarsUpdateTask extends _HubTask
+public class ActionBarsUpdateTask extends HubTask
 {
 
 	private int 		id;
