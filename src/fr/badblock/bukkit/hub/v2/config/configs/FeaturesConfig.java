@@ -26,13 +26,15 @@ public class FeaturesConfig extends HubConfig
 		{
 			String featurePath = string;
 			String rawType = getConfig().getString(featurePath + ".type");
-			System.out.println(featurePath + " - " + rawType);
+			
 			FeatureType type = FeatureType.get(rawType);
+			
 			if (type == null)
 			{
-				System.out.println("[BadBlockHub] Unknown feature type : " + rawType);
+				System.out.println("[BadBlockHub / Feature] Unknown feature type : " + rawType);
 				return;
 			}
+			
 			String name = getConfig().getString(featurePath + ".name");
 			int badcoinsNeeded = getConfig().getInt(featurePath + ".badcoinsNeeded");
 			int shopPointsNeeded = getConfig().getInt(featurePath + ".shopPointsNeeded");
@@ -47,7 +49,7 @@ public class FeaturesConfig extends HubConfig
 			
 			Feature feature = new Feature(type, name, badcoinsNeeded, shopPointsNeeded, levelNeeded, expire, featureNeeded);
 			features.put(name, feature);
-			System.out.println("[BadBlockHub] Loaded feature: " + name);
+			System.out.println("[BadBlockHub / Features] Loaded " + name);
 		});
 	}
 	

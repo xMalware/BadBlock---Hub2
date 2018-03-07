@@ -10,6 +10,7 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
+import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
 
@@ -22,12 +23,14 @@ import lombok.Data;
 	private BadblockPlayer					player;
 	private HubStoredPlayer					storedPlayer;
 
-	// Temp values
+	private HubScoreboard					scoreboard;
+	
+	private CustomDisguise					disguise;
+	
 	private String							inventory;
 	private String							buyFeature;
-	private CustomDisguise					disguise;
 	private CustomInventory					customInventory;
-
+	
 	public HubPlayer(BadblockPlayer player)
 	{
 		this.setPlayer(player);
@@ -50,7 +53,6 @@ import lombok.Data;
 
 	public HubPlayer loadPlayer()
 	{
-		// TODO: load player : locations
 		if (!isOnline())
 		{
 			return this;
@@ -59,7 +61,7 @@ import lombok.Data;
 		getPlayer().sendTranslatedBossBar("hub.players.bossbar");
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
-		new HubScoreboard(getPlayer());
+		setScoreboard(new HubScoreboard(getPlayer()));
 		return this;
 	}
 

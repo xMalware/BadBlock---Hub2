@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
-import fr.badblock.bukkit.hub.v2.inventories.tags.InventoryTags;
+import fr.badblock.bukkit.hub.v2.tags.HubTags;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.itemstack.ItemStackUtils;
 
@@ -91,7 +91,7 @@ public class BukkitInventories
 
 	public static String workWithTags(BadblockPlayer player, String string, InventoryItemObject inventoryItemObject)
 	{
-		for (InventoryTags inventoryTag : InventoryTags.values())
+		for (HubTags inventoryTag : HubTags.values())
 		{
 			for (String tag : inventoryTag.getTags())
 			{

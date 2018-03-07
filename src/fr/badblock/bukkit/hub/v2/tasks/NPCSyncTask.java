@@ -3,23 +3,20 @@ package fr.badblock.bukkit.hub.v2.tasks;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.Bukkit;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
 import fr.badblock.gameapi.GameAPI;
 import fr.toenga.common.tech.mongodb.MongoService;
 
-public class NPCSyncTask implements Runnable
+public class NPCSyncTask extends _HubTask
 {
 	
 	public NPCSyncTask()
 	{
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(BadBlockHub.getInstance(), this, 20, 20 * 5);
+		super (true, 20, 20 * 5);
 	}
 
 	@Override
