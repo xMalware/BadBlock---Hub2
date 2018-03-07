@@ -68,6 +68,7 @@ public class BossBarsUpdateTask extends HubTask
 
 		bossBar = bossBars.get(id);
 
+		System.out.println("BossBar: " + bossBar.getTicks());
 		show(bossBar, updated);
 	}
 
