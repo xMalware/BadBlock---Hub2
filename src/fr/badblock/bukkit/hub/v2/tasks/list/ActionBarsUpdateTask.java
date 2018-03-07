@@ -43,6 +43,7 @@ public class ActionBarsUpdateTask extends HubTask
 			if (ticks >= actionBar.getTicks())
 			{
 				id++;
+				ticks = 0;
 				updated = true;
 			}
 			else
@@ -51,7 +52,7 @@ public class ActionBarsUpdateTask extends HubTask
 			}
 		}
 
-		if (id > actionBarsConfig.getActionBars().size())
+		if (id + 1 > actionBars.size())
 		{
 			id = 0;
 			updated = true;

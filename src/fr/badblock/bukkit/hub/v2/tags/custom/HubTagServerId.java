@@ -28,7 +28,6 @@ public class HubTagServerId extends HubTag
 		}
 		catch (Exception error)
 		{
-			error.printStackTrace();
 			return Integer.toString(-1);
 		}
 	}

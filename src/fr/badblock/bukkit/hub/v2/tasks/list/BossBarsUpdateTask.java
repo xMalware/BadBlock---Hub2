@@ -31,21 +31,6 @@ public class BossBarsUpdateTask extends HubTask
 		update();
 	}
 
-	/**
-	 * List<String> bossBar = Arrays.asList(GameAPI.i18n().get(Locale.FRENCH_FRANCE, "hub.bossbar"));
-		if (!reverse && percent < 1.0f) percent += 0.01f;
-		else if (reverse && percent > 0.0f) percent -= 0.01;
-		else if ((reverse && percent <= 0.0f) || (!reverse && percent >= 1.0f)) {
-			id++;
-			reverse = !reverse;
-		}
-		if (percent < 0.0f) percent = 0.0f;
-		else if (percent > 1.0f) percent = 1.0f;
-		if (id > bossBar.size() - 1) id = 0;
-		for (BadblockPlayer player : BukkitUtils.getPlayers())
-			player.addBossBar("hub", player.getTranslatedMessage("hub.bossbar")[id], percent, get(player.getTranslatedMessage("hub.bossbarcolor")[id]), BossBarStyle.SOLID);
-	 */
-
 	private void update()
 	{
 		BossBarsConfig bossBarsConfig = ConfigLoader.getBossBars();
@@ -60,6 +45,9 @@ public class BossBarsUpdateTask extends HubTask
 			if (ticks >= bossBar.getTicks())
 			{
 				id++;
+				ticks = 0;
+				reverse = false;
+				percent = 0f;
 				updated = true;
 			}
 			else
@@ -69,7 +57,7 @@ public class BossBarsUpdateTask extends HubTask
 			}
 		}
 
-		if (id > bossBars.size())
+		if (id + 1 > bossBars.size())
 		{
 			id = 0;
 			updated = true;
