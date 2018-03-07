@@ -1,28 +1,15 @@
 package fr.badblock.bukkit.hub.v2.inventories.objects;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 public class InventoryAction
 {
 
-	private InventoryActionType actionType;
+	private InventoryActionType		actionType;
 	private CustomItemActionType	action;
-	private String			   	actionData;
+	private String			   		actionData;
 	
-	public CustomItemActionType getAction()
-	{
-		return action;
-	}
-
-	public Object getActionType()
-	{
-		return actionType;
-	}
-
-	public String getActionData()
-	{
-		return actionData;
-	}
-
 }

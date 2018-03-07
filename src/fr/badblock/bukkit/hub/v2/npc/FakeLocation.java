@@ -39,4 +39,9 @@ public class FakeLocation
 		return dbObject;
 	}
 	
+	public String toString()
+	{
+		return "(x = " + this.x + ", y = " + this.y + ", z = " + this.z + ", world = " + this.world + ")";
+	}
+	
 }

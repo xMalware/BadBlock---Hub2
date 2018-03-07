@@ -43,5 +43,17 @@ public enum CustomItemActionType
 	{
 		getAction().execute(player, action, actionData);
 	}
+	
+	public static CustomItemActionType fromString(String string)
+	{
+		for (CustomItemActionType customItemActionType : CustomItemActionType.values())
+		{
+			if (string.equalsIgnoreCase(customItemActionType.name()))
+			{
+				return customItemActionType;
+			}
+		}
+		return null;
+	}
 
 }
