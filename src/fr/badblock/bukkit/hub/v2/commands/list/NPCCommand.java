@@ -632,7 +632,7 @@ public class NPCCommand extends AbstractCommand
 
 	private void help(CommandSender sender)
 	{
-		// TODO
+		GameAPI.i18n().sendMessage(sender, "hub.npc.help", sender.getName());
 	}
 
 	private EntityType getEntityType(String rawName)
