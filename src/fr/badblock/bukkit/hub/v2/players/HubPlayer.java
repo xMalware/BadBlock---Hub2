@@ -12,6 +12,8 @@ import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
 import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
 import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.players.bossbars.BossBarColor;
+import fr.badblock.gameapi.players.bossbars.BossBarStyle;
 import lombok.Data;
 
 @Data public class HubPlayer
@@ -58,7 +60,7 @@ import lombok.Data;
 			return this;
 		}
 		getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
-		getPlayer().sendTranslatedBossBar("hub.players.bossbar");
+		getPlayer().addBossBar("hub", "", 1f, BossBarColor.RED, BossBarStyle.SOLID);
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
 		setScoreboard(new HubScoreboard(getPlayer()));

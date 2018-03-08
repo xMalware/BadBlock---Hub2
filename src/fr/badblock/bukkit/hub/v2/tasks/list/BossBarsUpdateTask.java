@@ -68,7 +68,6 @@ public class BossBarsUpdateTask extends HubTask
 
 		bossBar = bossBars.get(id);
 
-		System.out.println("BossBar: " + bossBar.getTicks());
 		show(bossBar, updated);
 	}
 
@@ -103,7 +102,8 @@ public class BossBarsUpdateTask extends HubTask
 			line = tagManager.tagify(player, line);
 
 			// Send bossbar
-			player.addBossBar("hub", line, percent, bossBar.getColor(), BossBarStyle.SOLID);
+			player.changeBossBar("hub", line);
+			player.changeBossBarStyle("hub", percent, bossBar.getColor(), BossBarStyle.SOLID);
 		}
 	}
 

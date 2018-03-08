@@ -37,28 +37,29 @@ public class NPCSyncTask extends HubTask
 		while (cursor.hasNext())
 		{
 			NPC npc = NPC.toNPC(cursor.next());
-			list.put(npc.getUuid(), npc);
+			list.put(npc.getUniqueId(), npc);
 		}
 		
 		for (NPC npc : NPC.getNpcs().values())
 		{
-			if (!list.containsKey(npc.getUuid()))
+			if (!list.containsKey(npc.getUniqueId()))
 			{
 				// Removed
 				npc.despawn();
+				NPC.getNpcs().remove(npc.getUniqueId());
 			}
 		}
 		
 		for (NPC npc : list.values())
 		{
-			if (!NPC.getNpcs().containsKey(npc.getUuid()))
+			if (!NPC.getNpcs().containsKey(npc.getUniqueId()))
 			{
 				// Added
 				npc.spawn();
+				NPC.getNpcs().put(npc.getUniqueId(), npc);
 			}
 		}
 		
-		NPC.setNpcs(list);
 	}
 
 }

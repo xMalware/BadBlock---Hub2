@@ -163,10 +163,10 @@ public class NPCCommand extends AbstractCommand
 
 	private void list(CommandSender sender)
 	{
-		GameAPI.i18n().sendMessage(sender, "hub.npc.list.header", NPC.getNpcs().size());		
+		GameAPI.i18n().sendMessage(sender, "hub.npc.list.header", NPC.getNpcs().size());
 		for (NPC npc : NPC.getNpcs().values())
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.list.id", npc.getUuid(), npc.getDisplayName());		
+			GameAPI.i18n().sendMessage(sender, "hub.npc.list.id", npc.getUniqueId(), npc.getDisplayName());		
 		}
 		GameAPI.i18n().sendMessage(sender, "hub.npc.list.footer", NPC.getNpcs().size());
 	}
@@ -251,9 +251,11 @@ public class NPCCommand extends AbstractCommand
 		DBCollection collection = mongoService.getDb().getCollection("npc");
 
 		BasicDBObject dbObject = new BasicDBObject();
-		dbObject.append("uniqueId", npc.getUuid());
+		dbObject.append("uniqueId", npc.getUniqueId());
 
 		collection.update(dbObject, npc.toObject());
+		
+		npc.spawn();
 	}
 
 	/*
@@ -268,10 +270,10 @@ public class NPCCommand extends AbstractCommand
 		DBCollection collection = mongoService.getDb().getCollection("npc");
 
 		BasicDBObject dbObject = new BasicDBObject();
-		dbObject.append("uniqueId", npc.getUuid());
+		dbObject.append("uniqueId", npc.getUniqueId());
 
 		collection.remove(dbObject);	
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.removed", npc.getUuid());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.removed", npc.getUniqueId());
 	}
 
 	/*
@@ -284,7 +286,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length != 5)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.action.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.action.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -331,7 +333,7 @@ public class NPCCommand extends AbstractCommand
 		// Update NPC
 		update(npc);
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.action.updatedaction", npc.getUuid(), clickType.name(), customItemActionType.name(), actionData);
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.action.updatedaction", npc.getUniqueId(), clickType.name(), customItemActionType.name(), actionData);
 	}
 
 	/*
@@ -344,7 +346,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length < 3)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.displayname.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.displayname.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -354,7 +356,7 @@ public class NPCCommand extends AbstractCommand
 		// Update NPC
 		update(npc);
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.displayname.updated", npc.getUuid(), displayName);
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.displayname.updated", npc.getUniqueId(), displayName);
 	}
 
 	/*
@@ -379,7 +381,7 @@ public class NPCCommand extends AbstractCommand
 		// Update NPC
 		update(npc);
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.setloc.updated", npc.getUuid(), npc.getLocation());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.setloc.updated", npc.getUniqueId(), npc.getLocation());
 	}
 
 	/*
@@ -392,7 +394,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length < 3)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.vip.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.vip.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -415,7 +417,7 @@ public class NPCCommand extends AbstractCommand
 		// Update NPC
 		update(npc);
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.vip.updated", npc.getUuid(), npc.isVip());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.vip.updated", npc.getUniqueId(), npc.isVip());
 	}
 
 	/*
@@ -428,7 +430,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length < 3)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.staff.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.staff.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -451,7 +453,7 @@ public class NPCCommand extends AbstractCommand
 		// Update NPC
 		update(npc);
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.staff.updated", npc.getUuid(), npc.isStaff());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.staff.updated", npc.getUniqueId(), npc.isStaff());
 	}
 
 	/*
@@ -464,7 +466,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length < 3)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.type.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.type.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -482,7 +484,7 @@ public class NPCCommand extends AbstractCommand
 		// Update NPC
 		update(npc);
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.type.updated", npc.getUuid(), npc.getEntityType().name());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.type.updated", npc.getUniqueId(), npc.getEntityType().name());
 	}
 
 	/**
@@ -499,7 +501,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length < 3)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -518,7 +520,7 @@ public class NPCCommand extends AbstractCommand
 			removePermission(sender, npc, args);
 			break;
 		default:
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.usage", npc.getUniqueId());
 			break;
 		}	
 	}
@@ -539,12 +541,12 @@ public class NPCCommand extends AbstractCommand
 			npc.setPermissions(new ArrayList<>());
 		}
 
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.list.header", npc.getUuid(), npc.getPermissions().size());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.list.header", npc.getUniqueId(), npc.getPermissions().size());
 		for (String permission : npc.getPermissions())
 		{
 			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.list.permission", permission);	
 		}
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.list.footer", npc.getUuid(), npc.getPermissions().size());
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.list.footer", npc.getUniqueId(), npc.getPermissions().size());
 	}
 
 
@@ -560,7 +562,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length != 4)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.add.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.add.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -572,7 +574,7 @@ public class NPCCommand extends AbstractCommand
 		// Permission already in list
 		if (npc.getPermissions().contains(permission))
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.add.already", npc.getUuid(), permission);
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.add.already", npc.getUniqueId(), permission);
 			return;
 		}
 		
@@ -582,7 +584,7 @@ public class NPCCommand extends AbstractCommand
 		// Update
 		update(npc);
 		
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.add.added", npc.getUuid(), permission);
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.add.added", npc.getUniqueId(), permission);
 	}
 	
 	/**
@@ -597,7 +599,7 @@ public class NPCCommand extends AbstractCommand
 	{
 		if (args.length != 4)
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.remove.usage", npc.getUuid());
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.remove.usage", npc.getUniqueId());
 			return;
 		}
 
@@ -609,7 +611,7 @@ public class NPCCommand extends AbstractCommand
 		// Unknown permission
 		if (!npc.getPermissions().contains(permission))
 		{
-			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.remove.unknown", npc.getUuid(), permission);
+			GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.remove.unknown", npc.getUniqueId(), permission);
 			return;
 		}
 		
@@ -619,7 +621,7 @@ public class NPCCommand extends AbstractCommand
 		// Update
 		update(npc);
 		
-		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.remove.removed", npc.getUuid(), permission);
+		GameAPI.i18n().sendMessage(sender, "hub.npc.manage.permissions.remove.removed", npc.getUniqueId(), permission);
 	}
 
 	private void avoidNPEPermissions(NPC npc)

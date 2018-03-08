@@ -27,7 +27,7 @@ public class NPC
 
 	@Getter@Setter private static Map<String, NPC> npcs = new HashMap<>();
 
-	private String					uuid;
+	private String					uniqueId;
 	private String					displayName;
 	private EntityType				entityType;
 	private InventoryAction[]		actions;
@@ -38,9 +38,9 @@ public class NPC
 
 	private transient FakeEntity<?>	fakeEntity;
 
-	public NPC(String uuid, String displayName, EntityType entityType, InventoryAction[] actions, boolean vip, boolean staff, FakeLocation location, List<String> permissions)
+	public NPC(String uniqueId, String displayName, EntityType entityType, InventoryAction[] actions, boolean vip, boolean staff, FakeLocation location, List<String> permissions)
 	{
-		this.uuid = uuid;
+		this.uniqueId = uniqueId;
 		this.displayName = displayName;
 		this.entityType = entityType;
 		this.actions = actions;
@@ -53,7 +53,7 @@ public class NPC
 	public DBObject toObject()
 	{
 		BasicDBObject result = new BasicDBObject();
-		result.append("uniqueId", uuid);
+		result.append("uniqueId", uniqueId);
 		result.append("displayName", displayName);
 		result.append("entityType", entityType.name());
 		result.append("actions", actions);
