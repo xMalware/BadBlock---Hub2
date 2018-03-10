@@ -36,7 +36,7 @@ public class FakeLocation
 	
 	public Location toLocation()
 	{
-		return new Location(Bukkit.getWorld(getWorld()), getX(), getY(), getZ());
+		return new Location(Bukkit.getWorld(getWorld()), getX(), getY(), getZ(), getYaw(), getPitch());
 	}
 
 	public DBObject toObject()
