@@ -14,6 +14,8 @@ import fr.badblock.bukkit.hub.v2.tags.custom.HubTagIgnoreNumber;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLanguage;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevelNeeded;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevels;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLocalOnlinePlayers;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagNetworkOnlinePlayers;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagOwned;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPercentLevel;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPing;
@@ -49,8 +51,11 @@ public enum HubTags
 	PING(new HubTagPing(), "{Ping}"),
 	GROUP_PREFIX(new HubTagGroupPrefix(), "{Group_Prefix}"),
 	GROUP_SUFFIX(new HubTagGroupSuffix(), "{Group_Suffix}"),
+	// Server info
 	SERVER_NAME(new HubTagServerName(), "{Server_Name}"),
 	SERVER_ID(new HubTagServerId(), "{Server_Id}"),
+	LOCAL_ONLINEPLAYERS(new HubTagLocalOnlinePlayers(), "{Local_OnlinePlayers}"),
+	NETWORK_ONLINEPLAYERS(new HubTagNetworkOnlinePlayers(), "{Network_OnlinePlayers}"),
 	// Price
 	OWNED(new HubTagOwned(), "{owned}"),
 	BADCOINS_NEEDED(new HubTagBadcoinsNeeded(), "{badcoinsNeeded}"),
