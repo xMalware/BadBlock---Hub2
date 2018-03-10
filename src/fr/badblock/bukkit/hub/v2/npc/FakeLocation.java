@@ -16,22 +16,22 @@ public class FakeLocation
 	private double	x;
 	private double	y;
 	private double	z;
-	private float	pitch;
 	private float	yaw;
+	private float	pitch;
 	
 	public FakeLocation(Location location)
 	{
-		this(location.getWorld().getName(), location.getX(), location.getY(), location.getZ(), location.getPitch(), location.getYaw());
+		this(location.getWorld().getName(), location.getX(), location.getY(), location.getZ(), location.getYaw(), location.getPitch());
 	}
 	
-	public FakeLocation(String world, double x, double y, double z, float pitch, float yaw)
+	public FakeLocation(String world, double x, double y, double z, float yaw, float pitch)
 	{
 		this.world = world;
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.pitch = pitch;
 		this.yaw = yaw;
+		this.pitch = pitch;
 	}
 	
 	public Location toLocation()
@@ -46,14 +46,14 @@ public class FakeLocation
 		dbObject.append("x", this.x);
 		dbObject.append("y", this.y);
 		dbObject.append("z", this.z);
-		dbObject.append("pitch", this.pitch);
 		dbObject.append("yaw", this.yaw);
+		dbObject.append("pitch", this.pitch);
 		return dbObject;
 	}
 	
 	public String toString()
 	{
-		return "(x = " + this.x + ", y = " + this.y + ", z = " + this.z + ", pitch = " + this.pitch + ", yaw = " + yaw + ", world = " + this.world + ")";
+		return "(x = " + this.x + ", y = " + this.y + ", z = " + this.z + ", yaw = " + this.yaw + ", pitch = " + this.pitch + ", world = " + this.world + ")";
 	}
 	
 }

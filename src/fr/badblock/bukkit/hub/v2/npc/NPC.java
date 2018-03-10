@@ -10,7 +10,6 @@ import org.bukkit.entity.EntityType;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
-import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.utils.EntityUtils;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.fakeentities.FakeEntity;
@@ -30,7 +29,7 @@ public class NPC
 	private String					uniqueId;
 	private String					displayName;
 	private EntityType				entityType;
-	private InventoryAction[]		actions;
+	private DBObject[]				actions;
 	private boolean					vip;
 	private boolean					staff;
 	private FakeLocation			location;
@@ -38,7 +37,7 @@ public class NPC
 
 	private transient FakeEntity<?>	fakeEntity;
 
-	public NPC(String uniqueId, String displayName, EntityType entityType, InventoryAction[] actions, boolean vip, boolean staff, FakeLocation location, List<String> permissions)
+	public NPC(String uniqueId, String displayName, EntityType entityType, DBObject[] actions, boolean vip, boolean staff, FakeLocation location, List<String> permissions)
 	{
 		this.uniqueId = uniqueId;
 		this.displayName = displayName;
@@ -74,7 +73,7 @@ public class NPC
 		if (isAlive())
 		{
 			// Teleport
-			if (getFakeEntity().getLocation().distance(location.toLocation()) > 2)
+			if (!getFakeEntity().getLocation().equals(location.toLocation()))
 			{
 				getFakeEntity().teleport(location.toLocation());
 			}

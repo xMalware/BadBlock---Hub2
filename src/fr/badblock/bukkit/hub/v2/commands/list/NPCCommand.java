@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
@@ -255,6 +256,7 @@ public class NPCCommand extends AbstractCommand
 
 		collection.update(dbObject, npc.toObject());
 		
+		npc.despawn();
 		npc.spawn();
 	}
 
@@ -317,16 +319,16 @@ public class NPCCommand extends AbstractCommand
 
 		if (npc.getActions() == null)
 		{
-			npc.setActions(new InventoryAction[] { inventoryAction });
+			npc.setActions(new DBObject[] { inventoryAction.toObject() });
 		}
 		else
 		{
-			Map<InventoryActionType, InventoryAction> actionMap = new HashMap<>();
+			Map<InventoryActionType, DBObject> actionMap = new HashMap<>();
 
-			Arrays.stream(npc.getActions()).forEach(action -> actionMap.put(action.getActionType(), action));
-			actionMap.put(clickType, inventoryAction);
+			Arrays.stream(npc.getActions()).forEach(action -> actionMap.put((InventoryActionType) action.get("actionType"), action));
+			actionMap.put(clickType, inventoryAction.toObject());
 
-			InventoryAction[] actions = actionMap.values().stream().toArray(InventoryAction[]::new);
+			DBObject[] actions = actionMap.values().stream().toArray(DBObject[]::new);
 			npc.setActions(actions);
 		}
 
