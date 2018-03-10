@@ -6,6 +6,7 @@ import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountLoader;
+import fr.badblock.bukkit.hub.v2.games.GameLoader;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
 import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
@@ -40,6 +41,8 @@ public class HubLoader {
 		FeatureManager.generateAll();
 		// Load tasks
 		HubTaskLoader.load(plugin);
+		// Load games
+		GameLoader.load(plugin);
 	}
 	
 }
