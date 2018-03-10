@@ -13,21 +13,25 @@ public class FakeLocation
 {
 
 	private String	world;
-	private int		x;
-	private int		y;
-	private int		z;
+	private double	x;
+	private double	y;
+	private double	z;
+	private float	pitch;
+	private float	yaw;
 	
 	public FakeLocation(Location location)
 	{
-		this(location.getWorld().getName(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+		this(location.getWorld().getName(), location.getX(), location.getY(), location.getZ(), location.getPitch(), location.getYaw());
 	}
 	
-	public FakeLocation(String world, int x, int y, int z)
+	public FakeLocation(String world, double x, double y, double z, float pitch, float yaw)
 	{
 		this.world = world;
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		this.pitch = pitch;
+		this.yaw = yaw;
 	}
 	
 	public Location toLocation()
@@ -42,12 +46,14 @@ public class FakeLocation
 		dbObject.append("x", this.x);
 		dbObject.append("y", this.y);
 		dbObject.append("z", this.z);
+		dbObject.append("pitch", this.pitch);
+		dbObject.append("yaw", this.yaw);
 		return dbObject;
 	}
 	
 	public String toString()
 	{
-		return "(x = " + this.x + ", y = " + this.y + ", z = " + this.z + ", world = " + this.world + ")";
+		return "(x = " + this.x + ", y = " + this.y + ", z = " + this.z + ", pitch = " + this.pitch + ", yaw = " + yaw + ", world = " + this.world + ")";
 	}
 	
 }
