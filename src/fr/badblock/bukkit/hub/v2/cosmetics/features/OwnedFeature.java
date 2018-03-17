@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class OwnedFeature
 {
-	
+
 	private Feature		type;
 	private long		start;
 	private long		expire;
