@@ -25,6 +25,9 @@ public class SpleefRunnable extends BukkitRunnable
     public void run()
     {
         TIME_BEFORE_START--;
+        for(BadblockPlayer players : game.getPlayers()){
+            players.setLevel(TIME_BEFORE_START);
+        }
         if(TIME_BEFORE_START == 0)
         {
             TaskManager.cancelTaskById(task);
@@ -35,6 +38,7 @@ public class SpleefRunnable extends BukkitRunnable
                 players.getInventory().addItem(spade);
             }
         }
+
 
     }
 

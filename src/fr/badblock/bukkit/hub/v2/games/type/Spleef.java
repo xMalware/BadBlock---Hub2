@@ -1,14 +1,11 @@
 package fr.badblock.bukkit.hub.v2.games.type;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.HubGame;
 import fr.badblock.bukkit.hub.v2.games.runnables.SpleefRunnable;
 import fr.badblock.gameapi.game.GameState;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import fr.badblock.gameapi.utils.threading.TaskManager;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class Spleef extends HubGame
 {

@@ -12,7 +12,6 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsCreeper;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsDiscoSheep;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsEnderman;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsEndermite;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsEnderpearl;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsGiant;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsGuardian;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsHorse;
@@ -31,7 +30,6 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsSquid;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsVillager;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsWitch;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsWolf;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsXPBottle;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsZombie;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.PetsZombiePigman;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -50,7 +48,6 @@ public enum PetFeatures implements IFeatureWorker
 	DISCOSHEEP			(new PetsDiscoSheep()),
 	ENDERMAN			(new PetsEnderman()),
 	ENDERMITE			(new PetsEndermite()),
-	ENDERPEARL			(new PetsEnderpearl()),
 	GIANT				(new PetsGiant()),
 	GUARDIAN			(new PetsGuardian()),
 	HORSE				(new PetsHorse()),
@@ -69,7 +66,6 @@ public enum PetFeatures implements IFeatureWorker
 	VILLAGER			(new PetsVillager()),
 	WITCH				(new PetsWitch()),
 	WOLF				(new PetsWolf()),
-	XPBOTTLE			(new PetsXPBottle()),
 	ZOMBIE				(new PetsZombie()),
 	ZOMBIEPIGMAN		(new PetsZombiePigman());
 
