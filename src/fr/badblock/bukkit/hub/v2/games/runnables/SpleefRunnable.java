@@ -4,6 +4,7 @@ import fr.badblock.bukkit.hub.v2.games.HubGame;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.threading.TaskManager;
 import lombok.AllArgsConstructor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -34,6 +35,7 @@ public class SpleefRunnable extends BukkitRunnable
             for(BadblockPlayer players : game.getPlayers())
             {
                 teleportintoTheGame(players);
+                players.setGameMode(GameMode.SURVIVAL);
                 players.getInventory().clear();
                 players.getInventory().addItem(spade);
             }

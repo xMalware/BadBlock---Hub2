@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import fr.badblock.gameapi.utils.BukkitUtils;
 import org.bukkit.Bukkit;
 
 import fr.badblock.gameapi.BadblockPlugin;
@@ -17,9 +18,15 @@ public class GameLoader
 					"fr.badblock.bukkit.hub.v2.games.list"
 			};
 
+	private static String[] string1 = new String[]
+			{
+					"fr.badblock.bukkit.hub.v2.games.listeners"
+			};
+
 	public static void load(BadblockPlugin plugin)
 	{
 		loadGames(plugin);
+		loadGameListeners(plugin);
 	}
 
 	// Load tasks
@@ -65,6 +72,19 @@ public class GameLoader
 				}
 
 			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+			Bukkit.shutdown();
+		}
+	}
+
+	private static void loadGameListeners(BadblockPlugin plugin)
+	{
+		try
+		{
+			BukkitUtils.instanciateListenersAndCommandsFrom(plugin, string1);
 		}
 		catch (IOException e)
 		{
