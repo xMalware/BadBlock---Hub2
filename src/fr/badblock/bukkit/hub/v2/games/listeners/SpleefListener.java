@@ -19,7 +19,7 @@ public class SpleefListener extends BadListener{
     @EventHandler
     public void move(PlayerMoveEvent event){
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
-        if(event.getTo().getBlock().equals(Material.WATER)){
+        if(event.getFrom().getBlock().equals(Material.WATER) && event.getTo().getBlock().equals(Material.WATER)){
             if(gamePlayer.contains(player)) {
                 game.remove(player);
                 player.sendTranslatedMessage("hub.game.spleef.loose");
