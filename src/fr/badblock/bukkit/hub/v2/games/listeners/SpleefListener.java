@@ -9,18 +9,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SpleefListener extends BadListener{
 
     HubGame game;
-    ArrayList<HubGame> gamePlayer = new ArrayList<>();
+   public static HashMap<HubGame, BadblockPlayer> gamePlayer = new HashMap<>();
 
     //TODO: Get the defeath without moving
     @EventHandler
     public void move(PlayerMoveEvent event){
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         if(event.getFrom().getBlock().equals(Material.WATER) && event.getTo().getBlock().equals(Material.WATER)){
-            if(gamePlayer.contains(player)) {
+            if(gamePlayer.containsKey(player)) {
                 game.remove(player);
                 player.sendTranslatedMessage("hub.game.spleef.loose");
                 player.setGameMode(GameMode.ADVENTURE);

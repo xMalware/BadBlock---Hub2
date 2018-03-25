@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.games.type;
 
 import fr.badblock.bukkit.hub.v2.games.HubGame;
+import fr.badblock.bukkit.hub.v2.games.listeners.SpleefListener;
 import fr.badblock.bukkit.hub.v2.games.runnables.SpleefRunnable;
 import fr.badblock.gameapi.game.GameState;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -17,6 +18,7 @@ public class Spleef extends HubGame
     {
         if(GameState.getStatus(1) == GameState.WAITING){
             this.addPlayer(bplayer);
+            SpleefListener.gamePlayer.put(new Spleef(), bplayer);
         }
         play();
     }
