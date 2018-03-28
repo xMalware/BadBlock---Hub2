@@ -9,8 +9,9 @@ public class VIPCourseRunnableBeforeLaunching extends BukkitRunnable
 {
 
     HubGame game;
-    public int TIME_BEFORE_LAUNCHING = 30;
-    public int task;
+    VIPCourseRunnableLaunching launch;
+    public static int TIME_BEFORE_LAUNCHING = 31;
+    public static int task;
 
     @Override
     public void run()
@@ -25,9 +26,13 @@ public class VIPCourseRunnableBeforeLaunching extends BukkitRunnable
                 bPlayers.sendTranslatedMessage("hub.vipcourse.timer_before_launching");
             }
         }
-        if(TIME_BEFORE_LAUNCHING == 0){
+        if(TIME_BEFORE_LAUNCHING == 0)
+        {
             TaskManager.cancelTaskById(task);
-            //TODO: Set the timer and level for Launching
+            for(BadblockPlayer bPlayers : game.getPlayers()) {
+                bPlayers.setLevel(VIPCourseRunnableLaunching.TIME_BEFORE_START);
+            }
+            launch.run();
         }
     }
 }

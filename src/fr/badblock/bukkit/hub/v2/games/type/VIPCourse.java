@@ -15,6 +15,7 @@ public class VIPCourse extends HubGame{
         if(GameState.getStatus(1) == GameState.WAITING)
         {
             addPlayer(bPlayer);
+            bPlayer.setLevel(VIPCourseRunnableBeforeLaunching.TIME_BEFORE_LAUNCHING);
         }
         else
             {

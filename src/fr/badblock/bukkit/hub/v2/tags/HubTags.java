@@ -4,29 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTag;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoins;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsMultiplier;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsNeeded;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupPrefix;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupSuffix;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagIgnoreNumber;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLanguage;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevelNeeded;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevels;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLocalOnlinePlayers;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagNetworkOnlinePlayers;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagOwned;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPercentLevel;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPing;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPlayerName;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagServerId;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagServerName;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagShopPoints;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagShopPointsNeeded;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXP;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXPMultiplier;
-import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXPNeededForNextLevel;
+import fr.badblock.bukkit.hub.v2.tags.custom.*;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 import lombok.Setter;
@@ -61,7 +39,11 @@ public enum HubTags
 	BADCOINS_NEEDED(new HubTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new HubTagLevelNeeded(), "{levelNeeded}"),
 	SHOPPOINTS_NEEDED(new HubTagShopPointsNeeded(), "{shopPointsNeeded}"),
-	XP_NEEDED_FOR_NEXT_LEVEL(new HubTagXPNeededForNextLevel(), "{XpNeededforNextLevel}");
+	XP_NEEDED_FOR_NEXT_LEVEL(new HubTagXPNeededForNextLevel(), "{XpNeededforNextLevel}"),
+	// Games info (ex: Spleef etc in the Hub)
+    GAME_SPLEEF_TIMER_NUMBER(new HubTagSpleefTimerNumber(), "{spleefTimer}"),
+	GAME_VIPCOURSE_TIMER_LAUNCHING(new HubTagVIPCourseLaunchingTimerNumber(), "{vipcourseLaunchingTimer}"),
+	GAME_VIPCOURSE_TIMER_BEFORE_LAUNCHING_NUMBER(new HubTagVIPCourseBeforeLaunchingTimerNumber, "{vipcourseBeforeLaunchingTimer}");
 	
 	@Setter private HubTag 			hubTag;
 	@Setter private List<String>	tags;

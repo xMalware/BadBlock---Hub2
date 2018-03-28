@@ -18,7 +18,7 @@ public class SpleefRunnable extends BukkitRunnable
 {
 
     HubGame game;
-    public static int TIME_BEFORE_START = 10;
+    public static int TIME_BEFORE_START = 11;
     public static int task;
     ItemStack spade = new ItemStack(Material.DIAMOND_SPADE);
 
@@ -28,6 +28,12 @@ public class SpleefRunnable extends BukkitRunnable
         TIME_BEFORE_START--;
         for(BadblockPlayer players : game.getPlayers()){
             players.setLevel(TIME_BEFORE_START);
+        }
+        if(TIME_BEFORE_START == 5 || TIME_BEFORE_START == 4 || TIME_BEFORE_START == 3 || TIME_BEFORE_START == 2 || TIME_BEFORE_START == 1)
+        {
+            for(BadblockPlayer players: game.getPlayers()){
+                players.sendTranslatedMessage("hub.game.spleef.launching");
+            }
         }
         if(TIME_BEFORE_START == 0)
         {
