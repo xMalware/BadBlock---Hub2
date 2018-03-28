@@ -17,8 +17,10 @@ public class Spleef extends HubGame
     public Spleef()
     {
         if(GameState.getStatus(1) == GameState.WAITING){
-            this.addPlayer(bplayer);
+            addPlayer(bplayer);
             SpleefListener.gamePlayer.put(new Spleef(), bplayer);
+        } else {
+            bplayer.sendTranslatedMessage("hub.game.spleef.already_started");
         }
         play();
     }
