@@ -43,7 +43,7 @@ public enum HubTags
 	// Games info (ex: Spleef etc in the Hub)
     GAME_SPLEEF_TIMER_NUMBER(new HubTagSpleefTimerNumber(), "{spleefTimer}"),
 	GAME_VIPCOURSE_TIMER_LAUNCHING(new HubTagVIPCourseLaunchingTimerNumber(), "{vipcourseLaunchingTimer}"),
-	GAME_VIPCOURSE_TIMER_BEFORE_LAUNCHING_NUMBER(new HubTagVIPCourseBeforeLaunchingTimerNumber, "{vipcourseBeforeLaunchingTimer}");
+	GAME_VIPCOURSE_TIMER_BEFORE_LAUNCHING_NUMBER(new HubTagVIPCourseBeforeLaunchingTimerNumber(), "{vipcourseBeforeLaunchingTimer}");
 	
 	@Setter private HubTag 			hubTag;
 	@Setter private List<String>	tags;
