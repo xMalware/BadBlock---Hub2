@@ -15,7 +15,7 @@ public class GameLoader
 
 	private static String[] string = new String[]
 			{
-					"fr.badblock.bukkit.hub.v2.games.list"
+					"fr.badblock.bukkit.hub.v2.games.type"
 			};
 
 	private static String[] string1 = new String[]
