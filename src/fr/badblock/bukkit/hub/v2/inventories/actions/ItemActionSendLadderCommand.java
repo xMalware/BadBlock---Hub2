@@ -1,6 +1,6 @@
 package fr.badblock.bukkit.hub.v2.inventories.actions;
 
-import fr.badblock.actions.CommandFactory;
+import fr.badblock.bukkit.hub.v2.utils.CommandFactory;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.gameapi.GameAPI;
