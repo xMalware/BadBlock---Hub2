@@ -7,10 +7,10 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
+import fr.badblock.api.common.tech.mongodb.MongoService;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
 import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.GameAPI;
-import fr.toenga.common.tech.mongodb.MongoService;
 
 public class NPCSyncTask extends HubTask
 {
