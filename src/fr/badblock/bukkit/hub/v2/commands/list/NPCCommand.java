@@ -12,7 +12,9 @@ import org.bukkit.entity.Player;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
+import com.sun.xml.internal.ws.util.StringUtils;
 
+import fr.badblock.api.common.tech.mongodb.MongoService;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryActionType;
@@ -22,9 +24,7 @@ import fr.badblock.bukkit.hub.v2.tasks.list.NPCSyncTask;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer.GamePermission;
-import fr.badblock.gameapi.utils.general.StringUtils;
 import fr.badblock.gameapi.utils.i18n.TranslatableString;
-import fr.toenga.common.tech.mongodb.MongoService;
 import net.md_5.bungee.api.ChatColor;
 
 public class NPCCommand extends AbstractCommand
