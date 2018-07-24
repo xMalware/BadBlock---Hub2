@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
-import com.sun.xml.internal.ws.util.StringUtils;
+import fr.badblock.gameapi.utils.general.StringUtils;
 
 import fr.badblock.api.common.tech.mongodb.MongoService;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
