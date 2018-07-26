@@ -6,10 +6,12 @@ import java.util.Map;
 import fr.badblock.bukkit.hub.v2.config.HubConfig;
 import fr.badblock.bukkit.hub.v2.players.addons.ActionBar;
 import fr.badblock.gameapi.BadblockPlugin;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = false)
 public class ActionBarsConfig extends HubConfig
 {
