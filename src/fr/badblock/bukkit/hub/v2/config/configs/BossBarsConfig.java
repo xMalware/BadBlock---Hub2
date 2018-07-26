@@ -7,10 +7,12 @@ import fr.badblock.bukkit.hub.v2.config.HubConfig;
 import fr.badblock.bukkit.hub.v2.players.addons.BossBar;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.players.bossbars.BossBarColor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = false)
 public class BossBarsConfig extends HubConfig
 {

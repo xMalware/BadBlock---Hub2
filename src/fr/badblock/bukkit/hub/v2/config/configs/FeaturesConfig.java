@@ -9,10 +9,12 @@ import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureNeeded;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
 import fr.badblock.gameapi.BadblockPlugin;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = false)
 public class FeaturesConfig extends HubConfig
 {

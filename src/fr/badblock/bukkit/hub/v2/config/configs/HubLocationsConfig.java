@@ -8,10 +8,13 @@ import org.bukkit.Location;
 import fr.badblock.bukkit.hub.v2.config.HubConfig;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.utils.ConfigUtils;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data@EqualsAndHashCode(callSuper = false)
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = false)
 public class HubLocationsConfig extends HubConfig
 {
 
