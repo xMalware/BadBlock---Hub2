@@ -33,6 +33,10 @@ import lombok.Data;
 	private String							buyFeature;
 	private CustomInventory					customInventory;
 	
+	private boolean						jump;
+	private boolean						jumpBeingTeleported;
+	private int									jumpCheckpoint;
+	
 	public HubPlayer(BadblockPlayer player)
 	{
 		this.setPlayer(player);
