@@ -19,7 +19,7 @@ public class Jump extends JumpListener
 	public Jump() 
 	{
 		bp.removePotionEffects();
-		if(bp.getLocation().getBlockY() >= 2) 
+		if(bp.getLocation().getBlockY() >= 2)
 		{
 			bp.teleport((Location) checkpoints);
 			Location JumpEnd = new Location(Bukkit.getWorld("world"),-246.470,165,17.576,1.1f,0.8f);

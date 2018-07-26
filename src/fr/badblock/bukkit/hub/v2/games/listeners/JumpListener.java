@@ -21,7 +21,8 @@ public class JumpListener extends BadListener
 	
 	@SuppressWarnings("unlikely-arg-type")
 	@EventHandler
-	public void onMove(PlayerMoveEvent e) {
+	public void onMove (PlayerMoveEvent e)
+	{
 		BadblockPlayer bpj = (BadblockPlayer) e.getPlayer();
 		if(bpj.getLocation().getBlockY() >= 2) 
 		{
