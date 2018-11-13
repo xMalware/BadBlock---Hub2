@@ -40,7 +40,8 @@ public class JumpListener extends BadListener
 			hubPlayer.setJumpBeingTeleported(false);
 			return;
 		}
-		
+
+		player.setWalkSpeed(0.4F);
 		hubPlayer.setJump(false);
 		hubPlayer.setJumpBeingTeleported(false);
 		hubPlayer.setJumpCheckpoint(0);
@@ -68,6 +69,7 @@ public class JumpListener extends BadListener
 			{
 				bpj.teleport(config.getStart());
 				hubPlayer.setJump(false);
+				bpj.setWalkSpeed(0.4F);
 			}
 			else
 			{
@@ -78,6 +80,7 @@ public class JumpListener extends BadListener
 		}
 
 	}
+	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e)
 	{
@@ -111,6 +114,9 @@ public class JumpListener extends BadListener
 
 			hubPlayer.setJump(true);
 			hubPlayer.setJumpCheckpoint(0);
+			bp.setWalkSpeed(0.2F);
+			bp.setFlying(false);
+			bp.setAllowFlight(false);
 			bp.sendTranslatedMessage("hub.game.jump.started");
 			return;
 		}
@@ -121,6 +127,8 @@ public class JumpListener extends BadListener
 			hubPlayer.setJump(false);
 			hubPlayer.setJumpCheckpoint(0);
 			bp.sendTranslatedMessage("hub.game.jump.end");
+			// Reset
+			bp.setWalkSpeed(0.4F);
 			// TODO
 			return;
 		}

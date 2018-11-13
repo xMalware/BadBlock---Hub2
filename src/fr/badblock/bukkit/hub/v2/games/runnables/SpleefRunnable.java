@@ -53,8 +53,8 @@ public class SpleefRunnable extends BukkitRunnable
     public void teleportintoTheGame(BadblockPlayer player)
     {
         Random r = new Random();
-        r.nextInt(8);
-        if(r.equals(1))
+        int o = r.nextInt(8);
+        if(o == 1)
         {
             Location location = new Location(player.getWorld(), -133.484, 76, 1.315);
             player.teleport(location);

@@ -6,6 +6,7 @@ import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
+
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguiseEffect;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.BadListener;
@@ -22,6 +23,16 @@ public class PlayerMoveListener extends BadListener
 		HubPlayer hubPlayer = HubPlayer.get(player);
 		workWithDisguiseEffects(player, hubPlayer);
 		workLaunchpad(player, event.getTo());
+		autoTeleport(player, event);
+	}
+
+	private void autoTeleport(BadblockPlayer player, PlayerMoveEvent event)
+	{
+		Location to = event.getTo();
+		if (to.getY() <= 0)
+		{
+			event.setTo(to.getWorld().getSpawnLocation());
+		}
 	}
 	
 	private void workLaunchpad(BadblockPlayer player, Location to)
