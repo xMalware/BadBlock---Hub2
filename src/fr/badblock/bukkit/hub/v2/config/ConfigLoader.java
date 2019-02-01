@@ -24,7 +24,7 @@ public class ConfigLoader
 		setFeatures(new FeaturesConfig(plugin, "features"));
 		setActionBars(new ActionBarsConfig(plugin, "actionBars"));
 		setBossBars(new BossBarsConfig(plugin, "bossBars"));
-		setHat(new HatConfig(plugin, "cosmestics_hats"));
+		setHat(new HatConfig(plugin, "cosmetics_hats"));
 	}
 
 }
