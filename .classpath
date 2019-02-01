@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/API (1)"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spigot-1.8.8-R0.1-SNAPSHOT-latest"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mongo-java-driver-3.6.3"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lombok (2)"/>
-	<classpathentry kind="lib" path="C:/Users/Corentin/Downloads/lombok.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Corentin/Downloads/spigot-1.8.8-R0.1-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Corentin/Desktop/mongo-java-driver-3.6.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Corentin/Desktop/Developpement/BadblockAPI-0.0.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Corentin/Desktop/Developpement/BadblockAPI.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BadblockAPI"/>
+	<classpathentry kind="lib" path="B:/Dev/Java/Libraries/lombok.jar"/>
+	<classpathentry kind="lib" path="B:/Dev/Java/Libraries/mongo-java-driver-3.6.4.jar"/>
+	<classpathentry kind="lib" path="B:/Dev/Java/Libraries/spigot-1.8.jar"/>
 	<classpathentry kind="output" path="out/production/HubV2"/>
 </classpath>
