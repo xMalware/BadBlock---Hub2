@@ -35,7 +35,8 @@ public class CourseInteract implements Listener {
     static CourseGameRunnable runnable;
     private Map<Player, Timestamp> time = new HashMap<>();
 
-    @EventHandler
+    @SuppressWarnings("deprecation")
+	@EventHandler
     public void onInteract(PlayerInteractEvent event) {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         Action action = event.getAction();
@@ -69,6 +70,7 @@ public class CourseInteract implements Listener {
                     player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu rejoins la partie !");
                     CourseManager.getInstance().getDoorsToEnter().replace(block.getLocation(), true);
 
+                    // TODO REWRITE THIS! I'LL SHAKE!
                     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                     timestamp.setSeconds(timestamp.getSeconds() + 30);
                     time.put(player, timestamp);

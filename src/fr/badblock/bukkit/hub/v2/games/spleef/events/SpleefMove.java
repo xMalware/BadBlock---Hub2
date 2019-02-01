@@ -72,7 +72,8 @@ public class SpleefMove implements Listener {
                                 int i = 61;
                                 List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
-                                @Override
+                                @SuppressWarnings("deprecation")
+								@Override
                                 public void run() {
                                     if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
                                         SpleefManager.getInstance().getSpleefPlayers().forEach((player, spleefPlayer) -> {

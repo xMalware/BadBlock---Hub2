@@ -29,7 +29,8 @@ public class Box {
         this.blocksChanged = new ArrayList<>();
     }
 
-    public void spawnRandomBlocks() {
+    @SuppressWarnings("deprecation")
+	public void spawnRandomBlocks() {
         Random random = new Random();
         List<Block> blocks = cuboidSelection.getBlocks();
 

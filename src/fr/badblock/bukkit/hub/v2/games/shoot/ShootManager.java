@@ -1,5 +1,18 @@
 package fr.badblock.bukkit.hub.v2.games.shoot;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.EntityType;
+import org.bukkit.plugin.PluginManager;
+
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.shoot.commands.GoShoot;
 import fr.badblock.bukkit.hub.v2.games.shoot.events.ShootBlock;
@@ -11,19 +24,6 @@ import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.PluginManager;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Toinetoine1 on 18/01/2019.

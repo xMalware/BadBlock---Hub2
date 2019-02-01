@@ -1,13 +1,13 @@
 package fr.badblock.bukkit.hub.v2.games.blockparty.events;
 
-import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
-import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPlayer;
-import fr.badblock.bukkit.hub.v2.games.blockparty.task.MainTask;
-import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
-import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.gameapi.players.BadblockPlayer;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -19,14 +19,22 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.sql.Timestamp;
-import java.util.*;
+import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
+
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
+import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPlayer;
+import fr.badblock.bukkit.hub.v2.games.blockparty.task.MainTask;
+import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
+import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class PartyInteract implements Listener {
 
     private Map<Player, Timestamp> time = new HashMap<>();
 
-    @EventHandler
+    @SuppressWarnings("deprecation")
+	@EventHandler
     public void onInteract(PlayerInteractEvent event){
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         Action action = event.getAction();
@@ -58,6 +66,7 @@ public class PartyInteract implements Listener {
                 waitingPlayers.put(player, new BlockPlayer(player, false));
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu rejoins la partie !");
 
+                // TODO REWRITE THIS! I'LL SHAKE!
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 timestamp.setSeconds(timestamp.getSeconds() + 30);
                 time.put(player, timestamp);

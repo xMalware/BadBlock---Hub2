@@ -1,22 +1,21 @@
 package fr.badblock.bukkit.hub.v2.games.blockparty;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyInteract;
-import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyMove;
-import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
-import fr.badblock.gameapi.packets.out.play.PlayChangeGameState;
-import fr.badblock.gameapi.utils.selections.CuboidSelection;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.HashMap;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
-import java.util.HashMap;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyInteract;
+import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyMove;
+import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.gameapi.utils.selections.CuboidSelection;
+import lombok.Getter;
 
 public class BlockPartyManager implements IGameModule {
 
