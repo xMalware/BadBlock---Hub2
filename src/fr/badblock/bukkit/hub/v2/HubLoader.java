@@ -20,8 +20,6 @@ public class HubLoader {
 	{
 		// Load configuration
 		ConfigLoader.load(plugin);
-		// Linked servers
-		RabbitLoader.load();
 		// Load listeners
 		ListenerPackages.load(plugin);
 		// Load commands
