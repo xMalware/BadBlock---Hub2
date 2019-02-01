@@ -21,6 +21,7 @@ public class InventoryCloseListener extends BadListener
 		hubPlayer.setInventory(null);
 		hubPlayer.setBuyFeature(null);
 		hubPlayer.setCustomInventory(null);
+		hubPlayer.setCustomActions(null);
 	}
 
 }

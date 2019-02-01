@@ -12,6 +12,7 @@ public class ItemActionSendLadderCommand extends CustomItemAction
 	@Override
 	public void execute(BadblockPlayer player, CustomItemActionType action, String actionData)
 	{	
+		// TODO Rewrite (NBK)
 		CommandFactory commandFactory = new CommandFactory(player.getName(), actionData);
 		GameAPI.getAPI().getRabbitSpeaker().sendAsyncUTF8Publisher("forcecommand.ladder", GameAPI.getGson().toJson(commandFactory), 10000, false);
 	}

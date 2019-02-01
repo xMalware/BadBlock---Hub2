@@ -10,6 +10,7 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
+import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.bossbars.BossBarColor;
@@ -31,7 +32,8 @@ import lombok.Data;
 	
 	private String							inventory;
 	private String							buyFeature;
-	private CustomInventory					customInventory;
+	private CustomInventory			customInventory;
+	private Map<Integer, InventoryAction[]> customActions;
 	
 	private boolean						jump;
 	private boolean						jumpBeingTeleported;

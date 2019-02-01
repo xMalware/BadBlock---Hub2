@@ -1,10 +1,13 @@
 package fr.badblock.bukkit.hub.v2.inventories.objects;
 
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBoosterGameSelect;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBoosterRemove;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBuyFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionCloseInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommand;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionOpenInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendLadderCommand;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendMessage;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionUseFeature;
@@ -24,7 +27,10 @@ public enum CustomItemActionType
 	WAITING_LINE		(new ItemActionWaitingLine()),
 	BUY_FEATURE			(new ItemActionBuyFeature()),
 	USE_FEATURE			(new ItemActionUseFeature()),
+	SEND_MESSAGE			(new ItemActionSendMessage()),
 	SEND_LADDERCOMMAND	(new ItemActionSendLadderCommand()),
+	BOOSTER_REMOVE				(new ItemActionBoosterRemove()),
+	BOOSTER_GAMESELECT		(new ItemActionBoosterGameSelect()),
 	NOTHING				(null);
 
 	private CustomItemAction action;

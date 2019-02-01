@@ -46,13 +46,20 @@ public class BukkitInventories
 	{
 		String name = player.getTranslatedMessage(inventoryObject.getI18name())[0];
 		Inventory inventory = Bukkit.createInventory(null, 9 * inventoryObject.getLines(), name);
+
 		for (InventoryItemObject inventoryItemObject : inventoryObject.getItems())
 		{
 			String[] splitter = inventoryItemObject.getType().split(":");
 			String material = splitter[0];
 			byte data = 0;
-			if (splitter.length >= 2) data = Byte.parseByte(splitter[1]);
+
+			if (splitter.length >= 2)
+			{
+				data = Byte.parseByte(splitter[1]);
+			}
+
 			Material type = null;
+
 			try
 			{
 				int o = Integer.parseInt(material);
@@ -62,19 +69,23 @@ public class BukkitInventories
 			{
 				type = Material.getMaterial(material);
 			}
+
 			ItemStack itemStack = new ItemStack(type, inventoryItemObject.getAmount(), data);
+
 			if (inventoryItemObject.isFakeEnchant())
 			{
 				itemStack = ItemStackUtils.fakeEnchant(itemStack);
 			}
+
 			ItemMeta itemMeta = itemStack.getItemMeta();
 			TagManager tagManager = TagManager.getInstance();
-			
+
 			if (inventoryItemObject.getI18name() != null && !inventoryItemObject.getI18name().isEmpty())
 			{
 				String string = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage(inventoryItemObject.getI18name())[0]);
 				itemMeta.setDisplayName(tagManager.tagify(player, string, inventoryItemObject));
 			}
+
 			if (inventoryItemObject.getI18lore() != null && !inventoryItemObject.getI18lore().isEmpty())
 			{
 				List<String> lore = new ArrayList<>();
@@ -85,9 +96,22 @@ public class BukkitInventories
 				}
 				itemMeta.setLore(lore);
 			}
+
 			itemStack.setItemMeta(itemMeta);
 			inventory.setItem(inventoryItemObject.getPlace(), itemStack);
 		}
+
+		// Custom fillers
+		if (inventoryObject.getFiller() != null)
+		{
+			InventoryFillers filler = InventoryFillers.getFiller(inventoryObject.getFiller());
+
+			if (filler != null)
+			{
+				filler.fill(player, inventoryObject, inventory);
+			}
+		}
+
 		return inventory;
 	}
 

@@ -7,8 +7,9 @@ import lombok.Getter;
 @Getter public class InventoryObject
 {
 
-	private String 					i18name;
-	private int	  					lines;
+	private String 								i18name;
+	private int	  									lines;
+	private String								filler;
 	private InventoryItemObject[]	items;
 	
 	public InventoryItemObject[] getItems()
