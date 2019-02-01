@@ -39,11 +39,7 @@ public enum HubTags
 	BADCOINS_NEEDED(new HubTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new HubTagLevelNeeded(), "{levelNeeded}"),
 	SHOPPOINTS_NEEDED(new HubTagShopPointsNeeded(), "{shopPointsNeeded}"),
-	XP_NEEDED_FOR_NEXT_LEVEL(new HubTagXPNeededForNextLevel(), "{XpNeededforNextLevel}"),
-	// Games info (ex: Spleef etc in the Hub)
-    GAME_SPLEEF_TIMER_NUMBER(new HubTagSpleefTimerNumber(), "{spleefTimer}"),
-	GAME_VIPCOURSE_TIMER_LAUNCHING(new HubTagVIPCourseLaunchingTimerNumber(), "{vipcourseLaunchingTimer}"),
-	GAME_VIPCOURSE_TIMER_BEFORE_LAUNCHING_NUMBER(new HubTagVIPCourseBeforeLaunchingTimerNumber(), "{vipcourseBeforeLaunchingTimer}");
+	XP_NEEDED_FOR_NEXT_LEVEL(new HubTagXPNeededForNextLevel(), "{XpNeededforNextLevel}");
 	
 	@Setter private HubTag 			hubTag;
 	@Setter private List<String>	tags;

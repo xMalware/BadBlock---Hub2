@@ -4,7 +4,6 @@ import fr.badblock.bukkit.hub.v2.config.configs.ActionBarsConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.BossBarsConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.HubLocationsConfig;
-import fr.badblock.bukkit.hub.v2.config.configs.JumpLocationsConfig;
 import fr.badblock.gameapi.BadblockPlugin;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +15,6 @@ public class ConfigLoader
 	@Getter @Setter public static FeaturesConfig		features;
 	@Getter @Setter public static ActionBarsConfig		actionBars;
 	@Getter @Setter public static BossBarsConfig		bossBars;
-	@Getter @Setter public static JumpLocationsConfig		jump;
 
 	public static void load(BadblockPlugin plugin)
 	{
@@ -24,7 +22,6 @@ public class ConfigLoader
 		setFeatures(new FeaturesConfig(plugin, "features"));
 		setActionBars(new ActionBarsConfig(plugin, "actionBars"));
 		setBossBars(new BossBarsConfig(plugin, "bossBars"));
-		setJump(new JumpLocationsConfig(plugin, "jump"));
 	}
 
 }

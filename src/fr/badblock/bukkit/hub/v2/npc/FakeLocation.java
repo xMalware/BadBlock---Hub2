@@ -34,6 +34,11 @@ public class FakeLocation
 		this.pitch = pitch;
 	}
 	
+	public FakeLocation(BasicDBObject dbObject)
+	{
+		this(dbObject.getString("world"), dbObject.getDouble("x"), dbObject.getDouble("y"), dbObject.getDouble("z"), (float) dbObject.getDouble("yaw"), (float) dbObject.getDouble("pitch"));
+	}
+	
 	public Location toLocation()
 	{
 		return new Location(Bukkit.getWorld(getWorld()), getX(), getY(), getZ(), getYaw(), getPitch());

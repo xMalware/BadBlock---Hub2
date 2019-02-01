@@ -1,9 +1,6 @@
 package fr.badblock.bukkit.hub.v2.commands.list;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
@@ -11,8 +8,6 @@ import org.bukkit.entity.Player;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import fr.badblock.gameapi.utils.general.StringUtils;
 
 import fr.badblock.api.common.tech.mongodb.MongoService;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
@@ -24,6 +19,7 @@ import fr.badblock.bukkit.hub.v2.tasks.list.NPCSyncTask;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer.GamePermission;
+import fr.badblock.gameapi.utils.general.StringUtils;
 import fr.badblock.gameapi.utils.i18n.TranslatableString;
 import net.md_5.bungee.api.ChatColor;
 
@@ -319,17 +315,12 @@ public class NPCCommand extends AbstractCommand
 
 		if (npc.getActions() == null)
 		{
-			npc.setActions(new DBObject[] { inventoryAction.toObject() });
+			npc.setActions(new ArrayList<>());
+			npc.getActions().add(inventoryAction);
 		}
 		else
 		{
-			Map<InventoryActionType, DBObject> actionMap = new HashMap<>();
-
-			Arrays.stream(npc.getActions()).forEach(action -> actionMap.put((InventoryActionType) action.get("actionType"), action));
-			actionMap.put(clickType, inventoryAction.toObject());
-
-			DBObject[] actions = actionMap.values().stream().toArray(DBObject[]::new);
-			npc.setActions(actions);
+			npc.getActions().add(inventoryAction);
 		}
 
 		// Update NPC

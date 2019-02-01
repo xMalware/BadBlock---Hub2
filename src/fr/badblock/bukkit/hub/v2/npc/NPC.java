@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.npc;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,9 +8,11 @@ import java.util.UUID;
 
 import org.bukkit.entity.EntityType;
 
+import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
+import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.utils.EntityUtils;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.fakeentities.FakeEntity;
@@ -29,7 +32,7 @@ public class NPC
 	private String					uniqueId;
 	private String					displayName;
 	private EntityType				entityType;
-	private DBObject[]				actions;
+	private List<InventoryAction>	actions;
 	private boolean					vip;
 	private boolean					staff;
 	private FakeLocation			location;
@@ -37,7 +40,34 @@ public class NPC
 
 	private transient FakeEntity<?>	fakeEntity;
 
-	public NPC(String uniqueId, String displayName, EntityType entityType, DBObject[] actions, boolean vip, boolean staff, FakeLocation location, List<String> permissions)
+	public NPC(BasicDBObject dbObject)
+	{
+		this.uniqueId = dbObject.getString("uniqueId");
+		this.displayName = dbObject.getString("displayName");
+		this.entityType = EntityUtils.getEntityType(dbObject.getString("entityType"));
+		this.vip = dbObject.getBoolean("vip");
+		this.staff = dbObject.getBoolean("staff");
+		this.location = new FakeLocation((BasicDBObject) dbObject.get("location"));
+		
+		BasicDBList dbList = (BasicDBList) dbObject.get("permissions");
+		this.permissions = new ArrayList<>();
+		
+		for (Object string : dbList)
+		{
+			permissions.add(string.toString());
+		}
+		
+		dbList = (BasicDBList) dbObject.get("actions");
+		this.actions = new ArrayList<>();
+		
+		for (Object object : dbList)
+		{
+			BasicDBObject tempObject = (BasicDBObject) object;
+			actions.add(new InventoryAction(tempObject));
+		}
+	}
+	
+	public NPC(String uniqueId, String displayName, EntityType entityType, List<InventoryAction> actions, boolean vip, boolean staff, FakeLocation location, List<String> permissions)
 	{
 		this.uniqueId = uniqueId;
 		this.displayName = displayName;
@@ -55,7 +85,12 @@ public class NPC
 		result.append("uniqueId", uniqueId);
 		result.append("displayName", displayName);
 		result.append("entityType", entityType.name());
-		result.append("actions", actions);
+		BasicDBList dbList = new BasicDBList();
+		for (InventoryAction action : actions)
+		{
+			dbList.add(action.toObject());
+		}
+		result.append("actions", dbList);
 		result.append("vip", vip);
 		result.append("staff", staff);
 		result.append("location", location.toObject());

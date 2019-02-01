@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import org.bukkit.event.EventHandler;
 
-import com.mongodb.DBObject;
-
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryActionType;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
@@ -42,26 +40,24 @@ public class PlayerFakeEntityInteractListener extends BadListener
 			return;
 		}
 		
-		for (DBObject action : npc.getActions())
+		for (InventoryAction action : npc.getActions())
 		{
 			if (action == null)
 			{
 				continue;
 			}
 			
-			InventoryAction inventoryAction = new InventoryAction(action);
-			
-			if (!inventoryAction.getActionType().equals(InventoryActionType.LEFT_CLICK))
+			if (!action.getActionType().equals(InventoryActionType.LEFT_CLICK))
 			{
 				continue;
 			}
 			
-			if (inventoryAction.getAction() == null)
+			if (action.getAction() == null)
 			{
 				continue;
 			}
 			
-			inventoryAction.getAction().work(player, inventoryAction.getAction(), inventoryAction.getActionData());
+			action.getAction().work(player, action.getAction(), action.getActionData());
 		}
 	}
 	
