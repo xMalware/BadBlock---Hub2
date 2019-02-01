@@ -1,10 +1,10 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.features.types.DisguiseFeatures;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.HatsFeatures;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.types.MountFeatures;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.types.ParticleFeatures;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.types.PetFeatures;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class FeatureWorker
@@ -27,7 +27,7 @@ public class FeatureWorker
 			ParticleFeatures.work(player, feature);
 			break;
 		case HATS:
-			HatsFeatures.work(player, feature);
+			CustomHats.work(player, feature);
 			break;
 		default:
 			break;

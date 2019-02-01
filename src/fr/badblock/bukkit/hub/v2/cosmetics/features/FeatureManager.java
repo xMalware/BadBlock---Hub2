@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.HatsFeatures;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import lombok.Getter;
 import lombok.Setter;
@@ -100,12 +99,7 @@ public class FeatureManager
 		f.getType().getName().toLowerCase().equals(featureRawName) && ((f.getExpire() == -1) || (f.getExpire() != 1 && f.getExpire() > System.currentTimeMillis()))).count();
 		return count > 0;
 	}
-
-	public static void generateAll()
-	{
-		HatsFeatures.generateAll();
-	}
-
+	
 	public void generate(String rawName)
 	{
 		FeaturesConfig config = ConfigLoader.getFeatures();
@@ -113,6 +107,7 @@ public class FeatureManager
 		{
 			return;
 		}
+		
 		System.out.println("[BadBlockHub] Generating " + rawName);
 		config.getConfig().set(rawName + ".name", rawName);
 		config.getConfig().set(rawName + ".type", FeatureType.get(rawName.split("_")[0]).name());
@@ -124,6 +119,7 @@ public class FeatureManager
 		config.getConfig().set(rawName + ".needed.buyable", false);
 		config.getConfig().set(rawName + ".needed.everyoneHaveThis", false);
 		config.getConfig().set(rawName + ".needed.permissions", new ArrayList<>());
+	
 		try
 		{
 			config.getConfig().save(config.getFile());

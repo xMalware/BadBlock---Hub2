@@ -4,7 +4,6 @@ import java.io.File;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountLoader;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
@@ -36,8 +35,6 @@ public class HubLoader {
 		api.managePortals(new File(plugin.getDataFolder(), "portals"));
 		// Load mounts
 		MountLoader.load(plugin);
-		// Load features
-		FeatureManager.generateAll();
 		// Load tasks
 		HubTaskLoader.load(plugin);
 	}
