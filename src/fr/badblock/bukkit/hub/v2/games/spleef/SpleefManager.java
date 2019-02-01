@@ -1,8 +1,6 @@
 package fr.badblock.bukkit.hub.v2.games.spleef;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.spleef.commands.GoSpleef;
-import fr.badblock.bukkit.hub.v2.games.spleef.commands.QuitSpleef;
 import fr.badblock.bukkit.hub.v2.games.spleef.events.*;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
@@ -62,8 +60,6 @@ public class SpleefManager implements IGameModule {
 
     @Override
     public void registerCommands() {
-        BadBlockHub.getInstance().getCommand("gospleef").setExecutor(new GoSpleef());
-        BadBlockHub.getInstance().getCommand("quitspleef").setExecutor(new QuitSpleef());
     }
 
     @Override

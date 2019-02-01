@@ -1,20 +1,22 @@
-package fr.badblock.bukkit.hub.v2.games.spleef.commands;
+package fr.badblock.bukkit.hub.v2.commands.list;
 
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
+import fr.badblock.gameapi.command.AbstractCommand;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Created by Toinetoine1 on 21/01/2019.
- */
+public class SpleefQuitCommand extends AbstractCommand {
 
-public class QuitSpleef implements CommandExecutor {
+
+    public SpleefQuitCommand() {
+        super("quitspleef", null, BadblockPlayer.GamePermission.PLAYER);
+        this.allowConsole(false);
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean executeCommand(CommandSender sender, String[] args) {
         if(sender instanceof Player) {
             Player p = (Player) sender;
 
@@ -29,5 +31,4 @@ public class QuitSpleef implements CommandExecutor {
 
         return false;
     }
-
 }

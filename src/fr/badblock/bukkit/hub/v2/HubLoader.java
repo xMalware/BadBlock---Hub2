@@ -5,6 +5,7 @@ import java.io.File;
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountLoader;
+import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
 import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
@@ -27,6 +28,8 @@ public class HubLoader {
 		CommandsLoader.load(plugin);
 		// Load inventories
 		InventoriesLoader.loadInventories(plugin);
+		// Load Mini-Games
+		GamesManager.load(plugin);
 		// Load API
 		GameAPI api = plugin.getAPI();
 		api.formatChat(true, false, "hub");

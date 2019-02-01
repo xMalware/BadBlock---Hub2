@@ -1,0 +1,118 @@
+#Vous pouvez créer autant d'arene possible à la conditions de respecter la syntaxe
+Maps:
+  Ice:
+    Position:
+      1:
+        world: world
+        x: 27.5
+        y: 108
+        z: 155.5
+        yaw: -30
+        pitch: 0
+      2:
+        world: world
+        x: 47.5
+        y: 108
+        z: -120.5
+        yaw: 150
+        pitch: 0
+      3:
+        world: world
+        x: 38.5
+        y: 108
+        z: -156.5
+        yaw: 10
+        pitch: 0
+      4:
+        world: world
+        x: 50.5
+        y: 108
+        z: -157.5
+        yaw: 20
+        pitch: 0
+      5:
+        world: world
+        x: 50.5
+        y: 112
+        z: -136.5
+        yaw: 105
+        pitch: 15
+      6:
+        world: world
+        x: 26.5
+        y: 108
+        z: -118.5
+        yaw: -156
+        pitch: 0
+  Forest:
+    Position:
+      1:
+        world: world
+        x: -32.5
+        y: 109
+        z: -121.5
+        yaw: -90
+        pitch: 0
+      2:
+        world: world
+        x: -44.5
+        y: 109
+        z: -153.5
+        yaw: 17
+        pitch: 2
+      3:
+        world: world
+        x: -26.5
+        y: 109
+        z: -118.5
+        yaw: 160
+        pitch: 0
+      4:
+        world: world
+        x: -34.5
+        y: 109
+        z: -117.5
+        yaw: 90
+        pitch: 0
+      5:
+        world: world
+        x: -49.5
+        y: 109
+        z: -117.5
+        yaw: -120
+        pitch: 0
+      6:
+        world: world
+        x: -31.5
+        y: 115.5
+        z: -120.5
+        yaw: -160
+        pitch: 10
+      7:
+        world: world
+        x: -26.5
+        y: 109
+        z: -156.5
+        yaw: 32
+        pitch: 0
+      8:
+        world: world
+        x: -42.5
+        y: 109
+        z: -157.5
+        yaw: 85
+        pitch: 0
+      9:
+        world: world
+        x: -50.5
+        y: 109
+        z: -157.5
+        yaw: 0
+        pitch: 0
+      10:
+        world: world
+        x: -42.5
+        y: 113.5
+        z: -154.5
+        yaw: 0
+        pitch: 10

@@ -1,18 +1,24 @@
-package fr.badblock.bukkit.hub.v2.games.gladiators.commands;
+package fr.badblock.bukkit.hub.v2.commands.list;
 
 import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
+import fr.badblock.gameapi.command.AbstractCommand;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.block.Sign;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class GQuitCommand implements CommandExecutor {
+public class GladiatorQuitCommand extends AbstractCommand {
+
+
+    public GladiatorQuitCommand() {
+        super("quitgladiator", null, BadblockPlayer.GamePermission.PLAYER);
+        this.allowConsole(false);
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean executeCommand(CommandSender sender, String[] args) {
         if(sender instanceof Player) {
             Player player = (Player)sender;
 
@@ -31,7 +37,6 @@ public class GQuitCommand implements CommandExecutor {
             }
 
         }
-
 
         return false;
     }

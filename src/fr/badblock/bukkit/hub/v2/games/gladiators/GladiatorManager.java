@@ -1,8 +1,6 @@
 package fr.badblock.bukkit.hub.v2.games.gladiators;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.gladiators.commands.GKitCommand;
-import fr.badblock.bukkit.hub.v2.games.gladiators.commands.GQuitCommand;
 import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorCommand;
 import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorDeath;
 import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorInteract;
@@ -50,8 +48,6 @@ public class GladiatorManager implements IGameModule {
 
     @Override
     public void registerCommands() {
-        BadBlockHub.getInstance().getCommand("gkit").setExecutor(new GKitCommand());
-        BadBlockHub.getInstance().getCommand("quitgladiator").setExecutor(new GQuitCommand());
     }
 
     @Override

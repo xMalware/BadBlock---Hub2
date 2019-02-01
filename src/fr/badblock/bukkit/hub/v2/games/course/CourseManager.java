@@ -1,7 +1,6 @@
 package fr.badblock.bukkit.hub.v2.games.course;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.course.commands.GoCourseCMD;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseCommand;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseInteract;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseMove;
@@ -76,7 +75,6 @@ public class CourseManager implements IGameModule {
 
     @Override
     public void registerCommands() {
-        BadBlockHub.getInstance().getCommand("gocourse").setExecutor(new GoCourseCMD());
     }
 
     @Override

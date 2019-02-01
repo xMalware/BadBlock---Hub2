@@ -1,23 +1,26 @@
-package fr.badblock.bukkit.hub.v2.games.shoot.commands;
+package fr.badblock.bukkit.hub.v2.commands.list;
 
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
+import fr.badblock.gameapi.command.AbstractCommand;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Created by Toinetoine1 on 19/01/2019.
- */
-public class GoShoot implements CommandExecutor {
+public class GoCourseCommand extends AbstractCommand {
+
+
+    public GoCourseCommand() {
+        super("gocourse", null, BadblockPlayer.GamePermission.PLAYER);
+        this.allowConsole(false);
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
-        if(sender instanceof Player) {
-            Player p = (Player) sender;
+    public boolean executeCommand(CommandSender commandSender, String[] strings) {
+        if(commandSender instanceof Player) {
+            Player p = (Player) commandSender;
 
             if(CourseManager.getInstance().getWaitingPlayers().contains(p) || JumpManager.getInstance().getJumpPlayers().containsKey(p) ||
                     SpleefManager.getInstance().getSpleefPlayers().containsKey(p) || ShootManager.getInstance().getShootPlayers().containsKey(p)){
@@ -25,9 +28,9 @@ public class GoShoot implements CommandExecutor {
                 return true;
             }
 
-            p.teleport(ShootManager.getInstance().getShootLoc());
+            p.teleport(CourseManager.getInstance().getCourseGUILoc());
         }
+
         return false;
     }
-
 }

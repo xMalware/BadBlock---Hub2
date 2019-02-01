@@ -1,0 +1,44 @@
+#Coordonnés du Jump
+#La première coordonnées est celle du début du Jump
+#La dernière coordonnés est celle de la fin du Jump
+Location:
+  1:
+    world: world
+    x: -118
+    y: 81
+    z: 111
+  2:
+    world: world
+    x: -38
+    y: 108
+    z: 172
+  3:
+    world: world
+    x: 101
+    y: 94
+    z: 140
+  4:
+    world: world
+    x: 276
+    y: 105
+    z: -39
+  5:
+    world: world
+    x: 232
+    y: 141
+    z: -264
+  6:
+    world: world
+    x: 29
+    y: 123
+    z: -339
+  7:
+    world: world
+    x: -194
+    y: 109
+    z: -191
+  8:
+    world: world
+    x: -247
+    y: 165
+    z: 17

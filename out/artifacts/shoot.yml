@@ -1,0 +1,79 @@
+# Coordonnés des particules montrant la position de la place du joueur
+Particule:
+  1:
+    world: world
+    x: 158
+    y: 82
+    z: -96
+  2:
+    world: world
+    x: 163
+    y: 82
+    z: -96
+  3:
+    world: world
+    x: 168
+    y: 82
+    z: -92
+  4:
+    world: world
+    x: 173
+    y: 82
+    z: -92
+
+#Cuboid des bloc sur laquel il faut tirer
+# ATTENTION: VERIFIER BIEN QUE TOUT LES BLOCS PEUVENT ETRE TOUCHER
+Cuboid:
+  1:
+    Loc1:
+      world: world
+      x: 156
+      y: 85
+      z: -102
+    Loc2:
+      world: world
+      x: 159
+      y: 82
+      z: -145
+  2:
+    Loc1:
+      world: world
+      x: 161
+      y: 85
+      z: -102
+    Loc2:
+      world: world
+      x: 164
+      y: 82
+      z: -145
+  3:
+    Loc1:
+      world: world
+      x: 166
+      y: 85
+      z: -98
+    Loc2:
+      world: world
+      x: 169
+      y: 82
+      z: -145
+  4:
+    Loc1:
+      world: world
+      x: 171
+      y: 85
+      z: -98
+    Loc2:
+      world: world
+      x: 174
+      y: 82
+      z: -145
+
+#Coordonnés de l'armorstand pour lancer une partie
+Armor_stand:
+  world: world
+  x: 168
+  y: 82
+  z: -87
+  yaw: 180
+  pitch: 0
