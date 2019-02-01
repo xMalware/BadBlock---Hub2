@@ -21,7 +21,7 @@ public class ItemActionOpenInventory extends CustomItemAction
 			CustomItemActionType.CLOSE_INV.work(player, action, null);
 			return;
 		}
-		player.closeInventory(); // standby
+		//player.closeInventory(); // standby
 		player.openInventory(inventory);
 		HubPlayer hubPlayer = HubPlayer.get(player);
 		hubPlayer.setInventory(inventoryName);
