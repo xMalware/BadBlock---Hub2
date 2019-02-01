@@ -28,7 +28,6 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 		objective.setDisplayName("&b&o" + lang("hub.scoreboard.name", 0)[0]);
 		objective.setGenerator(this);
 		objective.generate();
-		doBadblockFooter(objective);
 	}
 
 	@Override
