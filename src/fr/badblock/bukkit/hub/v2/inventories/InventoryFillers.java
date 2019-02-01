@@ -30,7 +30,7 @@ public enum InventoryFillers
 			}
 		}
 		
-		throw new IllegalArgumentException("Unknown filler name : " + rawFillerName );
+		throw new IllegalArgumentException("Unknown filler name : " + rawFillerName);
 	}
 
 	public void fill(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)

@@ -1,4 +1,4 @@
-package fr.badblock.bukkit.hub.v2.inventories.custom;
+ package fr.badblock.bukkit.hub.v2.inventories.custom;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

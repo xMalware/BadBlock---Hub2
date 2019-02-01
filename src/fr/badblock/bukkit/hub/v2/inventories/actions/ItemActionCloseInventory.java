@@ -11,12 +11,12 @@ public class ItemActionCloseInventory extends CustomItemAction
 	@Override
 	public void execute(BadblockPlayer player, CustomItemActionType action, String actionData)
 	{
-		if (actionData != null && !actionData.isEmpty())
-		{
-			// TODO: do another action ?
-		}
 		HubPlayer hubPlayer = HubPlayer.get(player);
+		
 		hubPlayer.setInventory(null);
+		hubPlayer.setCustomInventory(null);
+		hubPlayer.setCustomActions(null);
+		
 		player.closeInventory();
 	}
 

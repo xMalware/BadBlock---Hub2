@@ -36,31 +36,41 @@ public class InventoryFillerHubList extends InventoryFiller
 	@Override
 	public void fill(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)
 	{
+		System.out.println("hub filler : 1");
+		
 		if (Hub.getHubs() == null || Hub.getHubs().isEmpty())
 		{
 			fillNoHub(player, inventoryObject, inventory);
 			return;
 		}
-
+		System.out.println("hub filler : 1A");
+		
 		Collection<Hub> hubs = Hub.getHubs();
 		Map<Integer, InventoryAction[]> actions = new HashMap<>();
 
 		int emptySlot = inventory.firstEmpty();
 
 		boolean something = false;
-
+		System.out.println("hub filler : 1B");
+		
 		for (Hub hub : hubs)
 		{
+			System.out.println("hub filler : 1C");
+			
 			if (emptySlot == -1)
 			{
 				continue;
 			}
 
+			System.out.println("hub filler : 1D");
+			
 			if (!hub.isOnline())
 			{
 				continue;
 			}
 
+			System.out.println("hub filler : 1E");
+			
 			something = true;
 			fillHub(player, hub, inventory, emptySlot);
 
@@ -76,6 +86,7 @@ public class InventoryFillerHubList extends InventoryFiller
 
 		if (!something)
 		{
+			System.out.println("hub filler : 1F");
 			fillNoHub(player, inventoryObject, inventory);
 		}
 
@@ -84,6 +95,7 @@ public class InventoryFillerHubList extends InventoryFiller
 		if (hubPlayer != null)
 		{
 			hubPlayer.setCustomActions(actions);
+			System.out.println("hub filler : 1G");
 		}
 	}
 
@@ -100,28 +112,41 @@ public class InventoryFillerHubList extends InventoryFiller
 		int amount = 1;
 		ChatColor chatColor = ChatColor.DARK_RED;
 
-		if (isOnline) {
+		if (isOnline)
+		{
 			material = Material.STAINED_CLAY;
 			// MOCHE!
-			if (players >= slots) {
+			if (players >= slots)
+			{
 				data = DyeColor.RED.getWoolData();
 				chatColor = ChatColor.RED;
-			} else if (players >= 80) {
+			}
+			else if (players >= 80)
+			{
 				data = DyeColor.ORANGE.getWoolData();
 				chatColor = ChatColor.GOLD;
-			} else if (players >= 60) {
+			}
+			else if (players >= 60)
+			{
 				data = DyeColor.YELLOW.getWoolData();
 				chatColor = ChatColor.YELLOW;
-			} else if (players >= 50) {
+			}
+			else if (players >= 50)
+			{
 				data = DyeColor.BLUE.getWoolData();
 				chatColor = ChatColor.BLUE;
-			} else if (players >= 40) {
+			}
+			else if (players >= 40)
+			{
 				data = DyeColor.CYAN.getWoolData();
 				chatColor = ChatColor.AQUA;
-			} else {
+			}
+			else
+			{
 				data = DyeColor.LIME.getWoolData();
 				chatColor = ChatColor.GREEN;
 			}
+			
 			amount = id >= 64 ? 64 : id;
 		}
 
@@ -182,12 +207,18 @@ public class InventoryFillerHubList extends InventoryFiller
 		}
 	}
 
-	public static ItemStack setMaxStackSize(ItemStack is, int amount){
-		try {
+	public static ItemStack setMaxStackSize(ItemStack is, int amount)
+	{
+		try
+		{
 			net.minecraft.server.v1_8_R3.ItemStack nmsIS = CraftItemStack.asNMSCopy(is);
 			nmsIS.getItem().c(amount);
 			return CraftItemStack.asBukkitCopy(nmsIS);
-		} catch (Throwable t) { }
+		}
+		catch (Throwable t)
+		{
+			
+		}
 
 		return null;
 	}
