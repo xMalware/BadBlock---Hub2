@@ -1,5 +1,7 @@
 package fr.badblock.bukkit.hub.v2.rabbit;
 
+import fr.badblock.gameapi.GameAPI;
+
 public class RabbitLoader
 {
 
@@ -10,7 +12,8 @@ public class RabbitLoader
 	{
 		try
 		{
-			GetServersDataListener.class.newInstance();
+			GameAPI.getAPI().getRabbitSpeaker().listen(new GetServersDataListener());
+			GameAPI.getAPI().getRabbitSpeaker().listen(new SEntryInfosListener());
 		}
 		catch (Exception error)
 		{

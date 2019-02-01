@@ -4,7 +4,30 @@ import java.util.Arrays;
 import java.util.List;
 
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
-import fr.badblock.bukkit.hub.v2.tags.custom.*;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTag;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoins;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsMultiplier;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsNeeded;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGamePlayers;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupPrefix;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupSuffix;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagIgnoreNumber;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLanguage;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevelNeeded;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevels;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLocalOnlinePlayers;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagNetworkOnlinePlayers;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagOwned;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPercentLevel;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPing;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagPlayerName;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagServerId;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagServerName;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagShopPoints;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagShopPointsNeeded;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXP;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXPMultiplier;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXPNeededForNextLevel;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +42,6 @@ public enum HubTags
 	BADCOINS_MULTIPLIER(new HubTagBadcoinsMultiplier(), "{badcoins_multiplier}"),
 	LEVELS(new HubTagLevels(), "{levels}"),
 	PERCENT_LEVEL(new HubTagPercentLevel(), "{percentLevel}"),
-	PLAYERNAME(new HubTagPlayerName(), "{playerName}"),
 	SHOP_POINTS(new HubTagShopPoints(), "{shopPoints}"),
 	XP(new HubTagXP(), "{Xp}"),
 	XP_MULTIPLIER(new HubTagXPMultiplier(), "{Xp_Multiplier}"),
@@ -34,6 +56,7 @@ public enum HubTags
 	SERVER_ID(new HubTagServerId(), "{Server_Id}"),
 	LOCAL_ONLINEPLAYERS(new HubTagLocalOnlinePlayers(), "{Local_OnlinePlayers}"),
 	NETWORK_ONLINEPLAYERS(new HubTagNetworkOnlinePlayers(), "{Network_OnlinePlayers}"),
+	GAME_PLAYERS(new HubTagGamePlayers(), "{Game_OnlinePlayers}"),
 	// Price
 	OWNED(new HubTagOwned(), "{owned}"),
 	BADCOINS_NEEDED(new HubTagBadcoinsNeeded(), "{badcoinsNeeded}"),
