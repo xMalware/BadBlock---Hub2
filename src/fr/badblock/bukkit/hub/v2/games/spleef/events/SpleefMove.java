@@ -47,7 +47,6 @@ public class SpleefMove implements Listener {
                         return;
                     }
 
-
                     SpleefManager.getInstance().getSpleefPlayers().put(player, new SpleefPlayer(player.getName(), player.getGameMode() == GameMode.CREATIVE));
                     player.sendMessage(SpleefManager.SPLEEF_PREFIX + "Vous rejoignez le Spleef !");
                     player.setGameMode(GameMode.SURVIVAL);

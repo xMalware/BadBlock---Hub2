@@ -1,0 +1,98 @@
+#Config de la Course
+
+# Positions des portillons pour RENTRER dans la partie
+Enter_gate:
+  1:
+    world: 'world'
+    x: -25
+    y: 81
+    z: -49
+  2:
+    world: 'world'
+    x: -23
+    y: 81
+    z: -49
+  3:
+    world: 'world'
+    x: -21
+    y: 81
+    z: -49
+  4:
+    world: 'world'
+    x: -19
+    y: 81
+    z: -49
+  5:
+    world: 'world'
+    x: -17
+    y: 81
+    z: -49
+
+# Positions du joueur quand il clique dans un portillons (dois etre dans le meme ordre que les positions du dessus)
+PlayerLoc:
+  1:
+    world: 'world'
+    x: -25
+    y: 81
+    z: -50
+  2:
+    world: 'world'
+    x: -23
+    y: 81
+    z: -50
+  3:
+    world: 'world'
+    x: -21
+    y: 81
+    z: -50
+  4:
+    world: 'world'
+    x: -19
+    y: 81
+    z: -50
+  5:
+    world: 'world'
+    x: -17
+    y: 81
+    z: -50
+
+# Positions des portillons qui s'ouvriront au démarrage de la partie
+Start_gate:
+  1:
+    world: 'world'
+    x: -25
+    y: 81
+    z: -51
+  2:
+    world: 'world'
+    x: -23
+    y: 81
+    z: -51
+  3:
+    world: 'world'
+    x: -21
+    y: 81
+    z: -51
+  4:
+    world: 'world'
+    x: -19
+    y: 81
+    z: -51
+  5:
+    world: 'world'
+    x: -17
+    y: 81
+    z: -51
+
+#Cuboid de deux locations pour l'arriver:
+Cuboid:
+  1:
+    world: 'world'
+    x: 24
+    y: 80
+    z: -171
+  2:
+    world: 'world'
+    x: 16
+    y: 85
+    z: -179

@@ -14,7 +14,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.PluginManager;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.shoot.commands.GoShoot;
 import fr.badblock.bukkit.hub.v2.games.shoot.events.ShootBlock;
 import fr.badblock.bukkit.hub.v2.games.shoot.events.ShootInteract;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
@@ -68,7 +67,6 @@ public class ShootManager implements IGameModule {
 
     @Override
     public void registerCommands() {
-        BadBlockHub.getInstance().getCommand("goshoot").setExecutor(new GoShoot());
     }
 
     @Override

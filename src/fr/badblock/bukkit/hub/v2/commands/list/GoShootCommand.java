@@ -1,22 +1,24 @@
-package fr.badblock.bukkit.hub.v2.games.spleef.commands;
+package fr.badblock.bukkit.hub.v2.commands.list;
 
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
+import fr.badblock.gameapi.command.AbstractCommand;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Created by Toinetoine1 on 17/01/2019.
- */
-public class GoSpleef implements CommandExecutor {
+public class GoShootCommand extends AbstractCommand {
 
+
+    public GoShootCommand() {
+        super("goshoot", null, BadblockPlayer.GamePermission.PLAYER);
+        this.allowConsole(false);
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
+    public boolean executeCommand(CommandSender sender, String[] args) {
         if(sender instanceof Player) {
             Player p = (Player) sender;
 
@@ -26,9 +28,8 @@ public class GoSpleef implements CommandExecutor {
                 return true;
             }
 
-            p.teleport(SpleefManager.getInstance().getSpleefLoc());
+            p.teleport(ShootManager.getInstance().getShootLoc());
         }
         return false;
     }
-
 }

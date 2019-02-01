@@ -1,25 +1,28 @@
-package fr.badblock.bukkit.hub.v2.games.gladiators.commands;
+package fr.badblock.bukkit.hub.v2.commands.list;
 
 import fr.badblock.bukkit.hub.v2.games.gladiators.kits.KitsManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
 import fr.badblock.bukkit.hub.v2.games.utils.CustomPlayerInventory;
+import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 
-public class GKitCommand implements CommandExecutor {
+public class GladiatorEditKitCommand extends AbstractCommand {
 
     private HashMap<Player, CustomPlayerInventory> inventories = new HashMap<>();
     private HashMap<Player, String> kitName = new HashMap<>();
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String msg, String[] args) {
+    public GladiatorEditKitCommand() {
+        super("gkit", null, BadblockPlayer.GamePermission.ADMIN);
+        this.allowConsole(false);
+    }
 
+    @Override
+    public boolean executeCommand(CommandSender sender, String[] args) {
         if (sender instanceof Player) {
             BadblockPlayer player = (BadblockPlayer) sender;
             if (player.hasPermission("badevent.admin")) {
