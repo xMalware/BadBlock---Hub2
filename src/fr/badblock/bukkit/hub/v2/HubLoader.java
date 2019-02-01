@@ -9,7 +9,6 @@ import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
 import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
-import fr.badblock.bukkit.hub.v2.rabbit.RabbitLoader;
 import fr.badblock.bukkit.hub.v2.tasks.HubTaskLoader;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
