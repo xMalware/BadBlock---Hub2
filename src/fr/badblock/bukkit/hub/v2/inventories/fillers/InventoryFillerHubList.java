@@ -37,14 +37,14 @@ public class InventoryFillerHubList extends InventoryFiller
 	public void fill(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)
 	{
 		System.out.println("hub filler : 1");
-		
+
 		if (Hub.getHubs() == null || Hub.getHubs().isEmpty())
 		{
 			fillNoHub(player, inventoryObject, inventory);
 			return;
 		}
 		System.out.println("hub filler : 1A");
-		
+
 		Collection<Hub> hubs = Hub.getHubs();
 		Map<Integer, InventoryAction[]> actions = new HashMap<>();
 
@@ -52,25 +52,25 @@ public class InventoryFillerHubList extends InventoryFiller
 
 		boolean something = false;
 		System.out.println("hub filler : 1B");
-		
+
 		for (Hub hub : hubs)
 		{
 			System.out.println("hub filler : 1C");
-			
+
 			if (emptySlot == -1)
 			{
 				continue;
 			}
 
 			System.out.println("hub filler : 1D");
-			
+
 			if (!hub.isOnline())
 			{
 				continue;
 			}
 
 			System.out.println("hub filler : 1E");
-			
+
 			something = true;
 			fillHub(player, hub, inventory, emptySlot);
 
@@ -146,7 +146,7 @@ public class InventoryFillerHubList extends InventoryFiller
 				data = DyeColor.LIME.getWoolData();
 				chatColor = ChatColor.GREEN;
 			}
-			
+
 			amount = id >= 64 ? 64 : id;
 		}
 
@@ -155,7 +155,11 @@ public class InventoryFillerHubList extends InventoryFiller
 		//if (hub.getId() > 64)
 		itemStack.setAmount(69);
 
-		if (id == HubUpdateTask.hubId) itemStack = ItemStackUtils.fakeEnchant(itemStack);
+		if (id == HubUpdateTask.hubId)
+		{
+			itemStack = ItemStackUtils.fakeEnchant(itemStack);
+		}
+		
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.setDisplayName(chatColor + (hudb != null ? "Hub n°" + hudb.getId() : display));
 		List<String> lore = new ArrayList<>();
@@ -217,7 +221,7 @@ public class InventoryFillerHubList extends InventoryFiller
 		}
 		catch (Throwable t)
 		{
-			
+
 		}
 
 		return null;
