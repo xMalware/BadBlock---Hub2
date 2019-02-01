@@ -167,10 +167,10 @@ public class InventoryFillerHubList extends InventoryFiller
 
 		if (id == HubUpdateTask.hubId)
 		{
-			lore.add(player.getTranslatedMessage("hub.generic.hubs.alreadyonit")[0]);
+			lore.add(player.getTranslatedMessage("hub.items.generic.hubs.alreadyonit")[0]);
 		}
 		// §7Connectés:
-		lore.add(player.getTranslatedMessage("hub.generic.hubs.onlineplayers")[0] + "§b" + players + (slots >= 0 ? "/" + slots : ""));
+		lore.add(player.getTranslatedMessage("hub.items.generic.hubs.onlineplayers")[0] + "§b" + players + (slots >= 0 ? "/" + slots : ""));
 		Map<String, String> order = new HashMap<>();
 		List<Permissible> groups = PermissionsManager.getManager().getGroups().stream().sorted((a, b) -> { return Integer.compare(b.getPower(), a.getPower()); }).collect(Collectors.toList());
 
