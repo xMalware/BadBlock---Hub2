@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
@@ -29,6 +30,7 @@ public class PlayerInventoryClickListener extends BadListener
 		{
 			return;
 		}
+
 		BadblockPlayer player = (BadblockPlayer) event.getWhoClicked();
 		// Set cancelled
 		event.setCancelled(!player.hasAdminMode());
@@ -68,8 +70,14 @@ public class PlayerInventoryClickListener extends BadListener
 			{
 				return handleInventoryManager(event, player, inventoryName, actionType, InventoriesLoader.getInventory(inventoryName));
 			}
-			// Default join inventory handling
-			return handleInventoryManager(event, player, InventoriesLoader.getConfig().getJoinDefaultInventory(), actionType, InventoriesLoader.getDefaultInventory());
+
+			if (player.getOpenInventory() instanceof PlayerInventory)
+			{
+				// Default join inventory handling
+				return handleInventoryManager(event, player, InventoriesLoader.getConfig().getJoinDefaultInventory(), actionType, InventoriesLoader.getDefaultInventory());
+			}
+			
+			return false;
 		}
 		return false;
 	}
@@ -103,23 +111,17 @@ public class PlayerInventoryClickListener extends BadListener
 			return done;
 		}
 
-		System.out.println("Click A : 1");
-
 		HubPlayer hubPlayer = HubPlayer.get(player);
 
 		if (hubPlayer.getCustomActions() == null || hubPlayer.getCustomActions().isEmpty())
 		{
 			return done;
 		}
-		
-		System.out.println("Click A : 2");
 
 		if (!hubPlayer.getCustomActions().containsKey(event.getSlot()))
 		{
 			return done;
 		}
-
-		System.out.println("Click A : 3");
 
 		InventoryAction[] inventoryActions = hubPlayer.getCustomActions().get(event.getSlot());
 
@@ -129,8 +131,6 @@ public class PlayerInventoryClickListener extends BadListener
 			{
 				continue;
 			}
-			
-			System.out.println("Click A : 4");
 
 			CustomItemActionType action = inventoryAction.getAction();
 			if (action == null)
@@ -138,8 +138,6 @@ public class PlayerInventoryClickListener extends BadListener
 				BadBlockHub.log("§cUnknown action set on this custom object (Filled item / Position: " + event.getSlot() + " / InventoryName: " + inventoryName + ").");
 				return done;
 			}
-			
-			System.out.println("Click A : 5");
 
 			String actionData = inventoryAction.getActionData();
 			if (action.getAction() == null)
@@ -147,8 +145,6 @@ public class PlayerInventoryClickListener extends BadListener
 				BadBlockHub.log("§cNo action set on this object. (Filled item / Position: " + event.getSlot() + " / InventoryName: " + inventoryName + ")");
 				return done;
 			}
-			
-			System.out.println("Click A : 6");
 
 			action.work(player, action, actionData);
 			done = true;

@@ -76,13 +76,24 @@ public class BossBarsUpdateTask extends HubTask
 		// Percent adjustment
 		if (!reverse)
 		{
-			percent = (ticks - (ticks / 2)) / (Math.max(1, bossBar.getTicks()) / 2);
+			float f = (float) ticks;
+			f /= 2f;
+			float maxTick = (float) Math.max(1, bossBar.getTicks());
+			maxTick /= 2f;
+			
+			percent = f / maxTick;
 		}
 		else if (reverse && percent > 0.0f)
 		{
-			percent = (Math.max(1, bossBar.getTicks()) / 2) / (ticks - (ticks / 2));
+			float f = (float) ticks;
+			f /= 2f;
+			float maxTick = (float) Math.max(1, bossBar.getTicks());
+			maxTick /= 2f;
+			
+			percent = maxTick / f;
 		}
 
+		
 		// Percent limit
 		if (percent < 0.0f)
 		{
