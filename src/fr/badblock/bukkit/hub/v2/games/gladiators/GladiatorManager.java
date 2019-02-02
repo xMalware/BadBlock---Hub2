@@ -34,8 +34,8 @@ public class GladiatorManager extends AbstractGameModule {
     public GladiatorManager() {
         super("Gladiator", "gladiator.yml");
         instance = this;
-        new MapManager();
         customInv = new HashMap<>();
+        new MapManager();
     }
 
     @Override
@@ -50,8 +50,7 @@ public class GladiatorManager extends AbstractGameModule {
     }
 
     @Override
-    public void registerCommands() {
-    }
+    public void registerCommands() {}
 
     @Override
     public void loadConfig() {

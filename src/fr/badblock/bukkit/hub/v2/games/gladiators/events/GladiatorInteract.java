@@ -40,22 +40,26 @@ public class GladiatorInteract implements Listener {
                     map.getSignLocations().add(sign);
                 }
 
-                player.sendMessage(GladiatorManager.GLADIATOR_PREFIX+"Vous entrez dans l'arène §c"+map.getName());
-                map.getPlayers().add(player);
-                player.teleport(map.getRandomLoc());
-
-                TextComponent tc = new TextComponent(GladiatorManager.GLADIATOR_PREFIX + "§c[Quittez le gladiator]");
-                tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitgladiator"));
-                tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
-                player.spigot().sendMessage(tc);
-
-                for(Sign sign1 : map.getSignLocations()){
-                    sign1.setLine(3, "§8"+map.getPlayers().size());
-                    sign1.update();
-                }
+                playGladiator(player, map);
             }
         }
 
+    }
+
+    public static void playGladiator(Player player, Map map) {
+        player.sendMessage(GladiatorManager.GLADIATOR_PREFIX+"Vous entrez dans l'arène §c"+map.getName());
+        map.getPlayers().add(player);
+        player.teleport(map.getRandomLoc());
+
+        TextComponent tc = new TextComponent(GladiatorManager.GLADIATOR_PREFIX + "§c[Quittez le gladiator]");
+        tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitgladiator"));
+        tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
+        player.spigot().sendMessage(tc);
+
+        for(Sign sign1 : map.getSignLocations()){
+            sign1.setLine(3, "§8"+map.getPlayers().size());
+            sign1.update();
+        }
     }
 
 }

@@ -1,5 +1,9 @@
 package fr.badblock.bukkit.hub.v2.games.gladiators.events;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
@@ -27,6 +31,9 @@ public class GladiatorDeath implements Listener {
             GladiatorManager.getInstance().getCustomInv().remove(player).restoreInventory(player);
             player.getKiller().sendMessage(GladiatorManager.GLADIATOR_PREFIX+"§3Vous avez tué "+player.getName());
             player.sendMessage(GladiatorManager.GLADIATOR_PREFIX+"§3Vous avez été tué par "+player.getKiller().getName());
+            TextComponent tc = new TextComponent(GladiatorManager.GLADIATOR_PREFIX + "§cClique ici pour jouer à nouveau");
+            tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/playgladiator"));
+            tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
             player.getKiller().setHealth(player.getMaxHealth());
             map.getPlayers().remove(player);
             event.setDeathMessage(null);

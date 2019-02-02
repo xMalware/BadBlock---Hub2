@@ -33,7 +33,7 @@ public abstract class AbstractGameModule {
         return config;
     }
 
-    protected YamlConfiguration getDefaultConfig()
+    private YamlConfiguration getDefaultConfig()
     {
         return GameConfigManager.getConfigByName("config.yml").getConfig();
     }
