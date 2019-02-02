@@ -3,7 +3,7 @@ package fr.badblock.bukkit.hub.v2.games.jump;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.jump.events.JumpMove;
 import fr.badblock.bukkit.hub.v2.games.jump.objects.JumpPlayer;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * Created by Toinetoine1 on 13/01/2019.
  */
-public class JumpManager implements IGameModule {
+public class JumpManager extends AbstractGameModule {
 
     @Getter
     private static JumpManager instance;
@@ -31,6 +31,7 @@ public class JumpManager implements IGameModule {
     private List<Location> checkpoint;
 
     public JumpManager() {
+        super("Jump","jump.yml");
         instance = this;
         jumpPlayers = new HashMap<>();
         checkpoint = new ArrayList<>();
@@ -50,13 +51,13 @@ public class JumpManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = GameConfigManager.getConfigByName("jump.yml").getConfig();
-        for (String s : config.getConfigurationSection("Location").getKeys(false)) {
+
+        for (String s : getConfig().getConfigurationSection("Location").getKeys(false)) {
             Location loc = new Location(
-                    Bukkit.getWorld(config.getString("Location." + s + ".world")),
-                    config.getInt("Location." + s + ".x"),
-                    config.getInt("Location." + s + ".y"),
-                    config.getInt("Location." + s + ".z"));
+                    Bukkit.getWorld(getConfig().getString("Location." + s + ".world")),
+                    getConfig().getInt("Location." + s + ".x"),
+                    getConfig().getInt("Location." + s + ".y"),
+                    getConfig().getInt("Location." + s + ".z"));
             checkpoint.add(loc);
         }
     }

@@ -57,7 +57,7 @@ public class SpleefMove implements Listener {
 
                     SpleefManager.getInstance().getSpleefPlayers().put(player, new SpleefPlayer(player.getName(), player.getGameMode() == GameMode.CREATIVE));
                     player.sendMessage(SpleefManager.SPLEEF_PREFIX + "Vous rejoignez le Spleef !");
-                    player.setGameMode(GameMode.SURVIVAL);
+                    player.setGameMode(GameMode.ADVENTURE);
 
                     TextComponent quitComponent = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§c[Quittez le Spleef]");
                     quitComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitspleef"));
@@ -110,6 +110,7 @@ public class SpleefMove implements Listener {
                                                 return;
                                             }
 
+                                            p.setGameMode(GameMode.SURVIVAL);
                                             p.sendMessage(SpleefManager.SPLEEF_PREFIX+"La partie commence !");
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
@@ -144,7 +145,7 @@ public class SpleefMove implements Listener {
 
             } else if (GameState.INGAME.equals(SpleefManager.getInstance().getGameState())) {
                 player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
-                player.teleport(SpleefManager.getInstance().getSpleefLoc());
+                player.teleport(SpleefManager.getInstance().getTeleportPoint());
             }
         } else if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player) && player.getLocation().getBlock().getType() == Material.STATIONARY_WATER && GameState.INGAME.equals(SpleefManager.getInstance().getGameState())) {
             SpleefManager.getInstance().getSpleefPlayers().get(player).setDead(true);
@@ -155,6 +156,7 @@ public class SpleefMove implements Listener {
                     p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLe joueur " + playersAlive.get(0).getPlayerName() + " gagne le Spleef !");
                     spleefPlayer.getCustomInv().restoreInventory(p);
                     p.performCommand("spawn");
+                    p.setGameMode(GameMode.ADVENTURE);
                 });
 
                 SpleefManager.getInstance().getSpleefPlayers().clear();

@@ -28,7 +28,7 @@ public class GoCourseCommand extends AbstractCommand {
                 return true;
             }
 
-            p.teleport(CourseManager.getInstance().getCourseGUILoc());
+            p.teleport(CourseManager.getInstance().getTeleportPoint());
         }
 
         return false;

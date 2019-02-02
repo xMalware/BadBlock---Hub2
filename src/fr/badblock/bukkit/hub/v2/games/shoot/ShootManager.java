@@ -20,7 +20,7 @@ import fr.badblock.bukkit.hub.v2.games.shoot.events.ShootInteract;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
@@ -28,10 +28,10 @@ import lombok.Getter;
 /**
  * Created by Toinetoine1 on 18/01/2019.
  */
-public class ShootManager implements IGameModule {
+public class ShootManager extends AbstractGameModule {
 
     public static final String SHOOT_PREFIX = "§8[§6Tir à l'arc§8] ";
-    public static final int MIN_PLAYER = 1;
+    public static final int MIN_PLAYER = 2;
     @Getter
     private static ShootManager instance;
 
@@ -48,9 +48,10 @@ public class ShootManager implements IGameModule {
     private GameState gameState;
 
     @Getter
-    private Location shootLoc;
+    private Location teleportPoint;
 
     public ShootManager() {
+        super("TirArc", "shoot.yml");
         instance = this;
 
         shootPlayers = new HashMap<>();
@@ -73,57 +74,44 @@ public class ShootManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = GameConfigManager.getConfigByName("shoot.yml").getConfig();
 
-        for (String s : config.getConfigurationSection("Particule").getKeys(false)) {
+        for (String s : getConfig().getConfigurationSection("Particule").getKeys(false)) {
             Location particleLoc = new Location(
-                    Bukkit.getWorld(config.getString("Particule." + s + ".world")),
-                    config.getInt("Particule." + s + ".x"),
-                    config.getInt("Particule." + s + ".y"),
-                    config.getInt("Particule." + s + ".z"));
+                    Bukkit.getWorld(getConfig().getString("Particule." + s + ".world")),
+                    getConfig().getInt("Particule." + s + ".x"),
+                    getConfig().getInt("Particule." + s + ".y"),
+                    getConfig().getInt("Particule." + s + ".z"));
 
             Location cuboidLoc1 = new Location(
-                    Bukkit.getWorld(config.getString("Cuboid." + s + ".Loc1.world")),
-                    config.getInt("Cuboid." + s + ".Loc1.x"),
-                    config.getInt("Cuboid." + s + ".Loc1.y"),
-                    config.getInt("Cuboid." + s + ".Loc1.z"));
+                    Bukkit.getWorld(getConfig().getString("Cuboid." + s + ".Loc1.world")),
+                    getConfig().getInt("Cuboid." + s + ".Loc1.x"),
+                    getConfig().getInt("Cuboid." + s + ".Loc1.y"),
+                    getConfig().getInt("Cuboid." + s + ".Loc1.z"));
 
             Location cuboidLoc2 = new Location(
-                    Bukkit.getWorld(config.getString("Cuboid." + s + ".Loc2.world")),
-                    config.getInt("Cuboid." + s + ".Loc2.x"),
-                    config.getInt("Cuboid." + s + ".Loc2.y"),
-                    config.getInt("Cuboid." + s + ".Loc2.z"));
+                    Bukkit.getWorld(getConfig().getString("Cuboid." + s + ".Loc2.world")),
+                    getConfig().getInt("Cuboid." + s + ".Loc2.x"),
+                    getConfig().getInt("Cuboid." + s + ".Loc2.y"),
+                    getConfig().getInt("Cuboid." + s + ".Loc2.z"));
 
             this.particleLoc.add(particleLoc);
             this.boxes.add(new Box(particleLoc, cuboidLoc1, cuboidLoc2));
         }
 
         Location loc_armorStand = new Location(
-                Bukkit.getWorld(config.getString("Armor_stand.world")),
-                config.getInt("Armor_stand.x"),
-                config.getInt("Armor_stand.y"),
-                config.getInt("Armor_stand.z"),
-                config.getLong("Armor_stand.yaw"),
-                config.getLong("Armor_stand.pitch"));
+                Bukkit.getWorld(getConfig().getString("Armor_stand.world")),
+                getConfig().getInt("Armor_stand.x"),
+                getConfig().getInt("Armor_stand.y"),
+                getConfig().getInt("Armor_stand.z"),
+                getConfig().getLong("Armor_stand.yaw"),
+                getConfig().getLong("Armor_stand.pitch"));
         armorStand = (ArmorStand) loc_armorStand.getWorld().spawnEntity(loc_armorStand, EntityType.ARMOR_STAND);
         armorStand.setCustomName("Odanorr");
         armorStand.setArms(true);
         armorStand.setVisible(true);
         armorStand.setCustomNameVisible(true);
 
-        shootLoc = new Location(
-                Bukkit.getWorld(getConfig().getString("TirArc.world")),
-                getConfig().getInt("TirArc.x"),
-                getConfig().getInt("TirArc.y"),
-                getConfig().getInt("TirArc.z"),
-                getConfig().getInt("TirArc.yaw"),
-                getConfig().getInt("TirArc.pitch"));
+        teleportPoint = getDefaultLocation();
     }
-
-
-    public FileConfiguration getConfig(){
-        return GameConfigManager.getConfigByName("config.yml").getConfig();
-    }
-
 
 }
