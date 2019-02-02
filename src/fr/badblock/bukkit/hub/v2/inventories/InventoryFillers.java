@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.inventories;
 import org.bukkit.inventory.Inventory;
 
 import fr.badblock.bukkit.hub.v2.inventories.fillers.InventoryFillerBooster;
+import fr.badblock.bukkit.hub.v2.inventories.fillers.InventoryFillerHostList;
 import fr.badblock.bukkit.hub.v2.inventories.fillers.InventoryFillerHubList;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -11,7 +12,8 @@ public enum InventoryFillers
 {
 
 	SHOW_BOOSTERS(new InventoryFillerBooster()),
-	SHOW_HUB_LIST(new InventoryFillerHubList());
+	SHOW_HUB_LIST(new InventoryFillerHubList()),
+	SHOW_HOST_LIST(new InventoryFillerHostList());
 	
 	private InventoryFiller filler;
 	
