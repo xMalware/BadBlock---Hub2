@@ -6,14 +6,13 @@ import fr.badblock.bukkit.hub.v2.games.course.events.CourseInteract;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseMove;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseQuit;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.PluginManager;
 
@@ -24,7 +23,8 @@ import java.util.List;
 /**
  * Created by Toinetoine1 on 13/01/2019.
  */
-public class CourseManager implements IGameModule {
+
+public class CourseManager extends AbstractGameModule {
 
     @Getter
     private static CourseManager instance;
@@ -51,9 +51,10 @@ public class CourseManager implements IGameModule {
     private Location cuboid_loc2;
 
     @Getter
-    private Location courseGUILoc;
+    private Location teleportPoint;
 
     public CourseManager() {
+        super("Course","course.yml");
         instance = this;
         state = GameState.WAITING;
 
@@ -81,59 +82,49 @@ public class CourseManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = GameConfigManager.getConfigByName("course.yml").getConfig();
 
-        for (String s : config.getConfigurationSection("Enter_gate").getKeys(false)) {
+        for (String s : getConfig().getConfigurationSection("Enter_gate").getKeys(false)) {
             Location loc = new Location(
-                    Bukkit.getWorld(config.getString("Enter_gate." + s + ".world")),
-                    config.getInt("Enter_gate." + s + ".x"),
-                    config.getInt("Enter_gate." + s + ".y"),
-                    config.getInt("Enter_gate." + s + ".z"));
+                    Bukkit.getWorld(getConfig().getString("Enter_gate." + s + ".world")),
+                    getConfig().getInt("Enter_gate." + s + ".x"),
+                    getConfig().getInt("Enter_gate." + s + ".y"),
+                    getConfig().getInt("Enter_gate." + s + ".z"));
             doorsToEnter.put(loc, false);
         }
 
-        for (String s : config.getConfigurationSection("PlayerLoc").getKeys(false)) {
+        for (String s : getConfig().getConfigurationSection("PlayerLoc").getKeys(false)) {
             Location loc = new Location(
-                    Bukkit.getWorld(config.getString("Enter_gate." + s + ".world")),
-                    config.getInt("PlayerLoc." + s + ".x"),
-                    config.getInt("PlayerLoc." + s + ".y"),
-                    config.getInt("PlayerLoc." + s + ".z"));
+                    Bukkit.getWorld(getConfig().getString("Enter_gate." + s + ".world")),
+                    getConfig().getInt("PlayerLoc." + s + ".x"),
+                    getConfig().getInt("PlayerLoc." + s + ".y"),
+                    getConfig().getInt("PlayerLoc." + s + ".z"));
             waitingPos.add(loc);
         }
 
-        for (String s : config.getConfigurationSection("Start_gate").getKeys(false)) {
+        for (String s : getConfig().getConfigurationSection("Start_gate").getKeys(false)) {
             Location loc = new Location(
-                    Bukkit.getWorld(config.getString("Start_gate." + s + ".world")),
-                    config.getInt("Start_gate." + s + ".x"),
-                    config.getInt("Start_gate." + s + ".y"),
-                    config.getInt("Start_gate." + s + ".z"));
+                    Bukkit.getWorld(getConfig().getString("Start_gate." + s + ".world")),
+                    getConfig().getInt("Start_gate." + s + ".x"),
+                    getConfig().getInt("Start_gate." + s + ".y"),
+                    getConfig().getInt("Start_gate." + s + ".z"));
             doorsToStart.add(loc);
         }
 
         cuboid_loc1 = new Location(
-                Bukkit.getWorld(config.getString("Cuboid.1.world")),
-                config.getInt("Cuboid.1.x"),
-                config.getInt("Cuboid.1.y"),
-                config.getInt("Cuboid.1.z"));
+                Bukkit.getWorld(getConfig().getString("Cuboid.1.world")),
+                getConfig().getInt("Cuboid.1.x"),
+                getConfig().getInt("Cuboid.1.y"),
+                getConfig().getInt("Cuboid.1.z"));
 
         cuboid_loc2 = new Location(
-                Bukkit.getWorld(config.getString("Cuboid.2.world")),
-                config.getInt("Cuboid.2.x"),
-                config.getInt("Cuboid.2.y"),
-                config.getInt("Cuboid.2.z"));
+                Bukkit.getWorld(getConfig().getString("Cuboid.2.world")),
+                getConfig().getInt("Cuboid.2.x"),
+                getConfig().getInt("Cuboid.2.y"),
+                getConfig().getInt("Cuboid.2.z"));
 
 
-        courseGUILoc = new Location(Bukkit.getWorld(getConfig().getString("Course.world")),
-                getConfig().getInt("Course.x"),
-                getConfig().getInt("Course.y"),
-                getConfig().getInt("Course.z"),
-                getConfig().getInt("Course.yaw"),
-                getConfig().getInt("Course.pitch"));
+        teleportPoint = getDefaultLocation();
 
-    }
-
-    public FileConfiguration getConfig(){
-        return GameConfigManager.getConfigByName("config.yml").getConfig();
     }
 
 }

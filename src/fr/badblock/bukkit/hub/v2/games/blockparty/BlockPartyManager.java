@@ -5,7 +5,6 @@ import java.util.HashMap;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
@@ -13,12 +12,11 @@ import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyInteract;
 import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyMove;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
 import lombok.Getter;
 
-public class BlockPartyManager implements IGameModule {
+public class BlockPartyManager extends AbstractGameModule {
 
     public static final String BLOCK_PREFIX = "§8[§6BlockParty§8] ";
     public static final int MIN_PLAYER = 2;
@@ -35,10 +33,13 @@ public class BlockPartyManager implements IGameModule {
     @Getter
     private Location teleport;
     @Getter
+    private Location teleportPoint;
+    @Getter
     @Setter
     private GameState gameState;
 
     public BlockPartyManager() {
+        super("BlockParty","blockparty.yml");
         instance = this;
         blockPlayers = new HashMap<>();
         gameState = GameState.WAITING;
@@ -59,28 +60,29 @@ public class BlockPartyManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = GameConfigManager.getConfigByName("blockparty.yml").getConfig();
 
         cuboid = new CuboidSelection(
-                new Location(Bukkit.getWorld(config.getString("Cuboid.Loc1.world")),
-                        config.getInt("Cuboid.Loc1.x"),
-                        config.getInt("Cuboid.Loc1.y"),
-                        config.getInt("Cuboid.Loc1.z")),
-                new Location(Bukkit.getWorld(config.getString("Cuboid.Loc2.world")),
-                        config.getInt("Cuboid.Loc2.x"),
-                        config.getInt("Cuboid.Loc2.y"),
-                        config.getInt("Cuboid.Loc2.z"))
+                new Location(Bukkit.getWorld(getConfig().getString("Cuboid.Loc1.world")),
+                        getConfig().getInt("Cuboid.Loc1.x"),
+                        getConfig().getInt("Cuboid.Loc1.y"),
+                        getConfig().getInt("Cuboid.Loc1.z")),
+                new Location(Bukkit.getWorld(getConfig().getString("Cuboid.Loc2.world")),
+                        getConfig().getInt("Cuboid.Loc2.x"),
+                        getConfig().getInt("Cuboid.Loc2.y"),
+                        getConfig().getInt("Cuboid.Loc2.z"))
         );
 
-        gate = new Location(Bukkit.getWorld(config.getString("Gate.world")),
-                config.getInt("Gate.x"),
-                config.getInt("Gate.y"),
-                config.getInt("Gate.z"));
+        gate = new Location(Bukkit.getWorld(getConfig().getString("Gate.world")),
+                getConfig().getInt("Gate.x"),
+                getConfig().getInt("Gate.y"),
+                getConfig().getInt("Gate.z"));
 
-        teleport = new Location(Bukkit.getWorld(config.getString("Teleport.world")),
-                config.getInt("Teleport.x"),
-                config.getInt("Teleport.y"),
-                config.getInt("Teleport.z"));
+        teleport = new Location(Bukkit.getWorld(getConfig().getString("Teleport.world")),
+                getConfig().getInt("Teleport.x"),
+                getConfig().getInt("Teleport.y"),
+                getConfig().getInt("Teleport.z"));
+
+        teleportPoint = getDefaultLocation();
     }
 
 

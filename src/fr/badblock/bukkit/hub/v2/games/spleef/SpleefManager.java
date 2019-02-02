@@ -3,13 +3,12 @@ package fr.badblock.bukkit.hub.v2.games.spleef;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.spleef.events.*;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -23,7 +22,7 @@ import static org.bukkit.Bukkit.getWorld;
  * Created by Toinetoine1 on 13/01/2019.
  */
 
-public class SpleefManager implements IGameModule {
+public class SpleefManager extends AbstractGameModule {
 
     public static final int MIN_PLAYER = 2;
     public static String SPLEEF_PREFIX = "§8[§6Spleef§8] ";
@@ -40,9 +39,10 @@ public class SpleefManager implements IGameModule {
     @Setter
     private GameState gameState;
     @Getter
-    private Location spleefLoc;
+    private Location teleportPoint;
 
     public SpleefManager() {
+        super("Spleef", "spleef.yml");
         instance = this;
 
         spleefPlayers = new HashMap<>();
@@ -80,17 +80,7 @@ public class SpleefManager implements IGameModule {
                 config.getInt("Cuboid.2.y"),
                 config.getInt("Cuboid.2.z"));
 
-        spleefLoc = new Location(
-                Bukkit.getWorld(getConfig().getString("Spleef.world")),
-                getConfig().getInt("Spleef.x"),
-                getConfig().getInt("Spleef.y"),
-                getConfig().getInt("Spleef.z"),
-                getConfig().getInt("Spleef.yaw"),
-                getConfig().getInt("Spleef.pitch"));
+        teleportPoint = getDefaultLocation();
     }
 
-
-    public FileConfiguration getConfig(){
-        return GameConfigManager.getConfigByName("config.yml").getConfig();
-    }
 }

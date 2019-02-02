@@ -28,7 +28,7 @@ public class GoShootCommand extends AbstractCommand {
                 return true;
             }
 
-            p.teleport(ShootManager.getInstance().getShootLoc());
+            p.teleport(ShootManager.getInstance().getTeleportPoint());
         }
         return false;
     }

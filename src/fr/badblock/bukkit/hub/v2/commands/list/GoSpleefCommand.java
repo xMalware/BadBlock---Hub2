@@ -29,7 +29,7 @@ public class GoSpleefCommand extends AbstractCommand {
                 return true;
             }
 
-            p.teleport(SpleefManager.getInstance().getSpleefLoc());
+            p.teleport(SpleefManager.getInstance().getTeleportPoint());
         }
         return false;
     }

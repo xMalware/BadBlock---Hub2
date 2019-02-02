@@ -6,7 +6,7 @@ import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
-import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.BadblockPlugin;
 
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GamesManager {
 
-    private static List<IGameModule> modules = new ArrayList<>();
+    private static List<AbstractGameModule> modules = new ArrayList<>();
 
     public static void load(BadblockPlugin plugin) {
         new GameConfigManager();
