@@ -8,15 +8,15 @@ import java.io.File;
 /**
  * Created by Toinetoine1 on 16/01/2019.
  */
-public class Config {
+public class GameConfig {
 
     private File file;
     private String fileName;
     private YamlConfiguration config;
 
-    public Config(String fileName) {
+    GameConfig(String fileName) {
 
-        File file = new File(BadBlockHub.getInstance().getDataFolder(), fileName);
+        File file = new File(BadBlockHub.getInstance().getDataFolder()+"/games/", fileName);
 
         if (!file.exists()) {
             BadBlockHub.getInstance().saveResource(fileName, false);

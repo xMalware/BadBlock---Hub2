@@ -14,7 +14,7 @@ import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyInteract;
 import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyMove;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
 import lombok.Getter;
 
@@ -59,7 +59,7 @@ public class BlockPartyManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = ConfigManager.getConfigByName("blockparty.yml").getConfig();
+        YamlConfiguration config = GameConfigManager.getConfigByName("blockparty.yml").getConfig();
 
         cuboid = new CuboidSelection(
                 new Location(Bukkit.getWorld(config.getString("Cuboid.Loc1.world")),

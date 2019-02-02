@@ -7,7 +7,7 @@ import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.BadblockPlugin;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class GamesManager {
     private static List<IGameModule> modules = new ArrayList<>();
 
     public static void load(BadblockPlugin plugin) {
-        new ConfigManager();
+        new GameConfigManager();
 
         modules.add(new CourseManager());
         modules.add(new JumpManager());

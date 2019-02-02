@@ -26,6 +26,8 @@ public class JumpMove implements Listener {
                 if(jumpPlayer.getLife() == 0){
                     player.sendMessage(JumpManager.JUMP_PREFIX + "Vous n'avez plus de vies ! Retente ta chance ;)");
                     player.performCommand("spawn");
+                    if(player.hasPermission("hub.fly"))
+                        player.setAllowFlight(true);
                     JumpManager.getInstance().getJumpPlayers().remove(player);
                 } else {
                     player.sendMessage(JumpManager.JUMP_PREFIX + "Vous êtes tombés ! Il vous reste §c"+jumpPlayer.getLife()+" "+(jumpPlayer.getLife() == 1 ? "vie" : "vies")+" !");
@@ -34,6 +36,8 @@ public class JumpMove implements Listener {
             } else if (JumpManager.getInstance().getCheckpoint().size() == jumpPlayer.getCheckpoint() + 1) {
                 Bukkit.broadcastMessage(JumpManager.JUMP_PREFIX + "§cBravo à " + player.getName() + " qui à réussi le Jump !");
                 JumpManager.getInstance().getJumpPlayers().remove(player);
+                if(player.hasPermission("hub.fly"))
+                    player.setAllowFlight(true);
             } else if (player.getLocation().distance(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint() + 1)) <= 1 && !JumpManager.getInstance().getCheckpoint().isEmpty()) {
                 jumpPlayer.setCheckpoint(jumpPlayer.getCheckpoint() + 1);
                 jumpPlayer.getBukkitPlayer().sendMessage(JumpManager.JUMP_PREFIX + "Bravo, vous avez passez le checkpoint n°" + jumpPlayer.getCheckpoint());
@@ -43,7 +47,8 @@ public class JumpMove implements Listener {
             if (!JumpManager.getInstance().getCheckpoint().isEmpty() && player.getLocation().distance(JumpManager.getInstance().getCheckpoint().get(0)) <= 1) {
                 JumpPlayer j = new JumpPlayer(player, 0, 3);
                 j.getBukkitPlayer().sendMessage(JumpManager.JUMP_PREFIX + "Vous commencez le Jump ! Vous avez §c3 vies");
-
+                player.setFlying(false);
+                player.setAllowFlight(false);
                 JumpManager.getInstance().getJumpPlayers().put(player, j);
             }
 

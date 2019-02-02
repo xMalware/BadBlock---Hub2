@@ -6,7 +6,7 @@ import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
 import fr.badblock.bukkit.hub.v2.games.utils.CustomPlayerInventory;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -49,7 +49,7 @@ public class GladiatorManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = ConfigManager.getConfigByName("gladiator.yml").getConfig();
+        YamlConfiguration config = GameConfigManager.getConfigByName("gladiator.yml").getConfig();
 
         for (String s : config.getConfigurationSection("Maps").getKeys(false)) {
             List<Location> positions = new ArrayList<>();
