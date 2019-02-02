@@ -49,15 +49,15 @@ public class HubLoader {
 		Location spawnLocation = ConfigLoader.getLoc().getLocation("spawn");
 
 		Location firstLocation = spawnLocation.clone();
-		firstLocation.setX(firstLocation.getX() - 128);
-		firstLocation.setZ(firstLocation.getZ() + 128);
+		firstLocation.setX(firstLocation.getX() - 32);
+		firstLocation.setZ(firstLocation.getZ() + 32);
 		
 		Location secondLocation = spawnLocation.clone();
-		secondLocation.setX(firstLocation.getX() + 128);
-		secondLocation.setZ(firstLocation.getZ() - 128);
+		secondLocation.setX(firstLocation.getX() + 32);
+		secondLocation.setZ(firstLocation.getZ() - 32);
 		
 		CuboidSelection cuboidSelection = new CuboidSelection(firstLocation, secondLocation);
-		GameAPI.getAPI().loadChunks(cuboidSelection, 20 * 10);
+		GameAPI.getAPI().loadChunks(cuboidSelection, 20);
 	}
 
 }
