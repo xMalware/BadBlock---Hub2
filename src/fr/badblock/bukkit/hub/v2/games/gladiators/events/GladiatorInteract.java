@@ -4,6 +4,8 @@ import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -44,6 +46,7 @@ public class GladiatorInteract implements Listener {
 
                 TextComponent tc = new TextComponent(GladiatorManager.GLADIATOR_PREFIX + "§c[Quittez le gladiator]");
                 tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitgladiator"));
+                tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                 player.spigot().sendMessage(tc);
 
                 for(Sign sign1 : map.getSignLocations()){

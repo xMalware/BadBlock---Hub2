@@ -16,7 +16,7 @@ public class TimeToMove extends BukkitRunnable {
 
     @Override
     public void run() {
-        if(BlockPartyManager.getInstance().getGameState().isState(GameState.WAITING)){
+        if(GameState.WAITING.equals(BlockPartyManager.getInstance().getGameState())){
             cancel();
             return;
         }

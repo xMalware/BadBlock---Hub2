@@ -12,14 +12,18 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class SpleefDamage implements Listener {
 
     @EventHandler
-    public void onDamage(EntityDamageEvent event){
+    public void onDamage(EntityDamageEvent event) {
 
-        if(event.getEntity() instanceof Player){
-            Player player = (Player) event.getEntity();
-            if(SpleefManager.getInstance().getSpleefPlayers().containsKey(player)){
-                event.setCancelled(true);
-            }
+        if (!(event.getEntity() instanceof Player)) {
+            return;
         }
+
+        Player player = (Player) event.getEntity();
+        if (!SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
+            return;
+        }
+
+        event.setCancelled(true);
 
     }
 

@@ -34,7 +34,6 @@ public class JumpManager implements IGameModule {
         instance = this;
         jumpPlayers = new HashMap<>();
         checkpoint = new ArrayList<>();
-        jumpPlayers = new HashMap<>();
     }
 
     @Override

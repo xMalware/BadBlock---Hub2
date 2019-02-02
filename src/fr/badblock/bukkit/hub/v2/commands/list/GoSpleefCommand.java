@@ -20,10 +20,11 @@ public class GoSpleefCommand extends AbstractCommand {
     @Override
     public boolean executeCommand(CommandSender sender, String[] args) {
         if(sender instanceof Player) {
-            Player p = (Player) sender;
+            BadblockPlayer p = (BadblockPlayer) sender;
 
             if(CourseManager.getInstance().getWaitingPlayers().contains(p) || JumpManager.getInstance().getJumpPlayers().containsKey(p) ||
-                    SpleefManager.getInstance().getSpleefPlayers().containsKey(p) || ShootManager.getInstance().getShootPlayers().containsKey(p)){
+                    SpleefManager.getInstance().getSpleefPlayers().containsKey(p)
+                    || ShootManager.getInstance().getShootPlayers().containsKey(p)){
                 p.sendMessage("§cTu es dejà une Partie !");
                 return true;
             }

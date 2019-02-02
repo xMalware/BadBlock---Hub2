@@ -10,6 +10,7 @@ import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -38,6 +39,7 @@ public class CourseManager implements IGameModule {
     @Getter
     private LinkedHashMap<Location, Boolean> doorsToEnter;
     @Getter
+    @Setter
     private GameState state;
 
     @Getter

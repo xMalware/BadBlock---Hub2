@@ -1,10 +1,7 @@
 package fr.badblock.bukkit.hub.v2.games.gladiators;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorCommand;
-import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorDeath;
-import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorInteract;
-import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorSign;
+import fr.badblock.bukkit.hub.v2.games.gladiators.events.*;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
 import fr.badblock.bukkit.hub.v2.games.utils.CustomPlayerInventory;

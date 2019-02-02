@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -43,6 +44,7 @@ public class ShootManager implements IGameModule {
     @Getter
     private ArmorStand armorStand;
     @Getter
+    @Setter
     private GameState gameState;
 
     @Getter

@@ -43,7 +43,7 @@ public class PartyInteract implements Listener {
         if(action == Action.RIGHT_CLICK_BLOCK && block.getType() == Material.DARK_OAK_FENCE_GATE && BlockPartyManager.getInstance().getGate().equals(block.getLocation())){
             event.setCancelled(true);
 
-            if (BlockPartyManager.getInstance().getGameState().isState(GameState.INGAME)) {
+            if (GameState.INGAME.equals(BlockPartyManager.getInstance().getGameState())) {
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
                 return;
             }
@@ -76,8 +76,8 @@ public class PartyInteract implements Listener {
                 if (waitingPlayers.size() >= BlockPartyManager.MIN_PLAYER) {
                     player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
                     
-                    if(!BlockPartyManager.getInstance().getGameState().isState(GameState.STARTING)){
-                        BlockPartyManager.getInstance().getGameState().setState(GameState.STARTING);
+                    if(!GameState.STARTING.equals(BlockPartyManager.getInstance().getGameState())){
+                        BlockPartyManager.getInstance().setGameState(GameState.STARTING);
 
                         new BukkitRunnable() {
 
@@ -89,7 +89,7 @@ public class PartyInteract implements Listener {
                                 if (waitingPlayers.size() < BlockPartyManager.MIN_PLAYER) {
                                     waitingPlayers.forEach((player1, blockPlayer) -> player1.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cNombre de joueur insufisant !"));
                                     player.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
-                                    BlockPartyManager.getInstance().getGameState().setState(GameState.WAITING);
+                                    BlockPartyManager.getInstance().setGameState(GameState.WAITING);
                                     cancel();
                                 }
 
@@ -104,13 +104,14 @@ public class PartyInteract implements Listener {
                                     } else {
                                         if (waitingPlayers.size() < BlockPartyManager.MIN_PLAYER) {
                                             waitingPlayers.forEach((player12, blockPlayer1) -> player12.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cNombre de joueur insufisant !"));
-                                            BlockPartyManager.getInstance().getGameState().setState(GameState.WAITING);
+                                            BlockPartyManager.getInstance().setGameState(GameState.WAITING);
                                             cancel();
                                             return;
                                         }
 
                                         player.sendTitle("", "");
-                                        BlockPartyManager.getInstance().getGameState().setState(GameState.INGAME);
+                                        player.sendMessage(BlockPartyManager.BLOCK_PREFIX+"La partie commence !");
+                                        BlockPartyManager.getInstance().setGameState(GameState.INGAME);
 
                                         RadioSongPlayer radioSongPlayer = blockPlayer.getRadioSongPlayer();
                                         radioSongPlayer.setPlaying(true);

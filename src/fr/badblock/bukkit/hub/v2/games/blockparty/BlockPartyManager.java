@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.blockparty;
 
 import java.util.HashMap;
 
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -34,6 +35,7 @@ public class BlockPartyManager implements IGameModule {
     @Getter
     private Location teleport;
     @Getter
+    @Setter
     private GameState gameState;
 
     public BlockPartyManager() {

@@ -10,6 +10,8 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.material.Openable;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.stream.Collectors;
+
 /**
  * Created by Toinetoine1 on 14/01/2019.
  */
@@ -27,7 +29,7 @@ public class CourseGameRunnable extends BukkitRunnable {
     public void run() {
         if(timeLeft <= 0){
             CourseManager.getInstance().getWaitingPlayers().forEach(player -> {
-                player.sendMessage(CourseManager.COURSE_PREFIX + "§cLe temps est écoulé ! Bravo à §8"+ Joiner.on(", ").join(CourseManager.getInstance().getWinnersPlayersP())+" §c!");
+                player.sendMessage(CourseManager.COURSE_PREFIX + "§cLe temps est écoulé ! Bravo à §8"+ Joiner.on(", ").join(CourseManager.getInstance().getWinnersPlayersP().stream().map(badblockPlayer -> badblockPlayer.getName()).collect(Collectors.toList()))+" §c!");
                 player.performCommand("spawn");
             });
 
@@ -41,7 +43,7 @@ public class CourseGameRunnable extends BukkitRunnable {
 
             CourseManager.getInstance().getWaitingPlayers().clear();
             CourseManager.getInstance().getWaitingPlayers().clear();
-            CourseManager.getInstance().getState().setState(GameState.WAITING);
+            CourseManager.getInstance().setState(GameState.WAITING);
             cancel();
         } else {
             CourseManager.getInstance().getWaitingPlayers().forEach(player -> player.setExp(timeLeft));
