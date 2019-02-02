@@ -31,7 +31,7 @@ import lombok.Getter;
 public class ShootManager extends AbstractGameModule {
 
     public static final String SHOOT_PREFIX = "§8[§6Tir à l'arc§8] ";
-    public static final int MIN_PLAYER = 1;
+    public static final int MIN_PLAYER = 2;
     @Getter
     private static ShootManager instance;
 

@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -139,6 +144,10 @@ public class PartyInteract implements Listener {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage("§5§m------------------------------");
                         p.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§3Un BlockParty va bientôt commencer !");
+                        TextComponent tc = new TextComponent(CourseManager.COURSE_PREFIX + "§cClique ici pour la rejoindre.");
+                        tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/goblockparty"));
+                        tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
+                        p.spigot().sendMessage(tc);
                         p.sendMessage("§5§m------------------------------");
                     }
                 }

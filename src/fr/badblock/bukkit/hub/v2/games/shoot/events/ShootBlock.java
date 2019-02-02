@@ -60,6 +60,7 @@ public class ShootBlock implements Listener {
                                     e.getEntity().remove();
                                     player.sendMessage(shootPlayer.getBox().getBlocksLeft() == 1 ? ShootManager.SHOOT_PREFIX+"§cVous gagnez la partie !"
                                             : ShootManager.SHOOT_PREFIX+"§cBlocks restants: §3"+(shootPlayer.getBox().getBlocksLeft() - 1));
+
                                     if(shootPlayer.getBox().removeBlock() <= 1){
                                         ShootManager.getInstance().getShootPlayers().forEach((p, shootPlayer1) -> {
                                                 p.sendMessage(ShootManager.SHOOT_PREFIX + "§cLe joueur " + player.getName() + " gagne le tir à l'arc !");
