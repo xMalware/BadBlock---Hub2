@@ -4,7 +4,7 @@ import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.jump.events.JumpMove;
 import fr.badblock.bukkit.hub.v2.games.jump.objects.JumpPlayer;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -50,7 +50,7 @@ public class JumpManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = ConfigManager.getConfigByName("jump.yml").getConfig();
+        YamlConfiguration config = GameConfigManager.getConfigByName("jump.yml").getConfig();
         for (String s : config.getConfigurationSection("Location").getKeys(false)) {
             Location loc = new Location(
                     Bukkit.getWorld(config.getString("Location." + s + ".world")),

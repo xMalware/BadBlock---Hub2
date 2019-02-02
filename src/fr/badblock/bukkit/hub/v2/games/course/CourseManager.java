@@ -7,7 +7,7 @@ import fr.badblock.bukkit.hub.v2.games.course.events.CourseMove;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseQuit;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 import lombok.Setter;
@@ -81,7 +81,7 @@ public class CourseManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = ConfigManager.getConfigByName("course.yml").getConfig();
+        YamlConfiguration config = GameConfigManager.getConfigByName("course.yml").getConfig();
 
         for (String s : config.getConfigurationSection("Enter_gate").getKeys(false)) {
             Location loc = new Location(

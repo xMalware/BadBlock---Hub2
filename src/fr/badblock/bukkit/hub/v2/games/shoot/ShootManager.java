@@ -21,7 +21,7 @@ import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 
@@ -73,7 +73,7 @@ public class ShootManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = ConfigManager.getConfigByName("shoot.yml").getConfig();
+        YamlConfiguration config = GameConfigManager.getConfigByName("shoot.yml").getConfig();
 
         for (String s : config.getConfigurationSection("Particule").getKeys(false)) {
             Location particleLoc = new Location(

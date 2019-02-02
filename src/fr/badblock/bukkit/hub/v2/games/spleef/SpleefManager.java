@@ -4,7 +4,7 @@ import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.spleef.events.*;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
+import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -66,7 +66,7 @@ public class SpleefManager implements IGameModule {
 
     @Override
     public void loadConfig() {
-        YamlConfiguration config = ConfigManager.getConfigByName("spleef.yml").getConfig();
+        YamlConfiguration config = GameConfigManager.getConfigByName("spleef.yml").getConfig();
 
         cuboid_loc1 = new Location(
                 getWorld(config.getString("Cuboid.1.world")),
