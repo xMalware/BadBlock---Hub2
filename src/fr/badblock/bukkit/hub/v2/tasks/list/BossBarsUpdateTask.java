@@ -82,6 +82,7 @@ public class BossBarsUpdateTask extends HubTask
 			maxTick /= 2f;
 			
 			percent = f / maxTick;
+			System.out.println(percent);
 		}
 		else if (reverse && percent > 0.0f)
 		{
@@ -91,6 +92,7 @@ public class BossBarsUpdateTask extends HubTask
 			maxTick /= 2f;
 			
 			percent = maxTick / f;
+			System.out.println(percent);
 		}
 
 		
