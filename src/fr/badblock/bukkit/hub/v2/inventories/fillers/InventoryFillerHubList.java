@@ -95,7 +95,7 @@ public class InventoryFillerHubList extends InventoryFiller
 		if (hubPlayer != null)
 		{
 			hubPlayer.setCustomActions(actions);
-			System.out.println("hub filler : 1G");
+			System.out.println("hub filler : 1G : " + hubPlayer.getCustomActions());
 		}
 	}
 
@@ -146,14 +146,12 @@ public class InventoryFillerHubList extends InventoryFiller
 				data = DyeColor.LIME.getWoolData();
 				chatColor = ChatColor.GREEN;
 			}
-
-			amount = id >= 64 ? 64 : id;
 		}
 
 		ItemStack itemStack = new ItemStack(material, amount, data);
-		setMaxStackSize(itemStack, 70);
-		//if (hub.getId() > 64)
-		itemStack.setAmount(69);
+		itemStack = setMaxStackSize(itemStack, 100);
+		
+		itemStack.setAmount(players);
 
 		if (id == HubUpdateTask.hubId)
 		{
@@ -170,7 +168,7 @@ public class InventoryFillerHubList extends InventoryFiller
 			lore.add(player.getTranslatedMessage("hub.items.generic.hubs.alreadyonit")[0]);
 		}
 		// §7Connectés:
-		lore.add(player.getTranslatedMessage("hub.items.generic.hubs.onlineplayers")[0] + "§b" + players + (slots >= 0 ? "/" + slots : ""));
+		lore.add(player.getTranslatedMessage("hub.items.generic.hubs.onlineplayers")[0] + "§f" + players + (slots >= 0 ? "/" + slots : ""));
 		Map<String, String> order = new HashMap<>();
 		List<Permissible> groups = PermissionsManager.getManager().getGroups().stream().sorted((a, b) -> { return Integer.compare(b.getPower(), a.getPower()); }).collect(Collectors.toList());
 
