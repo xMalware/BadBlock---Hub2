@@ -3,6 +3,8 @@ package fr.badblock.bukkit.hub.v2.commands.list;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class GoJumpCommand extends AbstractCommand {
 
