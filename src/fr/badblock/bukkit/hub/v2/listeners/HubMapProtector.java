@@ -1,17 +1,16 @@
 package fr.badblock.bukkit.hub.v2.listeners;
 
-import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
-import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
-import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 
+import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
+import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
+import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.servers.MapProtector;
 
@@ -22,7 +21,7 @@ public class HubMapProtector implements MapProtector {
         return true;
     }
 
-    @Override
+    @Override	
     public boolean allowBlockPhysics(Block block) {
         return true;
     }

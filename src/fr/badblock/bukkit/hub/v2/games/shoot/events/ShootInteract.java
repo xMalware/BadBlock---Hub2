@@ -1,16 +1,10 @@
 package fr.badblock.bukkit.hub.v2.games.shoot.events;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
-import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
-import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
-import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
-import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -24,10 +18,16 @@ import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
+import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
+import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
+import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 /**
  * Created by Toinetoine1 on 19/01/2019.

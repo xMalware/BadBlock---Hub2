@@ -1,16 +1,15 @@
 package fr.badblock.bukkit.hub.v2.games.gladiators.events;
 
-import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
-import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
-import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
-import fr.badblock.gameapi.events.fakedeaths.FakeDeathEvent;
-import fr.badblock.gameapi.events.fakedeaths.FightingDeathEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.PlayerDeathEvent;
+
+import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
+import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
+import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
+import fr.badblock.gameapi.events.fakedeaths.FightingDeathEvent;
 
 public class GladiatorDeath implements Listener {
 

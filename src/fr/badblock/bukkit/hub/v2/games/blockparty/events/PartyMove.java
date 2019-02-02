@@ -1,17 +1,16 @@
-package fr.badblock.bukkit.hub.v2.games.blockparty.events;
+	package fr.badblock.bukkit.hub.v2.games.blockparty.events;
+
+import java.util.stream.Collectors;
+
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
 import fr.badblock.bukkit.hub.v2.games.blockparty.task.MainTask;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
-
-import java.util.Collections;
-import java.util.stream.Collectors;
 
 public class PartyMove implements Listener {
 
