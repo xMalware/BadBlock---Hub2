@@ -5,11 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.plugin.PluginManager;
@@ -21,9 +18,9 @@ import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Created by Toinetoine1 on 18/01/2019.

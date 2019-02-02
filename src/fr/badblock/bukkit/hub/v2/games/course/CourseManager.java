@@ -1,5 +1,13 @@
 package fr.badblock.bukkit.hub.v2.games.course;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.plugin.PluginManager;
+
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseCommand;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseInteract;
@@ -7,18 +15,9 @@ import fr.badblock.bukkit.hub.v2.games.course.events.CourseMove;
 import fr.badblock.bukkit.hub.v2.games.course.events.CourseQuit;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.PluginManager;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 /**
  * Created by Toinetoine1 on 13/01/2019.

@@ -1,22 +1,25 @@
 package fr.badblock.bukkit.hub.v2.games.gladiators;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.gladiators.events.*;
-import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
-import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
-import fr.badblock.bukkit.hub.v2.games.utils.CustomPlayerInventory;
-import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
-import lombok.Getter;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.PluginManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
+
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorCommand;
+import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorDeath;
+import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorInteract;
+import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorQuit;
+import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorSign;
+import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
+import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
+import fr.badblock.bukkit.hub.v2.games.utils.CustomPlayerInventory;
+import lombok.Getter;
 
 public class GladiatorManager extends AbstractGameModule {
 

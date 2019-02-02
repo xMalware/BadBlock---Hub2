@@ -1,21 +1,20 @@
 package fr.badblock.bukkit.hub.v2.games.jump;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.jump.events.JumpMove;
-import fr.badblock.bukkit.hub.v2.games.jump.objects.JumpPlayer;
-import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
-import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
-import lombok.Getter;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.PluginManager;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
+
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.jump.events.JumpMove;
+import fr.badblock.bukkit.hub.v2.games.jump.objects.JumpPlayer;
+import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
+import lombok.Getter;
 
 /**
  * Created by Toinetoine1 on 13/01/2019.
