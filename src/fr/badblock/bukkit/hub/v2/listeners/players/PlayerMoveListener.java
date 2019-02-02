@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -24,6 +25,7 @@ public class PlayerMoveListener extends BadListener
 		workWithDisguiseEffects(player, hubPlayer);
 		workLaunchpad(player, event.getTo());
 		autoTeleport(player, event);
+		workWithDoubleJump(player);
 	}
 
 	private void autoTeleport(BadblockPlayer player, PlayerMoveEvent event)
@@ -72,6 +74,14 @@ public class PlayerMoveListener extends BadListener
 			return;
 		}
 		//player.playEffect(player.getLocation(), customDisguiseEffect.build(), 0);
+	}
+
+	private void workWithDoubleJump(BadblockPlayer player){
+		Location loc = player.getLocation();
+		Block block = loc.subtract(0.0D, 1.0D, 0.0D).getBlock();
+		if((player.getGameMode() == GameMode.ADVENTURE || player.getGameMode() == GameMode.SURVIVAL) && (block.getType() != Material.AIR) && (player.hasPermission("hub.doublejump"))){
+			player.setAllowFlight(true);
+		}
 	}
 
 }
