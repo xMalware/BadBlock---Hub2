@@ -52,7 +52,7 @@ public class HostFetcherTask extends HubTask
 		{
 			BasicDBObject dbObject = (BasicDBObject) cursor.next();
 			
-			String serverName = dbObject.getString("serverName");
+			String serverName = dbObject.getString("server_name");
 			if (!InstanceKeepAliveListener.games.containsKey(serverName))
 			{
 				continue;

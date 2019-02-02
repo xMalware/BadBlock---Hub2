@@ -36,40 +36,30 @@ public class InventoryFillerHubList extends InventoryFiller
 	@Override
 	public void fill(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)
 	{
-		System.out.println("hub filler : 1");
-
 		if (Hub.getHubs() == null || Hub.getHubs().isEmpty())
 		{
 			fillNoHub(player, inventoryObject, inventory);
 			return;
 		}
-		System.out.println("hub filler : 1A");
-
+		
 		Collection<Hub> hubs = Hub.getHubs();
 		Map<Integer, InventoryAction[]> actions = new HashMap<>();
 
 		int emptySlot = inventory.firstEmpty();
 
 		boolean something = false;
-		System.out.println("hub filler : 1B");
-
+		
 		for (Hub hub : hubs)
 		{
-			System.out.println("hub filler : 1C");
-
 			if (emptySlot == -1)
 			{
 				continue;
 			}
 
-			System.out.println("hub filler : 1D");
-
 			if (!hub.isOnline())
 			{
 				continue;
 			}
-
-			System.out.println("hub filler : 1E");
 
 			something = true;
 			fillHub(player, hub, inventory, emptySlot);
@@ -86,7 +76,6 @@ public class InventoryFillerHubList extends InventoryFiller
 
 		if (!something)
 		{
-			System.out.println("hub filler : 1F");
 			fillNoHub(player, inventoryObject, inventory);
 		}
 
@@ -95,7 +84,6 @@ public class InventoryFillerHubList extends InventoryFiller
 		if (hubPlayer != null)
 		{
 			hubPlayer.setCustomActions(actions);
-			System.out.println("hub filler : 1G : " + hubPlayer.getCustomActions());
 		}
 	}
 
@@ -179,6 +167,8 @@ public class InventoryFillerHubList extends InventoryFiller
 			order.put(d, group.getName());
 			i++;
 		}
+		
+		System.out.println("ranks hub " + hudb.getHubName() + " : " + ranks.toString());
 
 		if (ranks != null && !ranks.isEmpty())
 		{

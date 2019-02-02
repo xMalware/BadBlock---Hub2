@@ -229,7 +229,7 @@ public class InventoryFillerHostList extends InventoryFiller
 
 		return new AbstractMap.SimpleEntry<ItemStack, Boolean>(itemStack, extraError.isEmpty());
 	}
-
+	
 	public static ItemStack setMaxStackSize(ItemStack is, int amount)
 	{
 		try
