@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.GameMode;
+
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
@@ -65,6 +67,14 @@ import lombok.Data;
 		{
 			return this;
 		}
+		
+		if (getPlayer().hasPermission("hub.fly"))
+		{
+			getPlayer().setAllowFlight(true);
+			getPlayer().setFlying(true);
+		}
+		
+		getPlayer().setGameMode(GameMode.ADVENTURE);
 		getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
 		getPlayer().addBossBar("hub", "", 1f, BossBarColor.RED, BossBarStyle.SOLID);
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
