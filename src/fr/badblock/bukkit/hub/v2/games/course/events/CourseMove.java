@@ -53,7 +53,7 @@ public class CourseMove implements Listener {
 
                         CourseManager.getInstance().getWaitingPlayers().clear();
                         CourseManager.getInstance().getWinnersPlayersP().clear();
-                        CourseManager.getInstance().getState().setState(GameState.WAITING);
+                        CourseManager.getInstance().setState(GameState.WAITING);
                         CourseInteract.runnable.cancel();
                     }
                 }

@@ -6,6 +6,7 @@ import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.bukkit.hub.v2.games.utils.IGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.ConfigManager;
 import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -36,6 +37,7 @@ public class SpleefManager implements IGameModule {
     @Getter
     private Map<Player, SpleefPlayer> spleefPlayers;
     @Getter
+    @Setter
     private GameState gameState;
     @Getter
     private Location spleefLoc;

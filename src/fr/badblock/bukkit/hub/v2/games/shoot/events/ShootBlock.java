@@ -52,7 +52,7 @@ public class ShootBlock implements Listener {
                         Block block = e.getEntity().getWorld().getBlockAt(x, y, z);
                         if(e.getEntity().getShooter() instanceof Player){
                             Player player = (Player) e.getEntity().getShooter();
-                            if(ShootManager.getInstance().getGameState().isState(GameState.INGAME) && ShootManager.getInstance().getShootPlayers().containsKey(player)) {
+                            if(GameState.INGAME.equals(ShootManager.getInstance().getGameState()) && ShootManager.getInstance().getShootPlayers().containsKey(player)) {
                                 ShootPlayer shootPlayer = ShootManager.getInstance().getShootPlayers().get(player);
                                 if(shootPlayer.getBox().getBlocksChanged().contains(block.getLocation())){
                                     block.setType(Material.AIR);
@@ -60,9 +60,8 @@ public class ShootBlock implements Listener {
                                     e.getEntity().remove();
                                     player.sendMessage(shootPlayer.getBox().getBlocksLeft() == 1 ? ShootManager.SHOOT_PREFIX+"§cVous gagnez la partie !"
                                             : ShootManager.SHOOT_PREFIX+"§cBlocks restants: §3"+(shootPlayer.getBox().getBlocksLeft() - 1));
-                                    if(shootPlayer.getBox().removeBlock() == 1){
+                                    if(shootPlayer.getBox().removeBlock() <= 1){
                                         ShootManager.getInstance().getShootPlayers().forEach((p, shootPlayer1) -> {
-                                            if(!player.equals(p))
                                                 p.sendMessage(ShootManager.SHOOT_PREFIX + "§cLe joueur " + player.getName() + " gagne le tir à l'arc !");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 2, 1);
                                             shootPlayer1.getCustomPlayerInventory().restoreInventory(p);
@@ -73,7 +72,7 @@ public class ShootBlock implements Listener {
 
                                         ShootManager.getInstance().getShootPlayers().clear();
                                         ShootManager.getInstance().getBoxes().forEach(Box::restoreBlocks);
-                                        ShootManager.getInstance().getGameState().setState(GameState.WAITING);
+                                        ShootManager.getInstance().setGameState(GameState.WAITING);
                                     }
                                 }
                             }

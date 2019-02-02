@@ -20,7 +20,7 @@ public class GoCourseCommand extends AbstractCommand {
     @Override
     public boolean executeCommand(CommandSender commandSender, String[] strings) {
         if(commandSender instanceof Player) {
-            Player p = (Player) commandSender;
+            BadblockPlayer p = (BadblockPlayer) commandSender;
 
             if(CourseManager.getInstance().getWaitingPlayers().contains(p) || JumpManager.getInstance().getJumpPlayers().containsKey(p) ||
                     SpleefManager.getInstance().getSpleefPlayers().containsKey(p) || ShootManager.getInstance().getShootPlayers().containsKey(p)){

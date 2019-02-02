@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.spleef.events;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
+import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefPlayer;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
@@ -9,6 +10,8 @@ import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -32,6 +35,7 @@ public class SpleefMove implements Listener {
 
     public SpleefMove(Location loc1, Location loc2) {
         selection = new CuboidSelection(loc1, loc2);
+        System.out.println("cuboid selection");
     }
 
     @EventHandler
@@ -39,8 +43,8 @@ public class SpleefMove implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if (selection.isInSelection(player.getLocation())) {
-
-            if (SpleefManager.getInstance().getGameState().isState(GameState.WAITING)) {
+            if (GameState.WAITING.equals(SpleefManager.getInstance().getGameState())) {
+                System.out.println("?????");
                 if (!SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
                     if (JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
                         player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump..");
@@ -53,6 +57,7 @@ public class SpleefMove implements Listener {
 
                     TextComponent quitComponent = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§c[Quittez le Spleef]");
                     quitComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitspleef"));
+                    quitComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                     player.spigot().sendMessage(quitComponent);
 
                     SpleefManager.getInstance().getSpleefPlayers().get(player).getCustomInv().storeAndClearInventory(player);
@@ -63,12 +68,12 @@ public class SpleefMove implements Listener {
                     if (SpleefManager.getInstance().getSpleefPlayers().size() >= SpleefManager.MIN_PLAYER) {
                         player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
 
-                        if (!SpleefManager.getInstance().getGameState().isState(GameState.WAITING)) {
-                            SpleefManager.getInstance().getGameState().setState(GameState.WAITING);
+                        if (!GameState.STARTING.equals(SpleefManager.getInstance().getGameState())) {
+                            SpleefManager.getInstance().setGameState(GameState.STARTING);
 
                             new BukkitRunnable() {
 
-                                int i = 61;
+                                int i = 60;
                                 List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
                                 @SuppressWarnings("deprecation")
@@ -79,13 +84,9 @@ public class SpleefMove implements Listener {
                                             player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cNombre de joueur insufisant !");
                                             player.performCommand("spawn");
                                             spleefPlayer.getCustomInv().restoreInventory(player);
-                                            if (spleefPlayer.isCreativeMod())
-                                                player.setGameMode(GameMode.CREATIVE);
-                                            else
-                                                player.setGameMode(GameMode.ADVENTURE);
                                         });
                                         player.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
-                                        SpleefManager.getInstance().getGameState().setState(GameState.WAITING);
+                                        SpleefManager.getInstance().setGameState(GameState.WAITING);
                                         cancel();
                                     }
 
@@ -95,18 +96,20 @@ public class SpleefMove implements Listener {
                                             if (timeToTick.contains(i)) {
                                                 p.sendTitle("", "§c" + i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
+                                                p.sendMessage(SpleefManager.SPLEEF_PREFIX+"La partie commence dans §c"+i);
                                             }
                                         } else {
                                             if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
                                                 SpleefManager.getInstance().getSpleefPlayers().forEach((player, spleeffPlayer) -> player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cNombre de joueur insufisant !"));
-                                                SpleefManager.getInstance().getGameState().setState(GameState.WAITING);
+                                                SpleefManager.getInstance().setGameState(GameState.WAITING);
                                                 cancel();
                                                 return;
                                             }
 
+                                            p.sendMessage(SpleefManager.SPLEEF_PREFIX+"La partie commence !");
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
-                                            SpleefManager.getInstance().getGameState().setState(GameState.INGAME);
+                                            SpleefManager.getInstance().setGameState(GameState.INGAME);
 
                                             cancel();
                                         }
@@ -128,37 +131,31 @@ public class SpleefMove implements Listener {
                             p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§3Une partie de Spleef va bientôt commencer !");
                             TextComponent tc = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§cClique ici pour la rejoindre.");
                             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/gospleef"));
+                            tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                             p.spigot().sendMessage(tc);
                             p.sendMessage("§5§m------------------------------");
                         }
                     }
                 }
 
-            } else if (SpleefManager.getInstance().getGameState().isState(GameState.INGAME)) {
+            } else if (GameState.INGAME.equals(SpleefManager.getInstance().getGameState())) {
                 player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
                 player.teleport(SpleefManager.getInstance().getSpleefLoc());
             }
-        } else if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player) && player.getLocation().getBlock().getType() == Material.STATIONARY_WATER && SpleefManager.getInstance().getGameState().isState(GameState.WAITING)) {
-
+        } else if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player) && player.getLocation().getBlock().getType() == Material.STATIONARY_WATER && GameState.INGAME.equals(SpleefManager.getInstance().getGameState())) {
             SpleefManager.getInstance().getSpleefPlayers().get(player).setDead(true);
-            player.setGameMode(GameMode.SPECTATOR);
             List<SpleefPlayer> playersAlive = SpleefManager.getInstance().getSpleefPlayers().values().stream().filter(spleefPlayer -> !spleefPlayer.isDead()).collect(Collectors.toList());
 
             if (playersAlive.size() == 1) {
-
                 SpleefManager.getInstance().getSpleefPlayers().forEach((p, spleefPlayer) -> {
                     p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLe joueur " + playersAlive.get(0).getPlayerName() + " gagne le Spleef !");
                     spleefPlayer.getCustomInv().restoreInventory(p);
                     p.performCommand("spawn");
-                    if (spleefPlayer.isCreativeMod())
-                        p.setGameMode(GameMode.CREATIVE);
-                    else
-                        p.setGameMode(GameMode.ADVENTURE);
                 });
 
                 SpleefManager.getInstance().getSpleefPlayers().clear();
                 SpleefBreak.restoreBlocks();
-                SpleefManager.getInstance().getGameState().setState(GameState.WAITING);
+                SpleefManager.getInstance().setGameState(GameState.WAITING);
             }
 
         }

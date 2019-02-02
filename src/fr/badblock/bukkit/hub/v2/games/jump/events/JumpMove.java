@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.jump.events;
 
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.jump.objects.JumpPlayer;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,7 @@ public class JumpMove implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent e) {
-        Player player = e.getPlayer();
+        BadblockPlayer player = (BadblockPlayer) e.getPlayer();
 
         if (JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
             JumpPlayer jumpPlayer = JumpManager.getInstance().getJumpPlayers().get(player);

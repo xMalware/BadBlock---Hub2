@@ -20,7 +20,7 @@ public class SpleefQuit implements Listener {
         SpleefManager.getInstance().getSpleefPlayers().remove(player);
 
         if (SpleefManager.getInstance().getSpleefPlayers().size() == 0) {
-            SpleefManager.getInstance().getGameState().setState(GameState.WAITING);
+            SpleefManager.getInstance().setGameState(GameState.WAITING);
             SpleefBreak.restoreBlocks();
         }
     }

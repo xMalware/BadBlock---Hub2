@@ -23,7 +23,7 @@ public class CourseQuit implements Listener {
 
         if (CourseManager.getInstance().getWaitingPlayers().size() == 0) {
             CourseManager.getInstance().getWinnersPlayersP().clear();
-            CourseManager.getInstance().getState().setState(GameState.WAITING);
+            CourseManager.getInstance().setState(GameState.WAITING);
 
             if (CourseInteract.runnable != null)
                 CourseInteract.runnable.cancel();

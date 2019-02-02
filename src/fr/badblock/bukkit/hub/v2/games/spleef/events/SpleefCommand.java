@@ -13,16 +13,19 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 public class SpleefCommand implements Listener {
 
     @EventHandler
-    public void onCommand(PlayerCommandPreprocessEvent e) {
-        Player p = e.getPlayer();
+    public void onCommand(PlayerCommandPreprocessEvent event) {
+        Player p = event.getPlayer();
 
-        if (SpleefManager.getInstance().getSpleefPlayers().containsKey(p)) {
-            if (p.getGameMode() == GameMode.CREATIVE || p.hasPermission("lobbygames.bypass")) {
-                return;
-            }
-            e.setCancelled(true);
-            p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTu ne peux pas éxécuter de commande en jeu !");
+        if (!SpleefManager.getInstance().getSpleefPlayers().containsKey(p)) {
+            return;
         }
+
+        if (GameMode.CREATIVE.equals(p.getGameMode()) || p.hasPermission("lobbygames.bypass")) {
+            return;
+        }
+
+        event.setCancelled(true);
+        p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTu ne peux pas éxécuter de commande en jeu !");
     }
 
 }

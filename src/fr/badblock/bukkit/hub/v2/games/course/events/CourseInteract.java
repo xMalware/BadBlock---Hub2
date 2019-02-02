@@ -4,10 +4,10 @@ import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.course.task.CourseGameRunnable;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
+import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -46,13 +46,13 @@ public class CourseInteract implements Listener {
             if (CourseManager.getInstance().getDoorsToEnter().keySet().stream().anyMatch(location -> block.getLocation().equals(location))) {
                 event.setCancelled(true);
 
-                if (CourseManager.getInstance().getState().isState(GameState.INGAME)) {
+                if (GameState.INGAME.equals(CourseManager.getInstance().getState())) {
                     player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
                     return;
                 }
 
                 if(JumpManager.getInstance().getJumpPlayers().containsKey(player)){
-                    player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump..");
+                    player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump");
                     return;
                 }
 
@@ -96,8 +96,8 @@ public class CourseInteract implements Listener {
                             Gate1.update();
                         }
 
-                        if(!CourseManager.getInstance().getState().isState(GameState.STARTING)){
-                            CourseManager.getInstance().getState().setState(GameState.STARTING);
+                        if(!GameState.INGAME.equals(CourseManager.getInstance().getState())){
+                            CourseManager.getInstance().setState(GameState.STARTING);
 
                             new BukkitRunnable() {
 
@@ -109,7 +109,7 @@ public class CourseInteract implements Listener {
                                     if (waitingPlayers.size() < CourseManager.MIN_PLAYER) {
                                         waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insufisant !"));
                                         player.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
-                                        CourseManager.getInstance().getState().setState(GameState.WAITING);
+                                        CourseManager.getInstance().setState(GameState.WAITING);
                                         cancel();
                                     }
 
@@ -119,18 +119,20 @@ public class CourseInteract implements Listener {
                                             if(timeToTick.contains(i)){
                                                 p.sendTitle("", "§c" + i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
+                                                p.sendMessage(CourseManager.COURSE_PREFIX+"La partie commence dans §c"+i);
                                             }
                                         } else {
                                             if (waitingPlayers.size() < CourseManager.MIN_PLAYER) {
                                                 waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insufisant !"));
-                                                CourseManager.getInstance().getState().setState(GameState.WAITING);
+                                                CourseManager.getInstance().setState(GameState.WAITING);
                                                 cancel();
                                                 return;
                                             }
 
+                                            p.sendMessage(CourseManager.COURSE_PREFIX+"La partie commence !");
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
-                                            CourseManager.getInstance().getState().setState(GameState.INGAME);
+                                            CourseManager.getInstance().setState(GameState.INGAME);
                                             runnable = new CourseGameRunnable();
                                             runnable.runTaskTimerAsynchronously(BadBlockHub.getInstance(), 0, 20);
 
@@ -159,9 +161,9 @@ public class CourseInteract implements Listener {
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             p.sendMessage("§5§m------------------------------");
                             p.sendMessage(CourseManager.COURSE_PREFIX + "§3Une course va bientôt commencer !");
-                            //Bukkit.broadcastMessage(coursePrefix + "§cClique ici pour la rejoindre.");
                             TextComponent tc = new TextComponent(CourseManager.COURSE_PREFIX + "§cClique ici pour la rejoindre.");
                             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/gocourse"));
+                            tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                             p.spigot().sendMessage(tc);
                             p.sendMessage("§5§m------------------------------");
                         }

@@ -1,5 +1,6 @@
-package fr.badblock.bukkit.hub.v2.games.gladiators;
+package fr.badblock.bukkit.hub.v2.games.gladiators.events;
 
+import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
 import org.bukkit.block.Sign;

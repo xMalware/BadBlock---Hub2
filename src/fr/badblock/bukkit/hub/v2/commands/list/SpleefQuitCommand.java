@@ -20,7 +20,7 @@ public class SpleefQuitCommand extends AbstractCommand {
         if(sender instanceof Player) {
             Player p = (Player) sender;
 
-            if(SpleefManager.getInstance().getGameState().isState(GameState.WAITING) && SpleefManager.getInstance().getSpleefPlayers().containsKey(p)){
+            if(GameState.WAITING.equals(SpleefManager.getInstance().getGameState()) && SpleefManager.getInstance().getSpleefPlayers().containsKey(p)){
                 SpleefManager.getInstance().getSpleefPlayers().remove(p).getCustomInv().restoreInventory(p);
                 p.performCommand("spawn");
                 p.sendMessage("§cVous avez quitté le Spleef !");

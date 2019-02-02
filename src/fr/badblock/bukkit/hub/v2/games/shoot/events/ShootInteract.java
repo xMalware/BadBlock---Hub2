@@ -1,12 +1,15 @@
 package fr.badblock.bukkit.hub.v2.games.shoot.events;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -41,7 +44,7 @@ public class ShootInteract implements Listener {
             if(armorStand.getName().equals(ChatColor.stripColor("Odanorr"))){
                 event.setCancelled(true);
 
-                if(ShootManager.getInstance().getGameState().isState(GameState.INGAME)) {
+                if(GameState.INGAME.equals(ShootManager.getInstance().getGameState())) {
                     player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
                     return;
                 }
@@ -75,12 +78,12 @@ public class ShootInteract implements Listener {
                         player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
 
 
-                        if(!ShootManager.getInstance().getGameState().isState(GameState.STARTING)){
-                            ShootManager.getInstance().getGameState().setState(GameState.STARTING);
+                        if(!GameState.STARTING.equals(ShootManager.getInstance().getGameState())){
+                            ShootManager.getInstance().setGameState(GameState.STARTING);
 
                             new BukkitRunnable() {
 
-                                int i = 61;
+                                int i = 60;
                                 List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
                                 @Override
@@ -91,7 +94,7 @@ public class ShootInteract implements Listener {
                                             shootPlayer1.getCustomPlayerInventory().restoreInventory(player1);
                                             player1.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
                                         });
-                                        ShootManager.getInstance().getGameState().setState(GameState.WAITING);
+                                        ShootManager.getInstance().setGameState(GameState.WAITING);
                                         cancel();
                                     }
 
@@ -100,13 +103,16 @@ public class ShootInteract implements Listener {
                                         if (i != 0) {
                                             if(timeToTick.contains(i)){
                                                 p.sendTitle("", "§c" + i);
+                                                p.sendMessage(ShootManager.SHOOT_PREFIX+"La partie commence dans §c"+i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
                                             }
                                         } else {
+
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
                                             p.teleport(shootPlayer1.getBox().getParticle());
-                                            ShootManager.getInstance().getGameState().setState(GameState.INGAME);
+                                            p.sendMessage(ShootManager.SHOOT_PREFIX+"§cLa partie commence !");
+                                            ShootManager.getInstance().setGameState(GameState.INGAME);
                                             shootPlayer1.getBox().spawnRandomBlocks();
 
                                             cancel();
@@ -125,10 +131,12 @@ public class ShootInteract implements Listener {
 
                     } else {
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                            if(player.equals(p)) continue;
                             p.sendMessage("§5§m------------------------------");
                             p.sendMessage(ShootManager.SHOOT_PREFIX + "§3Une partie de tir à l'arc va bientôt commencer !");
                             TextComponent tc = new TextComponent(ShootManager.SHOOT_PREFIX + "§cClique ici pour la rejoindre.");
                             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/goshoot"));
+                            tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                             p.spigot().sendMessage(tc);
                             p.sendMessage("§5§m------------------------------");
                         }
