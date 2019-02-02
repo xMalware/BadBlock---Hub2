@@ -21,7 +21,7 @@ public class HubUpdateTask extends HubTask
 
 	public HubUpdateTask()
 	{
-		super (true, 20, 20);
+		super (false, 20, 20);
 	}
 
 	@Override

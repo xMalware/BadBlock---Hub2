@@ -18,6 +18,7 @@ import lombok.Setter;
 	
 	@Getter@Setter public static BadBlockHub instance;
 	
+	public boolean	threadEnabled	= true;
 	private Gson notRestrictiveGson;
 
 	@Override
@@ -34,7 +35,9 @@ import lombok.Setter;
 	}
 
 	@Override
-	public void onDisable() {
+	public void onDisable()
+	{
+		threadEnabled = false;
 		SpleefBreak.restoreBlocks();
 		ShootManager.getInstance().getBoxes().forEach(Box::restoreBlocks);
 		ShootManager.getInstance().getArmorStand().remove();
