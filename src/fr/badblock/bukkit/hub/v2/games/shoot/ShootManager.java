@@ -122,7 +122,7 @@ public class ShootManager implements IGameModule {
 
 
     public FileConfiguration getConfig(){
-        return BadBlockHub.getInstance().getConfig();
+        return GameConfigManager.getConfigByName("config.yml").getConfig();
     }
 
 
