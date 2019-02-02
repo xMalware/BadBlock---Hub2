@@ -10,6 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.inventories.InventoryFiller;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
@@ -30,13 +31,49 @@ public class InventoryFillerBooster extends InventoryFiller
 		
 		if (data == null)
 		{
-			fillNoBooster(player, inventoryObject, inventory);
+			Map<Integer, InventoryAction[]> actions = new HashMap<>();
+			int slot = fillNoBooster(player, inventoryObject, inventory);
+			
+			if (slot != -1)
+			{
+				InventoryAction leftAction = new InventoryAction(InventoryActionType.LEFT_CLICK, CustomItemActionType.EXECUTE_COMMAND,
+						ConfigLoader.getShop().getBoosterInventoryCommand());
+				InventoryAction rightAction = new InventoryAction(InventoryActionType.RIGHT_CLICK, CustomItemActionType.EXECUTE_COMMAND,
+						ConfigLoader.getShop().getBoosterInventoryCommand());
+				
+				actions.put(slot, new InventoryAction[] { leftAction, rightAction });
+				
+				HubPlayer hubPlayer = HubPlayer.get(player);
+				
+				if (hubPlayer != null)
+				{
+					hubPlayer.setCustomActions(actions);
+				}
+			}
 			return;
 		}
 		
 		if (data.getBoosters() == null || data.getBoosters().isEmpty())
 		{
-			fillNoBooster(player, inventoryObject, inventory);
+			Map<Integer, InventoryAction[]> actions = new HashMap<>();
+			int slot = fillNoBooster(player, inventoryObject, inventory);
+			
+			if (slot != -1)
+			{
+				InventoryAction leftAction = new InventoryAction(InventoryActionType.LEFT_CLICK, CustomItemActionType.EXECUTE_COMMAND,
+						ConfigLoader.getShop().getBoosterInventoryCommand());
+				InventoryAction rightAction = new InventoryAction(InventoryActionType.RIGHT_CLICK, CustomItemActionType.EXECUTE_COMMAND,
+						ConfigLoader.getShop().getBoosterInventoryCommand());
+				
+				actions.put(slot, new InventoryAction[] { leftAction, rightAction });
+				
+				HubPlayer hubPlayer = HubPlayer.get(player);
+				
+				if (hubPlayer != null)
+				{
+					hubPlayer.setCustomActions(actions);
+				}
+			}
 			return;
 		}
 		
@@ -66,7 +103,18 @@ public class InventoryFillerBooster extends InventoryFiller
 		
 		if (workingBoosters.isEmpty() && disabledBoosters.isEmpty() && expiredBoosters.isEmpty())
 		{
-			fillNoBooster(player, inventoryObject, inventory);
+			Map<Integer, InventoryAction[]> actions = new HashMap<>();
+			int slot = fillNoBooster(player, inventoryObject, inventory);
+			
+			if (slot != -1)
+			{
+				InventoryAction leftAction = new InventoryAction(InventoryActionType.LEFT_CLICK, CustomItemActionType.EXECUTE_COMMAND,
+						ConfigLoader.getShop().getBoosterInventoryCommand());
+				InventoryAction rightAction = new InventoryAction(InventoryActionType.RIGHT_CLICK, CustomItemActionType.EXECUTE_COMMAND,
+						ConfigLoader.getShop().getBoosterInventoryCommand());
+				
+				actions.put(slot, new InventoryAction[] { leftAction, rightAction });
+			}
 			return;
 		}
 		
@@ -75,6 +123,7 @@ public class InventoryFillerBooster extends InventoryFiller
 
 		for (Entry<ItemStack, Integer> entry : workingBoosters.entrySet())
 		{
+			
 			if (emptySlot == -1)
 			{
 				continue;
@@ -100,7 +149,7 @@ public class InventoryFillerBooster extends InventoryFiller
 			{
 				continue;
 			}
-
+			
 			ItemStack disabledBooster = entry.getKey();
 			int index = entry.getValue();
 			
@@ -197,7 +246,7 @@ public class InventoryFillerBooster extends InventoryFiller
 		return itemStack;
 	}
 	
-	private void fillNoBooster(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)
+	private int fillNoBooster(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)
 	{
 		ItemStack itemStack = new ItemStack(Material.BUCKET);
 		ItemMeta itemMeta = itemStack.getItemMeta();
@@ -209,10 +258,11 @@ public class InventoryFillerBooster extends InventoryFiller
 		
 		if (emptySlot == -1)
 		{
-			return;
+			return emptySlot;
 		}
 		
 		inventory.setItem(emptySlot, itemStack);
+		return emptySlot;
 	}
 	
 }
