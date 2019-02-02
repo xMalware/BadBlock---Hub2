@@ -123,12 +123,12 @@ public class CourseManager implements IGameModule {
                 config.getInt("Cuboid.2.z"));
 
 
-        courseGUILoc = new Location(Bukkit.getWorld(config.getString("Course.world")),
-        		config.getInt("Course.x"),
-        		config.getInt("Course.y"),
-        		config.getInt("Course.z"),
-        		config.getInt("Course.yaw"),
-        		config.getInt("Course.pitch"));
+        courseGUILoc = new Location(Bukkit.getWorld(getConfig().getString("Course.world")),
+                getConfig().getInt("Course.x"),
+                getConfig().getInt("Course.y"),
+                getConfig().getInt("Course.z"),
+                getConfig().getInt("Course.yaw"),
+                getConfig().getInt("Course.pitch"));
 
     }
 
