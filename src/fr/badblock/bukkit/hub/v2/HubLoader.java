@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2;
 import java.io.File;
 
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
@@ -57,7 +58,11 @@ public class HubLoader {
 		secondLocation.setZ(firstLocation.getZ() - 32);
 		
 		CuboidSelection cuboidSelection = new CuboidSelection(firstLocation, secondLocation);
-		GameAPI.getAPI().loadChunks(cuboidSelection, 20);
+		
+		for (Block block : cuboidSelection.getBlocks())
+		{
+			block.getChunk().load(false);
+		}
 	}
 
 }

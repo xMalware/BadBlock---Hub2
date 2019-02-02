@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.bukkit.Bukkit;
 
 import fr.badblock.bukkit.hub.v2.rabbit.HubPacketListener;
+import fr.badblock.bukkit.hub.v2.rabbit.InstanceKeepAliveListener;
 import fr.badblock.bukkit.hub.v2.rabbit.SEntryInfosListener;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
@@ -39,6 +40,7 @@ public class ListenerPackages {
 	{
 		loadRabbitListener(HubPacketListener.class);
 		loadRabbitListener(SEntryInfosListener.class);
+		loadRabbitListener(InstanceKeepAliveListener.class);
 	}
 	
 	private static void loadRabbitListener(Class<? extends RabbitAPIListener> listener)
