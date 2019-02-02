@@ -78,7 +78,7 @@ public class PlayerMoveListener extends BadListener
 
 	private void workWithDoubleJump(BadblockPlayer player){
 		Location loc = player.getLocation();
-		Block block = loc.subtract(0.0D, 1.0D, 0.0D).getBlock();
+		Block block = loc.subtract(0.0D, 2.0D, 0.0D).getBlock();
 		if((player.getGameMode() == GameMode.ADVENTURE || player.getGameMode() == GameMode.SURVIVAL) && (block.getType() != Material.AIR) && (player.hasPermission("hub.doublejump"))){
 			player.setAllowFlight(true);
 		}

@@ -28,6 +28,8 @@ public class JumpManager extends AbstractGameModule {
     private Map<Player, JumpPlayer> jumpPlayers;
     @Getter
     private List<Location> checkpoint;
+    @Getter
+    private Location teleportPoint;
 
     public JumpManager() {
         super("Jump","jump.yml");
@@ -59,5 +61,7 @@ public class JumpManager extends AbstractGameModule {
                     getConfig().getInt("Location." + s + ".z"));
             checkpoint.add(loc);
         }
+
+        teleportPoint = getDefaultLocation();
     }
 }
