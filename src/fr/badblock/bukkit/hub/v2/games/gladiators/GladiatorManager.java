@@ -54,6 +54,7 @@ public class GladiatorManager extends AbstractGameModule {
 
     @Override
     public void loadConfig() {
+        teleportPoint = getDefaultLocation();
 
         for (String s : getConfig().getConfigurationSection("Maps").getKeys(false)) {
             List<Location> positions = new ArrayList<>();
@@ -71,7 +72,5 @@ public class GladiatorManager extends AbstractGameModule {
 
             MapManager.get().getMaps().add(new Map(s, positions));
         }
-
-        teleportPoint = getTeleportPoint();
     }
 }

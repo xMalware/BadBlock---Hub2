@@ -6,21 +6,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
+import java.util.HashMap;
+
 
 public class PlayerToggleFlightListener extends BadListener {
 
-    @EventHandler
-    private void onPlayerToggleFlight(PlayerToggleFlightEvent e) {
-        final Player p = e.getPlayer();
+    private HashMap<Player, Integer> jumps = new HashMap<>();
 
-        if (p.getGameMode() == GameMode.CREATIVE) {
+    @EventHandler
+    private void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.getGameMode() == GameMode.CREATIVE) {
             return;
         }
 
-        e.setCancelled(true);
-        p.setAllowFlight(false);
-        p.setFlying(false);
-        p.setVelocity(p.getLocation().getDirection().multiply(1.9).setY(1));
+        //TODO Double jump :)
 
     }
 
