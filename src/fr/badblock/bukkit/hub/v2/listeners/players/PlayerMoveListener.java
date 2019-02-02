@@ -1,6 +1,5 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

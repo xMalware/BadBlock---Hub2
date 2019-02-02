@@ -1,12 +1,13 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
-import fr.badblock.gameapi.BadListener;
+import java.util.HashMap;
+
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
-import java.util.HashMap;
+import fr.badblock.gameapi.BadListener;
 
 
 public class PlayerToggleFlightListener extends BadListener {
