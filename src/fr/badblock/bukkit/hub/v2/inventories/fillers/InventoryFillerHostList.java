@@ -21,7 +21,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import fr.badblock.api.common.minecraft.GameState;
 import fr.badblock.bukkit.hub.v2.instances.hosts.Host;
 import fr.badblock.bukkit.hub.v2.instances.hosts.HostWhitelistState;
-import fr.badblock.bukkit.hub.v2.instances.hubs.Hub;
 import fr.badblock.bukkit.hub.v2.inventories.InventoryFiller;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
@@ -38,7 +37,7 @@ public class InventoryFillerHostList extends InventoryFiller
 	@Override
 	public void fill(BadblockPlayer player, InventoryObject inventoryObject, Inventory inventory)
 	{
-		if (Hub.getHubs() == null || Hub.getHubs().isEmpty())
+		if (HostFetcherTask.hosts == null || HostFetcherTask.hosts.isEmpty())
 		{
 			fillNoHost(player, inventoryObject, inventory);
 			return;
