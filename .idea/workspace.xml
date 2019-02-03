@@ -7,10 +7,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d459f74-ad4a-4700-b6d2-5bc8e84157d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/GadgetFeatures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/AbstractGadgets.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/FireGun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/PaintBallGun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/utils/ParticleEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/utils/ReflectionUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/BadBlockHub_jar/BadBlockHub.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/BadBlockHub_jar/BadBlockHub.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerMoveListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerMoveListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerToggleFlightListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerToggleFlightListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/GadgetsBlock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/type/AbstractGadgets.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerInteractListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerInteractListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/players/HubPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/players/HubPlayer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,10 +31,15 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerMoveListener.java">
+        <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/PaintBallGun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="583">
-              <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+            <state relative-caret-position="577">
+              <caret line="60" column="90" lean-forward="true" selection-start-line="60" selection-start-column="90" selection-end-line="60" selection-end-column="90" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1982#2309#0" expanded="true" />
+                <element signature="e#2308#2309#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,6 +71,9 @@
       <find>config</find>
       <find>MIN_PLAYER</find>
       <find>jump</find>
+      <find>features.use</find>
+      <find>HubPlayer</find>
+      <find>ParticleDATA</find>
     </findStrings>
     <replaceStrings>
       <replace>getDefaultConfig()</replace>
@@ -71,25 +88,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/commands/GoShoot.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/utils/ItemBuilder.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/HubLoader.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/commands/GKitCommand.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GladiatorEditKitCommand.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GladiatorQuitCommand.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/CommandsLoader.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefBreak.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefCommand.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefDamage.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/task/MainTask.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/task/TimeToMove.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/task/WaitingTime.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/events/CourseMove.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/events/CourseQuit.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefQuit.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/SpleefQuitCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/task/CourseGameRunnable.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerInteractListener.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/states/GameState.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/events/ShootInteract.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/events/CourseInteract.java" />
@@ -122,6 +126,19 @@
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/GladiatorManager.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerToggleFlightListener.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerMoveListener.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureWorker.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/actions/ItemActionUseFeature.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/players/HubPlayer.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/type/AbstractGadgets.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/utils/ReflectionUtils.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/utils/ParicleEffect.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/GadgetFeatures.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/type/FireGun.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/type/PaintBallGun.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/AbstractGadgets.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerInteractListener.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/FireGun.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/PaintBallGun.java" />
       </list>
     </option>
   </component>
@@ -164,15 +181,74 @@
               <item name="HubV2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="v2" type="462c0819:PsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmetics" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
               <item name="HubV2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="v2" type="462c0819:PsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmetics" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmetics" type="462c0819:PsiDirectoryNode" />
+              <item name="features" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmetics" type="462c0819:PsiDirectoryNode" />
+              <item name="workable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="cosmetics" type="462c0819:PsiDirectoryNode" />
+              <item name="workable" type="462c0819:PsiDirectoryNode" />
+              <item name="gadgets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="games" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="games" type="462c0819:PsiDirectoryNode" />
+              <item name="shoot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="games" type="462c0819:PsiDirectoryNode" />
+              <item name="shoot" type="462c0819:PsiDirectoryNode" />
+              <item name="events" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="v2" type="462c0819:PsiDirectoryNode" />
+              <item name="games" type="462c0819:PsiDirectoryNode" />
+              <item name="shoot" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -187,9 +263,9 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549115027633" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549146123785" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Eclipse/Idotek/GSource" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Eclipse/PoudlardRP" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -242,12 +318,14 @@
       <workItem from="1549019459297" duration="9873000" />
       <workItem from="1549033609080" duration="7586000" />
       <workItem from="1549052868132" duration="12419000" />
-      <workItem from="1549098691060" duration="13693000" />
+      <workItem from="1549098691060" duration="36171000" />
+      <workItem from="1549150044773" duration="2000" />
+      <workItem from="1549188053222" duration="2477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50734000" />
+    <option name="totallyTimeSpent" value="75691000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -262,7 +340,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30277187" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30916846" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -299,403 +377,409 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/utils/config/GameConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/utils/config/GameConfigManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/type/AbstractGadgets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="e#2583#2615#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/inventory/ItemStack.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="316" column="40" selection-start-line="316" selection-start-column="40" selection-end-line="316" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/Bukkit.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="201" column="24" selection-start-line="201" selection-start-column="24" selection-end-line="201" selection-end-column="24" />
-          <folding>
-            <element signature="e#5386#5387#0" expanded="true" />
-            <element signature="e#5430#5431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/plugin/PluginManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/BlockPartyManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1641">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GoShootCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="30" column="49" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GoCourseCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/GamesManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GoSpleefCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyInteract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="149" column="51" lean-forward="true" selection-start-line="149" selection-start-column="51" selection-end-line="149" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/events/CourseInteract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="170" selection-start-line="170" selection-end-line="173" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/ShootManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/events/ShootInteract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="133" column="58" lean-forward="true" selection-start-line="133" selection-start-column="58" selection-end-line="133" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/SpleefManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/events/ShootBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/utils/Box.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="53" column="33" lean-forward="true" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/disguises/CustomDisguiseEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="28" column="55" lean-forward="true" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/BukkitInventories.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/custom/CustomInventory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/players/HubPlayer.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/custom/CustomInventoryBuyConfirm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="87" column="15" selection-start-line="87" selection-start-column="15" selection-end-line="87" selection-end-column="15" />
+        <state relative-caret-position="-1386">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/tasks/HubTask.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/actions/ItemActionOpenInventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="92">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/tasks/list/ActionBarsUpdateTask.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/ParticleFeatures.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        <state relative-caret-position="-115">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/tasks/HubTaskLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureBuyConfirmInventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1326">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="299">
+          <caret line="24" column="8" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/OwnedFeature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/config/configs/FeaturesConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/HubLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        <state relative-caret-position="207">
+          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerToggleSneakListener.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/config/ConfigLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="368">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/mounts/MountLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-107">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/ListenerPackages.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        <state relative-caret-position="-15">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerLoadedListener.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/config/configs/HatConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        <state relative-caret-position="552">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerJoinListener.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/DisguiseFeatures.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="146">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+          <folding>
+            <element signature="e#7865#7866#0" expanded="true" />
+            <element signature="e#7908#7909#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/hats/CustomHats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/MountFeatures.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="90" column="23" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
+          <folding>
+            <element signature="e#3679#3680#0" expanded="true" />
+            <element signature="e#3701#3702#0" expanded="true" />
+            <element signature="e#3742#3743#0" expanded="true" />
+            <element signature="e#3767#3768#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/PetFeatures.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="105" column="34" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="105" selection-end-column="34" />
+          <folding>
+            <element signature="e#3600#3601#0" expanded="true" />
+            <element signature="e#3635#3636#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerInventoryClickListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1547">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/entity/Player.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
-          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/CourseManager.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2124">
-          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="286">
+          <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+          <folding>
+            <element signature="e#2036#2037#0" expanded="true" />
+            <element signature="e#2063#2064#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/players/HubPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
+          <folding>
+            <element signature="e#3005#3006#0" expanded="true" />
+            <element signature="e#3057#3058#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Libs/API_dev.jar!/fr/badblock/gameapi/utils/reflection/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1422">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/utils/ReflectionUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#24880#24900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="129" column="11" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://A:/Téléchargements/CustomEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1219">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Math.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="1243" column="70" lean-forward="true" selection-start-line="1243" selection-start-column="70" selection-end-line="1243" selection-end-column="70" />
+          <folding>
+            <element signature="e#16338#16339#0" expanded="true" />
+            <element signature="e#16420#16421#0" expanded="true" />
+            <element signature="e#49043#49044#0" expanded="true" />
+            <element signature="e#49082#49083#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/utils/ParticleEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-803">
+          <caret line="946" lean-forward="true" selection-start-line="946" selection-end-line="946" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/jump/JumpManager.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/disguises/DisguiseCaveSpider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="64" column="45" selection-start-line="64" selection-start-column="45" selection-end-line="64" selection-end-column="45" />
+        <state relative-caret-position="92">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GoBlockPartyCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/disguises/CustomDisguise.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GladiatorQuitCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="20" column="72" lean-forward="true" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../Libs/API_dev.jar!/fr/badblock/gameapi/utils/ConfigUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="63" column="57" lean-forward="true" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
+        <state relative-caret-position="138">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../Libs/API_dev.jar!/fr/badblock/gameapi/players/BadblockPlayer.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
+        <state relative-caret-position="286">
+          <caret line="173" column="9" selection-start-line="173" selection-start-column="9" selection-end-line="173" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefMove.java">
+    <entry file="jar://$PROJECT_DIR$/../Libs/API_dev.jar!/fr/badblock/api/common/utils/flags/GlobalFlags.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="121" column="39" lean-forward="true" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
+        <state relative-caret-position="276">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/events/GladiatorQuit.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/actions/ItemActionUseFeature.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="698">
+          <caret line="48" column="23" lean-forward="true" selection-start-line="48" selection-start-column="23" selection-end-line="48" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/maps/MapManager.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/types/GadgetFeatures.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/events/GladiatorSign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/events/GladiatorDeath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/events/GladiatorInteract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GladiatorPlayCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="148">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/inventories/fillers/InventoryFillerHostList.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/features/FeatureWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="163" column="12" lean-forward="true" selection-start-line="163" selection-start-column="12" selection-end-line="163" selection-end-column="12" />
+        <state relative-caret-position="598">
+          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/instances/hosts/Host.java">
+    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/util/Vector.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="897">
-          <caret line="53" column="8" lean-forward="true" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="8" />
+        <state relative-caret-position="263">
+          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GoJumpCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/GadgetsBlock.java" />
+    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/DyeColor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="721">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/events/ShootBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/utils/Box.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#820#852#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/block/BlockState.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-456">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://A:/Téléchargements/CustomEffect(1).java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-130">
+          <caret line="22" column="7" lean-forward="true" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerInteractListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/AbstractGadgets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/utils/AbstractGameModule.java">
+    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/Location.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="255" column="18" selection-start-line="255" selection-start-column="18" selection-end-line="255" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/GladiatorManager.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="562">
+          <caret line="239" column="6" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GoGladiatorCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/FireGun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="34">
+          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerToggleFlightListener.java">
+    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/org/bukkit/block/Block.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="286">
+          <caret line="74" column="12" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerMoveListener.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/PaintBallGun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="583">
-          <caret line="84" column="29" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
+        <state relative-caret-position="577">
+          <caret line="60" column="90" lean-forward="true" selection-start-line="60" selection-start-column="90" selection-end-line="60" selection-end-column="90" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1982#2309#0" expanded="true" />
+            <element signature="e#2308#2309#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
