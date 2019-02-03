@@ -169,9 +169,14 @@ public class BukkitInventories
 						needed = featureName.toLowerCase();
 					}
 
+					String featureAction = featureObj.getNeeded().isBuyable() && !owned ? 
+							player.getTranslatedMessage("hub.items.generic.feature_actions_buy")[0] : owned ?
+							player.getTranslatedMessage("hub.items.generic.feature_actions_use")[0] : "";
+
 					for (String message : player.getTranslatedMessage("hub.items.generic.feature_lore", displayFeatureName,
 							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed)[0],
-							player.getTranslatedMessage("hub.ietms.generic.feature_owned_" + owned)[0]))
+							player.getTranslatedMessage("hub.items.generic.feature_owned_" + owned)[0],
+							featureAction))
 					{
 						strings.add(tagManager.tagify(player, message, inventoryItemObject));
 					}
