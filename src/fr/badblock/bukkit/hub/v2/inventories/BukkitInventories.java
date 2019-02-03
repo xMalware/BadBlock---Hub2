@@ -101,9 +101,11 @@ public class BukkitInventories
 					feature = true;
 					String featureName = action.getActionData();
 					HubStoredPlayer storedPlayer = HubStoredPlayer.get(player);
+					boolean owned = false;
 					if (FeatureManager.getInstance().hasFeature(player, storedPlayer, featureName))
 					{
 						itemStack = ItemStackUtils.fakeEnchant(itemStack);
+						owned = true;
 					}
 
 					// Get info
@@ -168,7 +170,8 @@ public class BukkitInventories
 					}
 
 					for (String message : player.getTranslatedMessage("hub.items.generic.feature_lore", displayFeatureName,
-							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed)[0]))
+							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed)[0],
+							player.getTranslatedMessage("hub.ietms.generic.feature_owned_" + owned)[0]))
 					{
 						strings.add(tagManager.tagify(player, message, inventoryItemObject));
 					}
