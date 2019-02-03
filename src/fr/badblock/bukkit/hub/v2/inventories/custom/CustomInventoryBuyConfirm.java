@@ -11,6 +11,7 @@ import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
+import net.md_5.bungee.api.ChatColor;
 
 public class CustomInventoryBuyConfirm extends CustomInventory
 {
@@ -31,6 +32,7 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		{
 			return false;
 		}
+		
 		// Get feature raw
 		String featureRawName = hubPlayer.getBuyFeature();
 		// Close inventory
@@ -39,20 +41,26 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		hubPlayer.setBuyFeature(null);
 		// Remove custom inventory
 		hubPlayer.setCustomInventory(null);
+		
+		FeaturesConfig featuresConfig = ConfigLoader.getFeatures();
+		
+		Feature feature = featuresConfig.getFeatures().get(featureRawName);
+		String displayFeatureName = ChatColor.translateAlternateColorCodes('&', feature.getName());
+		
 		// Cancel
 		if (itemStack.getType().equals(Material.REDSTONE_BLOCK))
 		{
-			player.sendTranslatedMessage("hub.features.buy.cancel.cancelled", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+			player.sendTranslatedMessage("hub.features.buy.cancel.cancelled", displayFeatureName);
 			return true;
 		}
 		// Confirm
 		if (itemStack.getType().equals(Material.EMERALD_BLOCK))
 		{
-			player.sendTranslatedMessage("hub.features.buy.confirm.confirmed", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+			player.sendTranslatedMessage("hub.features.buy.confirm.confirmed", displayFeatureName);
 			confirm(player, hubPlayer, featureRawName);
 			return true;
 		}
-		player.sendTranslatedMessage("hub.features.buy.errors.unknownaction", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+		player.sendTranslatedMessage("hub.features.buy.errors.unknownaction", displayFeatureName);
 		return true;
 	}
 
@@ -80,9 +88,11 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		featureManager.addFeature(hubStoredPlayer, feature);
 		// Save storage
 		hubStoredPlayer.save(player);
+		
+		String displayFeatureName = ChatColor.translateAlternateColorCodes('&', feature.getName());
 
 		// Send bought message
-		player.sendTranslatedMessage("hub.features.buy.bought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+		player.sendTranslatedMessage("hub.features.buy.bought", displayFeatureName);
 	}
 
 	public static boolean canBuy(BadblockPlayer player, HubPlayer hubPlayer, String featureRawName)
@@ -93,31 +103,33 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		// Get feature
 		Feature feature = featuresConfig.getFeatures().get(featureRawName);
 		
+		String displayFeatureName = ChatColor.translateAlternateColorCodes('&', feature.getName());
+		
 		// Already bought this feature
 		if (featureManager.hasFeature(player, hubStoredPlayer, featureRawName))
 		{
-			player.sendTranslatedMessage("hub.features.buy.errors.alreadybought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
+			player.sendTranslatedMessage("hub.features.buy.errors.alreadybought", displayFeatureName, feature.getLevelNeeded(), player.getPlayerData().getLevel());
 			return true;
 		}
 		
 		// Check needed level
 		if (feature.getLevelNeeded() > player.getPlayerData().getLevel())
 		{
-			player.sendTranslatedMessage("hub.features.buy.errors.notenoughlevels", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughlevels", displayFeatureName, feature.getLevelNeeded(), player.getPlayerData().getLevel());
 			return false;
 		}
 		
 		// Check needed badcoins
 		if (feature.getBadcoinsNeeded() > player.getPlayerData().getBadcoins())
 		{
-			player.sendTranslatedMessage("hub.features.buy.errors.notenoughbadcoins", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getBadcoinsNeeded(), player.getPlayerData().getBadcoins());
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughbadcoins", displayFeatureName, feature.getBadcoinsNeeded(), player.getPlayerData().getBadcoins());
 			return false;
 		}
 		
 		// Check needed shop points
 		if (feature.getShopPointsNeeded() > player.getShopPoints())
 		{
-			player.sendTranslatedMessage("hub.features.buy.errors.notenoughshoppoints", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getShopPointsNeeded(), player.getShopPoints());
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughshoppoints", displayFeatureName, feature.getShopPointsNeeded(), player.getShopPoints());
 			return false;
 		}
 		
