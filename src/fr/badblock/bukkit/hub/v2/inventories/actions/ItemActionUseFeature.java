@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.inventories.actions;
 
+import fr.badblock.api.common.utils.i18n.ChatColor;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
@@ -38,7 +39,8 @@ public class ItemActionUseFeature extends CustomItemAction
 		// Check needed level
 		if (!FeatureManager.getInstance().hasFeature(player, hubStoredPlayer, featureRawName))
 		{
-			player.sendTranslatedMessage("hub.features.notowned", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+			String displayFeatureName = ChatColor.translateAlternateColorCodes('&', feature.getName());
+			player.sendTranslatedMessage("hub.features.notowned", displayFeatureName);
 			return;
 		}
 		
