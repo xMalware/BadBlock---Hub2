@@ -50,7 +50,7 @@ public class FeaturesConfig extends HubConfig
 			FeatureNeeded featureNeeded = new FeatureNeeded(buyable, everyoneHaveThis, permissions.stream().toArray(String[]::new));
 			
 			Feature feature = new Feature(type, name, badcoinsNeeded, shopPointsNeeded, levelNeeded, expire, featureNeeded);
-			features.put(name, feature);
+			features.put(string, feature);
 			System.out.println("[BadBlockHub / Features] Loaded " + name);
 		});
 	}
