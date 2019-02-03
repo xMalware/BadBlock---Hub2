@@ -4,11 +4,13 @@ import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureBuyConfirmInventory;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureNeeded;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventoryBuyConfirm;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
+import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ItemActionBuyFeature extends CustomItemAction
@@ -30,6 +32,13 @@ public class ItemActionBuyFeature extends CustomItemAction
 		// Null feature?
 		if (feature == null)
 		{
+			return;
+		}
+		
+		HubStoredPlayer hubStoredPlayer = HubStoredPlayer.get(player);
+		if (FeatureManager.getInstance().hasFeature(player, hubStoredPlayer, featureRawName))
+		{
+			CustomItemActionType.USE_FEATURE.getAction().execute(player, CustomItemActionType.USE_FEATURE, actionData);
 			return;
 		}
 		
