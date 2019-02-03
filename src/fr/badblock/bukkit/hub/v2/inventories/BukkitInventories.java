@@ -147,17 +147,21 @@ public class BukkitInventories
 					List<String> strings = new ArrayList<>();
 
 					String needed = "";
+					int addon = 0;
 					if (featureObj.getLevelNeeded() > 0)
 					{
 						needed = "level";
+						addon = featureObj.getLevelNeeded();
 					}
 					else if (featureObj.getBadcoinsNeeded() > 0)
 					{
 						needed = "badcoins";
+						addon = featureObj.getBadcoinsNeeded();
 					}
 					else if (featureObj.getShopPointsNeeded() > 0)
 					{
-						needed = "shopPoints";
+						needed = "shoppoints";
+						addon = featureObj.getShopPointsNeeded();
 					}
 					else if (featureObj.getNeeded() != null && !featureObj.getNeeded().isBuyable())
 					{
@@ -174,7 +178,7 @@ public class BukkitInventories
 							player.getTranslatedMessage("hub.items.generic.feature_actions_use")[0] : "";
 
 					for (String message : player.getTranslatedMessage("hub.items.generic.feature_lore", displayFeatureName,
-							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed)[0],
+							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed, addon)[0],
 							player.getTranslatedMessage("hub.items.generic.feature_owned_" + owned)[0],
 							featureAction))
 					{
