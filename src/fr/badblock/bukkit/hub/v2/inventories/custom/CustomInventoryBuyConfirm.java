@@ -1,4 +1,4 @@
- package fr.badblock.bukkit.hub.v2.inventories.custom;
+package fr.badblock.bukkit.hub.v2.inventories.custom;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -16,7 +16,7 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 {
 
 	@Getter static CustomInventoryBuyConfirm instance = new CustomInventoryBuyConfirm();
-	
+
 	@Override
 	public boolean work(BadblockPlayer player, ItemStack itemStack)
 	{
@@ -55,51 +55,73 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		player.sendTranslatedMessage("hub.features.buy.errors.unknownaction", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
 		return true;
 	}
-	
-	private void confirm(BadblockPlayer player, HubPlayer hubPlayer, String featureRawName)
+
+	public static void confirm(BadblockPlayer player, HubPlayer hubPlayer, String featureRawName)
 	{
+		if (!canBuy(player, hubPlayer, featureRawName))
+		{
+			return;
+		}
+
 		HubStoredPlayer hubStoredPlayer = hubPlayer.getStoredPlayer();
 		FeatureManager featureManager = FeatureManager.getInstance();
 		FeaturesConfig featuresConfig = ConfigLoader.getFeatures();
-		// Get feature
+		
 		Feature feature = featuresConfig.getFeatures().get(featureRawName);
-		// Already bought this feature
-		if (featureManager.hasFeature(player, hubStoredPlayer, featureRawName))
-		{
-			player.sendTranslatedMessage("hub.features.buy.errors.alreadybought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
-		}
-		// Check needed level
-		if (feature.getLevelNeeded() > player.getPlayerData().getLevel())
-		{
-			player.sendTranslatedMessage("hub.features.buy.errors.notenoughlevels", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
-			return;
-		}
-		// Check needed badcoins
-		if (feature.getBadcoinsNeeded() > player.getPlayerData().getBadcoins())
-		{
-			player.sendTranslatedMessage("hub.features.buy.errors.notenoughbadcoins", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getBadcoinsNeeded(), player.getPlayerData().getBadcoins());
-			return;
-		}
-		// Check needed shop points
-		if (feature.getShopPointsNeeded() > player.getShopPoints())
-		{
-			player.sendTranslatedMessage("hub.features.buy.errors.notenoughshoppoints", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getShopPointsNeeded(), player.getShopPoints());
-			return;
-		}
+		
 		// Remove what's needed to
 		int badcoinsToRemove = feature.getBadcoinsNeeded();
 		int shopPointsToRemove = feature.getShopPointsNeeded();
 
 		player.getPlayerData().removeBadcoins(badcoinsToRemove);
 		player.removeShopPoints(shopPointsToRemove);
-		
+
 		// Add feature
 		featureManager.addFeature(hubStoredPlayer, feature);
 		// Save storage
 		hubStoredPlayer.save(player);
-		
+
 		// Send bought message
 		player.sendTranslatedMessage("hub.features.buy.bought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+	}
+
+	public static boolean canBuy(BadblockPlayer player, HubPlayer hubPlayer, String featureRawName)
+	{
+		HubStoredPlayer hubStoredPlayer = hubPlayer.getStoredPlayer();
+		FeatureManager featureManager = FeatureManager.getInstance();
+		FeaturesConfig featuresConfig = ConfigLoader.getFeatures();
+		// Get feature
+		Feature feature = featuresConfig.getFeatures().get(featureRawName);
+		
+		// Already bought this feature
+		if (featureManager.hasFeature(player, hubStoredPlayer, featureRawName))
+		{
+			player.sendTranslatedMessage("hub.features.buy.errors.alreadybought", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
+			return true;
+		}
+		
+		// Check needed level
+		if (feature.getLevelNeeded() > player.getPlayerData().getLevel())
+		{
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughlevels", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getLevelNeeded(), player.getPlayerData().getLevel());
+			return false;
+		}
+		
+		// Check needed badcoins
+		if (feature.getBadcoinsNeeded() > player.getPlayerData().getBadcoins())
+		{
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughbadcoins", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getBadcoinsNeeded(), player.getPlayerData().getBadcoins());
+			return false;
+		}
+		
+		// Check needed shop points
+		if (feature.getShopPointsNeeded() > player.getShopPoints())
+		{
+			player.sendTranslatedMessage("hub.features.buy.errors.notenoughshoppoints", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0], feature.getShopPointsNeeded(), player.getShopPoints());
+			return false;
+		}
+		
+		return true;
 	}
 
 }

@@ -5,8 +5,10 @@ import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureBuyConfirmInventory;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureNeeded;
+import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventoryBuyConfirm;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ItemActionBuyFeature extends CustomItemAction
@@ -41,6 +43,19 @@ public class ItemActionBuyFeature extends CustomItemAction
 		if (!featureNeeded.isBuyable())
 		{
 			player.sendTranslatedMessage("hub.features.buy.errors.notbuyable");
+			return;
+		}
+		
+		HubPlayer hubPlayer = HubPlayer.get(player);
+		
+		if (hubPlayer == null)
+		{
+			return;
+		}
+		
+		if (!CustomInventoryBuyConfirm.canBuy(player, hubPlayer, featureRawName))
+		{
+			return;
 		}
 		
 		// Buy
