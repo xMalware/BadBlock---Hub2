@@ -35,17 +35,18 @@ public class ItemActionUseFeature extends CustomItemAction
 		
 		// Get feature
 		Feature feature = featuresConfig.getFeatures().get(featureRawName);
+
+		String displayFeatureName = ChatColor.translateAlternateColorCodes('&', feature.getName());
 		
 		// Check needed level
 		if (!FeatureManager.getInstance().hasFeature(player, hubStoredPlayer, featureRawName))
 		{
-			String displayFeatureName = ChatColor.translateAlternateColorCodes('&', feature.getName());
 			player.sendTranslatedMessage("hub.features.notowned", displayFeatureName);
 			return;
 		}
 		
 		// Send use message
-		player.sendTranslatedMessage("hub.features.use", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0]);
+		player.sendTranslatedMessage("hub.features.use", displayFeatureName);
 		
 		// Do what we should
 		FeatureWorker.work(player, feature);
