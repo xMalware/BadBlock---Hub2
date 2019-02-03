@@ -18,6 +18,24 @@ public abstract class CustomHats
 	
 	private static Map<String, ItemStack> heads = new HashMap<>();
 
+	public static String getSkinOwner(Feature feature)
+	{
+		String[] splitter = feature.getName().split("_");
+		if (splitter.length != 2)
+		{
+			return null;
+		}
+		
+		String head = splitter[1].toLowerCase();
+		
+		if (!heads.containsKey(head))
+		{
+			return null;
+		}
+	
+		return ((SkullMeta) heads.get(head).getItemMeta()).getOwner();
+	}
+
 	public static void work(BadblockPlayer player, Feature feature)
 	{
 		String[] splitter = feature.getName().split("_");

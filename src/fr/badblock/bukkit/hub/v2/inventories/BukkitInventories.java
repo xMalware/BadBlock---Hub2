@@ -9,10 +9,20 @@ import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
+import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureManager;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.hats.CustomHats;
+import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
+import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
+import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.bukkit.hub.v2.tags.TagManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.itemstack.ItemStackUtils;
@@ -80,21 +90,111 @@ public class BukkitInventories
 			ItemMeta itemMeta = itemStack.getItemMeta();
 			TagManager tagManager = TagManager.getInstance();
 
-			if (inventoryItemObject.getI18name() != null && !inventoryItemObject.getI18name().isEmpty())
+			boolean feature = false;
+			if (inventoryItemObject.getActions() != null)
 			{
-				String string = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage(inventoryItemObject.getI18name())[0]);
-				itemMeta.setDisplayName(tagManager.tagify(player, string, inventoryItemObject));
+				InventoryAction action = inventoryItemObject.getActions()[0];
+
+				if (action.getAction().equals(CustomItemActionType.USE_FEATURE) || 
+						action.getAction().equals(CustomItemActionType.BUY_FEATURE))
+				{
+					feature = true;
+					String featureName = action.getActionData();
+					HubStoredPlayer storedPlayer = HubStoredPlayer.get(player);
+					if (FeatureManager.getInstance().hasFeature(player, storedPlayer, featureName))
+					{
+						itemStack = ItemStackUtils.fakeEnchant(itemStack);
+					}
+
+					// Get info
+					FeaturesConfig featuresConfig = ConfigLoader.getFeatures();
+
+					// Unknown feature
+					if (!featuresConfig.getFeatures().containsKey(featureName))
+					{
+						System.out.println("[BadBlockHub] Unknown feature '" + featureName + "'.");
+						continue;
+					}
+
+					// Get feature
+					Feature featureObj = featuresConfig.getFeatures().get(featureName);
+
+					if (featureObj == null)
+					{
+						System.out.println("[BadBlockHub] Feature '" + featureName + "' is null.");
+						continue;
+					}
+
+					if (featureObj.getType().equals(FeatureType.HATS))
+					{
+						String skinOwner = CustomHats.getSkinOwner(featureObj);
+
+						if (skinOwner != null)
+						{
+							SkullMeta skullMeta = (SkullMeta) itemMeta;
+							skullMeta.setOwner(skinOwner);
+							itemStack.setItemMeta(skullMeta);
+							itemMeta = skullMeta;
+						}
+					}
+
+					String displayFeatureName =ChatColor.translateAlternateColorCodes('&', featureObj.getName());
+					String string = displayFeatureName + " {owned}";
+					itemMeta.setDisplayName(tagManager.tagify(player, string, inventoryItemObject));
+
+					List<String> strings = new ArrayList<>();
+
+					String needed = "";
+					if (featureObj.getLevelNeeded() > 0)
+					{
+						needed = "level";
+					}
+					else if (featureObj.getBadcoinsNeeded() > 0)
+					{
+						needed = "badcoins";
+					}
+					else if (featureObj.getShopPointsNeeded() > 0)
+					{
+						needed = "shopPoints";
+					}
+					else if (featureObj.getNeeded() != null && !featureObj.getNeeded().isBuyable())
+					{
+						needed = "notbuyable";
+					}
+					else if (featureObj.getNeeded() != null && featureObj.getNeeded().getPermissions() != null
+							&& featureObj.getNeeded().getPermissions().length > 0)
+					{
+						needed = featureName.toLowerCase();
+					}
+
+					for (String message : player.getTranslatedMessage("hub.items.generic.feature_lore", displayFeatureName,
+							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed)[0]))
+					{
+						strings.add(tagManager.tagify(player, message, inventoryItemObject));
+					}
+
+					itemMeta.setLore(strings);
+				}
 			}
 
-			if (inventoryItemObject.getI18lore() != null && !inventoryItemObject.getI18lore().isEmpty())
+			if (!feature)
 			{
-				List<String> lore = new ArrayList<>();
-				for (String string : player.getTranslatedMessage(inventoryItemObject.getI18lore()))
+				if (inventoryItemObject.getI18name() != null && !inventoryItemObject.getI18name().isEmpty())
 				{
-					string = tagManager.tagify(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
-					lore.add(string);
+					String string = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage(inventoryItemObject.getI18name())[0]);
+					itemMeta.setDisplayName(tagManager.tagify(player, string, inventoryItemObject));
 				}
-				itemMeta.setLore(lore);
+
+				if (inventoryItemObject.getI18lore() != null && !inventoryItemObject.getI18lore().isEmpty())
+				{
+					List<String> lore = new ArrayList<>();
+					for (String string : player.getTranslatedMessage(inventoryItemObject.getI18lore()))
+					{
+						string = tagManager.tagify(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
+						lore.add(string);
+					}
+					itemMeta.setLore(lore);
+				}
 			}
 
 			itemStack.setItemMeta(itemMeta);
