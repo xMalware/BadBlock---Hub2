@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.SmallFireball;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
@@ -28,6 +29,11 @@ public class FireGun extends AbstractGadgets {
 
     @Override
     public void equip(BadblockPlayer badblockPlayer) {
+    }
+
+    @Override
+    public void unequip(BadblockPlayer badblockPlayer) {
+
     }
 
     @Override
@@ -92,6 +98,11 @@ public class FireGun extends AbstractGadgets {
             }
         }
         return false;
+    }
+
+    @Override
+    public void handleInteraction(Entity from, Entity to) {
+
     }
 
     @Override

@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,6 +19,11 @@ public class EnderPearlGun extends AbstractGadgets{
     }
 
     @Override
+    public void unequip(BadblockPlayer badblockPlayer) {
+
+    }
+
+    @Override
     public boolean use(BadblockPlayer badblockPlayer, ItemStack item, Action action) {
         if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
 
@@ -27,6 +33,11 @@ public class EnderPearlGun extends AbstractGadgets{
 
         }
         return true;
+    }
+
+    @Override
+    public void handleInteraction(Entity from, Entity to) {
+
     }
 
     @Override

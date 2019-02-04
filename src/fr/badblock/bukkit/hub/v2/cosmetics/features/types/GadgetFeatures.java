@@ -12,7 +12,8 @@ public enum GadgetFeatures implements IFeatureWorker {
     PAINTBALLGUN (new PaintBallGun()),
     CHICKENGUN (new ChickenGun()),
     ENDERPEARLGUN(new EnderPearlGun()),
-    COLORBOOT(new ColorBoots());
+    COLORBOOT(new ColorBoots()),
+    CREEPEREXPLOSER(new CreeperExploser());
 
     private AbstractGadgets gadgets;
 
@@ -60,6 +61,8 @@ public enum GadgetFeatures implements IFeatureWorker {
 
         if (hubPlayer != null)
         {
+            if(hubPlayer.getCurrentWidget() != null)
+                hubPlayer.getCurrentWidget().unequip(player);
             hubPlayer.setCurrentWidget(finalFeature.gadgets);
         }
 

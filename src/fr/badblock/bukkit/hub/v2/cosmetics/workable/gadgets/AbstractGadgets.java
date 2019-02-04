@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 
@@ -20,7 +21,9 @@ public abstract class AbstractGadgets {
     }
 
     public abstract void equip(BadblockPlayer badblockPlayer);
+    public abstract void unequip(BadblockPlayer badblockPlayer);
     public abstract boolean use(BadblockPlayer badblockPlayer, ItemStack item, Action action);
+    public abstract void handleInteraction(Entity from, Entity to);
     public abstract int waitingTime();
 
     public ItemStack getItem() {

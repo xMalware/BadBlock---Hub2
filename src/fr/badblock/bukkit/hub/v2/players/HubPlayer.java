@@ -101,6 +101,10 @@ public class HubPlayer {
         return players.get(player.getName());
     }
 
+    public static HubPlayer get(String playerName) {
+        return players.get(playerName);
+    }
+
     public static Collection<HubPlayer> getPlayers() {
         return players.values();
     }

@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -26,6 +27,11 @@ public class PaintBallGun extends AbstractGadgets {
 
     @Override
     public void equip(BadblockPlayer badblockPlayer) {
+
+    }
+
+    @Override
+    public void unequip(BadblockPlayer badblockPlayer) {
 
     }
 
@@ -70,6 +76,11 @@ public class PaintBallGun extends AbstractGadgets {
         }
 
         return true;
+    }
+
+    @Override
+    public void handleInteraction(Entity from, Entity to) {
+
     }
 
     @Override
