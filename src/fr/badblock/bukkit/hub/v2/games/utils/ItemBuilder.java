@@ -4,6 +4,7 @@ import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -60,6 +61,14 @@ public class ItemBuilder {
    public ItemBuilder clone(){
      return new ItemBuilder(is);
    }
+   public ItemBuilder addItemFlag(ItemFlag... itemFlag){
+       ItemMeta im = is.getItemMeta();
+       im.addItemFlags(itemFlag);
+       is.setItemMeta(im);
+       return this;
+   }
+
+
    /**
     * Change the durability of the item.
     * @param dur The durability to set it to.

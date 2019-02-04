@@ -2,16 +2,17 @@ package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.AbstractGadgets;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.FireGun;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.PaintBallGun;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.*;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public enum GadgetFeatures implements IFeatureWorker {
 
     FIREGUN (new FireGun()),
-    PAINTBALLGUN (new PaintBallGun());
+    PAINTBALLGUN (new PaintBallGun()),
+    CHICKENGUN (new ChickenGun()),
+    ENDERPEARLGUN(new EnderPearlGun()),
+    COLORBOOT(new ColorBoots());
 
     private AbstractGadgets gadgets;
 
@@ -22,7 +23,6 @@ public enum GadgetFeatures implements IFeatureWorker {
     @Override
     public void work(BadblockPlayer player)
     {
-        System.out.println("CCCCCC");
         player.getInventory().setItem(gadgets.getSlot(), gadgets.getItem());
         this.gadgets.equip(player);
     }

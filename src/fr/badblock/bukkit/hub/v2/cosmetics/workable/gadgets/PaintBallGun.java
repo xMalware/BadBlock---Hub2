@@ -6,6 +6,7 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +18,7 @@ import java.util.*;
 public class PaintBallGun extends AbstractGadgets {
 
     private Map<Location, String> blocks = new HashMap<>();
+    private ArrayList<Material> blacklist = new ArrayList<>(Arrays.asList(Material.SIGN,Material.SIGN_POST,Material.WALL_SIGN,Material.DOUBLE_PLANT));
 
     public PaintBallGun() {
         super("Pistolet Lazer", new ItemStack(Material.DIAMOND_HOE), 4);
@@ -33,6 +35,10 @@ public class PaintBallGun extends AbstractGadgets {
             Block block = badblockPlayer.getTargetBlock(new HashSet<Material>(Collections.singletonList(Material.AIR)), 50);
             if (block != null) {
 
+                if(blocks.containsKey(block.getLocation()) || blacklist.contains(block.getType()))
+                    return false;
+
+                badblockPlayer.playSound(Sound.DRINK);
                 Location start = badblockPlayer.getEyeLocation().clone();
                 Location end = block.getLocation();
 
@@ -45,9 +51,6 @@ public class PaintBallGun extends AbstractGadgets {
                     start.subtract(vector);
                     vector.normalize();
                 }
-
-                if(blocks.containsKey(block.getLocation()))
-                    return false;
 
                 blocks.put(block.getLocation(), block.getTypeId()+":"+block.getData());
 
