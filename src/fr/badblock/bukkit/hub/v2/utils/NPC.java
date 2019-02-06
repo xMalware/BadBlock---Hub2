@@ -1,8 +1,7 @@
 package fr.badblock.bukkit.hub.v2.utils;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import net.minecraft.server.v1_8_R3.*;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
@@ -10,7 +9,18 @@ import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import java.util.UUID;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
+
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.MinecraftServer;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityHeadRotation;
+import net.minecraft.server.v1_8_R3.PacketPlayOutNamedEntitySpawn;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_8_R3.PlayerConnection;
+import net.minecraft.server.v1_8_R3.PlayerInteractManager;
+import net.minecraft.server.v1_8_R3.WorldServer;
 
 
 public class NPC {
@@ -44,6 +54,7 @@ public class NPC {
         PlayerConnection playerConnection = ((CraftPlayer) player).getHandle().playerConnection;
 
         playerConnection.sendPacket(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER, entityPlayer));
+        playerConnection.sendPacket(new PacketPlayOutEntityDestroy(entityPlayer.getId()));
     }
 
     public void show(Player player){
