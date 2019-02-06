@@ -58,9 +58,7 @@ public class PaintBallGun extends AbstractGadgets {
                     vector.normalize();
                 }
 
-                Random random = new Random();
-                int radius = random.nextInt(2) + 1;
-                System.out.println(radius);
+                int radius = 2;
 
                 for (int x = -radius; x <= radius; x++) {
                     for (int y = -radius; y <= radius; y++) {
@@ -86,7 +84,7 @@ public class PaintBallGun extends AbstractGadgets {
 
     @Override
     public int waitingTime() {
-        return 400;
+        return 100;
     }
 
     private void colorBlock(Block block) {
