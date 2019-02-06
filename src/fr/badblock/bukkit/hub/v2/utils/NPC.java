@@ -55,6 +55,7 @@ public class NPC {
 
         playerConnection.sendPacket(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER, entityPlayer));
         playerConnection.sendPacket(new PacketPlayOutEntityDestroy(entityPlayer.getId()));
+        entityPlayer.die();
     }
 
     public void show(Player player){
