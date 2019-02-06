@@ -3,6 +3,8 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.players.BadblockPlayer;
+
+import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -18,88 +20,106 @@ import java.util.*;
 
 public class PaintBallGun extends AbstractGadgets {
 
-    private Map<Location, String> blocks = new HashMap<>();
-    private ArrayList<Material> blacklist = new ArrayList<>(Arrays.asList(Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN, Material.DOUBLE_PLANT));
+	private Map<Location, String> blocks = new HashMap<>();
+	private ArrayList<Material> blacklist = new ArrayList<>(Arrays.asList(Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN, Material.DOUBLE_PLANT));
 
-    public PaintBallGun() {
-        super("Pistolet Lazer", new ItemStack(Material.DIAMOND_HOE), 4);
-    }
+	public PaintBallGun() {
+		super("Pistolet Lazer", new ItemStack(Material.DIAMOND_HOE), 4);
+	}
 
-    @Override
-    public void equip(BadblockPlayer badblockPlayer) {
+	@Override
+	public void equip(BadblockPlayer badblockPlayer) {
 
-    }
+	}
 
-    @Override
-    public void unequip(BadblockPlayer badblockPlayer) {
+	@Override
+	public void unequip(BadblockPlayer badblockPlayer) {
 
-    }
+	}
 
-    @Override
-    public boolean use(BadblockPlayer badblockPlayer, ItemStack item, Action action) {
-        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
-            Block block = badblockPlayer.getTargetBlock(new HashSet<Material>(Collections.singletonList(Material.AIR)), 50);
-            if (block != null) {
+	@Override
+	public boolean use(BadblockPlayer badblockPlayer, ItemStack item, Action action) {
+		if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
+			Block block = badblockPlayer.getTargetBlock(new HashSet<Material>(Collections.singletonList(Material.AIR)), 50);
+			if (block != null) {
 
-                if (blocks.containsKey(block.getLocation()) || blacklist.contains(block.getType()))
-                    return false;
+				if (blocks.containsKey(block.getLocation()) || blacklist.contains(block.getType()))
+					return false;
 
-                badblockPlayer.playSound(Sound.CHICKEN_EGG_POP);
-                Location start = badblockPlayer.getEyeLocation().clone();
-                Location end = block.getLocation();
+				Location start = badblockPlayer.getEyeLocation().clone();
+				Location end = block.getLocation();
 
-                Vector vector = end.toVector().subtract(start.toVector());
+				Vector vector = end.toVector().subtract(start.toVector());
 
-                for (double i = 1; i <= start.distance(end); i += 0.5) {
-                    vector.multiply(i);
-                    start.add(vector);
-                    ParticleEffect.REDSTONE.display(new ParticleEffect.OrdinaryColor(0, 255, 0), start, 32);
-                    start.subtract(vector);
-                    vector.normalize();
-                }
+				for (double i = 1; i <= start.distance(end); i += 0.5) {
+					vector.multiply(i);
+					start.add(vector);
+					ParticleEffect.REDSTONE.display(new ParticleEffect.OrdinaryColor(0, 255, 0), start, 32);
+					start.subtract(vector);
+					vector.normalize();
+				}
 
-                int radius = 2;
+				int radius = 1;// 2
 
-                for (int x = -radius; x <= radius; x++) {
-                    for (int y = -radius; y <= radius; y++) {
-                        for (int z = -radius; z <= radius; z++) {
-                            Block b = block.getLocation().clone().add(x, y, z).getBlock();
-                            if(!(b.getType() == Material.AIR) && !blocks.containsKey(b.getLocation()) && !blacklist.contains(b.getType()))
-                                colorBlock(b);
-                        }
-                    }
-                }
+				for (int x = -radius; x <= radius; x++) {
+					for (int y = -radius; y <= radius; y++) {
+						for (int z = -radius; z <= radius; z++) {
+							final int X = x;
+							final int Y = y;
+							final int Z = z;
+							Bukkit.getScheduler().runTaskLater(BadBlockHub.getInstance(), new Runnable() 
+							{
+								
+								@Override
+								public void run()
+								{
+									if (!badblockPlayer.isOnline())
+									{
+										return;
+									}
+									
+									Block b = block.getLocation().clone().add(X, Y, Z).getBlock();
+									if(!(b.getType() == Material.AIR) && !blocks.containsKey(b.getLocation()) && !blacklist.contains(b.getType()) && b.getType().isSolid())
+									{
+										colorBlock(b);
+										badblockPlayer.playSound(b.getLocation(), Sound.CHICKEN_EGG_POP);
+									}
+								}
+							}, (Math.abs(x) + Math.abs(y) + Math.abs(z)));
+						}
+					}
+				}
 
 
-            }
-        }
+			}
+		}
 
-        return true;
-    }
+		return true;
+	}
 
-    @Override
-    public void handleInteraction(Entity from, Entity to) {
+	@Override
+	public void handleInteraction(Entity from, Entity to) {
 
-    }
+	}
 
-    @Override
-    public int waitingTime() {
-        return 100;
-    }
+	@Override
+	public int waitingTime() {
+		return 0;
+	}
 
-    private void colorBlock(Block block) {
-        blocks.put(block.getLocation(), block.getTypeId() + ":" + block.getData());
+	private void colorBlock(Block block) {
+		blocks.put(block.getLocation(), block.getTypeId() + ":" + block.getData());
 
-        block.setType(Material.WOOL);
-        DyeColor data = DyeColor.values()[new Random().nextInt(DyeColor.values().length)];
-        block.setData(data.getWoolData());
+		block.setType(Material.WOOL);
+		DyeColor data = DyeColor.values()[new Random().nextInt(DyeColor.values().length)];
+		block.setData(data.getWoolData());
 
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                String[] newBlock = blocks.remove(block.getLocation()).split(":");
-                block.setTypeIdAndData(Integer.parseInt(newBlock[0]), Byte.parseByte(newBlock[1]), true);
-            }
-        }.runTaskLater(BadBlockHub.getInstance(), 40);
-    }
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				String[] newBlock = blocks.remove(block.getLocation()).split(":");
+				block.setTypeIdAndData(Integer.parseInt(newBlock[0]), Byte.parseByte(newBlock[1]), true);
+			}
+		}.runTaskLater(BadBlockHub.getInstance(), 40);
+	}
 }
