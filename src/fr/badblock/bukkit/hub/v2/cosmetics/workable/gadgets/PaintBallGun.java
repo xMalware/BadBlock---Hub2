@@ -44,7 +44,7 @@ public class PaintBallGun extends AbstractGadgets {
                 if (blocks.containsKey(block.getLocation()) || blacklist.contains(block.getType()))
                     return false;
 
-                badblockPlayer.playSound(Sound.DRINK);
+                badblockPlayer.playSound(Sound.CHICKEN_EGG_POP);
                 Location start = badblockPlayer.getEyeLocation().clone();
                 Location end = block.getLocation();
 
