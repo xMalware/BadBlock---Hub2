@@ -76,7 +76,7 @@ public class FireGun extends AbstractGadgets {
                                 ParticleEffect.REDSTONE.display(new ParticleEffect.OrdinaryColor(random.nextInt(155) + 100, random.nextInt(50), random.nextInt(50)), l, 32);
                             }
                         }
-                    }.runTaskTimer(BadBlockHub.getInstance(), 10L, 1L);
+                    }.runTaskTimer(BadBlockHub.getInstance(), 0, 1);
 
                     return true;
                 }
@@ -107,7 +107,7 @@ public class FireGun extends AbstractGadgets {
 
     @Override
     public int waitingTime() {
-        return 3000;
+        return 2000;
     }
 
     private ArrayList<Location> getCircle(Location center, double radius, int amount) {

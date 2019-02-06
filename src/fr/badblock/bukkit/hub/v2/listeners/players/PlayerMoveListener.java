@@ -1,5 +1,7 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.EnderPearlGun;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.Nuke;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

@@ -19,7 +19,7 @@ import java.util.*;
 public class PaintBallGun extends AbstractGadgets {
 
     private Map<Location, String> blocks = new HashMap<>();
-    private ArrayList<Material> blacklist = new ArrayList<>(Arrays.asList(Material.SIGN,Material.SIGN_POST,Material.WALL_SIGN,Material.DOUBLE_PLANT));
+    private ArrayList<Material> blacklist = new ArrayList<>(Arrays.asList(Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN, Material.DOUBLE_PLANT));
 
     public PaintBallGun() {
         super("Pistolet Lazer", new ItemStack(Material.DIAMOND_HOE), 4);
@@ -41,7 +41,7 @@ public class PaintBallGun extends AbstractGadgets {
             Block block = badblockPlayer.getTargetBlock(new HashSet<Material>(Collections.singletonList(Material.AIR)), 50);
             if (block != null) {
 
-                if(blocks.containsKey(block.getLocation()) || blacklist.contains(block.getType()))
+                if (blocks.containsKey(block.getLocation()) || blacklist.contains(block.getType()))
                     return false;
 
                 badblockPlayer.playSound(Sound.DRINK);
@@ -58,19 +58,20 @@ public class PaintBallGun extends AbstractGadgets {
                     vector.normalize();
                 }
 
-                blocks.put(block.getLocation(), block.getTypeId()+":"+block.getData());
+                Random random = new Random();
+                int radius = random.nextInt(2) + 1;
+                System.out.println(radius);
 
-                block.setType(Material.WOOL);
-                DyeColor data = DyeColor.values()[new Random().nextInt(DyeColor.values().length)];
-                block.setData(data.getWoolData());
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        String[] newBlock = blocks.remove(block.getLocation()).split(":");
-                        block.setTypeIdAndData(Integer.parseInt(newBlock[0]) ,Byte.parseByte(newBlock[1]), true);
+                for (int x = -radius; x <= radius; x++) {
+                    for (int y = -radius; y <= radius; y++) {
+                        for (int z = -radius; z <= radius; z++) {
+                            Block b = block.getLocation().clone().add(x, y, z).getBlock();
+                            if(!(b.getType() == Material.AIR) && !blocks.containsKey(b.getLocation()) && !blacklist.contains(b.getType()))
+                                colorBlock(b);
+                        }
                     }
-                }.runTaskLater(BadBlockHub.getInstance(), 40);
+                }
+
 
             }
         }
@@ -85,6 +86,22 @@ public class PaintBallGun extends AbstractGadgets {
 
     @Override
     public int waitingTime() {
-        return 500;
+        return 400;
+    }
+
+    private void colorBlock(Block block) {
+        blocks.put(block.getLocation(), block.getTypeId() + ":" + block.getData());
+
+        block.setType(Material.WOOL);
+        DyeColor data = DyeColor.values()[new Random().nextInt(DyeColor.values().length)];
+        block.setData(data.getWoolData());
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                String[] newBlock = blocks.remove(block.getLocation()).split(":");
+                block.setTypeIdAndData(Integer.parseInt(newBlock[0]), Byte.parseByte(newBlock[1]), true);
+            }
+        }.runTaskLater(BadBlockHub.getInstance(), 40);
     }
 }

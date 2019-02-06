@@ -56,6 +56,6 @@ public class ChickenGun extends AbstractGadgets{
 
     @Override
     public int waitingTime() {
-        return 200;
+        return 150;
     }
 }

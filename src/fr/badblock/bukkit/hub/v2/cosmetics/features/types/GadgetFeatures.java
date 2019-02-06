@@ -13,7 +13,11 @@ public enum GadgetFeatures implements IFeatureWorker {
     CHICKENGUN (new ChickenGun()),
     ENDERPEARLGUN(new EnderPearlGun()),
     COLORBOOT(new ColorBoots()),
-    CREEPEREXPLOSER(new CreeperExploser());
+    CREEPEREXPLOSER(new CreeperExploser()),
+    ANIMALCHEST(new AnimalChest()),
+    NUKE(new Nuke()),
+    ROCKETLAUNCHER(new RocketLauncher()),
+    CLONER(new CloneNPC());
 
     private AbstractGadgets gadgets;
 

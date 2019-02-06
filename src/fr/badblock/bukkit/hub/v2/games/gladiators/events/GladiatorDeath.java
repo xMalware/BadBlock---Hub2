@@ -20,10 +20,7 @@ public class GladiatorDeath implements Listener {
     @EventHandler
     public void onDeath(FightingDeathEvent event){
         Player player = event.getPlayer();
-
-        event.setLightning(false);
-        event.setTimeBeforeRespawn(0);
-        event.setRespawnPlace(Bukkit.getWorlds().get(0).getSpawnLocation());
+        event.setCancelled(true);
 
         if(MapManager.get().getMaps().stream().anyMatch(map -> map.getPlayers().contains(player))){
             Map map = MapManager.get().getMaps().stream().filter(map1 -> map1.getPlayers().contains(player)).findAny().get();
@@ -38,6 +35,8 @@ public class GladiatorDeath implements Listener {
             map.getPlayers().remove(player);
             event.setDeathMessage(null);
             event.getDrops().clear();
+            event.setLightning(false);
+            event.setTimeBeforeRespawn(0);
 
             for(Sign sign1 : map.getSignLocations()){
                 sign1.setLine(3, "§8"+map.getPlayers().size());

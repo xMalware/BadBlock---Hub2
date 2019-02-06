@@ -9,6 +9,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class EnderPearlGun extends AbstractGadgets{
 
+    private boolean isActive = false;
+
     public EnderPearlGun() {
         super("Canon à Enderpearl", new ItemStack(Material.ENDER_PEARL), 4);
     }
@@ -27,21 +29,30 @@ public class EnderPearlGun extends AbstractGadgets{
     public boolean use(BadblockPlayer badblockPlayer, ItemStack item, Action action) {
         if(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK){
 
+            if(isActive){
+                badblockPlayer.sendMessage("Veuillez attendre que le Canon se recharge..");
+                return false;
+            }
+
             EnderPearl enderPearl = badblockPlayer.launchProjectile(EnderPearl.class);
             enderPearl.setVelocity(badblockPlayer.getEyeLocation().getDirection().multiply(1.5f));
             enderPearl.setPassenger(badblockPlayer);
 
+            isActive = true;
         }
         return true;
     }
 
     @Override
     public void handleInteraction(Entity from, Entity to) {
+        BadblockPlayer player = (BadblockPlayer) from;
 
+        player.teleport(player.getLocation().add(0D, 1D, 0D));
+        isActive = false;
     }
 
     @Override
     public int waitingTime() {
-        return 0;
+        return 500;
     }
 }

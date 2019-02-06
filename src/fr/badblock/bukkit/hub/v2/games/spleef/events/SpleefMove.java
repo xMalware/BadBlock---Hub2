@@ -39,7 +39,6 @@ public class SpleefMove implements Listener {
 
     public SpleefMove(Location loc1, Location loc2) {
         selection = new CuboidSelection(loc1, loc2);
-        System.out.println("cuboid selection");
     }
 
     @EventHandler
@@ -48,7 +47,6 @@ public class SpleefMove implements Listener {
 
         if (selection.isInSelection(player.getLocation())) {
             if (GameState.WAITING.equals(SpleefManager.getInstance().getGameState())) {
-                System.out.println("?????");
                 if (!SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
                     if (JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
                         player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump..");
