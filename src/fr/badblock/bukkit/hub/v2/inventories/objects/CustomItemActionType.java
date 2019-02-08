@@ -6,6 +6,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBuyFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionCloseInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommand;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionOpenInventory;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemovePet;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendLadderCommand;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendMessage;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
@@ -31,6 +32,7 @@ public enum CustomItemActionType
 	SEND_LADDERCOMMAND	(new ItemActionSendLadderCommand()),
 	BOOSTER_REMOVE				(new ItemActionBoosterRemove()),
 	BOOSTER_GAMESELECT		(new ItemActionBoosterGameSelect()),
+	REMOVE_PET							(new ItemActionRemovePet()),
 	NOTHING				(null);
 
 	private CustomItemAction action;
