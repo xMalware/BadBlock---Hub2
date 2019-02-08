@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.CustomPet;
@@ -87,22 +88,35 @@ public enum PetFeatures implements IFeatureWorker
 		getCustomPet().spawn(player);
 	}
 
-	public static void work(BadblockPlayer player, Feature feature)
+	public static void work(BadblockPlayer player, String featureName)
 	{
-		String name = feature.getName();
-		PetFeatures finalFeature = null;
-		for (PetFeatures petFeature : values())
-		{
-			if (petFeature.name().equalsIgnoreCase(name))
-			{
-				finalFeature = petFeature;
-				break;
-			}
-		}
-		if (finalFeature == null)
-		{
-			return;
-		}
+        String[] parser = featureName.split("_");
+
+        if (parser.length < 2) {
+            return;
+        }
+
+        String name = parser[1];
+
+        Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
+
+        if (feature == null)
+        {
+        	return;
+        }
+        
+        PetFeatures finalFeature = null;
+        for (PetFeatures petFeature : values()) {
+            if (petFeature.name().equalsIgnoreCase(name)) {
+                finalFeature = petFeature;
+                break;
+            }
+        }
+
+        if (finalFeature == null) {
+            return;
+        }
+
 		finalFeature.work(player);
 	}
 
