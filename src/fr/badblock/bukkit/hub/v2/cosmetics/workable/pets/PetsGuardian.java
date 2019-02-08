@@ -6,7 +6,6 @@ import org.bukkit.entity.LivingEntity;
 public class PetsGuardian extends CustomPet
 {
 	
-	
 	public PetsGuardian()
 	{
 		super(Guardian.class, true);
@@ -16,6 +15,11 @@ public class PetsGuardian extends CustomPet
 	public void onSpawn(LivingEntity livingEntity)
 	{
 		// Nothing there yet
+	}
+
+	@Override
+	public String getSoundSystem() {
+		return "GUARDIAN";
 	}
 
 }

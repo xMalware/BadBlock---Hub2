@@ -18,4 +18,9 @@ public class PetsEnderman extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "ENDERMAN_";
+	}
+
 }

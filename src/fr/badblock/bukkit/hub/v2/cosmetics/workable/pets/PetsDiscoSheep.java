@@ -20,4 +20,9 @@ public class PetsDiscoSheep extends CustomPet
 		livingEntity.setCustomNameVisible(false);
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "SHEEP";
+	}
+
 }

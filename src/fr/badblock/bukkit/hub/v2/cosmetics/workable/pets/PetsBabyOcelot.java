@@ -19,4 +19,9 @@ public class PetsBabyOcelot extends CustomPet
 		((Ocelot)livingEntity).setBaby();
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "OCELOT";
+	}
+
 }

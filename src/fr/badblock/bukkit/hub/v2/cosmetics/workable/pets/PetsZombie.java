@@ -17,4 +17,9 @@ public class PetsZombie extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "ZOMBIE";
+	}
+
 }

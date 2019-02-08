@@ -18,4 +18,9 @@ public class PetsMagmaCube extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "MAGMACUBE";
+	}
+
 }

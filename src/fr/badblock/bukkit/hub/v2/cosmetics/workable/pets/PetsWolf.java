@@ -17,4 +17,9 @@ public class PetsWolf extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "WOLF";
+	}
+
 }

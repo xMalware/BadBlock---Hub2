@@ -17,4 +17,9 @@ public class PetsVillager extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "VILLAGER";
+	}
+
 }

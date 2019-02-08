@@ -18,4 +18,9 @@ public class PetsBlaze extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "BLAZE";
+	}
+
 }

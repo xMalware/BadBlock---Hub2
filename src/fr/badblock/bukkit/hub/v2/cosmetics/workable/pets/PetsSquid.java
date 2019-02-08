@@ -17,4 +17,9 @@ public class PetsSquid extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "SPIDER";
+	}
+
 }

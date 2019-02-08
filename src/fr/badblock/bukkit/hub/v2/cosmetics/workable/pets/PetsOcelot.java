@@ -6,7 +6,6 @@ import org.bukkit.entity.Ocelot;
 public class PetsOcelot extends CustomPet
 {
 	
-	
 	public PetsOcelot()
 	{
 		super(Ocelot.class, true);
@@ -16,6 +15,11 @@ public class PetsOcelot extends CustomPet
 	public void onSpawn(LivingEntity livingEntity)
 	{
 		// Nothing there yet
+	}
+
+	@Override
+	public String getSoundSystem() {
+		return "OCELOT";
 	}
 
 }

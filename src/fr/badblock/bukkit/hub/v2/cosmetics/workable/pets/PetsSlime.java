@@ -17,4 +17,9 @@ public class PetsSlime extends CustomPet
 		// Nothing there yet
 	}
 
+	@Override
+	public String getSoundSystem() {
+		return "SLIME";
+	}
+
 }
