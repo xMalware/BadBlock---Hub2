@@ -113,6 +113,13 @@ public abstract class CustomPet
 		entity.remove();
 		
 		entities.remove(player);
+
+		HubPlayer hubPlayer = HubPlayer.get(player);
+		
+		if (hubPlayer != null)
+		{
+			hubPlayer.setPet(null);
+		}
 	}
 
 }
