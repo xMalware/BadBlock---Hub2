@@ -36,7 +36,7 @@ public enum GadgetFeatures implements IFeatureWorker {
     GHOSTS("ghosts", new ItemStack(Material.SKULL_ITEM, 1, (short) 1), GadgetType.GHOSTS),
     TNTFOUNTAIN("tntfountain", new ItemStack(Material.TNT), GadgetType.TNT_FOUNTAIN),
 
-    POOPBOMB("poupbomb", new ItemStack(Material.INK_SACK, 1, (short) 3), GadgetType.POOP_BOMB),
+    POOPBOMB("poopbomb", new ItemStack(Material.INK_SACK, 1, (short) 3), GadgetType.POOP_BOMB),
     BATLAUNCHER("batlauncher", new ItemStack(Material.IRON_BARDING), GadgetType.BAT_LAUNCHER),
     EXPLODINGSHEEP("explodingsheep", new ItemStack(Material.SHEARS), GadgetType.EXPLODING_SHEEP),
     @SuppressWarnings("deprecation")
