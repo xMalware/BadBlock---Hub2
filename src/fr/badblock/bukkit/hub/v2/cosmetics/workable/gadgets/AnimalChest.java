@@ -19,7 +19,6 @@ import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import net.minecraft.server.v1_8_R3.Block;
 import net.minecraft.server.v1_8_R3.BlockPosition;
@@ -40,8 +39,8 @@ public class AnimalChest extends AbstractGadgets {
     };
     private Random random;
 
-    public AnimalChest() {
-        super(GadgetFeatures.ANIMALCHEST, new ItemStack(Material.CHEST), 4);
+    public AnimalChest(String internalName) {
+        super(internalName, new ItemStack(Material.CHEST), 4);
 
         this.random = new Random();
     }

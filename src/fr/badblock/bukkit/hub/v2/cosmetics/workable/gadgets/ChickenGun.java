@@ -11,13 +11,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ChickenGun extends AbstractGadgets{
 
-    public ChickenGun() {
-        super(GadgetFeatures.CHICKENGUN, new ItemStack(Material.GOLD_HOE), 4);
+    public ChickenGun(String internalName) {
+        super(internalName, new ItemStack(Material.GOLD_HOE), 4);
     }
 
     @Override

@@ -5,7 +5,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
@@ -18,18 +17,21 @@ public abstract class AbstractGadgets {
     private int slot;
     private boolean external;
 
-    public AbstractGadgets(GadgetFeatures feature, ItemStack item, int slot) {
-    	System.out.println("gadget_" + feature.name().toLowerCase());
-        this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + feature.name().toLowerCase()).getName();
-        this.item = new ItemBuilder(item).setName("§c" + feature.name()).toItemStack();
+    public AbstractGadgets(String internalName, ItemStack item, int slot)
+    {
+        this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + internalName.toLowerCase()).getName();
+        this.item = new ItemBuilder(item).setName(featureName).toItemStack();
 
         this.slot = slot;
         this.external = false;
     }
 
-    public AbstractGadgets(String gadgetsName, ItemStack item, int slot, boolean isExternal) {
+    public AbstractGadgets(String gadgetsName, ItemStack item, int slot, boolean isExternal)
+    {
+        this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + gadgetsName.toLowerCase()).getName();
+        
         if (item != null)
-            this.item = new ItemBuilder(item).setName("§c" + gadgetsName).toItemStack();
+            this.item = new ItemBuilder(item).setName(featureName).toItemStack();
         this.slot = slot;
         this.external = isExternal;
     }

@@ -1,10 +1,10 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
-import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
-import fr.badblock.gameapi.players.BadblockPlayer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Random;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -16,16 +16,16 @@ import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Random;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
+import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 
 public class FireGun extends AbstractGadgets {
 
-    public FireGun() {
-        super(GadgetFeatures.FIREGUN, new ItemBuilder(Material.DIAMOND_SPADE).toItemStack(), 4);
+    public FireGun(String internalName) {
+        super(internalName, new ItemBuilder(Material.DIAMOND_SPADE).toItemStack(), 4);
     }
 
     @Override

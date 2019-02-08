@@ -1,16 +1,21 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import net.minecraft.server.v1_8_R3.EntityCreature;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftCreeper;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Creeper;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -18,17 +23,17 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import net.minecraft.server.v1_8_R3.EntityCreature;
 
 public class CreeperExploser extends AbstractGadgets{
 
     private BukkitTask task;
 
-    public CreeperExploser() {
-        super(GadgetFeatures.CREEPEREXPLOSER, new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.CREEPER.ordinal()), 4);
+    public CreeperExploser(String internalName) {
+        super(internalName, new ItemStack(Material.SKULL_ITEM, 1, (short) SkullType.CREEPER.ordinal()), 4);
     }
 
     @Override

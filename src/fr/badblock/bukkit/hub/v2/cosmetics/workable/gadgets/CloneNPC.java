@@ -1,11 +1,5 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.utils.NPC;
-import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -14,12 +8,19 @@ import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
+
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.utils.NPC;
+import fr.badblock.gameapi.players.BadblockPlayer;
+
 public class CloneNPC extends AbstractGadgets{
 
     private NPC npc;
 
-    public CloneNPC() {
-        super(GadgetFeatures.CLONER, new ItemStack(Material.SKULL_ITEM), 4);
+    public CloneNPC(String internalName) {
+        super(internalName, new ItemStack(Material.SKULL_ITEM), 4);
     }
 
     @Override

@@ -1,19 +1,19 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Material;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Entity;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 
+import fr.badblock.gameapi.players.BadblockPlayer;
+
 public class EnderPearlGun extends AbstractGadgets{
 
     private boolean isActive = false;
 
-    public EnderPearlGun() {
-        super(GadgetFeatures.ENDERPEARLGUN, new ItemStack(Material.ENDER_PEARL), 4);
+    public EnderPearlGun(String internalName) {
+        super(internalName, new ItemStack(Material.ENDER_PEARL), 4);
     }
 
     @Override

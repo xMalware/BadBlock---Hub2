@@ -11,36 +11,36 @@ import org.bukkit.inventory.ItemStack;
 
 public enum GadgetFeatures implements IFeatureWorker {
 
-    FIREGUN(new FireGun()),
-    PAINTBALLGUN(new PaintBallGun()),
-    CHICKENGUN(new ChickenGun()),
-    ENDERPEARLGUN(new EnderPearlGun()),
-    COLORBOOT(new ColorBoots()),
-    CREEPEREXPLOSER(new CreeperExploser()),
-    ANIMALCHEST(new AnimalChest()),
-    NUKE(new Nuke()),
-    ROCKETLAUNCHER(new RocketLauncher()),
-    CLONER(new CloneNPC()),
-    POOL("Piscine", new ItemStack(Material.WATER_BUCKET), GadgetType.DIVING_BOARD),
-    TRAMPOLINE("Trampoling", new ItemStack(Material.HOPPER), GadgetType.TRAMPOLINE),
-    SANDCASTLE("Chateau de sable", new ItemStack(Material.SAND), GadgetType.SAND_CASTLE),
-    BBQGRILL("Barbecue", new ItemStack(Material.OBSIDIAN), GadgetType.BBQ_GRILL),
-    CATAPULT("Lanceur de chat", new ItemStack(Material.EGG), GadgetType.CATAPULT),
-    ROCKET("Fusée", new ItemStack(Material.FIREWORK), GadgetType.ROCKET),
-    DISCOBALL("Lanceur de musique", new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3), GadgetType.DISCO_BALL),
-    DJ("DJ", new ItemStack(Material.NOTE_BLOCK), GadgetType.DJ_BOOTH),
-    DIAMONDSHOWER("Douche de diamant", new ItemStack(Material.DIAMOND), GadgetType.DIAMOND_SHOWER),
-    GHOSTS("Tête invisible", new ItemStack(Material.SKULL_ITEM, 1, (short) 1), GadgetType.GHOSTS),
-    TNTFOUNTAIN("Fontaine de TNT", new ItemStack(Material.TNT), GadgetType.TNT_FOUNTAIN);
+    FIREGUN(new FireGun("firegun")),
+    PAINTBALLGUN(new PaintBallGun("paintballgun")),
+    CHICKENGUN(new ChickenGun("chickengun")),
+    ENDERPEARLGUN(new EnderPearlGun("enderpearlgun")),
+    COLORBOOT(new ColorBoots("colorboot")),
+    CREEPEREXPLOSER(new CreeperExploser("creeperexploser")),
+    ANIMALCHEST(new AnimalChest("animalchest")),
+    NUKE(new Nuke("nuke")),
+    ROCKETLAUNCHER(new RocketLauncher("rocketlauncher")),
+    CLONER(new CloneNPC("cloner")),
+    POOL("pool", new ItemStack(Material.WATER_BUCKET), GadgetType.DIVING_BOARD),
+    TRAMPOLINE("trampoline", new ItemStack(Material.HOPPER), GadgetType.TRAMPOLINE),
+    SANDCASTLE("sandcastle", new ItemStack(Material.SAND), GadgetType.SAND_CASTLE),
+    BBQGRILL("bbqgrill", new ItemStack(Material.OBSIDIAN), GadgetType.BBQ_GRILL),
+    CATAPULT("catapult", new ItemStack(Material.EGG), GadgetType.CATAPULT),
+    ROCKET("rocket", new ItemStack(Material.FIREWORK), GadgetType.ROCKET),
+    DISCOBALL("discoball", new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3), GadgetType.DISCO_BALL),
+    DJ("dj", new ItemStack(Material.NOTE_BLOCK), GadgetType.DJ_BOOTH),
+    DIAMONDSHOWER("diamondshower", new ItemStack(Material.DIAMOND), GadgetType.DIAMOND_SHOWER),
+    GHOSTS("ghosts", new ItemStack(Material.SKULL_ITEM, 1, (short) 1), GadgetType.GHOSTS),
+    TNTFOUNTAIN("tntfountain", new ItemStack(Material.TNT), GadgetType.TNT_FOUNTAIN);
 
-    private AbstractGadgets gadgets;
+	private AbstractGadgets gadgets;
 
     GadgetFeatures(AbstractGadgets gadgets) {
-        this.gadgets = gadgets;
+    	this.gadgets = gadgets;
     }
 
-    GadgetFeatures(String name, ItemStack itemStack, GadgetType gadgetType) {
-        this.gadgets = new ExternalGadgets(name, itemStack, gadgetType);
+    GadgetFeatures(String internalName, ItemStack itemStack, GadgetType gadgetType) {
+        this.gadgets = new ExternalGadgets(internalName, itemStack, gadgetType);
     }
 
     @Override

@@ -13,8 +13,8 @@ public class ExternalGadgets extends AbstractGadgets{
     private GadgetType gadgetType;
     public boolean isActive;
 
-    public ExternalGadgets(String gadgetsName, ItemStack item, GadgetType gadgetType) {
-        super(gadgetsName, item, 4, true);
+    public ExternalGadgets(String internalName, ItemStack item, GadgetType gadgetType) {
+        super(internalName, item, 4, true);
 
         this.gadgetType = gadgetType;
         this.isActive = false;

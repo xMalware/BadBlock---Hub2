@@ -1,8 +1,5 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
-import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -12,10 +9,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
+import fr.badblock.gameapi.players.BadblockPlayer;
+
 public class ColorBoots extends AbstractGadgets {
 
-    public ColorBoots() {
-        super(GadgetFeatures.COLORBOOT, new ItemStack(Material.DIAMOND_BOOTS), 4);
+    public ColorBoots(String internalName) {
+        super(internalName, new ItemStack(Material.DIAMOND_BOOTS), 4);
     }
 
     @Override

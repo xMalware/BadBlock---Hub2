@@ -1,10 +1,10 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import org.bukkit.*;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -14,10 +14,14 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
+import fr.badblock.gameapi.players.BadblockPlayer;
+
 public class RocketLauncher extends AbstractGadgets {
 
-    public RocketLauncher() {
-        super(GadgetFeatures.ROCKETLAUNCHER, new ItemStack(Material.FIREWORK), 4);
+    public RocketLauncher(String internalName) {
+        super(internalName, new ItemStack(Material.FIREWORK), 4);
     }
 
     @Override
