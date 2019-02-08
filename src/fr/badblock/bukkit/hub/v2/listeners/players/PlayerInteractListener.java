@@ -1,7 +1,10 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
-import com.yapzhenyie.GadgetsMenu.api.GadgetsMenuAPI;
-import com.yapzhenyie.GadgetsMenu.player.PlayerManager;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+
 import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.AbstractGadgets;
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
@@ -10,17 +13,12 @@ import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
-import fr.badblock.bukkit.hub.v2.players.HubPlayer;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryActionManager;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
