@@ -18,23 +18,20 @@ public abstract class AbstractGadgets {
     private int slot;
     private boolean external;
 
-    public AbstractGadgets(String internalName, ItemStack item, int slot)
-    {
+    public AbstractGadgets(String internalName, ItemStack item, int slot) {
         this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + internalName.toLowerCase()).getName();
         this.item = new ItemBuilder(item).setName(ChatColor.translateAlternateColorCodes('&', featureName)).toItemStack();
-
         this.slot = slot;
         this.external = false;
     }
 
-    public AbstractGadgets(String gadgetsName, ItemStack item, int slot, boolean isExternal)
-    {
+    public AbstractGadgets(String gadgetsName, ItemStack item, int slot, boolean isExternal) {
         this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + gadgetsName.toLowerCase()).getName();
-        
         if (item != null)
             this.item = new ItemBuilder(item).setName(ChatColor.translateAlternateColorCodes('&', featureName)).toItemStack();
         this.slot = slot;
         this.external = isExternal;
+
     }
 
     public abstract void equip(BadblockPlayer badblockPlayer);

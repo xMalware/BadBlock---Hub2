@@ -6,7 +6,7 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class FeatureWorker {
 
-    public static void work(BadblockPlayer player, Feature feature, String featureName) {
+    public static void work(BadblockPlayer player, Feature feature, String featureRawName) {
         System.out.println(feature.getName() + " > " + feature.getType());
         switch (feature.getType()) {
             case DISGUISE:
@@ -25,7 +25,8 @@ public class FeatureWorker {
                 CustomHats.work(player, feature);
                 break;
             case GADGET:
-                GadgetFeatures.work(player, featureName);
+                System.out.println(feature.getName() + " > " + feature.getType() + " > gadget");
+                GadgetFeatures.work(player, featureRawName);
                 break;
             default:
                 break;
