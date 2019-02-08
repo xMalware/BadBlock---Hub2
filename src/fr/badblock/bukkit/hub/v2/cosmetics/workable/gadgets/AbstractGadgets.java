@@ -8,6 +8,7 @@ import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Data;
+import net.md_5.bungee.api.ChatColor;
 
 @Data
 public abstract class AbstractGadgets {
@@ -20,7 +21,7 @@ public abstract class AbstractGadgets {
     public AbstractGadgets(String internalName, ItemStack item, int slot)
     {
         this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + internalName.toLowerCase()).getName();
-        this.item = new ItemBuilder(item).setName(featureName).toItemStack();
+        this.item = new ItemBuilder(item).setName(ChatColor.translateAlternateColorCodes('&', featureName)).toItemStack();
 
         this.slot = slot;
         this.external = false;
