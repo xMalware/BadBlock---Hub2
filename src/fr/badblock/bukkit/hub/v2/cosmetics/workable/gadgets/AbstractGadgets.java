@@ -19,6 +19,7 @@ public abstract class AbstractGadgets {
     private boolean external;
 
     public AbstractGadgets(GadgetFeatures feature, ItemStack item, int slot) {
+    	System.out.println("gadget_" + feature.name().toLowerCase());
         this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + feature.name().toLowerCase()).getName();
         this.item = new ItemBuilder(item).setName("§c" + feature.name()).toItemStack();
 
