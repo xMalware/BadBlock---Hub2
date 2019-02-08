@@ -9,9 +9,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
 
 public class PlayerEntityDamageListener extends BadListener {
 
+	@EventHandler
+	public void onEntityTarget(EntityTargetEvent event)
+	{
+		event.setCancelled(true);
+	}
+	
     @EventHandler
     public void onDamaged(EntityDamageByEntityEvent event) {
 
