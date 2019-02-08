@@ -20,8 +20,11 @@ public class ExternalGadgets extends AbstractGadgets{
         this.isActive = false;
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public void equip(BadblockPlayer badblockPlayer) {
+    	badblockPlayer.getInventory().remove(4);
+    	
         PlayerManager playerManager = GadgetsMenuAPI.getPlayerManager(badblockPlayer);
 
         playerManager.equipGadget(gadgetType);
