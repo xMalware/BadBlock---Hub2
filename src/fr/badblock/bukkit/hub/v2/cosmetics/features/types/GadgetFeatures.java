@@ -1,6 +1,8 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
 import com.yapzhenyie.GadgetsMenu.cosmetics.gadgets.GadgetType;
+
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.*;
@@ -51,14 +53,22 @@ public enum GadgetFeatures implements IFeatureWorker {
         this.gadgets.equip(player);
     }
 
-    public static void work(BadblockPlayer player, Feature feature) {
-        String[] parser = feature.getName().split("_");
+    public static void work(BadblockPlayer player, String featureName) {
+        String[] parser = featureName.split("_");
 
         if (parser.length < 2) {
             return;
         }
 
         String name = parser[1];
+        
+        Feature feature = ConfigLoader.getFeatures().getFeatures().get(name);
+        
+        if (feature == null)
+        {
+        	return;
+        }
+        
         GadgetFeatures finalFeature = null;
         for (GadgetFeatures gadgetFeature : values()) {
             if (gadgetFeature.name().equalsIgnoreCase(name)) {
