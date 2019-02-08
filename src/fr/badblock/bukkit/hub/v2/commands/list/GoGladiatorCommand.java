@@ -25,7 +25,7 @@ public class GoGladiatorCommand extends AbstractCommand {
 
             if(CourseManager.getInstance().getWaitingPlayers().contains(p) || JumpManager.getInstance().getJumpPlayers().containsKey(p) ||
                     SpleefManager.getInstance().getSpleefPlayers().containsKey(p) || ShootManager.getInstance().getShootPlayers().containsKey(p)){
-                p.sendMessage("§cTu es dejà une Partie !");
+                p.sendMessage("§cTu es dejà en partie.");
                 return true;
             }
 

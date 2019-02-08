@@ -28,7 +28,7 @@ public class GladiatorPlayCommand extends AbstractCommand {
                     Map map = MapManager.get().getMap(args[0]);
 
                     if(!map.giveKit(player)){
-                        player.sendMessage(GladiatorManager.GLADIATOR_PREFIX+"Le kit n'a pas été configuré !");
+                        player.sendMessage(GladiatorManager.GLADIATOR_PREFIX + "Le kit n'a pas été configuré !");
                         return true;
                     }
 

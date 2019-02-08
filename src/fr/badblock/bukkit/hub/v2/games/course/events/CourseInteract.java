@@ -54,12 +54,13 @@ public class CourseInteract implements Listener {
                 event.setCancelled(true);
 
                 if (GameState.INGAME.equals(CourseManager.getInstance().getState())) {
-                    player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
+                    player.sendMessage(CourseManager.COURSE_PREFIX + "§cUne partie est déjà en cours. Veuillez attendre qu'elle se termine..");
                     return;
                 }
 
                 if(JumpManager.getInstance().getJumpPlayers().containsKey(player)){
-                    player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump");
+                	JumpManager.getInstance().getJumpPlayers().remove(player);
+                    player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous avez quitté le jump.");
                     return;
                 }
 
@@ -69,12 +70,12 @@ public class CourseInteract implements Listener {
                     Timestamp ts = new Timestamp(System.currentTimeMillis());
 
                     if(time.containsKey(player) && time.get(player).after(ts)){
-                        player.sendMessage("§cTu dois attendre 30 secondes avant de pouvoir rentre à nouveau (Anti-Spam)");
+                        player.sendMessage("§cTu dois attendre 30 secondes avant de pouvoir revenir.");
                         return;
                     }
 
                     waitingPlayers.add(player);
-                    player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu rejoins la partie !");
+                    player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu as rejoins la partie.");
                     CourseManager.getInstance().getDoorsToEnter().replace(block.getLocation(), true);
 
                     // TODO REWRITE THIS! I'LL SHAKE!
@@ -93,7 +94,7 @@ public class CourseInteract implements Listener {
                     player.teleport(CourseManager.getInstance().getWaitingPos().get(pos));
 
                     if (waitingPlayers.size() >= CourseManager.MIN_PLAYER) {
-                        player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
+                        player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
 
                         for (Location loc : CourseManager.getInstance().getDoorsToStart()) {
                             BlockState Gate1 = loc.getBlock().getState();
@@ -114,8 +115,8 @@ public class CourseInteract implements Listener {
                                 @Override
                                 public void run() {
                                     if (waitingPlayers.size() < CourseManager.MIN_PLAYER) {
-                                        waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insufisant !"));
-                                        player.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
+                                        waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insuffisant !"));
+                                        player.sendTitle("§cNombre de joueur insuffisant !", "§9Annulation...");
                                         CourseManager.getInstance().setState(GameState.WAITING);
                                         cancel();
                                     }
@@ -130,7 +131,7 @@ public class CourseInteract implements Listener {
                                             }
                                         } else {
                                             if (waitingPlayers.size() < CourseManager.MIN_PLAYER) {
-                                                waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insufisant !"));
+                                                waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insuffisant !"));
                                                 CourseManager.getInstance().setState(GameState.WAITING);
                                                 cancel();
                                                 return;

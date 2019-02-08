@@ -49,12 +49,14 @@ public class PartyInteract implements Listener {
             event.setCancelled(true);
 
             if (GameState.INGAME.equals(BlockPartyManager.getInstance().getGameState())) {
-                player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
+                player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cUne partie est déjà en cours. Veuillez attendre qu'elle se termine..");
                 return;
             }
 
-            if(JumpManager.getInstance().getJumpPlayers().containsKey(player)){
-                player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump..");
+            if(JumpManager.getInstance().getJumpPlayers().containsKey(player))
+            {
+            	JumpManager.getInstance().getJumpPlayers().remove(player);
+                player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous avez quitté le jump.");
                 return;
             }
 
@@ -64,12 +66,12 @@ public class PartyInteract implements Listener {
                 Timestamp ts = new Timestamp(System.currentTimeMillis());
 
                 if(time.containsKey(player) && time.get(player).after(ts)){
-                    player.sendMessage("§cTu dois attendre 30 secondes avant de pouvoir rentre à nouveau (Anti-Spam)");
+                    player.sendMessage("§cTu dois attendre 30 secondes avant de pouvoir revenir à nouveau.");
                     return;
                 }
 
                 waitingPlayers.put(player, new BlockPlayer(player, false));
-                player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu rejoins la partie !");
+                player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu as rejoins la partie.");
 
                 // TODO REWRITE THIS! I'LL SHAKE!
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -79,7 +81,7 @@ public class PartyInteract implements Listener {
                 player.teleport(BlockPartyManager.getInstance().getTeleport());
 
                 if (waitingPlayers.size() >= BlockPartyManager.MIN_PLAYER) {
-                    player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
+                    player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
                     
                     if(!GameState.STARTING.equals(BlockPartyManager.getInstance().getGameState())){
                         BlockPartyManager.getInstance().setGameState(GameState.STARTING);
@@ -92,7 +94,7 @@ public class PartyInteract implements Listener {
                             @Override
                             public void run() {
                                 if (waitingPlayers.size() < BlockPartyManager.MIN_PLAYER) {
-                                    waitingPlayers.forEach((player1, blockPlayer) -> player1.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cNombre de joueur insufisant !"));
+                                    waitingPlayers.forEach((player1, blockPlayer) -> player1.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cNombre de joueur insuffisant !"));
                                     player.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
                                     BlockPartyManager.getInstance().setGameState(GameState.WAITING);
                                     cancel();
@@ -108,7 +110,7 @@ public class PartyInteract implements Listener {
                                         }
                                     } else {
                                         if (waitingPlayers.size() < BlockPartyManager.MIN_PLAYER) {
-                                            waitingPlayers.forEach((player12, blockPlayer1) -> player12.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cNombre de joueur insufisant !"));
+                                            waitingPlayers.forEach((player12, blockPlayer1) -> player12.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cNombre de joueur insuffisant !"));
                                             BlockPartyManager.getInstance().setGameState(GameState.WAITING);
                                             cancel();
                                             return;
@@ -144,7 +146,7 @@ public class PartyInteract implements Listener {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage("§5§m------------------------------");
                         p.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§3Un BlockParty va bientôt commencer !");
-                        TextComponent tc = new TextComponent(CourseManager.COURSE_PREFIX + "§cClique ici pour la rejoindre.");
+                        TextComponent tc = new TextComponent(CourseManager.COURSE_PREFIX + "§cClique ici pour rejoindre la partie.");
                         tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/goblockparty"));
                         tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                         p.spigot().sendMessage(tc);

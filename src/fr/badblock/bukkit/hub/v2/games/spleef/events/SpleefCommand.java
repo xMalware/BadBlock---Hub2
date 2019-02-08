@@ -25,7 +25,7 @@ public class SpleefCommand implements Listener {
         }
 
         event.setCancelled(true);
-        p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTu ne peux pas éxécuter de commande en jeu !");
+        p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTu ne peux pas exécuter de commande en jeu.");
     }
 
 }

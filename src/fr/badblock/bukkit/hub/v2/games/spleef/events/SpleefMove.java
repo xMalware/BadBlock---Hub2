@@ -57,7 +57,7 @@ public class SpleefMove implements Listener {
                     player.sendMessage(SpleefManager.SPLEEF_PREFIX + "Vous rejoignez le Spleef !");
                     player.setGameMode(GameMode.ADVENTURE);
 
-                    TextComponent quitComponent = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§c[Quittez le Spleef]");
+                    TextComponent quitComponent = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§c[Quitter le Spleef]");
                     quitComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitspleef"));
                     quitComponent.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                     player.spigot().sendMessage(quitComponent);
@@ -68,7 +68,7 @@ public class SpleefMove implements Listener {
                     player.getInventory().setItem(4, shovel);
 
                     if (SpleefManager.getInstance().getSpleefPlayers().size() >= SpleefManager.MIN_PLAYER) {
-                        player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
+                        player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
 
                         if (!GameState.STARTING.equals(SpleefManager.getInstance().getGameState())) {
                             SpleefManager.getInstance().setGameState(GameState.STARTING);
@@ -83,11 +83,11 @@ public class SpleefMove implements Listener {
                                 public void run() {
                                     if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
                                         SpleefManager.getInstance().getSpleefPlayers().forEach((player, spleefPlayer) -> {
-                                            player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cNombre de joueur insufisant !");
+                                            player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cNombre de joueur insuffisant !");
                                             player.performCommand("spawn");
                                             spleefPlayer.getCustomInv().restoreInventory(player);
                                         });
-                                        player.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
+                                        player.sendTitle("§cNombre de joueur insuffisant !", "§9Annulation...");
                                         SpleefManager.getInstance().setGameState(GameState.WAITING);
                                         cancel();
                                     }
@@ -132,7 +132,7 @@ public class SpleefMove implements Listener {
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             p.sendMessage("§5§m------------------------------");
                             p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§3Une partie de Spleef va bientôt commencer !");
-                            TextComponent tc = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§cClique ici pour la rejoindre.");
+                            TextComponent tc = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§cClique ici pour rejoindre la partie.");
                             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/gospleef"));
                             tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                             p.spigot().sendMessage(tc);

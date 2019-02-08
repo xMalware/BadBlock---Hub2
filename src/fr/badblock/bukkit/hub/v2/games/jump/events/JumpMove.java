@@ -24,23 +24,23 @@ public class JumpMove implements Listener {
             if (e.getTo().getBlockY() < 70) {
                 jumpPlayer.removeLife();
                 if(jumpPlayer.getLife() == 0){
-                    player.sendMessage(JumpManager.JUMP_PREFIX + "Vous n'avez plus de vies ! Retente ta chance ;)");
+                    player.sendMessage(JumpManager.JUMP_PREFIX + "Vous n'avez plus de vie ! Retente ta chance ;)");
                     player.performCommand("spawn");
                     if(player.hasPermission("hub.fly"))
                         player.setAllowFlight(true);
                     JumpManager.getInstance().getJumpPlayers().remove(player);
                 } else {
-                    player.sendMessage(JumpManager.JUMP_PREFIX + "Vous êtes tombés ! Il vous reste §c"+jumpPlayer.getLife()+" "+(jumpPlayer.getLife() == 1 ? "vie" : "vies")+" !");
+                    player.sendMessage(JumpManager.JUMP_PREFIX + "Vous êtes tombé ! Il vous reste §c"+jumpPlayer.getLife()+" "+(jumpPlayer.getLife() == 1 ? "vie" : "vies")+" !");
                     player.teleport(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint()));
                 }
             } else if (JumpManager.getInstance().getCheckpoint().size() == jumpPlayer.getCheckpoint() + 1) {
-                Bukkit.broadcastMessage(JumpManager.JUMP_PREFIX + "§cBravo à " + player.getName() + " qui à réussi le Jump !");
+                Bukkit.broadcastMessage(JumpManager.JUMP_PREFIX + "§cBravo à " + player.getName() + " qui a réussi le Jump !");
                 JumpManager.getInstance().getJumpPlayers().remove(player);
                 if(player.hasPermission("hub.fly"))
                     player.setAllowFlight(true);
             } else if (player.getLocation().distance(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint() + 1)) <= 1 && !JumpManager.getInstance().getCheckpoint().isEmpty()) {
                 jumpPlayer.setCheckpoint(jumpPlayer.getCheckpoint() + 1);
-                jumpPlayer.getBukkitPlayer().sendMessage(JumpManager.JUMP_PREFIX + "Bravo, vous avez passez le checkpoint n°" + jumpPlayer.getCheckpoint());
+                jumpPlayer.getBukkitPlayer().sendMessage(JumpManager.JUMP_PREFIX + "Bravo, vous avez passé le checkpoint n°" + jumpPlayer.getCheckpoint());
             }
 
         } else {

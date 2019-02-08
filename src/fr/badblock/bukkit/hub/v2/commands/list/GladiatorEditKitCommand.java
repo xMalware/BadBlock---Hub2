@@ -51,7 +51,7 @@ public class GladiatorEditKitCommand extends AbstractCommand {
                             if(!map.giveKit(player)){
                                 player.getInventory().clear();
                             }
-                            player.sendMessage("§cEditez le kit puis taper /gkit save");
+                            player.sendMessage("§cEditez le kit puis tapez /gkit save");
                         }
                     }
 

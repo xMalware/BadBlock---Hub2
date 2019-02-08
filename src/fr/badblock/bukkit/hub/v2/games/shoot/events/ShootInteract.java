@@ -45,12 +45,13 @@ public class ShootInteract implements Listener {
                 event.setCancelled(true);
 
                 if(GameState.INGAME.equals(ShootManager.getInstance().getGameState())) {
-                    player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
+                    player.sendMessage(ShootManager.SHOOT_PREFIX + "§cUne partie est en cours. Veuillez attendre qu'elle se termine..");
                     return;
                 }
 
                 if(JumpManager.getInstance().getJumpPlayers().containsKey(player)){
-                    player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump..");
+                	JumpManager.getInstance().getJumpPlayers().remove(player);
+                    player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous avez quitté le jump.");
                     return;
                 }
 
@@ -58,14 +59,14 @@ public class ShootInteract implements Listener {
 
                 if (!players.containsKey(player)) {
                     players.put((BadblockPlayer) player, new ShootPlayer(player, false));
-                    player.sendMessage(ShootManager.SHOOT_PREFIX + "§bTu rejoins la partie !");
+                    player.sendMessage(ShootManager.SHOOT_PREFIX + "§bTu as rejoins la partie.");
 
                     ShootPlayer shootPlayer = players.get(player);
 
                     if(shootPlayer.assignBox()){
-                        player.sendMessage(ShootManager.SHOOT_PREFIX+"§bUne box t'as été attribué !");
+                        player.sendMessage(ShootManager.SHOOT_PREFIX+"§bUne box t'as été attribuée !");
                     } else {
-                        player.sendMessage(ShootManager.SHOOT_PREFIX+"Erreur ! Aucune box trouvé ! Rééssayez plus tard..");
+                        player.sendMessage(ShootManager.SHOOT_PREFIX+"Erreur ! Aucune box trouvée ! Réessaye plus tard..");
                         players.remove(player);
                         return;
                     }
@@ -75,7 +76,7 @@ public class ShootInteract implements Listener {
                     player.getInventory().setItem(1, new ItemStack(Material.ARROW, 64));
 
                     if (players.size() >= ShootManager.MIN_PLAYER) {
-                        player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie va commencer ! Attendre 60sec...");
+                        player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
 
 
                         if(!GameState.STARTING.equals(ShootManager.getInstance().getGameState())){
@@ -90,9 +91,9 @@ public class ShootInteract implements Listener {
                                 public void run() {
                                     if (players.size() < ShootManager.MIN_PLAYER) {
                                         players.forEach((player1, shootPlayer1) -> {
-                                            player1.sendMessage(ShootManager.SHOOT_PREFIX + "§cNombre de joueur insufisant !");
+                                            player1.sendMessage(ShootManager.SHOOT_PREFIX + "§cNombre de joueur insuffisant !");
                                             shootPlayer1.getCustomPlayerInventory().restoreInventory(player1);
-                                            player1.sendTitle("§cNombre de joueur insufisant !", "§9Annulation...");
+                                            player1.sendTitle("§cNombre de joueur insuffisant !", "§9Annulation...");
                                         });
                                         ShootManager.getInstance().setGameState(GameState.WAITING);
                                         cancel();
@@ -134,7 +135,7 @@ public class ShootInteract implements Listener {
                             if(player.equals(p)) continue;
                             p.sendMessage("§5§m------------------------------");
                             p.sendMessage(ShootManager.SHOOT_PREFIX + "§3Une partie de tir à l'arc va bientôt commencer !");
-                            TextComponent tc = new TextComponent(ShootManager.SHOOT_PREFIX + "§cClique ici pour la rejoindre.");
+                            TextComponent tc = new TextComponent(ShootManager.SHOOT_PREFIX + "§cClique ici pour rejoindre la partie.");
                             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/goshoot"));
                             tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                             p.spigot().sendMessage(tc);

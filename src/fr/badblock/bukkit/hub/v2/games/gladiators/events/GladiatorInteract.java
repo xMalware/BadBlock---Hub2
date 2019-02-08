@@ -51,7 +51,7 @@ public class GladiatorInteract implements Listener {
         map.getPlayers().add(player);
         player.teleport(map.getRandomLoc());
 
-        TextComponent tc = new TextComponent(GladiatorManager.GLADIATOR_PREFIX + "§c[Quittez le gladiator]");
+        TextComponent tc = new TextComponent(GladiatorManager.GLADIATOR_PREFIX + "§c[Quitter le gladiator]");
         tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitgladiator"));
         tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
         player.spigot().sendMessage(tc);

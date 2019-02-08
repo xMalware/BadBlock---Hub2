@@ -20,7 +20,7 @@ public class CourseCommand implements Listener {
                 return;
             }
             e.setCancelled(true);
-            p.sendMessage(CourseManager.COURSE_PREFIX + "§cTu ne peux pas éxécuter de commandes en jeu !");
+            p.sendMessage(CourseManager.COURSE_PREFIX + "§cTu ne peux pas exécuter une commande en partie.");
         }
     }
 
