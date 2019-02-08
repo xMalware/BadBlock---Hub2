@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
@@ -24,7 +25,7 @@ public class PaintBallGun extends AbstractGadgets {
 	private ArrayList<Material> blacklist = new ArrayList<>(Arrays.asList(Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN, Material.DOUBLE_PLANT));
 
 	public PaintBallGun() {
-		super("Pistolet Lazer", new ItemStack(Material.DIAMOND_HOE), 4);
+		super(GadgetFeatures.PAINTBALLGUN, new ItemStack(Material.DIAMOND_HOE), 4);
 	}
 
 	@Override

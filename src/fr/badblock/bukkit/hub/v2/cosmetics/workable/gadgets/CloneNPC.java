@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.utils.NPC;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Bukkit;
@@ -18,7 +19,7 @@ public class CloneNPC extends AbstractGadgets{
     private NPC npc;
 
     public CloneNPC() {
-        super("Cloneur", new ItemStack(Material.SKULL_ITEM), 4);
+        super(GadgetFeatures.CLONER, new ItemStack(Material.SKULL_ITEM), 4);
     }
 
     @Override

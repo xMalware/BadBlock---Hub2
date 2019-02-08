@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.Effect;
@@ -17,7 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class ChickenGun extends AbstractGadgets{
 
     public ChickenGun() {
-        super("Lanceur de Poulet", new ItemStack(Material.GOLD_HOE), 4);
+        super(GadgetFeatures.CHICKENGUN, new ItemStack(Material.GOLD_HOE), 4);
     }
 
     @Override

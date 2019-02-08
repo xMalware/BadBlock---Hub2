@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public class Nuke extends AbstractGadgets {
 
     public Nuke() {
-        super("Nuke", new ItemStack(Material.TNT), 4);
+        super(GadgetFeatures.NUKE, new ItemStack(Material.TNT), 4);
     }
 
     @Override

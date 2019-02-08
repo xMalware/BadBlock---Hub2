@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Material;
@@ -14,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 public class ColorBoots extends AbstractGadgets {
 
     public ColorBoots() {
-        super("§9§kC §bBottes Magiques§9§kC", new ItemStack(Material.DIAMOND_BOOTS), 4);
+        super(GadgetFeatures.COLORBOOT, new ItemStack(Material.DIAMOND_BOOTS), 4);
     }
 
     @Override

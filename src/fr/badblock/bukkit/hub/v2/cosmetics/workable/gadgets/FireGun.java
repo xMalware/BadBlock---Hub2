@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.games.utils.ItemBuilder;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -24,7 +25,7 @@ import java.util.Random;
 public class FireGun extends AbstractGadgets {
 
     public FireGun() {
-        super("Pistolet de feu", new ItemBuilder(Material.DIAMOND_SPADE).toItemStack(), 4);
+        super(GadgetFeatures.FIREGUN, new ItemBuilder(Material.DIAMOND_SPADE).toItemStack(), 4);
     }
 
     @Override

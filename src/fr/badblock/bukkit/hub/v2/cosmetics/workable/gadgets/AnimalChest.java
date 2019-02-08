@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
 import com.google.common.collect.Sets;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.utils.EntityUtils;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -37,7 +38,7 @@ public class AnimalChest extends AbstractGadgets {
     private Random random;
 
     public AnimalChest() {
-        super("AnimalChest", new ItemStack(Material.CHEST), 4);
+        super(GadgetFeatures.ANIMALCHEST, new ItemStack(Material.CHEST), 4);
 
         this.random = new Random();
     }

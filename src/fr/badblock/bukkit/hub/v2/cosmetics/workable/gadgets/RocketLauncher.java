@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.*;
@@ -15,9 +16,8 @@ import org.bukkit.util.Vector;
 
 public class RocketLauncher extends AbstractGadgets {
 
-
     public RocketLauncher() {
-        super("Fusée", new ItemStack(Material.FIREWORK), 4);
+        super(GadgetFeatures.ROCKETLAUNCHER, new ItemStack(Material.FIREWORK), 4);
     }
 
     @Override
