@@ -9,6 +9,7 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.*;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
 public enum GadgetFeatures implements IFeatureWorker {
@@ -33,7 +34,15 @@ public enum GadgetFeatures implements IFeatureWorker {
     DJ("dj", new ItemStack(Material.NOTE_BLOCK), GadgetType.DJ_BOOTH),
     DIAMONDSHOWER("diamondshower", new ItemStack(Material.DIAMOND), GadgetType.DIAMOND_SHOWER),
     GHOSTS("ghosts", new ItemStack(Material.SKULL_ITEM, 1, (short) 1), GadgetType.GHOSTS),
-    TNTFOUNTAIN("tntfountain", new ItemStack(Material.TNT), GadgetType.TNT_FOUNTAIN);
+    TNTFOUNTAIN("tntfountain", new ItemStack(Material.TNT), GadgetType.TNT_FOUNTAIN),
+
+    POOPBOMB("poupbomb", new ItemStack(Material.INK_SACK, 1, (short) 3), GadgetType.POOP_BOMB),
+    BATLAUNCHER("batlauncher", new ItemStack(Material.IRON_BARDING), GadgetType.BAT_LAUNCHER),
+    EXPLODINGSHEEP("explodingsheep", new ItemStack(Material.SHEARS), GadgetType.EXPLODING_SHEEP),
+    CREEPERASTRONAUT("creeperastronaut", new ItemStack(Material.MONSTER_EGG, 1, EntityType.CREEPER.getTypeId()), GadgetType.CREEPER_ASTRONAUT),
+    GOLDSHOWER("goldshower", new ItemStack(Material.GOLD_INGOT), GadgetType.GOLD_FOUNTAIN),
+    PARTYPOPPER("partypopper", new ItemStack(Material.ENDER_CHEST), GadgetType.PARTY_POPPER),
+    COOKIEFOUNTAIN("cookiefountain", new ItemStack(Material.COOKIE), GadgetType.KOOKIE_FOUNTAIN);
 
 	private AbstractGadgets gadgets;
 
