@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="GadgetsMenu">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Libs/GadgetsMenu.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

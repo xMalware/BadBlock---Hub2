@@ -12,5 +12,6 @@
     <orderEntry type="library" name="lombok" level="project" />
     <orderEntry type="library" name="spigot-1.8.8" level="project" />
     <orderEntry type="library" name="NoteBlockAPI-1.2.5" level="project" />
+    <orderEntry type="library" name="GadgetsMenu" level="project" />
   </component>
 </module>
