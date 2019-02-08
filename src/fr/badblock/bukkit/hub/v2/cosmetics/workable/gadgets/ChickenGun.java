@@ -1,19 +1,18 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.block.Action;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ChickenGun extends AbstractGadgets{
 

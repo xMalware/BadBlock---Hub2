@@ -78,7 +78,7 @@ public class PlayerInteractListener extends BadListener {
             return false;
         }
 
-        String flagName = player.getName() + "_gadget_use_" + gadget.getName();
+        String flagName = player.getName() + "_gadget_use_" + gadget.getFeatureName();
 
         if (GlobalFlags.has(flagName)) {
             player.sendTranslatedMessage("features.gadgets_wait");

@@ -1,9 +1,12 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
-import fr.badblock.gameapi.players.BadblockPlayer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.DyeColor;
@@ -17,7 +20,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.util.*;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
+import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class PaintBallGun extends AbstractGadgets {
 
@@ -108,6 +114,7 @@ public class PaintBallGun extends AbstractGadgets {
 		return 0;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void colorBlock(Block block) {
 		blocks.put(block.getLocation(), block.getTypeId() + ":" + block.getData());
 

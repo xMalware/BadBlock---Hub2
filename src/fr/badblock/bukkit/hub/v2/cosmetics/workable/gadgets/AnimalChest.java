@@ -1,12 +1,8 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets;
 
-import com.google.common.collect.Sets;
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
-import fr.badblock.bukkit.hub.v2.utils.EntityUtils;
-import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import net.minecraft.server.v1_8_R3.*;
+import java.lang.reflect.Field;
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -22,8 +18,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
-import java.lang.reflect.Field;
-import java.util.Random;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.cosmetics.features.types.GadgetFeatures;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import net.minecraft.server.v1_8_R3.Block;
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.EntityInsentient;
+import net.minecraft.server.v1_8_R3.Navigation;
+import net.minecraft.server.v1_8_R3.PacketPlayOutBlockAction;
+import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 
 public class AnimalChest extends AbstractGadgets {
 

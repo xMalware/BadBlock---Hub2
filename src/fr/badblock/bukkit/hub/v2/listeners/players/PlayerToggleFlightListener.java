@@ -1,7 +1,5 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
-import java.util.HashMap;
-
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,7 +10,7 @@ import fr.badblock.gameapi.BadListener;
 
 public class PlayerToggleFlightListener extends BadListener {
 
-    private HashMap<Player, Integer> jumps = new HashMap<>();
+   // private HashMap<Player, Integer> jumps = new HashMap<>();
 
     @EventHandler
     private void onPlayerToggleFlight(PlayerToggleFlightEvent event) {

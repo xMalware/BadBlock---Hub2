@@ -1,7 +1,5 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.EnderPearlGun;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.Nuke;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,7 +16,6 @@ public class PlayerMoveListener extends BadListener
 {
 
 
-	
 	@EventHandler
 	public void whenPlayerMoved(PlayerMoveEvent event)
 	{	
@@ -28,7 +25,7 @@ public class PlayerMoveListener extends BadListener
 		workWithDisguiseEffects(player, hubPlayer);
 		workLaunchpad(player, event.getTo());
 		autoTeleport(player, event);
-		workWithDoubleJump(player);
+		//workWithDoubleJump(player);
 	}
 
 	private void autoTeleport(BadblockPlayer player, PlayerMoveEvent event)
@@ -79,14 +76,14 @@ public class PlayerMoveListener extends BadListener
 		//player.playEffect(player.getLocation(), customDisguiseEffect.build(), 0);
 	}
 
-	private void workWithDoubleJump(BadblockPlayer player){
+	/*private void workWithDoubleJump(BadblockPlayer player){
 		Location loc = player.getLocation();
 		Block block = loc.subtract(0.0D, 2.0D, 0.0D).getBlock();
 
 		//TODO Double jump :)
-		/*if((player.getGameMode() == GameMode.ADVENTURE || player.getGameMode() == GameMode.SURVIVAL) && (block.getType() != Material.AIR) && (player.hasPermission("hub.doublejump"))){
+		if((player.getGameMode() == GameMode.ADVENTURE || player.getGameMode() == GameMode.SURVIVAL) && (block.getType() != Material.AIR) && (player.hasPermission("hub.doublejump"))){
 			player.setAllowFlight(true);
-		}*/
-	}
+		}
+	}*/
 
 }

@@ -1,10 +1,5 @@
 package fr.badblock.bukkit.hub.v2.games.gladiators.events;
 
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,6 +9,10 @@ import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
 import fr.badblock.gameapi.events.fakedeaths.FightingDeathEvent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class GladiatorDeath implements Listener {
 
