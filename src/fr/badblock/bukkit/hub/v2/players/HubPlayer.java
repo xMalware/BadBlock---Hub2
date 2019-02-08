@@ -4,12 +4,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.AbstractGadgets;
 import org.bukkit.GameMode;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.AbstractGadgets;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.pets.CustomPet;
 import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
@@ -43,6 +44,7 @@ public class HubPlayer {
     private int jumpCheckpoint;
 
     private AbstractGadgets currentWidget;
+    private CustomPet			  pet;
 
     public HubPlayer(BadblockPlayer player) {
         this.setPlayer(player);

@@ -1,14 +1,19 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.pets;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import net.minecraft.server.v1_8_R3.AttributeInstance;
@@ -17,23 +22,38 @@ import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.PathEntity;
 
 @EqualsAndHashCode(callSuper = false)
-@AllArgsConstructor
 @Data
 public abstract class CustomPet
 {
 
-	private Class<? extends LivingEntity> clazz;
+	private Class<? extends LivingEntity>	clazz;
 	// Follow system
-	private boolean						  followable;
+	private boolean										followable;
 
+	private Map<Player, Entity>  					entities		= new HashMap<>();
+	
+	public CustomPet(Class<? extends LivingEntity> clazz, boolean followable)
+	{
+		this.clazz = clazz;
+		this.followable = followable;
+	}
+	
 	public abstract String getSoundSystem();
 
 	public abstract void onSpawn(LivingEntity livingEntity);
 
 	public void spawn(BadblockPlayer player)
 	{
+		HubPlayer hubPlayer = HubPlayer.get(player);
+		
+		if (hubPlayer.getPet() != null)
+		{
+			hubPlayer.getPet().undeploy(player);
+		}
+		
 		// Spawn part
 		LivingEntity entity = player.getWorld().spawn(player.getLocation(), clazz);
+		entities.put(player, entity);
 
 		// Follow part
 		if (isFollowable())
@@ -54,7 +74,10 @@ public abstract class CustomPet
 				{
 					entity.remove();
 					this.cancel();
+					entities.remove(player);
+					return;
 				}
+				
 				net.minecraft.server.v1_8_R3.Entity pett = ((CraftEntity) entity).getHandle();
 				((EntityInsentient) pett).getNavigation().a(2);
 				Object petf = ((CraftEntity) entity).getHandle();
@@ -81,7 +104,15 @@ public abstract class CustomPet
 
 	public void undeploy(BadblockPlayer player)
 	{
-		// TODO: do something
+		if (!entities.containsKey(player))
+		{
+			return;
+		}
+		
+		Entity entity = entities.get(player);
+		entity.remove();
+		
+		entities.remove(player);
 	}
 
 }
