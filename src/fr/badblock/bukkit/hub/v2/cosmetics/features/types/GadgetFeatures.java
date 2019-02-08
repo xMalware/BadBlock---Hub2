@@ -61,9 +61,9 @@ public enum GadgetFeatures implements IFeatureWorker {
         }
 
         String name = parser[1];
-        
-        Feature feature = ConfigLoader.getFeatures().getFeatures().get(name);
-        
+
+        Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
+
         if (feature == null)
         {
         	return;
@@ -77,13 +77,9 @@ public enum GadgetFeatures implements IFeatureWorker {
             }
         }
 
-        System.out.println(feature.getName() + " > " + feature.getType() + " > gadget > " + finalFeature);
-
         if (finalFeature == null) {
             return;
         }
-
-        System.out.println(feature.getName() + " > " + feature.getType() + " > BBB > work");
 
         HubPlayer hubPlayer = HubPlayer.get(player);
 

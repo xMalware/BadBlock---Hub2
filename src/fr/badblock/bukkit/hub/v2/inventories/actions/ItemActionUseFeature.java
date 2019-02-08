@@ -49,7 +49,7 @@ public class ItemActionUseFeature extends CustomItemAction
 		player.sendTranslatedMessage("hub.features.use", displayFeatureName);
 		
 		// Do what we should
-		FeatureWorker.work(player, feature);
+		FeatureWorker.work(player, feature, featureRawName);
 	}
 
 }
