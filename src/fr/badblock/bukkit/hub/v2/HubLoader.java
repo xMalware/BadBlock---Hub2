@@ -2,7 +2,9 @@ package fr.badblock.bukkit.hub.v2;
 
 import java.io.File;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
@@ -41,8 +43,18 @@ public class HubLoader {
 		MountLoader.load(plugin);
 		// Load tasks
 		HubTaskLoader.load(plugin);
+		// Clean hub world
+		clean();
 		// Preload chunks
 		preloadChunks();
+	}
+	
+	private static void clean()
+	{
+		for (World world : Bukkit.getWorlds())
+		{
+			world.getEntities().forEach(entity -> entity.remove());
+		}
 	}
 
 	private static void preloadChunks()

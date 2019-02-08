@@ -25,6 +25,8 @@ public abstract class CustomPet
 	private Class<? extends LivingEntity> clazz;
 	// Follow system
 	private boolean						  followable;
+	
+	public abstract String getSoundSystem();
 
 	public abstract void onSpawn(LivingEntity livingEntity);
 
