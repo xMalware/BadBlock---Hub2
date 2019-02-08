@@ -54,6 +54,7 @@ public abstract class CustomPet
 		// Spawn part
 		LivingEntity entity = player.getWorld().spawn(player.getLocation(), clazz);
 		entities.put(player, entity);
+		hubPlayer.setPet(this);
 
 		// Follow part
 		if (isFollowable())
