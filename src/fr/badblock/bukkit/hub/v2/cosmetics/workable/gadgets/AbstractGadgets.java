@@ -32,7 +32,7 @@ public abstract class AbstractGadgets {
         this.featureName = ConfigLoader.getFeatures().getFeatures().get("gadget_" + gadgetsName.toLowerCase()).getName();
         
         if (item != null)
-            this.item = new ItemBuilder(item).setName(featureName).toItemStack();
+            this.item = new ItemBuilder(item).setName(ChatColor.translateAlternateColorCodes('&', featureName)).toItemStack();
         this.slot = slot;
         this.external = isExternal;
     }
