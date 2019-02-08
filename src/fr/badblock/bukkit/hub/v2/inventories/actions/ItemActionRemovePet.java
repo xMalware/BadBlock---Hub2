@@ -5,7 +5,7 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
-public class ItemActionRemovePetCommand extends CustomItemAction
+public class ItemActionRemovePet extends CustomItemAction
 {
 
 	@Override
