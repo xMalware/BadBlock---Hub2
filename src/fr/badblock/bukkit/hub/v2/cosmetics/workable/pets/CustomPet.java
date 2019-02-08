@@ -25,7 +25,7 @@ public abstract class CustomPet
 	private Class<? extends LivingEntity> clazz;
 	// Follow system
 	private boolean						  followable;
-	
+
 	public abstract String getSoundSystem();
 
 	public abstract void onSpawn(LivingEntity livingEntity);
@@ -64,9 +64,16 @@ public abstract class CustomPet
 				if (path != null) {
 					((EntityInsentient) petf).getNavigation().a(path, 1.0D);
 					((EntityInsentient) petf).getNavigation().a(2.0D);}
-				int distance = (int) Bukkit.getPlayer(player.getName()).getLocation().distance(entity.getLocation());
-				if (distance > 10 && !entity.isDead() && player.isOnGround()) {
-					entity.teleport(player.getLocation());}
+				if (!Bukkit.getPlayer(player.getName()).getLocation().getWorld().equals(entity.getWorld()))
+				{
+					entity.teleport(player.getLocation());
+				}
+				else
+				{
+					int distance = (int) Bukkit.getPlayer(player.getName()).getLocation().distance(entity.getLocation());
+					if (distance > 10 && !entity.isDead() && player.isOnGround()) {
+						entity.teleport(player.getLocation());}
+				}
 				AttributeInstance attributes = ((EntityInsentient)((CraftEntity)entity).getHandle()).getAttributeInstance(GenericAttributes.MOVEMENT_SPEED);
 				attributes.setValue(0.3);
 			}}.runTaskTimer(BadBlockHub.getInstance(), 0L, 1L);
