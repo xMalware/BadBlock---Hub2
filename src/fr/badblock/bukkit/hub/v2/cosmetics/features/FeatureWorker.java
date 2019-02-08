@@ -16,7 +16,7 @@ public class FeatureWorker {
                 MountFeatures.work(player, feature);
                 break;
             case PET:
-                PetFeatures.work(player, featureName);
+                PetFeatures.work(player, featureRawName);
                 break;
             case PARTICLE:
                 ParticleFeatures.work(player, feature);
