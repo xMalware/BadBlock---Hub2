@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.AnimatedBallParticle;
@@ -45,22 +46,35 @@ public enum ParticleFeatures implements IFeatureWorker
 		getCustomParticle().start(player);
 	}
 
-	public static void work(BadblockPlayer player, Feature feature)
+	public static void work(BadblockPlayer player, String featureName)
 	{
-		String name = feature.getName();
-		ParticleFeatures finalFeature = null;
-		for (ParticleFeatures mountFeature : values())
-		{
-			if (mountFeature.name().equalsIgnoreCase(name))
-			{
-				finalFeature = mountFeature;
-				break;
-			}
-		}
-		if (finalFeature == null)
-		{
-			return;
-		}
+        String[] parser = featureName.split("_");
+
+        if (parser.length < 2) {
+            return;
+        }
+
+        String name = parser[1];
+
+        Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
+
+        if (feature == null)
+        {
+        	return;
+        }
+        
+        ParticleFeatures finalFeature = null;
+        for (ParticleFeatures particleFeature : values()) {
+            if (particleFeature.name().equalsIgnoreCase(name)) {
+                finalFeature = particleFeature;
+                break;
+            }
+        }
+        
+        if (finalFeature == null) {
+            return;
+        }
+        
 		finalFeature.work(player);
 	}
 
