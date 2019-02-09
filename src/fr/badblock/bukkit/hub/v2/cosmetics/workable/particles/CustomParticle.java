@@ -1,48 +1,46 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.workable.particles;
 
-import java.util.UUID;
+import java.lang.reflect.Constructor;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-
-import fr.badblock.gameapi.GameAPI;
-import fr.badblock.gameapi.particles.ParticleEffect;
-import fr.badblock.gameapi.particles.ParticleEffectType;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
+import fr.badblock.bukkit.hub.v2.utils.effects.Effect;
+import fr.badblock.bukkit.hub.v2.utils.effects.EffectManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import fr.badblock.gameapi.utils.threading.TaskManager;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 public abstract class CustomParticle
 {
 
-	public abstract ParticleEffectType getParticleEffectType();
-	public abstract void run(BadblockPlayer player);
+	@Getter
+	private static EffectManager effectManager = new EffectManager(BadBlockHub.getInstance());
+
+	public abstract Class<? extends Effect> getEffect();
 
 	public void start(BadblockPlayer player)
 	{
-		String uniqueId = UUID.randomUUID().toString();
-		TaskManager.scheduleSyncRepeatingTask("playEffect_" + uniqueId, new Runnable()
+		try
 		{
-			@Override
-			public void run()
+			Constructor<? extends Effect> ctor = getEffect().getDeclaredConstructor(EffectManager.class);
+			ctor.setAccessible(true);
+			Effect effect = (Effect) ctor.newInstance(getEffectManager());
+			
+			HubPlayer hubPlayer = HubPlayer.get(player);
+			
+			if (hubPlayer == null)
 			{
-				CustomParticle.this.run(player);
+				return;
 			}
-		}, 5, 5);
-	}
-	
-	public void playEffect(Location location)
-	{
-		ParticleEffect effect = (ParticleEffect) GameAPI.getAPI().createParticleEffect(getParticleEffectType());
-		effect.setSpeed(0);
-		effect.setLongDistance(true);
-		effect.setAmount(2);
-		for (Player player : Bukkit.getOnlinePlayers())
+			
+			hubPlayer.setEffect(effect);
+			effect.setEntity(player);
+			effect.start();
+		}
+		catch (Exception error)
 		{
-			BadblockPlayer bplayer = (BadblockPlayer) player;
-			bplayer.sendParticle(location, effect);
+			error.printStackTrace();
 		}
 	}
 

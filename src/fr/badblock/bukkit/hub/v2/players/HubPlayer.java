@@ -16,6 +16,7 @@ import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
+import fr.badblock.bukkit.hub.v2.utils.effects.Effect;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.bossbars.BossBarColor;
 import fr.badblock.gameapi.players.bossbars.BossBarStyle;
@@ -45,6 +46,7 @@ public class HubPlayer {
 
     private AbstractGadgets currentWidget;
     private CustomPet			  pet;
+    private Effect			  		  effect;
 
     public HubPlayer(BadblockPlayer player) {
         this.setPlayer(player);

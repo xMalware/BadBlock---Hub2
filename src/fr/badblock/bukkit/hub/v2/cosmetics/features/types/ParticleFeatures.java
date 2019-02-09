@@ -1,46 +1,18 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
-import java.util.UUID;
-
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.AnimatedBallParticle;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.CustomParticle;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleCloud;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleEnchantmentTable;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleExplosion;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleFirework;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleFlame;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleLava;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleLove;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleNote;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleSlime;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleSmoke;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleVillagerAngry;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleVillagerHappy;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleWaterBubble;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.particles.ParticleWaterSplash;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import fr.badblock.gameapi.utils.threading.TaskManager;
 import lombok.Getter;
 
 @Getter
 public enum ParticleFeatures implements IFeatureWorker
 {
 
-	CLOUD				(new ParticleCloud()),
-	ENCHANTMENTTABLE	(new ParticleEnchantmentTable()),
-	EXPLOSION			(new ParticleExplosion()),
-	FIREWORK			(new ParticleFirework()),
-	FLAME				(new ParticleFlame()),
-	LAVA				(new ParticleLava()),
-	LOVE				(new ParticleLove()),
-	NOTE				(new ParticleNote()),
-	SLIME				(new ParticleSlime()),
-	SMOKE				(new ParticleSmoke()),
-	VILLAGERANGRY		(new ParticleVillagerAngry()),
-	VILLAGERHAPPY		(new ParticleVillagerHappy()),
-	WATERBUBBLE			(new ParticleWaterBubble()),
-	WATERSPLASH			(new ParticleWaterSplash());
+	ANIMATEDBALL				(new AnimatedBallParticle());
 
 	private CustomParticle customParticle;
 
@@ -57,21 +29,20 @@ public enum ParticleFeatures implements IFeatureWorker
 	@Override
 	public void work(BadblockPlayer player)
 	{
-		String uuid = "particle-" + UUID.randomUUID().toString();
-		TaskManager.scheduleSyncRepeatingTask(uuid, new Runnable()
+		HubPlayer hubPlayer = HubPlayer.get(player);
+		
+		if (hubPlayer == null)
 		{
-
-			@Override
-			public void run()
-			{
-				if (!player.isOnline())
-				{
-					TaskManager.cancelTaskByName(uuid);
-					return;	
-				}
-				getCustomParticle().playEffect(player.getLocation());
-			}
-		}, 5, 5);
+			return;
+		}
+		
+		if (hubPlayer.getEffect() != null)
+		{
+			hubPlayer.getEffect().cancel();
+			hubPlayer.setEffect(null);
+		}
+		
+		getCustomParticle().start(player);
 	}
 
 	public static void work(BadblockPlayer player, Feature feature)
