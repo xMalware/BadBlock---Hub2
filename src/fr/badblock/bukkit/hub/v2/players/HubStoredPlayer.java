@@ -14,6 +14,7 @@ import lombok.Data;
 public class HubStoredPlayer  implements GameData
 {
 	
+	private boolean															hidePlayers;
 	private Map<FeatureType, List<OwnedFeature>>	features	= new HashMap<>();
 	
 	public void save(BadblockPlayer player)

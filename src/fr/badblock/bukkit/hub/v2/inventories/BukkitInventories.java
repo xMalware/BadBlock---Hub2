@@ -176,17 +176,57 @@ public class BukkitInventories
 
 					String featureAction = featureObj.getNeeded().isBuyable() && !owned ? 
 							player.getTranslatedMessage("hub.items.generic.feature_actions_buy")[0] : owned ?
-							player.getTranslatedMessage("hub.items.generic.feature_actions_use")[0] : "";
+									player.getTranslatedMessage("hub.items.generic.feature_actions_use")[0] : "";
 
-					for (String message : player.getTranslatedMessage("hub.items.generic.feature_lore", displayFeatureName,
-							player.getTranslatedMessage("hub.items.generic.feature_need_" + needed, addon)[0],
-							player.getTranslatedMessage("hub.items.generic.feature_owned_" + owned)[0],
-							featureAction))
+									for (String message : player.getTranslatedMessage("hub.items.generic.feature_lore", displayFeatureName,
+											player.getTranslatedMessage("hub.items.generic.feature_need_" + needed, addon)[0],
+											player.getTranslatedMessage("hub.items.generic.feature_owned_" + owned)[0],
+											featureAction))
+									{
+										strings.add(tagManager.tagify(player, message, inventoryItemObject));
+									}
+
+									itemMeta.setLore(strings);
+				}
+				else if (action.getAction().equals(CustomItemActionType.TOGGLE_PLAYERS))
+				{
+					HubStoredPlayer hubStoredPlayer = HubStoredPlayer.get(player);
+
+					if (hubStoredPlayer != null)
 					{
-						strings.add(tagManager.tagify(player, message, inventoryItemObject));
-					}
+						if (hubStoredPlayer.isHidePlayers())
+						{
+							itemStack.setTypeId(351);
+							itemStack.getData().setData((byte) 8);
+							itemMeta = itemStack.getItemMeta();
+							String displayName = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage("hub.items.joininventory.toggleplayers.enable")[0]);
+							itemMeta.setDisplayName(tagManager.tagify(player, displayName, inventoryItemObject));
 
-					itemMeta.setLore(strings);
+							List<String> lore = new ArrayList<>();
+							for (String string : player.getTranslatedMessage("hub.items.joininventory.toggleplayers.enable_lore"))
+							{
+								string = tagManager.tagify(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
+								lore.add(string);
+							}
+							itemMeta.setLore(lore);
+						}
+						else
+						{
+							itemStack.setTypeId(351);
+							itemStack.getData().setData((byte) 10);
+							itemMeta = itemStack.getItemMeta();
+							String displayName = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage("hub.items.joininventory.toggleplayers.disable")[0]);
+							itemMeta.setDisplayName(tagManager.tagify(player, displayName, inventoryItemObject));
+
+							List<String> lore = new ArrayList<>();
+							for (String string : player.getTranslatedMessage("hub.items.joininventory.toggleplayers.disable_lore"))
+							{
+								string = tagManager.tagify(player, ChatColor.translateAlternateColorCodes('&', string), inventoryItemObject);
+								lore.add(string);
+							}
+							itemMeta.setLore(lore);
+						}
+					}
 				}
 			}
 

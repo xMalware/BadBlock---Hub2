@@ -12,6 +12,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendLadderCommand
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendMessage;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTogglePlayers;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionUseFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionWaitingLine;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -35,6 +36,7 @@ public enum CustomItemActionType
 	BOOSTER_GAMESELECT		(new ItemActionBoosterGameSelect()),
 	REMOVE_PET							(new ItemActionRemovePet()),
 	REMOVE_EFFECT					(new ItemActionRemoveEffect()),
+	TOGGLE_PLAYERS 				(new ItemActionTogglePlayers()),
 	NOTHING				(null);
 
 	private CustomItemAction action;
