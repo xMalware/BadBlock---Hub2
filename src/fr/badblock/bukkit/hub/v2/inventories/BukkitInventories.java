@@ -194,6 +194,8 @@ public class BukkitInventories
 
 					if (hubStoredPlayer != null)
 					{
+						feature = true;
+						
 						if (hubStoredPlayer.isHidePlayers())
 						{
 							itemStack.setTypeId(351);
