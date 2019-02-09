@@ -59,6 +59,7 @@ public class ItemActionTogglePlayers extends CustomItemAction
 			}
 			
 			hubStoredPlayer.setHidePlayers(false);
+			hubStoredPlayer.save(player);
 			player.sendTranslatedMessage("hub.toggleplayers.show");
 			BukkitInventories.giveDefaultInventory(player);
 		}
@@ -70,6 +71,7 @@ public class ItemActionTogglePlayers extends CustomItemAction
 			}
 			
 			hubStoredPlayer.setHidePlayers(true);
+			hubStoredPlayer.save(player);
 			player.sendTranslatedMessage("hub.toggleplayers.hide");
 			BukkitInventories.giveDefaultInventory(player);
 		}
