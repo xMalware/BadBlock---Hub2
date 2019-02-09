@@ -195,11 +195,10 @@ public class BukkitInventories
 					if (hubStoredPlayer != null)
 					{
 						feature = true;
-						
+
 						if (hubStoredPlayer.isHidePlayers())
 						{
-							itemStack.setTypeId(351);
-							itemStack.getData().setData((byte) 8);
+							itemStack = new ItemStack(351, 1, (short) 8);
 							itemMeta = itemStack.getItemMeta();
 							String displayName = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage("hub.items.joininventory.toggleplayers.enable")[0]);
 							itemMeta.setDisplayName(tagManager.tagify(player, displayName, inventoryItemObject));
@@ -214,8 +213,7 @@ public class BukkitInventories
 						}
 						else
 						{
-							itemStack.setTypeId(351);
-							itemStack.getData().setData((byte) 10);
+							itemStack = new ItemStack(351, 1, (short) 10);
 							itemMeta = itemStack.getItemMeta();
 							String displayName = ChatColor.translateAlternateColorCodes('&', player.getTranslatedMessage("hub.items.joininventory.toggleplayers.disable")[0]);
 							itemMeta.setDisplayName(tagManager.tagify(player, displayName, inventoryItemObject));
