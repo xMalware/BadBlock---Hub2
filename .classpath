@@ -12,5 +12,7 @@
 	<classpathentry kind="lib" path="B:/Dev/Java/Libraries/mongo-java-driver-3.6.4.jar"/>
 	<classpathentry kind="lib" path="B:/Dev/Java/Libraries/spigot-1.8.jar"/>
 	<classpathentry kind="lib" path="B:/BadBlock/NoteBlockAPI-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/root/Downloads/GadgetsMenu.jar"/>
+	<classpathentry kind="lib" path="C:/Users/root/Downloads/ProtocolLib.jar"/>
 	<classpathentry kind="output" path="out/production/HubV2"/>
 </classpath>
