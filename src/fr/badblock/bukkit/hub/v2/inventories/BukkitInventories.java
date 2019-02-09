@@ -105,6 +105,7 @@ public class BukkitInventories
 					if (FeatureManager.getInstance().hasFeature(player, storedPlayer, featureName))
 					{
 						itemStack = ItemStackUtils.fakeEnchant(itemStack);
+						itemMeta = itemStack.getItemMeta();
 						owned = true;
 					}
 
@@ -140,7 +141,7 @@ public class BukkitInventories
 						}
 					}
 
-					String displayFeatureName =ChatColor.translateAlternateColorCodes('&', featureObj.getName());
+					String displayFeatureName = ChatColor.translateAlternateColorCodes('&', featureObj.getName());
 					String string = displayFeatureName + " {owned}";
 					itemMeta.setDisplayName(tagManager.tagify(player, string, inventoryItemObject));
 

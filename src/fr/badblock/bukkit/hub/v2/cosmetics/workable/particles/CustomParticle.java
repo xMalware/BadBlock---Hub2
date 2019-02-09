@@ -33,6 +33,7 @@ public abstract class CustomParticle
 			{
 				return;
 			}
+	        System.out.println("Feature  > F");
 			
 			hubPlayer.setEffect(effect);
 			effect.setEntity(player);

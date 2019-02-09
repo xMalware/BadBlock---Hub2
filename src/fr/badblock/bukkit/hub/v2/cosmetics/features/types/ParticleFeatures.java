@@ -106,13 +106,15 @@ public enum ParticleFeatures implements IFeatureWorker
 		{
 			return;
 		}
-		
+
+        System.out.println("Feature  > D");
 		if (hubPlayer.getEffect() != null)
 		{
 			hubPlayer.getEffect().cancel();
 			hubPlayer.setEffect(null);
 		}
-		
+
+        System.out.println("Feature  > E");
 		getCustomParticle().start(player);
 	}
 
@@ -128,10 +130,13 @@ public enum ParticleFeatures implements IFeatureWorker
 
         Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
 
+        System.out.println("Feature "+ featureName + " > A");
+        
         if (feature == null)
         {
         	return;
         }
+        System.out.println("Feature "+ featureName + " > B");
         
         ParticleFeatures finalFeature = null;
         for (ParticleFeatures particleFeature : values()) {
@@ -144,6 +149,7 @@ public enum ParticleFeatures implements IFeatureWorker
         if (finalFeature == null) {
             return;
         }
+        System.out.println("Feature "+ featureName + " > C");
         
 		finalFeature.work(player);
 	}
