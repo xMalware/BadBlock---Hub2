@@ -6,6 +6,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import fr.badblock.api.common.utils.flags.GlobalFlags;
+import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
@@ -59,6 +60,7 @@ public class ItemActionTogglePlayers extends CustomItemAction
 			
 			hubStoredPlayer.setHidePlayers(false);
 			player.sendTranslatedMessage("hub.toggleplayers.show");
+			BukkitInventories.giveDefaultInventory(player);
 		}
 		else
 		{
@@ -69,6 +71,7 @@ public class ItemActionTogglePlayers extends CustomItemAction
 			
 			hubStoredPlayer.setHidePlayers(true);
 			player.sendTranslatedMessage("hub.toggleplayers.hide");
+			BukkitInventories.giveDefaultInventory(player);
 		}
 	}
 
