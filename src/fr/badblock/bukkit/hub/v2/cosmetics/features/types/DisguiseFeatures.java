@@ -1,14 +1,44 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
+import org.bukkit.Bukkit;
+
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.*;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.CustomDisguise;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseBat;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseBlaze;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseBoat;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseCaveSpider;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseChicken;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseCow;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseCreeper;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseEnderCrystal;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseEnderman;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseEndermite;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseGhast;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseGolem;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseGuardian;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseHorse;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseMagmaCube;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseMinecart;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseMushRoom;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguisePig;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguisePigman;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseSheep;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseSilverfish;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseSkeleton;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseSnowMan;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseSpider;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseSquid;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseVillager;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseWitch;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseWitherSkull;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseWolf;
+import fr.badblock.bukkit.hub.v2.cosmetics.workable.disguises.DisguiseZombie;
 import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
-import org.bukkit.Bukkit;
-import org.bukkit.entity.EntityType;
 
 @Getter
 public enum DisguiseFeatures implements IFeatureWorker {

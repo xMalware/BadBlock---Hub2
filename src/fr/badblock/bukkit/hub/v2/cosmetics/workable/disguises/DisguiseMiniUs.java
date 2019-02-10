@@ -10,7 +10,6 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import fr.badblock.gameapi.particles.ParticleEffectType;
-import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class DisguiseMiniUs extends CustomDisguise
 {
