@@ -10,10 +10,16 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 
 import fr.badblock.api.common.tech.mongodb.MongoService;
+import fr.badblock.api.common.utils.FullSEntry;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
+import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
+import fr.badblock.bukkit.hub.v2.rabbit.SEntryInfosListener;
 import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.GameAPI;
+import fr.badblock.gameapi.utils.i18n.Locale;
+import fr.badblock.gameapi.utils.i18n.TranslatableString;
 
 public class NPCSyncTask extends HubTask
 {
@@ -65,6 +71,24 @@ public class NPCSyncTask extends HubTask
 						// Added
 						npc.spawn();
 						NPC.getNpcs().put(npc.getUniqueId(), npc);
+					}
+					
+					if (npc.getActions() != null && !npc.getActions().isEmpty())
+					{
+						InventoryAction action = npc.getActions().iterator().next();
+
+						if (action.getAction().equals(CustomItemActionType.TELEPORT_SERVER) && npc.getSentryQueue() != null && npc.getPlayerText() != null)
+						{
+							int count = -1;
+							
+							if (SEntryInfosListener.sentries.containsKey(npc.getSentryQueue()))
+							{
+								FullSEntry sentry = SEntryInfosListener.sentries.get(npc.getSentryQueue());
+								count = sentry.getIngamePLayers() + sentry.getWaitinglinePlayers();
+							}
+							
+							npc.getPlayerText().setCustomName(new TranslatableString("hub.gamepnj.ingameplayers", count).getAsLine(Locale.FRENCH_FRANCE));
+						}
 					}
 				}
 			}

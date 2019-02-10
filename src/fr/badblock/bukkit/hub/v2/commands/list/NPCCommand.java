@@ -144,7 +144,7 @@ public class NPCCommand extends AbstractCommand
 		String uniqueId = NPC.generateUniqueId();
 
 		// Make NPCs great again!
-		NPC npc = new NPC(uniqueId, displayName, entityType, null, vip, staff, new FakeLocation(player.getLocation()), new ArrayList<>());
+		NPC npc = new NPC(uniqueId, displayName, "", entityType, null, vip, staff, new FakeLocation(player.getLocation()), new ArrayList<>());
 
 		// Insert NPC
 		MongoService mongoService = GameAPI.getAPI().getMongoService();
