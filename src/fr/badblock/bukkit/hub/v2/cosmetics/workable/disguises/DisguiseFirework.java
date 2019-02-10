@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseFirework extends CustomDisguise
 {
 	
-	public DisguiseFirework(BadblockPlayer player)
+	public DisguiseFirework()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

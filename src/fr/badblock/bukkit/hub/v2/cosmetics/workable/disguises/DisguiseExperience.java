@@ -7,9 +7,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseExperience extends CustomDisguise
 {
 	
-	public DisguiseExperience(BadblockPlayer player)
+	public DisguiseExperience()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

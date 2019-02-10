@@ -2,6 +2,8 @@ package fr.badblock.bukkit.hub.v2;
 
 import java.io.File;
 
+import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
+import fr.badblock.bukkit.hub.v2.utils.TinyProtocol;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -47,6 +49,9 @@ public class HubLoader {
 		clean();
 		// Preload chunks
 		preloadChunks();
+
+		new TinyProtocol(plugin);
+		DisguiseUtil.register();
 	}
 	
 	private static void clean()

@@ -17,9 +17,9 @@ public class DisguiseMiniUs extends CustomDisguise
 
 	ArmorStand armorStand;
 	
-	public DisguiseMiniUs(BadblockPlayer player)
+	public DisguiseMiniUs()
 	{
-		super(player);
+		super();
 		ItemStack chestplate = new ItemStack(Material.LEATHER_CHESTPLATE);
 	    LeatherArmorMeta meta =  (LeatherArmorMeta) chestplate.getItemMeta();
 	    meta.setColor(Color.GRAY);
@@ -29,7 +29,7 @@ public class DisguiseMiniUs extends CustomDisguise
 	    ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
 	    LeatherArmorMeta meta2 =  (LeatherArmorMeta) boots.getItemMeta();
 	    meta2.setColor(Color.GRAY);
-		armorStand.getEquipment().setHelmet(setHeadofPlayer(player.getName()));
+		//armorStand.getEquipment().setHelmet(setHeadofPlayer(player.getName()));
 		armorStand.getEquipment().setChestplate(chestplate);
 		armorStand.getEquipment().setLeggings(leggings);
 		armorStand.getEquipment().setBoots(boots);

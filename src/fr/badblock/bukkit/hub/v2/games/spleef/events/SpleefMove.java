@@ -45,7 +45,7 @@ public class SpleefMove implements Listener {
     public void onMove(PlayerMoveEvent event) {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
-        if (selection.isInSelection(player.getLocation())) {
+        if (selection.isInSelection(player.getLocation()) && player.getGameMode() != GameMode.SPECTATOR) {
             if (GameState.WAITING.equals(SpleefManager.getInstance().getGameState())) {
                 if (!SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
                     if (JumpManager.getInstance().getJumpPlayers().containsKey(player)) {

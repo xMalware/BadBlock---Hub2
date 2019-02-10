@@ -6,9 +6,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguisePainting extends CustomDisguise
 {
 	
-	public DisguisePainting(BadblockPlayer player)
+	public DisguisePainting()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

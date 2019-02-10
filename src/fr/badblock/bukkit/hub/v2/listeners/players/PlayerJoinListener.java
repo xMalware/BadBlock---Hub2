@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.listeners.players;
 
 import com.yapzhenyie.GadgetsMenu.api.GadgetsMenuAPI;
 import com.yapzhenyie.GadgetsMenu.player.PlayerManager;
+import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;

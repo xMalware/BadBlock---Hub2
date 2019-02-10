@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseEyeEnder extends CustomDisguise
 {
 	
-	public DisguiseEyeEnder(BadblockPlayer player)
+	public DisguiseEyeEnder()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

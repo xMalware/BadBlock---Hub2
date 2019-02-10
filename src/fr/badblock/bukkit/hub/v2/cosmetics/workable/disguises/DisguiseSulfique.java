@@ -12,9 +12,9 @@ public class DisguiseSulfique extends CustomDisguise
 	 */
 	
 	BadblockPlayer player;
-	public DisguiseSulfique(BadblockPlayer player)
+	public DisguiseSulfique()
 	{
-		super(player);
+		super();
 		player.setCustomName("Sulfique");
 		player.setCustomNameVisible(false);
 	}

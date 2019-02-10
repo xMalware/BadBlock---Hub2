@@ -7,9 +7,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseSilverfish extends CustomDisguise
 {
 	
-	public DisguiseSilverfish(BadblockPlayer player)
+	public DisguiseSilverfish()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

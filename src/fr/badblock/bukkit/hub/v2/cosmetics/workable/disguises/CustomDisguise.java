@@ -9,34 +9,10 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
-public abstract class CustomDisguise
-{
+public abstract class CustomDisguise {
 
-	private BadblockPlayer	player;
-	private Disguise		disguise;
+    public abstract EntityType getEntityType();
 
-	public CustomDisguise()
-	{
-		setDisguise(new Disguise(getEntityType(), null, true, true));
-	}
-	
-	public CustomDisguise(BadblockPlayer player)
-	{
-		this();
-	}
-	
-	public void disguise(BadblockPlayer player)
-	{
-		player.disguise(disguise);
-	}
-
-	public void undisguise()
-	{
-		getPlayer().undisguise();
-	}
-
-	public abstract EntityType			 getEntityType();
-	
-	public abstract CustomDisguiseEffect getEffect();
+    public abstract CustomDisguiseEffect getEffect();
 
 }

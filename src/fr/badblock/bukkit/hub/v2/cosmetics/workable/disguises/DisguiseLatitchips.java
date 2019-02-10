@@ -12,9 +12,9 @@ public class DisguiseLatitchips extends CustomDisguise
 	 */
 	
 	BadblockPlayer player;
-	public DisguiseLatitchips(BadblockPlayer player)
+	public DisguiseLatitchips()
 	{
-		super(player);
+		super();
 		player.setCustomName("Latitchips");
 		player.setCustomNameVisible(false);
 	}

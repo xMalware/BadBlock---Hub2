@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseDroppedItem extends CustomDisguise
 {
 	
-	public DisguiseDroppedItem(BadblockPlayer player)
+	public DisguiseDroppedItem()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

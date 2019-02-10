@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseCreeper extends CustomDisguise
 {
 	
-	public DisguiseCreeper(BadblockPlayer player)
+	public DisguiseCreeper()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

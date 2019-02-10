@@ -7,9 +7,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseCaveSpider extends CustomDisguise
 {
 	
-	public DisguiseCaveSpider(BadblockPlayer player)
+	public DisguiseCaveSpider()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

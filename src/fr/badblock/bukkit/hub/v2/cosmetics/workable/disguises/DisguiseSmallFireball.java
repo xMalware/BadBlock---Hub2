@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseSmallFireball extends CustomDisguise
 {
 	
-	public DisguiseSmallFireball(BadblockPlayer player)
+	public DisguiseSmallFireball()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

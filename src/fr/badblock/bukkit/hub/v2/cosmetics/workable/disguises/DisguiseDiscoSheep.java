@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseDiscoSheep extends CustomDisguise
 {
 	Sheep sheep;
-	public DisguiseDiscoSheep(BadblockPlayer player)
+	public DisguiseDiscoSheep()
 	{
-		super(player);
+		super();
 		sheep.setCustomName("jeb_");
 		sheep.setCustomNameVisible(false);
 	}

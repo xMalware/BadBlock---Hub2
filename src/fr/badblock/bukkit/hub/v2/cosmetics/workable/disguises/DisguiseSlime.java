@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseSlime extends CustomDisguise
 {
 	
-	public DisguiseSlime(BadblockPlayer player)
+	public DisguiseSlime()
 	{
-		super(player);
+		super();
 	}
 
 	@Override
