@@ -12,6 +12,7 @@ import lombok.Getter;
 	private int    			 	place;
 	private int				 	amount = 1;
 	private String 			 	type;
+	private String					neededPermission;
 	private InventoryAction[]	actions;
 	private boolean				fakeEnchant;
 	

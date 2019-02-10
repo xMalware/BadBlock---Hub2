@@ -59,6 +59,11 @@ public class BukkitInventories
 
 		for (InventoryItemObject inventoryItemObject : inventoryObject.getItems())
 		{
+			if (inventoryItemObject.getNeededPermission() != null && !player.hasPermission(inventoryItemObject.getNeededPermission()))
+			{
+				continue;
+			}
+			
 			String[] splitter = inventoryItemObject.getType().split(":");
 			String material = splitter[0];
 			byte data = 0;
