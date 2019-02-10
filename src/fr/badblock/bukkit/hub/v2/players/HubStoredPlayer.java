@@ -23,6 +23,7 @@ public class HubStoredPlayer  implements GameData
 		{
 			features = new HashMap<>();
 		}
+		
 		player.getPlayerData().saveData();
 		player.saveGameData();
 	}
