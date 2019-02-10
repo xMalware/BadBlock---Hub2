@@ -13,9 +13,9 @@ public class DisguiseCowHuman extends CustomDisguise
 	 */
 	
 	BadblockPlayer player;
-	public DisguiseCowHuman(BadblockPlayer player)
+	public DisguiseCowHuman()
 	{
-		super(player);
+		super();
 		player.setCustomName("Cirauk_");
 		player.setCustomNameVisible(false);
 	}

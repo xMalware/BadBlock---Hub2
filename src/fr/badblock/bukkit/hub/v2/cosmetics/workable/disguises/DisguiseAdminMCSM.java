@@ -15,7 +15,7 @@ public class DisguiseAdminMCSM extends CustomDisguise
 	
 	public DisguiseAdminMCSM(BadblockPlayer player)
 	{
-		super(player);
+		super();
 		player.setCustomName("Romeoadmin");
 		player.setCustomNameVisible(false);
 	}

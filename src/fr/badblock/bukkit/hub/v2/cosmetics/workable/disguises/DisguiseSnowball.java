@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseSnowball extends CustomDisguise
 {
 	
-	public DisguiseSnowball(BadblockPlayer player)
+	public DisguiseSnowball()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguisePigman extends CustomDisguise
 {
 	
-	public DisguisePigman(BadblockPlayer player)
+	public DisguisePigman()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

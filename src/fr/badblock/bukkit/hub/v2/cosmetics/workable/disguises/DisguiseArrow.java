@@ -10,7 +10,7 @@ public class DisguiseArrow extends CustomDisguise
 
 	public DisguiseArrow(BadblockPlayer player)
 	{
-		super(player);
+		super();
 	}
 
 	@Override

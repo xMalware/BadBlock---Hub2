@@ -7,9 +7,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseMinecartFurnace extends CustomDisguise
 {
 	
-	public DisguiseMinecartFurnace(BadblockPlayer player)
+	public DisguiseMinecartFurnace()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

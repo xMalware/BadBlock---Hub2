@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseMagmaCube extends CustomDisguise
 {
 	
-	public DisguiseMagmaCube(BadblockPlayer player)
+	public DisguiseMagmaCube()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

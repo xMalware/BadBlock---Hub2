@@ -13,9 +13,9 @@ public class DisguiseLeLanN extends CustomDisguise
 	
 	BadblockPlayer player;
 	
-	public DisguiseLeLanN(BadblockPlayer player)
+	public DisguiseLeLanN()
 	{
-		super(player);
+		super();
 		player.setCustomName("LeLanN");
 		player.setCustomNameVisible(false);
 	}

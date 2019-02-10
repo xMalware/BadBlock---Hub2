@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseMushRoom extends CustomDisguise
 {
 	
-	public DisguiseMushRoom(BadblockPlayer player)
+	public DisguiseMushRoom()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

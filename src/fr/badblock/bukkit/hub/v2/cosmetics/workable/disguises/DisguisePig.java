@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguisePig extends CustomDisguise
 {
 	
-	public DisguisePig(BadblockPlayer player)
+	public DisguisePig()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

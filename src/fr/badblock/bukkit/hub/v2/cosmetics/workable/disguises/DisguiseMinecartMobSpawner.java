@@ -7,9 +7,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseMinecartMobSpawner extends CustomDisguise
 {
 	
-	public DisguiseMinecartMobSpawner(BadblockPlayer player)
+	public DisguiseMinecartMobSpawner()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

@@ -12,9 +12,9 @@ public class DisguiseMicromaniaque extends CustomDisguise
 	 */
 	
 	BadblockPlayer player;
-	public DisguiseMicromaniaque(BadblockPlayer player)
+	public DisguiseMicromaniaque()
 	{
-		super(player);
+		super();
 		player.setCustomName("micro_maniaque");
 		player.setCustomNameVisible(false);
 	}

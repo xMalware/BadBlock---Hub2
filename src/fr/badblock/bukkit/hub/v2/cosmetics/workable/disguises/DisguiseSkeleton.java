@@ -7,9 +7,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseSkeleton extends CustomDisguise
 {
 	
-	public DisguiseSkeleton(BadblockPlayer player)
+	public DisguiseSkeleton()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

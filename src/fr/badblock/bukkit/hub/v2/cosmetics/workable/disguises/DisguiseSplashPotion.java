@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseSplashPotion extends CustomDisguise
 {
 	
-	public DisguiseSplashPotion(BadblockPlayer player)
+	public DisguiseSplashPotion()
 	{
-		super(player);
+		super();
 	}
 
 	@Override

@@ -8,9 +8,9 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class DisguiseItemFrame extends CustomDisguise
 {
 	
-	public DisguiseItemFrame(BadblockPlayer player)
+	public DisguiseItemFrame()
 	{
-		super(player);
+		super();
 	}
 
 	@Override
