@@ -79,8 +79,6 @@ public class BukkitInventories
 			{
 				type = Material.getMaterial(material);
 			}
-			System.out.println(type);
-			System.out.println(data);
 			ItemStack itemStack = new ItemStack(type, inventoryItemObject.getAmount(), data);
 
 			if (inventoryItemObject.isFakeEnchant())
