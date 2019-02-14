@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.IMount;
@@ -11,7 +12,6 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountCow;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountCreeper;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountDiscoSheep;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountEnderman;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountEndermanSwitched;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountEndermite;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountHorse;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountIronGolem;
@@ -20,7 +20,6 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountMooshroom;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountOcelot;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountPig;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountRabbit;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountSheepSwitched;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountSkeleton;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountSlime;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountSnowMan;
@@ -78,18 +77,37 @@ public enum MountFeatures implements IFeatureWorker {
         mount.spawnEntity(player.getLocation());
     }
 
-    public static void work(BadblockPlayer player, Feature feature) {
-        String name = feature.getName();
+    public static void work(BadblockPlayer player, String featureName) {
+        String[] parser = featureName.split("_");
+
+        if (parser.length < 2) {
+            return;
+        }
+
+        String name = parser[1];
+
+        Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
+
+        System.out.println("Feature " + featureName + " > AAAA");
+
+        if (feature == null) {
+            return;
+        }
+
+        System.out.println("Feature " + featureName + " > BBBBBB");
+
         MountFeatures finalFeature = null;
-        for (MountFeatures mountFeature : values()) {
-            if (mountFeature.name().equalsIgnoreCase(name)) {
-                finalFeature = mountFeature;
+        for (MountFeatures disguiseFeature : values()) {
+            if (disguiseFeature.name().equalsIgnoreCase(name)) {
+                finalFeature = disguiseFeature;
                 break;
             }
         }
+
         if (finalFeature == null) {
             return;
         }
+
         finalFeature.work(player);
     }
 

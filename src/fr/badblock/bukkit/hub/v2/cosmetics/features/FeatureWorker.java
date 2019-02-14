@@ -18,7 +18,7 @@ public class FeatureWorker {
                 DisguiseFeatures.work(player, featureRawName);
                 break;
             case MOUNT:
-                MountFeatures.work(player, feature);
+                MountFeatures.work(player, featureRawName);
                 break;
             case PET:
                 PetFeatures.work(player, featureRawName);
