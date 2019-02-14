@@ -49,11 +49,7 @@ public enum MountFeatures implements IFeatureWorker {
 	@Override
 	public void work(BadblockPlayer player)
 	{
-		if (!MountManager.rideEntity(player, type, false, false, 0.3D, false, true))
-		{
-			// TODO configurable
-			player.sendMessage("§cPas assez de place pour spawn cette entité");
-		}
+		MountManager.rideEntity(player, type, false, false, 0.3D, false, true);
 	}
 
 	public static void work(BadblockPlayer player, String featureName) {

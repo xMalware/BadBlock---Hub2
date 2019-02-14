@@ -1,19 +1,17 @@
 package fr.badblock.bukkit.hub.v2.games.course.events;
 
-import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
-import fr.badblock.bukkit.hub.v2.games.course.task.CourseGameRunnable;
-import fr.badblock.bukkit.hub.v2.games.states.GameState;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import fr.badblock.gameapi.utils.selections.CuboidSelection;
 import org.bukkit.Location;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.material.MaterialData;
-import org.bukkit.material.Openable;
+
+import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
+import fr.badblock.bukkit.hub.v2.games.course.task.CourseGameRunnable;
+import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import fr.badblock.gameapi.utils.selections.CuboidSelection;
 
 /**
  * Created by Toinetoine1 on 14/01/2019.

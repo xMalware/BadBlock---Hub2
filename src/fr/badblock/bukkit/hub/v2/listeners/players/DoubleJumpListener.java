@@ -1,18 +1,9 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
-import com.comphenix.protocol.events.ListenerPriority;
-import com.comphenix.protocol.events.PacketAdapter;
-import com.comphenix.protocol.events.PacketEvent;
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
-import fr.badblock.bukkit.hub.v2.players.HubPlayer;
-import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
-import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
-import fr.badblock.gameapi.BadListener;
-import fr.badblock.gameapi.players.BadblockPlayer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
@@ -20,7 +11,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 
-import java.util.*;
+import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
+import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
+import fr.badblock.gameapi.BadListener;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class DoubleJumpListener extends BadListener {
 

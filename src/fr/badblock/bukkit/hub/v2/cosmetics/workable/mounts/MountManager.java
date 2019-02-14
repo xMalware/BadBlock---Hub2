@@ -57,7 +57,7 @@ public class MountManager {
 
 	private static boolean prevent(BadblockPlayer player) {
 		if (!canSummonMount(player.getLocation())) {
-			player.sendTranslatedMessage("hub.mount.cantbeusedhere");
+			player.sendTranslatedMessage("hub.cantbemounted");
 			return true;
 		}
 		return false;
