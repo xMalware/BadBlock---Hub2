@@ -2,26 +2,25 @@ package fr.badblock.bukkit.hub.v2;
 
 import java.io.File;
 
-import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
-import fr.badblock.bukkit.hub.v2.utils.ParticleListener;
-import fr.badblock.bukkit.hub.v2.utils.TinyProtocol;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountLoader;
 import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
 import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
 import fr.badblock.bukkit.hub.v2.tasks.HubTaskLoader;
+import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
+import fr.badblock.bukkit.hub.v2.utils.ParticleListener;
+import fr.badblock.bukkit.hub.v2.utils.TinyProtocol;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
-import org.bukkit.entity.Entity;
 
 public class HubLoader {
 
@@ -43,8 +42,6 @@ public class HubLoader {
 		api.getBadblockScoreboard().doGroupsPrefix();
 		api.setMapProtector(new HubMapProtector());
 		api.managePortals(new File(plugin.getDataFolder(), "portals"));
-		// Load mounts
-		MountLoader.load(plugin);
 		// Load tasks
 		HubTaskLoader.load(plugin);
 		// Clean hub world
