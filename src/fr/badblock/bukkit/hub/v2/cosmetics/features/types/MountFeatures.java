@@ -1,9 +1,11 @@
 package fr.badblock.bukkit.hub.v2.cosmetics.features.types;
 
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.Feature;
 import fr.badblock.bukkit.hub.v2.cosmetics.features.IFeatureWorker;
-import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.IMount;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountBat;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountBlaze;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountCaveSpider;
@@ -33,79 +35,95 @@ import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountZombie;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts.MountZombiePigman;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
+import net.minecraft.server.v1_8_R3.Entity;
+import net.minecraft.server.v1_8_R3.World;
 
 @Getter
 public enum MountFeatures implements IFeatureWorker {
 
-    BAT(new MountBat()),
-    BLAZE(new MountBlaze()),
-    CAVESPIDER(new MountCaveSpider()),
-    CHICKEN(new MountChicken()),
-    COW(new MountCow()),
-    CREEPER(new MountCreeper()),
-    DISCOSHEEP(new MountDiscoSheep()),
-    ENDERMAN(new MountEnderman()),
-    ENDERMITE(new MountEndermite()),
-    HORSE(new MountHorse()),
-    IRONGOLEM(new MountIronGolem()),
-    MAGMACUBE(new MountMagmaCube()),
-    MOOSHROOM(new MountMooshroom()),
-    OCELOT(new MountOcelot()),
-    PIG(new MountPig()),
-    RABBIT(new MountRabbit()),
-    SKELETON(new MountSkeleton()),
-    SLIME(new MountSlime()),
-    SNOWMAN(new MountSnowMan()),
-    SPIDER(new MountSpider()),
-    SQUID(new MountSquid()),
-    VILLAGER(new MountVillager()),
-    WITCH(new MountWitch()),
-    WITHER(new MountWither()),
-    WOLF(new MountWolf()),
-    ZOMBIE(new MountZombie()),
-    ZOMBIEPIGMAN(new MountZombiePigman());
+	BAT(new MountBat()),
+	BLAZE(new MountBlaze()),
+	CAVESPIDER(new MountCaveSpider()),
+	CHICKEN(new MountChicken()),
+	COW(new MountCow()),
+	CREEPER(new MountCreeper()),
+	DISCOSHEEP(new MountDiscoSheep()),
+	ENDERMAN(new MountEnderman()),
+	ENDERMITE(new MountEndermite()),
+	HORSE(new MountHorse()),
+	IRONGOLEM(new MountIronGolem()),
+	MAGMACUBE(new MountMagmaCube()),
+	MOOSHROOM(new MountMooshroom()),
+	OCELOT(new MountOcelot()),
+	PIG(new MountPig()),
+	RABBIT(new MountRabbit()),
+	SKELETON(new MountSkeleton()),
+	SLIME(new MountSlime()),
+	SNOWMAN(new MountSnowMan()),
+	SPIDER(new MountSpider()),
+	SQUID(new MountSquid()),
+	VILLAGER(new MountVillager()),
+	WITCH(new MountWitch()),
+	WITHER(new MountWither()),
+	WOLF(new MountWolf()),
+	ZOMBIE(new MountZombie()),
+	ZOMBIEPIGMAN(new MountZombiePigman());
 
-    private IMount mount;
+	private Entity mount;
 
-    MountFeatures(IMount mount) {
-        this.mount = mount;
-    }
+	MountFeatures(Entity mount) {
+		this.mount = mount;
+	}
 
-    @Override
-    public void work(BadblockPlayer player) {
-        mount.setPlayer(player);
-        mount.spawnEntity(player.getLocation());
-    }
+	@Override
+	public void work(BadblockPlayer player)
+	{
+		try
+		{
+			World w = ((CraftWorld) player.getLocation().getWorld()).getHandle();
+			Entity entity = mount.getClass().getConstructor(World.class).newInstance(w);
 
-    public static void work(BadblockPlayer player, String featureName) {
-        String[] parser = featureName.split("_");
+			Location l = player.getLocation();
 
-        if (parser.length < 2) {
-            return;
-        }
+			entity.spawnIn(w);
+			entity.setLocation(l.getX(), l.getY(), l.getZ(), l.getPitch(), l.getYaw());
+			player.setPassenger(entity.getBukkitEntity());
+		}
+		catch (Exception error)
+		{
+			error.printStackTrace();
+		}
+	}
 
-        String name = parser[1];
+	public static void work(BadblockPlayer player, String featureName) {
+		String[] parser = featureName.split("_");
 
-        Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
+		if (parser.length < 2) {
+			return;
+		}
 
-        if (feature == null)
-        {
-        	return;
-        }
-        
-        MountFeatures finalFeature = null;
-        for (MountFeatures mountFeature : values()) {
-            if (mountFeature.name().equalsIgnoreCase(name)) {
-                finalFeature = mountFeature;
-                break;
-            }
-        }
+		String name = parser[1];
 
-        if (finalFeature == null) {
-            return;
-        }
+		Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
 
-        finalFeature.work(player);
-    }
+		if (feature == null)
+		{
+			return;
+		}
+
+		MountFeatures finalFeature = null;
+		for (MountFeatures mountFeature : values()) {
+			if (mountFeature.name().equalsIgnoreCase(name)) {
+				finalFeature = mountFeature;
+				break;
+			}
+		}
+
+		if (finalFeature == null) {
+			return;
+		}
+
+		finalFeature.work(player);
+	}
 
 }
