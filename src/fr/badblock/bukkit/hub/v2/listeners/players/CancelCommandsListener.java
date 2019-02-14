@@ -43,6 +43,7 @@ public class CancelCommandsListener extends BadListener
 			{
 				event.setCancelled(true);
 				event.getPlayer().sendMessage("§cCommande inconnue.");
+				break;
 			}
 		}
 	}
