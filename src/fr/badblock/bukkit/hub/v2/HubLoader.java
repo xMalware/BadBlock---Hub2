@@ -20,6 +20,7 @@ import fr.badblock.bukkit.hub.v2.tasks.HubTaskLoader;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
+import org.bukkit.entity.Entity;
 
 public class HubLoader {
 
@@ -58,7 +59,7 @@ public class HubLoader {
 	{
 		for (World world : Bukkit.getWorlds())
 		{
-			world.getEntities().forEach(entity -> entity.remove());
+			world.getEntities().forEach(Entity::remove);
 		}
 	}
 

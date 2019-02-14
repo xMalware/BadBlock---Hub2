@@ -46,8 +46,9 @@ public class SpleefMove implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if (selection.isInSelection(player.getLocation()) && player.getGameMode() != GameMode.SPECTATOR) {
-            if (GameState.WAITING.equals(SpleefManager.getInstance().getGameState())) {
+            if (GameState.WAITING.equals(SpleefManager.getInstance().getGameState()) || GameState.STARTING.equals(SpleefManager.getInstance().getGameState())) {
                 if (!SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
+
                     if (JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
                         player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous quittez le jump..");
                         return;
@@ -79,7 +80,7 @@ public class SpleefMove implements Listener {
                                 List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
                                 @SuppressWarnings("deprecation")
-								@Override
+                                @Override
                                 public void run() {
                                     if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
                                         SpleefManager.getInstance().getSpleefPlayers().forEach((player, spleefPlayer) -> {
@@ -93,12 +94,12 @@ public class SpleefMove implements Listener {
                                     }
 
                                     SpleefManager.getInstance().getSpleefPlayers().forEach((p, spleefPlayer) -> {
-                                        p.setLevel(i);
                                         if (i != 0) {
+                                            p.setLevel(i);
                                             if (timeToTick.contains(i)) {
                                                 p.sendTitle("", "§c" + i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
-                                                p.sendMessage(SpleefManager.SPLEEF_PREFIX+"La partie commence dans §c"+i);
+                                                p.sendMessage(SpleefManager.SPLEEF_PREFIX + "La partie commence dans §c" + i);
                                             }
                                         } else {
                                             if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
@@ -109,7 +110,7 @@ public class SpleefMove implements Listener {
                                             }
 
                                             p.setGameMode(GameMode.SURVIVAL);
-                                            p.sendMessage(SpleefManager.SPLEEF_PREFIX+"La partie commence !");
+                                            p.sendMessage(SpleefManager.SPLEEF_PREFIX + "La partie commence !");
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
                                             SpleefManager.getInstance().setGameState(GameState.INGAME);
@@ -145,6 +146,7 @@ public class SpleefMove implements Listener {
                 player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie à déjà commencé ! Veuillez attendre qu'elle se termine..");
                 player.teleport(SpleefManager.getInstance().getTeleportPoint());
             }
+
         } else if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player) && player.getLocation().getBlock().getType() == Material.STATIONARY_WATER && GameState.INGAME.equals(SpleefManager.getInstance().getGameState())) {
             SpleefManager.getInstance().getSpleefPlayers().get(player).setDead(true);
             List<SpleefPlayer> playersAlive = SpleefManager.getInstance().getSpleefPlayers().values().stream().filter(spleefPlayer -> !spleefPlayer.isDead()).collect(Collectors.toList());

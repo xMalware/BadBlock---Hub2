@@ -62,7 +62,6 @@ public class CourseManager extends AbstractGameModule {
         winnersPlayersP = new ArrayList<>();
         doorsToEnter = new LinkedHashMap<>();
         doorsToStart = new ArrayList<>();
-
     }
 
     @Override
@@ -94,9 +93,9 @@ public class CourseManager extends AbstractGameModule {
         for (String s : getConfig().getConfigurationSection("PlayerLoc").getKeys(false)) {
             Location loc = new Location(
                     Bukkit.getWorld(getConfig().getString("Enter_gate." + s + ".world")),
-                    getConfig().getInt("PlayerLoc." + s + ".x"),
-                    getConfig().getInt("PlayerLoc." + s + ".y"),
-                    getConfig().getInt("PlayerLoc." + s + ".z"));
+                    getConfig().getInt("PlayerLoc." + s + ".x") + 0.5,
+                    getConfig().getInt("PlayerLoc." + s + ".y") + 0.5,
+                    getConfig().getInt("PlayerLoc." + s + ".z") + 0.5);
             waitingPos.add(loc);
         }
 

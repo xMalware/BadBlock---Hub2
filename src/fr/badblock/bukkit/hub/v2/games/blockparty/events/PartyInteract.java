@@ -101,8 +101,8 @@ public class PartyInteract implements Listener {
                                 }
 
                                 waitingPlayers.forEach((p, blockPlayer) -> {
-                                    p.setLevel(i);
                                     if (i != 0) {
+                                        p.setLevel(i);
                                         if (timeToTick.contains(i)) {
                                             player.sendTitle("", "§c" + i);
                                             p.sendMessage(BlockPartyManager.BLOCK_PREFIX+"La partie commence dans §c"+i);

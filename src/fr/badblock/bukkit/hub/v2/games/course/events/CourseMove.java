@@ -29,27 +29,27 @@ public class CourseMove implements Listener {
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onCuboidEnter(PlayerMoveEvent event) {
-        if (CourseManager.getInstance().getWaitingPlayers().contains(event.getPlayer())) {
-            if (!CourseManager.getInstance().getWinnersPlayersP().contains(event.getPlayer())) {
+        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+
+        if (CourseManager.getInstance().getWaitingPlayers().contains(player)) {
+            if (CourseManager.getInstance().getState().equals(GameState.STARTING) || CourseManager.getInstance().getState().equals(GameState.WAITING)) {
+                if (event.getFrom().getBlockX() != event.getTo().getBlockX() || event.getFrom().getBlockZ() != event.getTo().getBlockZ()) {
+                    player.teleport(event.getFrom());
+                }
+            } else if (!CourseManager.getInstance().getWinnersPlayersP().contains(player)) {
                 if (endCuboid.isInSelection(event.getTo())) {
                     for (Player p : CourseManager.getInstance().getWaitingPlayers()) {
-                        p.sendMessage(CourseManager.COURSE_PREFIX + "§e" + event.getPlayer().getName() + " §ba terminé la course en " + ( 240 - CourseGameRunnable.getTimeLeft() ) + " seconde(s)");
+                        p.sendMessage(CourseManager.COURSE_PREFIX + "§e" + player.getName() + " §ba terminé la course en " + (240 - CourseGameRunnable.getTimeLeft()) + " seconde(s)");
                     }
-                    CourseManager.getInstance().getWinnersPlayersP().add((BadblockPlayer) event.getPlayer());
+                    CourseManager.getInstance().getWinnersPlayersP().add(player);
 
                     if (CourseManager.getInstance().getWinnersPlayersP().size() == CourseManager.getInstance().getWaitingPlayers().size()) {
-                        CourseManager.getInstance().getWaitingPlayers().forEach(player -> {
-                            player.sendMessage(CourseManager.COURSE_PREFIX + "§cTout le monde a fini le parcours ! Bravo !");
-                            player.performCommand("spawn");
+                        CourseManager.getInstance().getWaitingPlayers().forEach(player1 -> {
+                            player1.sendMessage(CourseManager.COURSE_PREFIX + "§cTout le monde a fini le parcours ! Bravo !");
+                            player1.performCommand("spawn");
                         });
 
-                        for(Location loc : CourseManager.getInstance().getDoorsToStart()){
-                            BlockState Gate1 = loc.getBlock().getState();
-                            Openable openable1 = (Openable) Gate1.getData();
-                            openable1.setOpen(false);
-                            Gate1.setData((MaterialData) openable1);
-                            Gate1.update();
-                        }
+                        closeDoors();
 
                         CourseManager.getInstance().getWaitingPlayers().clear();
                         CourseManager.getInstance().getWinnersPlayersP().clear();
@@ -59,6 +59,10 @@ public class CourseMove implements Listener {
                 }
             }
         }
+    }
+
+    static void closeDoors() {
+        CourseGameRunnable.closeDoors();
     }
 
 }

@@ -74,6 +74,11 @@ public class CourseInteract implements Listener {
                         return;
                     }
 
+                    if(CourseManager.getInstance().getDoorsToEnter().get(block.getLocation())){
+                        player.sendMessage("§cUn joueur est déjà présent dans cet endroit");
+                        return;
+                    }
+
                     waitingPlayers.add(player);
                     player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu as rejoins la partie.");
                     CourseManager.getInstance().getDoorsToEnter().replace(block.getLocation(), true);
@@ -96,15 +101,9 @@ public class CourseInteract implements Listener {
                     if (waitingPlayers.size() >= CourseManager.MIN_PLAYER) {
                         player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
 
-                        for (Location loc : CourseManager.getInstance().getDoorsToStart()) {
-                            BlockState Gate1 = loc.getBlock().getState();
-                            Openable openable1 = (Openable) Gate1.getData();
-                            openable1.setOpen(false);
-                            Gate1.setData((MaterialData) openable1);
-                            Gate1.update();
-                        }
+                        CourseMove.closeDoors();
 
-                        if(!GameState.INGAME.equals(CourseManager.getInstance().getState())){
+                        if(!GameState.STARTING.equals(CourseManager.getInstance().getState())){
                             CourseManager.getInstance().setState(GameState.STARTING);
 
                             new BukkitRunnable() {
@@ -115,15 +114,17 @@ public class CourseInteract implements Listener {
                                 @Override
                                 public void run() {
                                     if (waitingPlayers.size() < CourseManager.MIN_PLAYER) {
-                                        waitingPlayers.forEach(player -> player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insuffisant !"));
-                                        player.sendTitle("§cNombre de joueur insuffisant !", "§9Annulation...");
+                                        waitingPlayers.forEach(player -> {
+                                            player.sendMessage(CourseManager.COURSE_PREFIX + "§cNombre de joueur insuffisant !");
+                                            player.sendTitle("§cNombre de joueur insuffisant !", "§9Annulation...");
+                                        });
                                         CourseManager.getInstance().setState(GameState.WAITING);
                                         cancel();
                                     }
 
                                     waitingPlayers.forEach(p -> {
-                                        p.setLevel(i);
                                         if (i != 0) {
+                                            p.setLevel(i);
                                             if(timeToTick.contains(i)){
                                                 p.sendTitle("", "§c" + i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
@@ -141,8 +142,6 @@ public class CourseInteract implements Listener {
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
                                             CourseManager.getInstance().setState(GameState.INGAME);
-                                            runnable = new CourseGameRunnable();
-                                            runnable.runTaskTimerAsynchronously(BadBlockHub.getInstance(), 0, 20);
 
                                             for (Location loc : CourseManager.getInstance().getDoorsToStart()) {
                                                 BlockState Gate1 = loc.getBlock().getState();
@@ -156,6 +155,10 @@ public class CourseInteract implements Listener {
                                         }
 
                                     });
+                                    if(i == 0){
+                                        runnable = new CourseGameRunnable();
+                                        runnable.runTaskTimerAsynchronously(BadBlockHub.getInstance(), 0, 20);
+                                    }
 
                                     if (i <= 0)
                                         cancel();

@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
+import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -28,6 +29,9 @@ public class DoubleJumpListener extends BadListener {
             return;
 
         if (player.getAllowFlight())
+            return;
+
+        if(CourseManager.getInstance().getWaitingPlayers().contains(player))
             return;
 
         if (((LivingEntity) player).isOnGround()) {

@@ -100,8 +100,8 @@ public class ShootInteract implements Listener {
                                     }
 
                                     players.forEach((p, shootPlayer1) -> {
-                                        p.setLevel(i);
                                         if (i != 0) {
+                                            p.setLevel(i);
                                             if(timeToTick.contains(i)){
                                                 p.sendTitle("", "§c" + i);
                                                 p.sendMessage(ShootManager.SHOOT_PREFIX+"La partie commence dans §c"+i);
