@@ -2,7 +2,9 @@ package fr.badblock.bukkit.hub.v2.cosmetics.workable.mounts;
 
 import java.lang.reflect.Field;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.utils.entities.CustomCreature;
@@ -21,6 +23,11 @@ public class MountWitch extends EntityWitch implements IMount
 
 	BadblockPlayer player;
 	protected Field FIELD_JUMP = null;
+	
+	public MountWitch()
+	{
+		this(((CraftWorld)Bukkit.getWorlds().get(0)).getHandle());
+	}
 	
 	public MountWitch(World world) {
 		super(world);

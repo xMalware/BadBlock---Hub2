@@ -37,33 +37,33 @@ import lombok.Getter;
 @Getter
 public enum MountFeatures implements IFeatureWorker {
 
-    BAT(new MountBat(null)),
-    BLAZE(new MountBlaze(null)),
-    CAVESPIDER(new MountCaveSpider(null)),
-    CHICKEN(new MountChicken(null)),
-    COW(new MountCow(null)),
-    CREEPER(new MountCreeper(null)),
-    DISCOSHEEP(new MountDiscoSheep(null)),
-    ENDERMAN(new MountEnderman(null)),
-    ENDERMITE(new MountEndermite(null)),
-    HORSE(new MountHorse(null)),
-    IRONGOLEM(new MountIronGolem(null)),
-    MAGMACUBE(new MountMagmaCube(null)),
-    MOOSHROOM(new MountMooshroom(null)),
-    OCELOT(new MountOcelot(null)),
-    PIG(new MountPig(null)),
-    RABBIT(new MountRabbit(null)),
-    SKELETON(new MountSkeleton(null)),
-    SLIME(new MountSlime(null)),
-    SNOWMAN(new MountSnowMan(null)),
-    SPIDER(new MountSpider(null)),
-    SQUID(new MountSquid(null)),
-    VILLAGER(new MountVillager(null)),
-    WITCH(new MountWitch(null)),
-    WITHER(new MountWither(null)),
-    WOLF(new MountWolf(null)),
-    ZOMBIE(new MountZombie(null)),
-    ZOMBIEPIGMAN(new MountZombiePigman(null));
+    BAT(new MountBat()),
+    BLAZE(new MountBlaze()),
+    CAVESPIDER(new MountCaveSpider()),
+    CHICKEN(new MountChicken()),
+    COW(new MountCow()),
+    CREEPER(new MountCreeper()),
+    DISCOSHEEP(new MountDiscoSheep()),
+    ENDERMAN(new MountEnderman()),
+    ENDERMITE(new MountEndermite()),
+    HORSE(new MountHorse()),
+    IRONGOLEM(new MountIronGolem()),
+    MAGMACUBE(new MountMagmaCube()),
+    MOOSHROOM(new MountMooshroom()),
+    OCELOT(new MountOcelot()),
+    PIG(new MountPig()),
+    RABBIT(new MountRabbit()),
+    SKELETON(new MountSkeleton()),
+    SLIME(new MountSlime()),
+    SNOWMAN(new MountSnowMan()),
+    SPIDER(new MountSpider()),
+    SQUID(new MountSquid()),
+    VILLAGER(new MountVillager()),
+    WITCH(new MountWitch()),
+    WITHER(new MountWither()),
+    WOLF(new MountWolf()),
+    ZOMBIE(new MountZombie()),
+    ZOMBIEPIGMAN(new MountZombiePigman());
 
     private IMount mount;
 
@@ -88,18 +88,15 @@ public enum MountFeatures implements IFeatureWorker {
 
         Feature feature = ConfigLoader.getFeatures().getFeatures().get(featureName);
 
-        System.out.println("Feature " + featureName + " > AAAA");
-
-        if (feature == null) {
-            return;
+        if (feature == null)
+        {
+        	return;
         }
-
-        System.out.println("Feature " + featureName + " > BBBBBB");
-
+        
         MountFeatures finalFeature = null;
-        for (MountFeatures disguiseFeature : values()) {
-            if (disguiseFeature.name().equalsIgnoreCase(name)) {
-                finalFeature = disguiseFeature;
+        for (MountFeatures mountFeature : values()) {
+            if (mountFeature.name().equalsIgnoreCase(name)) {
+                finalFeature = mountFeature;
                 break;
             }
         }

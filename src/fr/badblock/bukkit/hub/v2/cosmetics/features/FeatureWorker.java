@@ -14,7 +14,6 @@ public class FeatureWorker {
         System.out.println(feature.getName() + " > " + feature.getType());
         switch (feature.getType()) {
             case DISGUISE:
-                System.out.println(featureRawName);
                 DisguiseFeatures.work(player, featureRawName);
                 break;
             case MOUNT:
