@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.entity.Entity;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
@@ -24,6 +25,7 @@ import fr.badblock.gameapi.players.bossbars.BossBarColor;
 import fr.badblock.gameapi.players.bossbars.BossBarStyle;
 import fr.badblock.gameapi.utils.BukkitUtils;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
 public class HubPlayer {
@@ -51,6 +53,9 @@ public class HubPlayer {
     private CustomPet pet;
     private Effect effect;
 
+    @Getter
+    public Entity	 mountEntity;
+    
     public HubPlayer(BadblockPlayer player) {
         this.setPlayer(player);
         this.setName(player.getName());
