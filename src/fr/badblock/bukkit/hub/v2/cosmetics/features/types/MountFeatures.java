@@ -36,75 +36,63 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 import lombok.Getter;
 
 @Getter
-public enum MountFeatures implements IFeatureWorker
-{
-	
-	BAT					(new MountBat(null)),
-	BLAZE				(new MountBlaze(null)),
-	CAVESPIDER			(new MountCaveSpider(null)),
-	CHICKEN				(new MountChicken(null)),
-	COW					(new MountCow(null)),
-	CREEPER				(new MountCreeper(null)),
-	DISCOSHEEP			(new MountDiscoSheep(null)),
-	ENDERMAN			(new MountEnderman(null)),
-	ENDERMANSWITCHED	(new MountEndermanSwitched(null)),
-	ENDERMITE			(new MountEndermite(null)),
-	HORSE				(new MountHorse(null)),
-	IRONGOLEM			(new MountIronGolem(null)),
-	MAGMACUBE			(new MountMagmaCube(null)),
-	MOOSHROOM			(new MountMooshroom(null)),
-	OCELOT				(new MountOcelot(null)),
-	PIG					(new MountPig(null)),
-	RABBIT				(new MountRabbit(null)),
-	SHEEPSWITCHED		(new MountSheepSwitched(null)),
-	SKELETON			(new MountSkeleton(null)),
-	SLIME				(new MountSlime(null)),
-	SNOWMAN				(new MountSnowMan(null)),
-	SPIDER				(new MountSpider(null)),
-	SQUID				(new MountSquid(null)),
-	VILLAGER			(new MountVillager(null)),
-	WITCH				(new MountWitch(null)),
-	WITHER				(new MountWither(null)),
-	WOLF				(new MountWolf(null)),
-	ZOMBIE				(new MountZombie(null)),
-	ZOMBIEPIGMAN		(new MountZombiePigman(null));
-	
-	private IMount mount;
-	
-	MountFeatures(IMount mount)
-	{
-		setMount(mount);
-	}
-	
-	public void setMount(IMount mount)
-	{
-		this.mount = mount;
-	}
+public enum MountFeatures implements IFeatureWorker {
 
-	@Override
-	public void work(BadblockPlayer player)
-	{
-		getMount().setPlayer(player);
-		getMount().spawnEntity(player.getLocation());
-	}
-	
-	public static void work(BadblockPlayer player, Feature feature)
-	{
-		String name = feature.getName();
-		MountFeatures finalFeature = null;
-		for (MountFeatures mountFeature : values())
-		{
-			if (mountFeature.name().equalsIgnoreCase(name))
-			{
-				finalFeature = mountFeature;
-				break;
-			}
-		}
-		if (finalFeature == null)
-		{
-			return;
-		}
-		finalFeature.work(player);
-	}
-	
+    BAT(new MountBat(null)),
+    BLAZE(new MountBlaze(null)),
+    CAVESPIDER(new MountCaveSpider(null)),
+    CHICKEN(new MountChicken(null)),
+    COW(new MountCow(null)),
+    CREEPER(new MountCreeper(null)),
+    DISCOSHEEP(new MountDiscoSheep(null)),
+    ENDERMAN(new MountEnderman(null)),
+    ENDERMANSWITCHED(new MountEndermanSwitched(null)),
+    ENDERMITE(new MountEndermite(null)),
+    HORSE(new MountHorse(null)),
+    IRONGOLEM(new MountIronGolem(null)),
+    MAGMACUBE(new MountMagmaCube(null)),
+    MOOSHROOM(new MountMooshroom(null)),
+    OCELOT(new MountOcelot(null)),
+    PIG(new MountPig(null)),
+    RABBIT(new MountRabbit(null)),
+    SHEEPSWITCHED(new MountSheepSwitched(null)),
+    SKELETON(new MountSkeleton(null)),
+    SLIME(new MountSlime(null)),
+    SNOWMAN(new MountSnowMan(null)),
+    SPIDER(new MountSpider(null)),
+    SQUID(new MountSquid(null)),
+    VILLAGER(new MountVillager(null)),
+    WITCH(new MountWitch(null)),
+    WITHER(new MountWither(null)),
+    WOLF(new MountWolf(null)),
+    ZOMBIE(new MountZombie(null)),
+    ZOMBIEPIGMAN(new MountZombiePigman(null));
+
+    private IMount mount;
+
+    MountFeatures(IMount mount) {
+        this.mount = mount;
+    }
+
+    @Override
+    public void work(BadblockPlayer player) {
+        mount.setPlayer(player);
+        mount.spawnEntity(player.getLocation());
+    }
+
+    public static void work(BadblockPlayer player, Feature feature) {
+        String name = feature.getName();
+        MountFeatures finalFeature = null;
+        for (MountFeatures mountFeature : values()) {
+            if (mountFeature.name().equalsIgnoreCase(name)) {
+                finalFeature = mountFeature;
+                break;
+            }
+        }
+        if (finalFeature == null) {
+            return;
+        }
+        finalFeature.work(player);
+    }
+
 }

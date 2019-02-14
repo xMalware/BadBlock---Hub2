@@ -1,6 +1,15 @@
 package fr.badblock.bukkit.hub.v2.listeners.players;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.ProtocolManager;
+import com.comphenix.protocol.events.ListenerPriority;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketEvent;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
+import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.bukkit.hub.v2.utils.ParticleEffect;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -31,7 +40,7 @@ public class DoubleJumpListener extends BadListener {
         if (player.getAllowFlight())
             return;
 
-        if(CourseManager.getInstance().getWaitingPlayers().contains(player))
+        if (CourseManager.getInstance().getWaitingPlayers().contains(player))
             return;
 
         if (((LivingEntity) player).isOnGround()) {
@@ -55,9 +64,10 @@ public class DoubleJumpListener extends BadListener {
         player.playSound(player.getLocation(), Sound.ENDERDRAGON_WINGS, 1.0F, 1.0F);
 
         for (int i = 0; i < 20; i++)
-            ParticleEffect.CLOUD.display(0.5F, 0.15F, 0.5F, 0.25F, 20, player.getLocation().subtract(0.0F, 0.20F, 0.0F), 32);
+            ParticleEffect.CLOUD.display(0.5F, 0.15F, 0.5F, 0.25F, 20, player.getLocation().subtract(0.0F, 0.20F, 0.0F), 16);
 
         player.setAllowFlight(false);
     }
+
 
 }

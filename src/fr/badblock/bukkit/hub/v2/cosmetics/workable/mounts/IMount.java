@@ -8,7 +8,7 @@ import fr.badblock.gameapi.utils.entities.CustomCreature;
 public interface IMount
 {
 
-	public void			  setPlayer(BadblockPlayer player);
-	public CustomCreature spawnEntity(Location location);
+	public abstract void			  setPlayer(BadblockPlayer player);
+	public abstract CustomCreature spawnEntity(Location location);
 	
 }

@@ -28,127 +28,120 @@ import lombok.Data;
 @Data
 public class HubPlayer {
 
-	private static Map<String, HubPlayer> players = new HashMap<>();
+    private static Map<String, HubPlayer> players = new HashMap<>();
 
-	private String name;
-	private BadblockPlayer player;
-	private HubStoredPlayer storedPlayer;
+    private String name;
+    private BadblockPlayer player;
+    private HubStoredPlayer storedPlayer;
 
-	private HubScoreboard scoreboard;
+    private HubScoreboard scoreboard;
 
-	private CustomDisguise disguise;
+    private CustomDisguise disguise;
 
-	private String inventory;
-	private String buyFeature;
-	private CustomInventory customInventory;
-	private Map<Integer, InventoryAction[]> customActions;
+    private String inventory;
+    private String buyFeature;
+    private CustomInventory customInventory;
+    private Map<Integer, InventoryAction[]> customActions;
 
-	private boolean jump;
-	private boolean jumpBeingTeleported;
-	private int jumpCheckpoint;
+    private boolean jump;
+    private boolean jumpBeingTeleported;
+    private int jumpCheckpoint;
 
-	private AbstractGadgets currentWidget;
-	private CustomPet			  pet;
-	private Effect			  		  effect;
+    private AbstractGadgets currentWidget;
+    private CustomPet pet;
+    private Effect effect;
 
-	public HubPlayer(BadblockPlayer player) {
-		this.setPlayer(player);
-		this.setName(player.getName());
-		players.put(getName(), this);
-	}
+    public HubPlayer(BadblockPlayer player) {
+        this.setPlayer(player);
+        this.setName(player.getName());
+        players.put(getName(), this);
+    }
 
-	public HubPlayer loadEverything() {
-		loadData();
-		loadPlayer();
-		return this;
-	}
+    public HubPlayer loadEverything() {
+        loadData();
+        loadPlayer();
+        return this;
+    }
 
-	public HubPlayer loadData() {
-		storedPlayer = HubStoredPlayer.get(getPlayer());
+    public HubPlayer loadData() {
+        storedPlayer = HubStoredPlayer.get(getPlayer());
 
-		// Toggle players
-		Bukkit.getScheduler().runTask(BadBlockHub.getInstance(), new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				if (storedPlayer.isHidePlayers())
-				{
-					for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
-					{
-						player.hidePlayer(otherPlayer);
-					}
-					getPlayer().sendTranslatedMessage("hub.toggleplayers.alwaysenabled");
-					return;
-				}
+        // Toggle players
+        Bukkit.getScheduler().runTask(BadBlockHub.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                if (storedPlayer.isHidePlayers()) {
+                    for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers()) {
+                        player.hidePlayer(otherPlayer);
+                    }
+                    getPlayer().sendTranslatedMessage("hub.toggleplayers.alwaysenabled");
+                    return;
+                }
 
-				for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
-				{
-					if (!otherPlayer.getBadblockMode().equals(BadblockMode.PLAYER))
-					{
-						continue;
-					}
-					
-					if (otherPlayer.getGameMode().equals(GameMode.SPECTATOR))
-					{
-						continue;
-					}
-					
-					player.showPlayer(otherPlayer);
-				}
-				getPlayer().sendTranslatedMessage("hub.toggleplayers.youcandisableplayers");
-			}
-		});
+                for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers()) {
+                    if (!otherPlayer.getBadblockMode().equals(BadblockMode.PLAYER)) {
+                        continue;
+                    }
 
-		return this;
-	}
+                    if (otherPlayer.getGameMode().equals(GameMode.SPECTATOR)) {
+                        continue;
+                    }
 
-	public HubPlayer loadPlayer() {
-		if (!isOnline()) {
-			return this;
-		}
+                    player.showPlayer(otherPlayer);
+                }
+                getPlayer().sendTranslatedMessage("hub.toggleplayers.youcandisableplayers");
+            }
+        });
 
-		if (getPlayer().hasPermission("hub.fly")) {
-			getPlayer().setAllowFlight(true);
-			getPlayer().setFlying(true);
-		}
+        return this;
+    }
 
-		getPlayer().setGameMode(GameMode.ADVENTURE);
-		getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
-		getPlayer().addBossBar("hub", "", 1f, BossBarColor.RED, BossBarStyle.SOLID);
-		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
-		giveDefaultInventory();
-		setScoreboard(new HubScoreboard(getPlayer()));
-		return this;
-	}
+    public HubPlayer loadPlayer() {
+        if (!isOnline()) {
+            return this;
+        }
 
-	public HubPlayer giveDefaultInventory() {
-		BukkitInventories.giveDefaultInventory(getPlayer());
-		return this;
-	}
+        if (getPlayer().hasPermission("hub.fly")) {
+            getPlayer().setAllowFlight(true);
+            getPlayer().setFlying(true);
+        }
 
-	public void unload() {
-		players.remove(getName());
-	}
+        getPlayer().setGameMode(GameMode.ADVENTURE);
+        getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
+        getPlayer().addBossBar("hub", "", 1f, BossBarColor.RED, BossBarStyle.SOLID);
+        InventoriesLoader.loadInventories(BadBlockHub.getInstance());
+        giveDefaultInventory();
+        setScoreboard(new HubScoreboard(getPlayer()));
+        return this;
+    }
 
-	public boolean isOnline() {
-		return getPlayer().isOnline();
-	}
+    public HubPlayer giveDefaultInventory() {
+        BukkitInventories.giveDefaultInventory(getPlayer());
+        return this;
+    }
 
-	public static HubPlayer initialize(BadblockPlayer player) {
-		return new HubPlayer(player);
-	}
+    public void unload() {
+        players.remove(getName());
+    }
 
-	public static HubPlayer get(BadblockPlayer player) {
-		return players.get(player.getName());
-	}
+    public boolean isOnline() {
+        return getPlayer().isOnline();
+    }
 
-	public static HubPlayer get(String playerName) {
-		return players.get(playerName);
-	}
+    public static HubPlayer initialize(BadblockPlayer player) {
+        return new HubPlayer(player);
+    }
 
-	public static Collection<HubPlayer> getPlayers() {
-		return players.values();
-	}
+    public static HubPlayer get(BadblockPlayer player) {
+        return players.get(player.getName());
+    }
+
+    public static HubPlayer get(String playerName) {
+        return players.get(playerName);
+    }
+
+    public static Collection<HubPlayer> getPlayers() {
+        return players.values();
+    }
 
 }

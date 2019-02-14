@@ -84,7 +84,8 @@ public class MountDiscoSheep extends EntitySheep implements IMount
             this.S = 0.5F; this.aM = 0.02F; super.g(f, f1);
         }
     }
-	
+
+    
 	public CustomCreature spawnEntity(Location location)
 	{
 		CustomCreature creature = spawnEntity(player.getLocation());

@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2;
 import java.io.File;
 
 import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
+import fr.badblock.bukkit.hub.v2.utils.ParticleListener;
 import fr.badblock.bukkit.hub.v2.utils.TinyProtocol;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -50,6 +51,8 @@ public class HubLoader {
 		clean();
 		// Preload chunks
 		preloadChunks();
+		// Load listener Particle
+		ParticleListener.registerParticleListener();
 
 		new TinyProtocol(plugin);
 		DisguiseUtil.register();
