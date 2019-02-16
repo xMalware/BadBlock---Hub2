@@ -1,7 +1,6 @@
 package fr.badblock.bukkit.hub.v2.inventories.actions;
 
 import fr.badblock.api.common.minecraft.BungeePlayerRequest;
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.gameapi.GameAPI;
