@@ -25,7 +25,7 @@ public enum MountFeatures implements IFeatureWorker {
 	IRONGOLEM(EntityType.IRON_GOLEM),
 	MAGMACUBE(EntityType.MAGMA_CUBE),
 	MOOSHROOM(EntityType.COW),
-	OCELOT(EntityType.OCELOT),
+	OCELOT(EntityType.OCELOT),//dddd
 	PIG(EntityType.PIG),
 	RABBIT(EntityType.RABBIT),
 	SKELETON(EntityType.SKELETON),

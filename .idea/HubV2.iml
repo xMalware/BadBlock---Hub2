@@ -14,5 +14,6 @@
     <orderEntry type="library" name="NoteBlockAPI-1.2.5" level="project" />
     <orderEntry type="library" name="GadgetsMenu" level="project" />
     <orderEntry type="library" name="ProtocolLib" level="project" />
+    <orderEntry type="library" name="GoogleAuth" level="project" />
   </component>
 </module>
