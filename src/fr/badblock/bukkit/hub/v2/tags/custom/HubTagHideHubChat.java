@@ -19,7 +19,7 @@ public class HubTagHideHubChat extends HubTag
 		HubStoredPlayer hubStoredPlayer = HubStoredPlayer.get(player);
 
 		boolean hide = hubStoredPlayer.isHideHubChat();
-		return hide ? player.getTranslatedMessage("hub.tags.hidehubchat")[0] : player.getTranslatedMessage("hub.tags.hidehubchat")[0];
+		return hide ? player.getTranslatedMessage("hub.tags.hidehubchat")[0] : player.getTranslatedMessage("hub.tags.showhubchat")[0];
 	}
 
 }
