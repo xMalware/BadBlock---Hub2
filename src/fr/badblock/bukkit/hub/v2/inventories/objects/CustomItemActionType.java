@@ -5,6 +5,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBoosterRemove;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBuyFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionCloseInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommand;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommandBungee;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionOpenInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemoveEffect;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemovePet;
@@ -31,6 +32,7 @@ public enum CustomItemActionType
 	TELEPORT_SERVER		(new ItemActionTeleportServer()),
 	TELEPORT_LOC		(new ItemActionTeleportLocation()),
 	EXECUTE_COMMAND		(new ItemActionExecuteCommand()),
+	EXECUTE_COMMANDBUNGEE		(new ItemActionExecuteCommandBungee()),
 	WAITING_LINE		(new ItemActionWaitingLine()),
 	BUY_FEATURE			(new ItemActionBuyFeature()),
 	USE_FEATURE			(new ItemActionUseFeature()),
