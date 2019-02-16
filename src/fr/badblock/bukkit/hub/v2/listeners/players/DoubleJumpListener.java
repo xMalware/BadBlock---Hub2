@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
@@ -37,7 +38,7 @@ public class DoubleJumpListener extends BadListener {
         if (CourseManager.getInstance().getWaitingPlayers().contains(player))
             return;
 
-        if (((LivingEntity) player).isOnGround()) {
+        if (((LivingEntity) player).isOnGround() && !FeatureUtils.isInAGame(player)) {
             player.setAllowFlight(true);
             this.allowed.add(player.getUniqueId());
         }

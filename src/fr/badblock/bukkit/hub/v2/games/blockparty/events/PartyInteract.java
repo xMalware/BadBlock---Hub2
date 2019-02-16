@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Random;
 
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -72,6 +73,7 @@ public class PartyInteract implements Listener {
 
                 waitingPlayers.put(player, new BlockPlayer(player, false));
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu as rejoins la partie.");
+                FeatureUtils.removeAllFeatures(player);
 
                 // TODO REWRITE THIS! I'LL SHAKE!
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());

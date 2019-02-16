@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -57,6 +58,7 @@ public class SpleefMove implements Listener {
                     SpleefManager.getInstance().getSpleefPlayers().put(player, new SpleefPlayer(player.getName(), player.getGameMode() == GameMode.CREATIVE));
                     player.sendMessage(SpleefManager.SPLEEF_PREFIX + "Vous rejoignez le Spleef !");
                     player.setGameMode(GameMode.ADVENTURE);
+                    FeatureUtils.removeAllFeatures(player);
 
                     TextComponent quitComponent = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§c[Quitter le Spleef]");
                     quitComponent.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/quitspleef"));

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -36,7 +37,7 @@ public class ShootInteract implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent event){
-        Player player = event.getPlayer();
+        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         Entity entity = event.getRightClicked();
 
         if(entity instanceof ArmorStand){
@@ -60,6 +61,7 @@ public class ShootInteract implements Listener {
                 if (!players.containsKey(player)) {
                     players.put((BadblockPlayer) player, new ShootPlayer(player, false));
                     player.sendMessage(ShootManager.SHOOT_PREFIX + "§bTu as rejoins la partie.");
+                    FeatureUtils.removeAllFeatures(player);
 
                     ShootPlayer shootPlayer = players.get(player);
 

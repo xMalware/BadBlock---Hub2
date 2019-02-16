@@ -4,6 +4,7 @@ import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.command.CommandSender;
@@ -22,9 +23,8 @@ public class GoCourseCommand extends AbstractCommand {
         if(commandSender instanceof Player) {
             BadblockPlayer p = (BadblockPlayer) commandSender;
 
-            if(CourseManager.getInstance().getWaitingPlayers().contains(p) || JumpManager.getInstance().getJumpPlayers().containsKey(p) ||
-                    SpleefManager.getInstance().getSpleefPlayers().containsKey(p) || ShootManager.getInstance().getShootPlayers().containsKey(p)){
-                p.sendMessage("§cTu es dejà en partie.");
+            if(FeatureUtils.isInAGame(p)){
+                p.sendMessage("§cTu es dejà dans en partie.");
                 return true;
             }
 

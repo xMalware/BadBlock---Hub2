@@ -3,6 +3,8 @@ package fr.badblock.bukkit.hub.v2.games.gladiators.events;
 import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -21,7 +23,7 @@ public class GladiatorInteract implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event){
-        Player player = event.getPlayer();
+        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         Action action = event.getAction();
         Block block = event.getClickedBlock();
 
@@ -46,8 +48,9 @@ public class GladiatorInteract implements Listener {
 
     }
 
-    public static void playGladiator(Player player, Map map) {
+    public static void playGladiator(BadblockPlayer player, Map map) {
         player.sendMessage(GladiatorManager.GLADIATOR_PREFIX+"Vous entrez dans l'arène §c"+map.getName());
+        FeatureUtils.removeAllFeatures(player);
         map.getPlayers().add(player);
         player.teleport(map.getRandomLoc());
 

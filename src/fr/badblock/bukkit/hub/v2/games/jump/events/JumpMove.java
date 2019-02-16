@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.games.jump.events;
 
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -49,6 +50,7 @@ public class JumpMove implements Listener {
                 j.getBukkitPlayer().sendMessage(JumpManager.JUMP_PREFIX + "Vous commencez le Jump ! Vous avez §c3 vies");
                 player.setFlying(false);
                 player.setAllowFlight(false);
+                FeatureUtils.removeAllFeatures(player);
                 JumpManager.getInstance().getJumpPlayers().put(player, j);
             }
 

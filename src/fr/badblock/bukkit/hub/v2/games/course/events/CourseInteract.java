@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -82,6 +83,7 @@ public class CourseInteract implements Listener {
                     waitingPlayers.add(player);
                     player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu as rejoins la partie.");
                     CourseManager.getInstance().getDoorsToEnter().replace(block.getLocation(), true);
+                    FeatureUtils.removeAllFeatures(player);
 
                     // TODO REWRITE THIS! I'LL SHAKE!
                     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
