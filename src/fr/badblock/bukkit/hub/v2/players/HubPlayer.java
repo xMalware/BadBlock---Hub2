@@ -87,21 +87,18 @@ public class HubPlayer {
 						tmp.task.cancel();
 						return;
 					}
-					
+
 					if (storedPlayer.isModeSelected())
 					{
 						tmp.task.cancel();
 						return;
 					}
-					
-					if (player.getOpenInventory() == null || player.getOpenInventory().getTopInventory() == null)
+
+					HubPlayer hubPlayer = HubPlayer.get(player);
+
+					if (hubPlayer.getInventory() == null || hubPlayer.getInventory().isEmpty())
 					{
-						HubPlayer hubPlayer = HubPlayer.get(player);
-						
-						if (hubPlayer.getInventory() == null || hubPlayer.getInventory().isEmpty())
-						{
-							CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, "selector_mode");
-						}
+						CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, "selector_mode");
 					}
 				}
 			}, 1, 1);
@@ -134,7 +131,7 @@ public class HubPlayer {
 				getPlayer().sendTranslatedMessage("hub.toggleplayers.youcandisableplayers");
 			}
 		});
-		
+
 		return this;
 	}
 

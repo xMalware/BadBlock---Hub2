@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.inventories.actions;
 import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ItemActionToggleMode extends CustomItemAction
@@ -37,12 +38,26 @@ public class ItemActionToggleMode extends CustomItemAction
 			player.getObject().addProperty("onlineMode", true);
 			player.saveGameData();
 			player.sendTranslatedMessage("hub.mode.nowpremium");
+			
+			HubPlayer hubPlayer = HubPlayer.get(player);
+
+			if (hubPlayer.getInventory() != null && !hubPlayer.getInventory().isEmpty())
+			{
+				CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, hubPlayer.getInventory());
+			}
 			return;
 		}
 
 		player.getObject().addProperty("onlineMode", false);
 		player.saveGameData();
 		player.sendTranslatedMessage("hub.mode.nowcrack");
+		
+		HubPlayer hubPlayer = HubPlayer.get(player);
+
+		if (hubPlayer.getInventory() != null && !hubPlayer.getInventory().isEmpty())
+		{
+			CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, hubPlayer.getInventory());
+		}
 	}
 
 }
