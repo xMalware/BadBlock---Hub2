@@ -16,6 +16,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleGameMessage
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleHubChat;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleParticles;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTogglePlayers;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleTFA;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionUseFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionWaitingLine;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -43,6 +44,7 @@ public enum CustomItemActionType
 	TOGGLE_PARTICLES (new ItemActionToggleParticles()),
 	TOGGLE_GAMEMESSAGES (new ItemActionToggleGameMessages()),
 	TOGGLE_HUBCHAT (new ItemActionToggleHubChat()),
+	TOGGLE_TFA (new ItemActionToggleTFA()),
 	NOTHING				(null);
 
 	private CustomItemAction action;
