@@ -21,7 +21,7 @@ public class ParticleListener {
                     public void onPacketSending(PacketEvent event) {
                         BadblockPlayer badblockPlayer = (BadblockPlayer) event.getPlayer();
 
-                        if (HubStoredPlayer.get(badblockPlayer).isHidePlayers()) {
+                        if (HubStoredPlayer.get(badblockPlayer).isHideParticles()) {
                             event.setCancelled(true);
                         }
 
