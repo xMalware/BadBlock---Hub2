@@ -13,6 +13,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendMessage;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleGameMessages;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleHubChat;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleParticles;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTogglePlayers;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionUseFeature;
@@ -41,6 +42,7 @@ public enum CustomItemActionType
 	TOGGLE_PLAYERS 				(new ItemActionTogglePlayers()),
 	TOGGLE_PARTICLES (new ItemActionToggleParticles()),
 	TOGGLE_GAMEMESSAGES (new ItemActionToggleGameMessages()),
+	TOGGLE_HUBCHAT (new ItemActionToggleHubChat()),
 	NOTHING				(null);
 
 	private CustomItemAction action;

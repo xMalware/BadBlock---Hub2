@@ -17,6 +17,7 @@ public class HubStoredPlayer  implements GameData
 	private boolean															hidePlayers;
 	private boolean															hideParticles;
 	private boolean															hideGameMessages;
+	private boolean															hideHubChat;
 	private Map<FeatureType, List<OwnedFeature>>		features	= new HashMap<>();
 	
 	public void save(BadblockPlayer player)
