@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.inventories.actions;
 import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
+import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ItemActionModePremium extends CustomItemAction
@@ -24,10 +25,19 @@ public class ItemActionModePremium extends CustomItemAction
 
 		if (player.getObject() != null)
 		{
-			player.getObject().addProperty("onlineMode", true);
 			player.saveGameData();
 		}
-
+		
+		HubStoredPlayer hubStoredPlayer = HubStoredPlayer.get(player);
+		
+		if (!hubStoredPlayer.isModeSelected())
+		{
+			hubStoredPlayer.setModeSelected(true);
+			hubStoredPlayer.save(player);
+		}
+		
+		player.getObject().addProperty("onlineMode", true);
+		
 		player.sendTranslatedMessage("hub.mode.nowpremium");
 	}
 
