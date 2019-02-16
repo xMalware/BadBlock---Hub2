@@ -99,13 +99,14 @@ public class BukkitInventories
 			{
 				InventoryAction action = inventoryItemObject.getActions()[0];
 
-				if (action.getAction().equals(CustomItemActionType.USE_FEATURE) || 
-						action.getAction().equals(CustomItemActionType.BUY_FEATURE))
+				if (action != null && action.getAction() != null && (action.getAction().equals(CustomItemActionType.USE_FEATURE) || 
+						action.getAction().equals(CustomItemActionType.BUY_FEATURE)))
 				{
 					feature = true;
 					String featureName = action.getActionData();
 					HubStoredPlayer storedPlayer = HubStoredPlayer.get(player);
 					boolean owned = false;
+					
 					if (FeatureManager.getInstance().hasFeature(player, storedPlayer, featureName))
 					{
 						itemStack = ItemStackUtils.fakeEnchant(itemStack);

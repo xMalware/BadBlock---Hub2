@@ -99,6 +99,7 @@ public class HubPlayer {
 					if (hubPlayer.getInventory() == null || hubPlayer.getInventory().isEmpty())
 					{
 						CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, "selector_mode");
+						player.sendTranslatedMessage("hub.pleaseselectamode");
 					}
 				}
 			}, 1, 1);
@@ -135,12 +136,15 @@ public class HubPlayer {
 		return this;
 	}
 
-	public HubPlayer loadPlayer() {
-		if (!isOnline()) {
+	public HubPlayer loadPlayer()
+	{
+		if (!isOnline())
+		{
 			return this;
 		}
 
-		if (getPlayer().hasPermission("hub.fly")) {
+		if (getPlayer().hasPermission("hub.fly"))
+		{
 			getPlayer().setAllowFlight(true);
 			getPlayer().setFlying(true);
 		}
