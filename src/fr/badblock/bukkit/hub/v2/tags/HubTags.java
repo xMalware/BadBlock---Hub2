@@ -11,6 +11,10 @@ import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsNeeded;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGamePlayers;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupPrefix;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupSuffix;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagHideGameMessages;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagHideHubChat;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagHideParticles;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagHidePlayers;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagIgnoreNumber;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLanguage;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagLevelNeeded;
@@ -62,7 +66,12 @@ public enum HubTags
 	BADCOINS_NEEDED(new HubTagBadcoinsNeeded(), "{badcoinsNeeded}"),
 	LEVEL_NEEDED(new HubTagLevelNeeded(), "{levelNeeded}"),
 	SHOPPOINTS_NEEDED(new HubTagShopPointsNeeded(), "{shopPointsNeeded}"),
-	XP_NEEDED_FOR_NEXT_LEVEL(new HubTagXPNeededForNextLevel(), "{XpNeededforNextLevel}");
+	XP_NEEDED_FOR_NEXT_LEVEL(new HubTagXPNeededForNextLevel(), "{XpNeededforNextLevel}"),
+	// PARAMETERS
+	HIDE_HUBCHAT(new HubTagHideHubChat(), "{hide_hubchat}"),
+	HIDE_GAMEMESSAGES(new HubTagHideGameMessages(), "{hide_gamemessages}"),
+	HIDE_PARTICLES(new HubTagHideParticles(), "{hide_particles}"),
+	HIDE_PLAYERS(new HubTagHidePlayers(), "{hide_players}");
 	
 	@Setter private HubTag 			hubTag;
 	@Setter private List<String>	tags;
