@@ -29,6 +29,7 @@ import fr.badblock.bukkit.hub.v2.tags.custom.HubTagServerId;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagServerName;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagShopPoints;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagShopPointsNeeded;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagStat;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagStateOnlineMode;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagStateTFA;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagXP;
@@ -75,7 +76,8 @@ public enum HubTags
 	HIDE_PARTICLES(new HubTagHideParticles(), "{hide_particles}"),
 	HIDE_PLAYERS(new HubTagHidePlayers(), "{hide_players}"),
 	STATE_TFA(new HubTagStateTFA(), "{state_tfa}"),
-	STATE_MODE(new HubTagStateOnlineMode(), "{state_mode}");
+	STATE_MODE(new HubTagStateOnlineMode(), "{state_mode}"),
+	STAT(new HubTagStat(), "{stat}");
 	
 	@Setter private HubTag 			hubTag;
 	@Setter private List<String>	tags;

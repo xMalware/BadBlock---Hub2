@@ -13,6 +13,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemoveEffect;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemovePet;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendLadderCommand;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendMessage;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionStatShow;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleGameMessages;
@@ -53,6 +54,7 @@ public enum CustomItemActionType
 	TOGGLE_MODE (new ItemActionToggleMode()),
 	MODE_CRACK (new ItemActionModeCrack()),
 	MODE_PREMIUM (new ItemActionModePremium()),
+	STAT_SHOW (new ItemActionStatShow()),
 	NOTHING				(null);
 
 	private CustomItemAction action;

@@ -168,8 +168,6 @@ public class InventoryFillerHubList extends InventoryFiller
 			i++;
 		}
 
-		System.out.println("ranks hub " + hudb.getHubName() + " : " + ranks.toString());
-
 		if (ranks != null && !ranks.isEmpty())
 		{
 			lore.add("");
