@@ -60,13 +60,26 @@ public class HubTagStat extends HubTag
 		
 		statIndex.put(key, index + 1);
 		
-		return MathUtils.round(player.getPlayerData().getStatistics(serverName, splitter[index]), 2) + "";
+		double d = MathUtils.round(player.getPlayerData().getStatistics(serverName, splitter[index]), 2);
+		
+		if (isInteger(d))
+		{
+			return ((int) d) + "";
+		}
+		
+		return d + "";
 	}
 
 	@Override
 	public String getTag(BadblockPlayer player)
 	{
 		return "unknown";
+	}
+	
+	private final static double epsilon = 1E-10;
+	public static boolean isInteger(final double d)
+	{
+		return Math.abs(Math.floor(d) - d) < epsilon;
 	}
 
 }
