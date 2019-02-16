@@ -41,13 +41,13 @@ public class ItemActionToggleParticles extends CustomItemAction
 		{
 			hubStoredPlayer.setHideParticles(false);
 			hubStoredPlayer.save(player);
-			player.sendTranslatedMessage("hub.hideparticles.show");
+			player.sendTranslatedMessage("hub.toggleparticles.show");
 		}
 		else
 		{
 			hubStoredPlayer.setHideParticles(true);
 			hubStoredPlayer.save(player);
-			player.sendTranslatedMessage("hub.hideparticles.hide");
+			player.sendTranslatedMessage("hub.toggleparticles.hide");
 		}
 	}
 
