@@ -99,7 +99,7 @@ public class HubPlayer {
 					if (hubPlayer.getInventory() == null || hubPlayer.getInventory().isEmpty())
 					{
 						CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, "selector_mode");
-						player.sendTranslatedMessage("hub.pleaseselectamode");
+						player.sendTranslatedMessage("hub.items.selector_mode.pleaseselectamode");
 					}
 				}
 			}, 1, 1);
