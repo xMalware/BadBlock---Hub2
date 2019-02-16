@@ -46,6 +46,7 @@ public enum CustomItemActionType
 	BOOSTER_GAMESELECT		(new ItemActionBoosterGameSelect()),
 	REMOVE_PET							(new ItemActionRemovePet()),
 	REMOVE_EFFECT					(new ItemActionRemoveEffect()),
+	REMOVE_DISGUISE					(new ItemActionRemoveDisguise()),
 	TOGGLE_PLAYERS 				(new ItemActionTogglePlayers()),
 	TOGGLE_PARTICLES (new ItemActionToggleParticles()),
 	TOGGLE_GAMEMESSAGES (new ItemActionToggleGameMessages()),
