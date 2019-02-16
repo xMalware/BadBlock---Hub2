@@ -9,6 +9,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommandBun
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionModeCrack;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionModePremium;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionOpenInventory;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemoveDisguise;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemoveEffect;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemovePet;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendLadderCommand;
