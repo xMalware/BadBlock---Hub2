@@ -6,6 +6,8 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionBuyFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionCloseInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommand;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionExecuteCommandBungee;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionModeCrack;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionModePremium;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionOpenInventory;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemoveEffect;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionRemovePet;
@@ -15,6 +17,7 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleGameMessages;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleHubChat;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleMode;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleParticles;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTogglePlayers;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleTFA;
@@ -47,6 +50,9 @@ public enum CustomItemActionType
 	TOGGLE_GAMEMESSAGES (new ItemActionToggleGameMessages()),
 	TOGGLE_HUBCHAT (new ItemActionToggleHubChat()),
 	TOGGLE_TFA (new ItemActionToggleTFA()),
+	TOGGLE_MODE (new ItemActionToggleMode()),
+	MODE_CRACK (new ItemActionModeCrack()),
+	MODE_PREMIUM (new ItemActionModePremium()),
 	NOTHING				(null);
 
 	private CustomItemAction action;
