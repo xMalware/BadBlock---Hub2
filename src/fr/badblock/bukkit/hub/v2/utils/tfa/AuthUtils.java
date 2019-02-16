@@ -19,6 +19,12 @@ public class AuthUtils
 	public static String getAuthKey(String player)
 	{
 		BadblockPlayer pl = (BadblockPlayer) Bukkit.getPlayer(player);
+		
+		if (pl.getObject() == null || !pl.getObject().has("authKey"))
+		{
+			return null;
+		}
+		
 		return pl.getObject().get("authKey").getAsString();
 	}
 	
