@@ -41,14 +41,14 @@ public class InventoryFillerHubList extends InventoryFiller
 			fillNoHub(player, inventoryObject, inventory);
 			return;
 		}
-		
+
 		Collection<Hub> hubs = Hub.getHubs();
 		Map<Integer, InventoryAction[]> actions = new HashMap<>();
 
 		int emptySlot = inventory.firstEmpty();
 
 		boolean something = false;
-		
+
 		for (Hub hub : hubs)
 		{
 			if (emptySlot == -1)
@@ -138,14 +138,14 @@ public class InventoryFillerHubList extends InventoryFiller
 
 		ItemStack itemStack = new ItemStack(material, amount, data);
 		itemStack = setMaxStackSize(itemStack, 100);
-		
+
 		itemStack.setAmount(players);
 
 		if (id == HubUpdateTask.hubId)
 		{
 			itemStack = ItemStackUtils.fakeEnchant(itemStack);
 		}
-		
+
 		ItemMeta itemMeta = itemStack.getItemMeta();
 		itemMeta.setDisplayName(chatColor + (hudb != null ? "Hub n°" + hudb.getId() : display));
 		List<String> lore = new ArrayList<>();
@@ -167,7 +167,7 @@ public class InventoryFillerHubList extends InventoryFiller
 			order.put(d, group.getName());
 			i++;
 		}
-		
+
 		System.out.println("ranks hub " + hudb.getHubName() + " : " + ranks.toString());
 
 		if (ranks != null && !ranks.isEmpty())
@@ -185,18 +185,24 @@ public class InventoryFillerHubList extends InventoryFiller
 		return itemStack;
 	}
 
-	private char generateForId(int id){
-		if (id == 0) return 'Z';
+	private char generateForId(int id)
+	{
+		if (id == 0)
+		{
+			return 'Z';
+		}
+
 		int A = 'A';
 
-		if(id > 26){
+		if(id > 26)
+		{
 			A   = 'a';
 			id -= 26;
 
 			return (char) (A + id);
-		} else {
-			return (char) (A + id);
 		}
+
+		return (char) (A + id);
 	}
 
 	public static ItemStack setMaxStackSize(ItemStack is, int amount)
