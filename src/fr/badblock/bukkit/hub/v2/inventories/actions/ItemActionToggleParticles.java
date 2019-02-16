@@ -5,6 +5,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import fr.badblock.api.common.utils.flags.GlobalFlags;
+import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
@@ -49,6 +50,8 @@ public class ItemActionToggleParticles extends CustomItemAction
 			hubStoredPlayer.save(player);
 			player.sendTranslatedMessage("hub.toggleparticles.hide");
 		}
+		
+		player.openInventory(BukkitInventories.getInventory(player, "parametre_1_hub"));
 	}
 
 }
