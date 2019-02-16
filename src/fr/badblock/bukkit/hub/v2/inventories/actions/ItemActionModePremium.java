@@ -39,6 +39,7 @@ public class ItemActionModePremium extends CustomItemAction
 		player.getObject().addProperty("onlineMode", true);
 		
 		player.sendTranslatedMessage("hub.mode.nowpremium");
+		player.closeInventory();
 	}
 
 }

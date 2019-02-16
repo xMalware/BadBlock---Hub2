@@ -39,6 +39,7 @@ public class ItemActionModeCrack extends CustomItemAction
 		player.saveGameData();
 
 		player.sendTranslatedMessage("hub.mode.nowcrack");
+		player.closeInventory();
 	}
 
 }
