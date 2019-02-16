@@ -81,7 +81,7 @@ public class ItemActionTogglePlayers extends CustomItemAction
 
 		if (hubPlayer.getInventory() != null && !hubPlayer.getInventory().isEmpty())
 		{
-			player.openInventory(BukkitInventories.getInventory(player, hubPlayer.getInventory()));
+			CustomItemActionType.OPEN_INV.work(player, CustomItemActionType.OPEN_INV, hubPlayer.getInventory());
 		}
 	}
 
