@@ -12,6 +12,8 @@ import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendLadderCommand
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionSendMessage;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportLocation;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTeleportServer;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleGameMessages;
+import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionToggleParticles;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionTogglePlayers;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionUseFeature;
 import fr.badblock.bukkit.hub.v2.inventories.actions.ItemActionWaitingLine;
@@ -37,6 +39,8 @@ public enum CustomItemActionType
 	REMOVE_PET							(new ItemActionRemovePet()),
 	REMOVE_EFFECT					(new ItemActionRemoveEffect()),
 	TOGGLE_PLAYERS 				(new ItemActionTogglePlayers()),
+	TOGGLE_PARTICLES (new ItemActionToggleParticles()),
+	TOGGLE_GAMEMESSAGES (new ItemActionToggleGameMessages()),
 	NOTHING				(null);
 
 	private CustomItemAction action;
