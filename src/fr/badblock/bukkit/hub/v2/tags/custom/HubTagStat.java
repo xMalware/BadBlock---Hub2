@@ -12,7 +12,8 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class HubTagStat extends HubTag
 {
 
-	Map<String, Integer> statIndex = new HashMap<>(); 
+	public static Map<String, String> lastKey = new HashMap<>(); 
+	public static Map<String, Integer> statIndex = new HashMap<>(); 
 	
 	@Override
 	public String getTag(BadblockPlayer player, InventoryItemObject object) 
@@ -21,7 +22,7 @@ public class HubTagStat extends HubTag
 
 		for (InventoryAction action : object.getActions())
 		{
-			if (action.getAction().equals(CustomItemActionType.STAT_SHOW))
+			if (action.getAction().equals(CustomItemActionType.SHOW_STAT))
 			{
 				data = action.getActionData();
 			}
@@ -36,6 +37,20 @@ public class HubTagStat extends HubTag
 		String serverName = splitter[0];
 		
 		String key = player.getName() + "_" + object.toString();
+		
+		if (lastKey.containsKey(player.getName().toLowerCase()))
+		{
+			if (!lastKey.get(player.getName().toLowerCase()).equals(key))
+			{
+				statIndex.remove(key);
+			}
+		}
+		else
+		{
+			statIndex.remove(key);
+		}
+		
+		lastKey.put(player.getName().toLowerCase(), key);
 		
 		int index = 1;
 		if (statIndex.containsKey(key))

@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagStat;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
@@ -26,6 +27,8 @@ public class InventoryCloseListener extends BadListener
 			hubPlayer.setCustomInventory(null);
 			hubPlayer.setCustomActions(null);
 		}
+		
+		HubTagStat.lastKey.remove(player.getName().toLowerCase());
 	}
 
 }

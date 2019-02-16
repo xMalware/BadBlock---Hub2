@@ -54,7 +54,7 @@ public enum CustomItemActionType
 	TOGGLE_MODE (new ItemActionToggleMode()),
 	MODE_CRACK (new ItemActionModeCrack()),
 	MODE_PREMIUM (new ItemActionModePremium()),
-	STAT_SHOW (new ItemActionStatShow()),
+	SHOW_STAT (new ItemActionStatShow()),
 	NOTHING				(null);
 
 	private CustomItemAction action;

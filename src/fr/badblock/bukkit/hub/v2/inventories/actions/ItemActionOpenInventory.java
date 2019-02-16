@@ -6,6 +6,7 @@ import fr.badblock.bukkit.hub.v2.inventories.BukkitInventories;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagStat;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class ItemActionOpenInventory extends CustomItemAction
@@ -15,6 +16,9 @@ public class ItemActionOpenInventory extends CustomItemAction
 	public void execute(BadblockPlayer player, CustomItemActionType action, String actionData)
 	{
 		String inventoryName = actionData;
+
+		HubTagStat.lastKey.remove(player.getName().toLowerCase());
+		
 		Inventory inventory = BukkitInventories.getInventory(player, inventoryName);
 		if (inventory == null)
 		{
