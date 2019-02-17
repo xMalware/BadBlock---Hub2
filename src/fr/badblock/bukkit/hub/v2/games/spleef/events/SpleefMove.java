@@ -151,6 +151,8 @@ public class SpleefMove implements Listener {
 
         } else if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player) && player.getLocation().getBlock().getType() == Material.STATIONARY_WATER && GameState.INGAME.equals(SpleefManager.getInstance().getGameState())) {
             SpleefManager.getInstance().getSpleefPlayers().get(player).setDead(true);
+            player.sendMessage("§cVous êtes éliminés !");
+            player.setGameMode(GameMode.ADVENTURE);
             List<SpleefPlayer> playersAlive = SpleefManager.getInstance().getSpleefPlayers().values().stream().filter(spleefPlayer -> !spleefPlayer.isDead()).collect(Collectors.toList());
 
             if (playersAlive.size() == 1) {

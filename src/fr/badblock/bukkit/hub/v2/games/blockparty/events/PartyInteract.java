@@ -148,7 +148,7 @@ public class PartyInteract implements Listener {
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage("§5§m------------------------------");
                         p.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§3Un BlockParty va bientôt commencer !");
-                        TextComponent tc = new TextComponent(CourseManager.COURSE_PREFIX + "§cClique ici pour rejoindre la partie.");
+                        TextComponent tc = new TextComponent(BlockPartyManager.BLOCK_PREFIX + "§cClique ici pour rejoindre la partie.");
                         tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/goblockparty"));
                         tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                         p.spigot().sendMessage(tc);

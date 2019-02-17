@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.badblock.bukkit.hub.v2.games.shoot.events.ShootQuit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
@@ -63,6 +64,7 @@ public class ShootManager extends AbstractGameModule {
 
         pm.registerEvents(new ShootInteract(), BadBlockHub.getInstance());
         pm.registerEvents(new ShootBlock(), BadBlockHub.getInstance());
+        pm.registerEvents(new ShootQuit(), BadBlockHub.getInstance());
     }
 
     @Override

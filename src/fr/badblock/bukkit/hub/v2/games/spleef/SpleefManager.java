@@ -53,7 +53,6 @@ public class SpleefManager extends AbstractGameModule {
     public void registerBukkitListener() {
         PluginManager pm = Bukkit.getServer().getPluginManager();
 
-        pm.registerEvents(new SpleefCommand(), BadBlockHub.getInstance());
         pm.registerEvents(new SpleefBreak(), BadBlockHub.getInstance());
         pm.registerEvents(new SpleefDamage(), BadBlockHub.getInstance());
         pm.registerEvents(new SpleefQuit(), BadBlockHub.getInstance());

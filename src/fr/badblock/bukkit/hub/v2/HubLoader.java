@@ -17,7 +17,6 @@ import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
 import fr.badblock.bukkit.hub.v2.tasks.HubTaskLoader;
 import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
 import fr.badblock.bukkit.hub.v2.utils.ParticleListener;
-import fr.badblock.bukkit.hub.v2.utils.TinyProtocol;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
@@ -51,7 +50,6 @@ public class HubLoader {
 		// Load listener Particle
 		ParticleListener.registerParticleListener();
 
-		new TinyProtocol(plugin);
 		DisguiseUtil.register();
 	}
 	

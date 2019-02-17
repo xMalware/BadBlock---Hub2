@@ -20,7 +20,7 @@ public class SpawnCommand extends AbstractCommand
 	public boolean executeCommand(CommandSender sender, String[] args)
 	{
 		BadblockPlayer bPlayer = (BadblockPlayer)sender;
-		bPlayer.teleport(bPlayer.getLocation().getWorld().getSpawnLocation());
+		bPlayer.teleport(bPlayer.getLocation().getWorld().getSpawnLocation().add(0 ,2, 0));
 		return true;
 	}
 
