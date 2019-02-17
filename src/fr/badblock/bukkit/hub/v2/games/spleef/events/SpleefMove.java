@@ -138,7 +138,7 @@ public class SpleefMove implements Listener {
                         if(GlobalFlags.has(key))
                             return;
 
-                        GlobalFlags.set("", 60000);
+                        GlobalFlags.set(key, 60000);
 
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             p.sendMessage("§5§m------------------------------");
