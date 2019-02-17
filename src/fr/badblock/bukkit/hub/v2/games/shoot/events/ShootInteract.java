@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -133,6 +134,12 @@ public class ShootInteract implements Listener {
                         }
 
                     } else {
+                        String key = "Shoot";
+
+                        if(GlobalFlags.has(key))
+                            return;
+
+                        GlobalFlags.set("", 60000);
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             if(player.equals(p)) continue;
                             p.sendMessage("§5§m------------------------------");

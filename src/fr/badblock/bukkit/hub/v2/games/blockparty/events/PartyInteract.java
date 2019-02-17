@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -145,6 +146,12 @@ public class PartyInteract implements Listener {
                         }.runTaskTimer(BadBlockHub.getInstance(), 0, 20);
                     }
                 } else {
+                    String key = "Blockparty";
+
+                    if(GlobalFlags.has(key))
+                        return;
+
+                    GlobalFlags.set("", 60000);
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage("§5§m------------------------------");
                         p.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§3Un BlockParty va bientôt commencer !");

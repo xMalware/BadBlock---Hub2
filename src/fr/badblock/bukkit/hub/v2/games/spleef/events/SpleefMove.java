@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -132,6 +133,13 @@ public class SpleefMove implements Listener {
                         }
 
                     } else {
+                        String key = "Blockparty";
+
+                        if(GlobalFlags.has(key))
+                            return;
+
+                        GlobalFlags.set("", 60000);
+
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             p.sendMessage("§5§m------------------------------");
                             p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§3Une partie de Spleef va bientôt commencer !");
