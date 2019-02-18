@@ -46,6 +46,7 @@ public class HubScoreboard extends BadblockScoreboardGenerator
 			{
 				for (Entry<String, String> entry : ConfigLoader.getGameHub().getStats().entrySet())
 				{
+					System.out.println(ConfigLoader.getGameHub().getInternalGameName() + " / " + entry.getValue());
 					double d = MathUtils.round(player.getPlayerData().getStatistics(ConfigLoader.getGameHub().getInternalGameName(), entry.getValue()), 2);
 					String replace = "";
 					
