@@ -15,7 +15,9 @@ public class ShootQuit implements Listener {
     public void onQuit(PlayerQuitEvent event){
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
-        ShootManager.getInstance().getShootPlayers().remove(player);
+        Box box = ShootManager.getInstance().getShootPlayers().remove(player).getBox();
+        if(box != null && box.isTaken())
+            box.setTaken(false);
 
         if(ShootManager.getInstance().getShootPlayers().size() == 1){
             ShootManager.getInstance().getShootPlayers().forEach((p, shootPlayer1) -> {
@@ -25,7 +27,7 @@ public class ShootQuit implements Listener {
                 p.performCommand("spawn");
             });
 
-            ShootManager.getInstance().getBoxes().forEach(box -> box.setTaken(false));
+            ShootManager.getInstance().getBoxes().forEach(box1 -> box1.setTaken(false));
 
             ShootManager.getInstance().getShootPlayers().clear();
             ShootManager.getInstance().getBoxes().forEach(Box::restoreBlocks);

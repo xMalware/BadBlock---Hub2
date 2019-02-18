@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.shoot.utils;
 
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.utils.CustomPlayerInventory;
+import lombok.Data;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
  * Created by Toinetoine1 on 19/01/2019.
  */
 
+@Data
 public class ShootPlayer {
 
     private Player player;
@@ -24,22 +26,6 @@ public class ShootPlayer {
         this.customPlayerInventory = new CustomPlayerInventory();
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public CustomPlayerInventory getCustomPlayerInventory() {
-        return customPlayerInventory;
-    }
-
-    public boolean isHasFinished() {
-        return hasFinished;
-    }
-
-    public void setHasFinished(boolean hasFinished) {
-        this.hasFinished = hasFinished;
-    }
-
     public boolean assignBox() {
         List<Box> boxes = ShootManager.getInstance().getBoxes().stream().filter(box1 -> !box1.isTaken()).collect(Collectors.toList());
 
@@ -50,9 +36,5 @@ public class ShootPlayer {
         } else
             return false;
 
-    }
-
-    public Box getBox() {
-        return box;
     }
 }
