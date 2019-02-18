@@ -30,7 +30,8 @@ import lombok.Data;
 import lombok.Getter;
 
 @Data
-public class HubPlayer {
+public class HubPlayer
+{
 
 	private static Map<String, HubPlayer> players = new HashMap<>();
 
@@ -58,13 +59,15 @@ public class HubPlayer {
 	@Getter
 	public Entity	 mountEntity;
 
-	public HubPlayer(BadblockPlayer player) {
+	public HubPlayer(BadblockPlayer player)
+	{
 		this.setPlayer(player);
 		this.setName(player.getName());
 		players.put(getName(), this);
 	}
 
-	public HubPlayer loadEverything() {
+	public HubPlayer loadEverything()
+	{
 		loadData();
 		loadPlayer();
 		return this;
@@ -108,21 +111,42 @@ public class HubPlayer {
 		// Toggle players
 		Bukkit.getScheduler().runTask(BadBlockHub.getInstance(), new Runnable() {
 			@Override
-			public void run() {
-				if (storedPlayer.isHidePlayers()) {
-					for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers()) {
+			public void run()
+			{
+				for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
+				{
+					HubStoredPlayer stored = HubStoredPlayer.get(otherPlayer);
+					
+					if (stored != null && stored.isHidePlayers())
+					{
+						otherPlayer.hidePlayer(player);
+					}
+					else
+					{
+						otherPlayer.showPlayer(player);
+					}
+				}
+				
+				if (storedPlayer.isHidePlayers())
+				{
+					for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
+					{
 						player.hidePlayer(otherPlayer);
 					}
+					
 					getPlayer().sendTranslatedMessage("hub.toggleplayers.alwaysenabled");
 					return;
 				}
 
-				for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers()) {
-					if (!otherPlayer.getBadblockMode().equals(BadblockMode.PLAYER)) {
+				for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
+				{
+					if (!otherPlayer.getBadblockMode().equals(BadblockMode.PLAYER))
+					{
 						continue;
 					}
 
-					if (otherPlayer.getGameMode().equals(GameMode.SPECTATOR)) {
+					if (otherPlayer.getGameMode().equals(GameMode.SPECTATOR))
+					{
 						continue;
 					}
 

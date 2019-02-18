@@ -19,7 +19,8 @@ public class PlayerJoinListener extends BadListener
 		removeCustomGadgets(event);
 	}
 
-	private void removeCustomGadgets(PlayerJoinEvent event) {
+	private void removeCustomGadgets(PlayerJoinEvent event)
+	{
 		Player player = event.getPlayer();
 		PlayerManager playerManager = GadgetsMenuAPI.getPlayerManager(player);
 
