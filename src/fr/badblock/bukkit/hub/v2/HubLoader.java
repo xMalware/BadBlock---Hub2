@@ -4,7 +4,6 @@ import java.io.File;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
@@ -18,7 +17,6 @@ import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
 import fr.badblock.bukkit.hub.v2.utils.ParticleListener;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
-import fr.badblock.gameapi.utils.selections.CuboidSelection;
 
 public class HubLoader {
 
@@ -49,8 +47,7 @@ public class HubLoader {
 		HubTaskLoader.load(plugin);
 		// Clean hub world
 		clean();
-		// Preload chunks
-		preloadChunks();
+		
 		// Load listener Particle
 		ParticleListener.registerParticleListener();
 
@@ -83,26 +80,6 @@ public class HubLoader {
 		{
 			world.getEntities().forEach(Entity::remove);
 		}*/
-	}
-
-	private static void preloadChunks()
-	{
-		Location spawnLocation = ConfigLoader.getLoc().getLocation("spawn");
-
-		Location firstLocation = spawnLocation.clone();
-		firstLocation.setX(firstLocation.getX() - 32);
-		firstLocation.setZ(firstLocation.getZ() + 32);
-
-		Location secondLocation = spawnLocation.clone();
-		secondLocation.setX(firstLocation.getX() + 32);
-		secondLocation.setZ(firstLocation.getZ() - 32);
-
-		CuboidSelection cuboidSelection = new CuboidSelection(firstLocation, secondLocation);
-
-		for (Block block : cuboidSelection.getBlocks())
-		{
-			block.getChunk().load(false);
-		}
 	}
 
 }

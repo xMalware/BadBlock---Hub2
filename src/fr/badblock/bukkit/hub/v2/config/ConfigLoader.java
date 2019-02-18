@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.config;
 import fr.badblock.bukkit.hub.v2.config.configs.ActionBarsConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.BossBarsConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
+import fr.badblock.bukkit.hub.v2.config.configs.GameHubConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.HatConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.HubLocationsConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.ShopConfig;
@@ -21,6 +22,7 @@ public class ConfigLoader
 	@Getter @Setter public static BossBarsConfig		bossBars;
 	@Getter @Setter public static HatConfig		hat;
 	@Getter @Setter public static SwitcherConfig		switchers;
+	@Getter @Setter public static GameHubConfig		gameHub;
 
 	public static void load(BadblockPlugin plugin)
 	{
@@ -31,6 +33,7 @@ public class ConfigLoader
 		setBossBars(new BossBarsConfig(plugin, "bossBars"));
 		setHat(new HatConfig(plugin, "cosmetics_hats"));
 		setSwitchers(new SwitcherConfig(plugin, "switchers"));
+		setGameHub(new GameHubConfig(plugin, "gameHub"));
 	}
 
 }
