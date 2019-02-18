@@ -10,6 +10,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 
 import fr.badblock.api.common.tech.mongodb.MongoService;
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryActionType;
@@ -53,6 +54,11 @@ public class NPCCommand extends AbstractCommand
 	@Override
 	public boolean executeCommand(CommandSender sender, String[] args)
 	{
+    	if (!ConfigLoader.getSwitchers().isNpcSyncEnabled())
+    	{
+    		return true;
+    	}
+    	
 		// No subcommand
 		if (args.length == 0)
 		{

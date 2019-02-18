@@ -2,8 +2,10 @@ package fr.badblock.bukkit.hub.v2;
 
 import java.io.File;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
@@ -30,8 +32,13 @@ public class HubLoader {
 		CommandsLoader.load(plugin);
 		// Load inventories
 		InventoriesLoader.loadInventories(plugin);
-		// Load Mini-Games
-		GamesManager.load(plugin);
+
+		if (ConfigLoader.getSwitchers().isGameEnabled())
+		{
+			// Load Mini-Games
+			GamesManager.load(plugin);
+		}
+
 		// Load API
 		GameAPI api = plugin.getAPI();
 		api.formatChat(true, false, "hub");
@@ -48,11 +55,31 @@ public class HubLoader {
 		ParticleListener.registerParticleListener();
 
 		DisguiseUtil.register();
+
+		if (ConfigLoader.getSwitchers().isGameEnabled())
+		{
+			//tmp
+			Location l = new Location(Bukkit.getWorld("world"), -35, 108, -112);
+			Sign sign = (Sign) l.getBlock().getState();
+			sign.setLine(0, "§c[Gladiators]");
+			sign.setLine(1, "§3Forest");
+			sign.setLine(2, "§7§lJoueurs:");
+			sign.setLine(3, "0");
+			sign.update();
+
+			l = new Location(Bukkit.getWorld("world"), -33, 108, -112);
+			sign = (Sign) l.getBlock().getState();
+			sign.setLine(0, "§c[Gladiators]");
+			sign.setLine(1, "§3Ice");
+			sign.setLine(2, "§7§lJoueurs:");
+			sign.setLine(3, "0");
+			sign.update();
+		}
 	}
-	
+
 	private static void clean()
 	{
-	/*	for (World world : Bukkit.getWorlds())
+		/*	for (World world : Bukkit.getWorlds())
 		{
 			world.getEntities().forEach(Entity::remove);
 		}*/
@@ -65,13 +92,13 @@ public class HubLoader {
 		Location firstLocation = spawnLocation.clone();
 		firstLocation.setX(firstLocation.getX() - 32);
 		firstLocation.setZ(firstLocation.getZ() + 32);
-		
+
 		Location secondLocation = spawnLocation.clone();
 		secondLocation.setX(firstLocation.getX() + 32);
 		secondLocation.setZ(firstLocation.getZ() - 32);
-		
+
 		CuboidSelection cuboidSelection = new CuboidSelection(firstLocation, secondLocation);
-		
+
 		for (Block block : cuboidSelection.getBlocks())
 		{
 			block.getChunk().load(false);

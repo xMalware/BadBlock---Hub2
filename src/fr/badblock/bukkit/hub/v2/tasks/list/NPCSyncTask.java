@@ -12,6 +12,7 @@ import com.mongodb.DBCursor;
 import fr.badblock.api.common.tech.mongodb.MongoService;
 import fr.badblock.api.common.utils.FullSEntry;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
@@ -37,6 +38,11 @@ public class NPCSyncTask extends HubTask
 
 	public static void synchronize()
 	{
+		if (!ConfigLoader.getSwitchers().isGameEnabled())
+		{
+			return;
+		}
+		
 		MongoService mongoService = GameAPI.getAPI().getMongoService();
 		DBCollection collection = mongoService.getDb().getCollection("npc");
 		BasicDBObject dbQuery = new BasicDBObject();

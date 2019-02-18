@@ -4,6 +4,7 @@ import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.events.GladiatorInteract;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
@@ -21,6 +22,11 @@ public class GladiatorPlayCommand extends AbstractCommand {
 
     @Override
     public boolean executeCommand(CommandSender sender, String[] args) {
+    	if (!ConfigLoader.getSwitchers().isGameEnabled())
+    	{
+    		return true;
+    	}
+    	
         if(sender instanceof Player){
             BadblockPlayer player = (BadblockPlayer) sender;
 

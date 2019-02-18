@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.commands.list;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.games.gladiators.kits.KitsManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.Map;
 import fr.badblock.bukkit.hub.v2.games.gladiators.maps.MapManager;
@@ -23,6 +24,11 @@ public class GladiatorEditKitCommand extends AbstractCommand {
 
     @Override
     public boolean executeCommand(CommandSender sender, String[] args) {
+    	if (!ConfigLoader.getSwitchers().isGameEnabled())
+    	{
+    		return true;
+    	}
+    	
         if (sender instanceof Player) {
             BadblockPlayer player = (BadblockPlayer) sender;
             if (player.hasPermission("badevent.admin")) {

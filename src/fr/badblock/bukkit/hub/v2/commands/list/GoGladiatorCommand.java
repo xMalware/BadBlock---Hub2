@@ -3,6 +3,7 @@ package fr.badblock.bukkit.hub.v2.commands.list;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import fr.badblock.gameapi.command.AbstractCommand;
@@ -18,6 +19,11 @@ public class GoGladiatorCommand extends AbstractCommand {
 
     @Override
     public boolean executeCommand(CommandSender commandSender, String[] strings) {
+    	if (!ConfigLoader.getSwitchers().isGameEnabled())
+    	{
+    		return true;
+    	}
+    	
         if(commandSender instanceof Player) {
             BadblockPlayer p = (BadblockPlayer) commandSender;
 
