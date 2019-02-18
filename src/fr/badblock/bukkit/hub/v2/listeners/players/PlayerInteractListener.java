@@ -6,6 +6,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import fr.badblock.api.common.utils.flags.GlobalFlags;
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.AbstractGadgets;
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
@@ -24,73 +25,76 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class PlayerInteractListener extends BadListener {
 
-    @EventHandler(priority = EventPriority.HIGH)
-    public void onPlayerInteract(PlayerInteractEvent event) {
-        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+	@EventHandler(priority = EventPriority.HIGH)
+	public void onPlayerInteract(PlayerInteractEvent event) {
+		BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
-        // TODO : rewrite this shit.
-        if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player)
-                || GladiatorManager.getInstance().getCustomInv().containsKey(player)
-                || ShootManager.getInstance().getShootPlayers().containsKey(player)
-                || BlockPartyManager.getInstance().getBlockPlayers().containsKey(player)
-                || CourseManager.getInstance().getWaitingPlayers().contains(player)
-                || JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
-            return;
-        }
 
-        HubPlayer hubPlayer = HubPlayer.get(player);
+		if (ConfigLoader.getSwitchers().isGameEnabled())
+		{
+			if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player)
+					|| GladiatorManager.getInstance().getCustomInv().containsKey(player)
+					|| ShootManager.getInstance().getShootPlayers().containsKey(player)
+					|| BlockPartyManager.getInstance().getBlockPlayers().containsKey(player)
+					|| CourseManager.getInstance().getWaitingPlayers().contains(player)
+					|| JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
+				return;
+			}
+		}
 
-        if (handleWidget(player, hubPlayer, event)) {
-            event.setCancelled(true);
-            return;
-        }
+		HubPlayer hubPlayer = HubPlayer.get(player);
 
-        // default inventory
-        ItemStack handItem = player.getInventory().getItemInHand();
-        InventoryActionType actionType = InventoryActionType.get(event.getAction());
-        if (handItem != null) {
-            InventoryObject defaultInventory = InventoriesLoader.getDefaultInventory();
-            if (defaultInventory != null) {
-                InventoryItemObject itemObject = null;
-                for (InventoryItemObject item : defaultInventory.getItems()) {
-                    if (player.getInventory().getHeldItemSlot() == item.getPlace()) {
-                        itemObject = item;
-                        break;
-                    }
-                }
-                if (itemObject != null) {
-                    event.setCancelled(!player.hasAdminMode());
-                    InventoryActionManager.handle(player, InventoriesLoader.getConfig().getJoinDefaultInventory(), itemObject, actionType);
-                }
-            }
-        }
-    }
+		if (handleWidget(player, hubPlayer, event)) {
+			event.setCancelled(true);
+			return;
+		}
 
-    private boolean handleWidget(BadblockPlayer player, HubPlayer hubPlayer, PlayerInteractEvent event) {
-        AbstractGadgets gadget = hubPlayer.getCurrentWidget();
+		// default inventory
+		ItemStack handItem = player.getInventory().getItemInHand();
+		InventoryActionType actionType = InventoryActionType.get(event.getAction());
+		if (handItem != null) {
+			InventoryObject defaultInventory = InventoriesLoader.getDefaultInventory();
+			if (defaultInventory != null) {
+				InventoryItemObject itemObject = null;
+				for (InventoryItemObject item : defaultInventory.getItems()) {
+					if (player.getInventory().getHeldItemSlot() == item.getPlace()) {
+						itemObject = item;
+						break;
+					}
+				}
+				if (itemObject != null) {
+					event.setCancelled(!player.hasAdminMode());
+					InventoryActionManager.handle(player, InventoriesLoader.getConfig().getJoinDefaultInventory(), itemObject, actionType);
+				}
+			}
+		}
+	}
 
-        if (gadget == null) {
-            return false;
-        }
+	private boolean handleWidget(BadblockPlayer player, HubPlayer hubPlayer, PlayerInteractEvent event) {
+		AbstractGadgets gadget = hubPlayer.getCurrentWidget();
 
-        int slot = player.getInventory().getHeldItemSlot();
+		if (gadget == null) {
+			return false;
+		}
 
-        if (gadget.getSlot() != slot) {
-            return false;
-        }
+		int slot = player.getInventory().getHeldItemSlot();
 
-        String flagName = player.getName() + "_gadget_use_" + gadget.getFeatureName();
+		if (gadget.getSlot() != slot) {
+			return false;
+		}
 
-        if (GlobalFlags.has(flagName)) {
-            player.sendTranslatedMessage("features.gadgets_wait");
-            return true;
-        }
+		String flagName = player.getName() + "_gadget_use_" + gadget.getFeatureName();
 
-        if (gadget.use(player, player.getItemInHand(), event.getAction()))
-            GlobalFlags.set(flagName, gadget.waitingTime());
-        
+		if (GlobalFlags.has(flagName)) {
+			player.sendTranslatedMessage("features.gadgets_wait");
+			return true;
+		}
 
-        return true;
-    }
+		if (gadget.use(player, player.getItemInHand(), event.getAction()))
+			GlobalFlags.set(flagName, gadget.waitingTime());
+
+
+		return true;
+	}
 
 }

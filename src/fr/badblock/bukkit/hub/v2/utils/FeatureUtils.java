@@ -2,6 +2,8 @@ package fr.badblock.bukkit.hub.v2.utils;
 
 import com.yapzhenyie.GadgetsMenu.api.GadgetsMenuAPI;
 import com.yapzhenyie.GadgetsMenu.player.PlayerManager;
+
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
@@ -50,6 +52,11 @@ public class FeatureUtils {
     }
 
     public static boolean isInAGame(BadblockPlayer badblockPlayer){
+		if (!ConfigLoader.getSwitchers().isGameEnabled())
+		{
+			return false;
+		}
+		
         return BlockPartyManager.getInstance().getBlockPlayers().containsKey(badblockPlayer)
                 || CourseManager.getInstance().getWaitingPlayers().contains(badblockPlayer)
                 || GladiatorManager.getInstance().getCustomInv().containsKey(badblockPlayer)
