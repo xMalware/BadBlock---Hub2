@@ -8,13 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import fr.badblock.api.common.utils.flags.GlobalFlags;
-import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
-import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -28,13 +21,19 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPlayer;
 import fr.badblock.bukkit.hub.v2.games.blockparty.task.MainTask;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import fr.badblock.gameapi.players.BadblockPlayer;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class PartyInteract implements Listener {
 

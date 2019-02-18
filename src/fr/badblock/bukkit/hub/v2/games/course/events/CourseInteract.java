@@ -1,14 +1,9 @@
 package fr.badblock.bukkit.hub.v2.games.course.events;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import fr.badblock.api.common.utils.flags.GlobalFlags;
-import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,11 +19,13 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.material.Openable;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.course.task.CourseGameRunnable;
 import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -43,7 +40,6 @@ public class CourseInteract implements Listener {
 
     static CourseGameRunnable runnable;
 
-    @SuppressWarnings("deprecation")
 	@EventHandler
     public void onInteract(PlayerInteractEvent event) {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();

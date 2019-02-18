@@ -1,14 +1,12 @@
 package fr.badblock.bukkit.hub.v2.commands.list;
 
-import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
-import fr.badblock.bukkit.hub.v2.games.jump.JumpManager;
-import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import fr.badblock.gameapi.command.AbstractCommand;
 import fr.badblock.gameapi.players.BadblockPlayer;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class GoSpleefCommand extends AbstractCommand {
 
