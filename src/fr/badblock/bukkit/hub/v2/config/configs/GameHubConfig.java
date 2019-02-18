@@ -3,6 +3,8 @@ package fr.badblock.bukkit.hub.v2.config.configs;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.configuration.ConfigurationSection;
+
 import fr.badblock.bukkit.hub.v2.config.HubConfig;
 import fr.badblock.gameapi.BadblockPlugin;
 import lombok.EqualsAndHashCode;
@@ -17,7 +19,7 @@ public class GameHubConfig extends HubConfig
 
 	private boolean enabled;
 	private String internalGameName;
-	
+
 	private Map<String, String> stats = new HashMap<>();
 
 	public GameHubConfig(BadblockPlugin plugin, String fileName)
@@ -27,10 +29,15 @@ public class GameHubConfig extends HubConfig
 		enabled = getConfig().getBoolean("enabled");
 		internalGameName = getConfig().getString("internalGameName");
 
-		getConfig().getKeys(false).forEach(key ->
+		ConfigurationSection replace = getConfig().getConfigurationSection("replace");
+
+		if (replace != null)
 		{
-			stats.put(key, getConfig().getString(key));
-		});
+			replace.getKeys(false).forEach(key ->
+			{
+				stats.put(key, getConfig().getString(key));
+			});
+		}
 	}
 
 }
