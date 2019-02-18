@@ -85,7 +85,7 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 		player.removeShopPoints(shopPointsToRemove);
 
 		// Add feature
-		featureManager.addFeature(hubStoredPlayer, feature);
+		featureManager.addFeature(player, hubStoredPlayer, featureRawName);
 		// Save storage
 		hubStoredPlayer.save(player);
 		

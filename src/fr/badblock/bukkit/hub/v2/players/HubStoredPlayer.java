@@ -1,11 +1,8 @@
 package fr.badblock.bukkit.hub.v2.players;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import fr.badblock.bukkit.hub.v2.cosmetics.features.FeatureType;
-import fr.badblock.bukkit.hub.v2.cosmetics.features.OwnedFeature;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.data.GameData;
 import lombok.Data;
@@ -19,13 +16,13 @@ public class HubStoredPlayer  implements GameData
 	private boolean															hideGameMessages;
 	private boolean															hideHubChat;
 	private boolean															modeSelected;
-	private Map<FeatureType, List<OwnedFeature>>		features	= new HashMap<>();
+	private List<String>														features	= new ArrayList<>();
 	
 	public void save(BadblockPlayer player)
 	{
 		if (features == null)
 		{
-			features = new HashMap<>();
+			features = new ArrayList<>();
 		}
 		
 		player.getPlayerData().saveData();
@@ -34,10 +31,10 @@ public class HubStoredPlayer  implements GameData
 	
 	public static HubStoredPlayer get(BadblockPlayer player)
 	{
-		HubStoredPlayer hubStoredPlayer = player.getPlayerData().gameData("hub", HubStoredPlayer.class);
+		HubStoredPlayer hubStoredPlayer = player.getPlayerData().gameData("lobby2", HubStoredPlayer.class);
 		if (hubStoredPlayer.features == null)
 		{
-			hubStoredPlayer.features = new HashMap<>();
+			hubStoredPlayer.features = new ArrayList<>();
 		}
 		return hubStoredPlayer;
 	}

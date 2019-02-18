@@ -2,11 +2,8 @@ package fr.badblock.bukkit.hub.v2;
 
 import java.io.File;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
 
 import fr.badblock.bukkit.hub.v2.commands.CommandsLoader;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
@@ -17,7 +14,6 @@ import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
 import fr.badblock.bukkit.hub.v2.tasks.HubTaskLoader;
 import fr.badblock.bukkit.hub.v2.utils.DisguiseUtil;
 import fr.badblock.bukkit.hub.v2.utils.ParticleListener;
-import fr.badblock.bukkit.hub.v2.utils.TinyProtocol;
 import fr.badblock.gameapi.BadblockPlugin;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
@@ -51,16 +47,16 @@ public class HubLoader {
 		// Load listener Particle
 		ParticleListener.registerParticleListener();
 
-		new TinyProtocol(plugin);
-		DisguiseUtil.register();
+		//new TinyProtocol(plugin);
+		//DisguiseUtil.register();
 	}
 	
 	private static void clean()
 	{
-		for (World world : Bukkit.getWorlds())
+	/*	for (World world : Bukkit.getWorlds())
 		{
 			world.getEntities().forEach(Entity::remove);
-		}
+		}*/
 	}
 
 	private static void preloadChunks()
