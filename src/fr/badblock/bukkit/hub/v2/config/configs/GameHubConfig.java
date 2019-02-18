@@ -35,7 +35,7 @@ public class GameHubConfig extends HubConfig
 		{
 			replace.getKeys(false).forEach(key ->
 			{
-				stats.put(key, getConfig().getString(key));
+				stats.put(key, replace.getString(key));
 			});
 		}
 	}
