@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.listeners.players;
 
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.AbstractGadgets;
 import fr.badblock.bukkit.hub.v2.cosmetics.workable.gadgets.Nuke;
+import fr.badblock.bukkit.hub.v2.games.gladiators.GladiatorManager;
 import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.gameapi.BadListener;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -13,12 +14,17 @@ import org.bukkit.event.entity.EntityTargetEvent;
 
 public class PlayerEntityDamageListener extends BadListener {
 
-	@EventHandler
-	public void onEntityTarget(EntityTargetEvent event)
-	{
-		event.setCancelled(true);
-	}
-	
+    @EventHandler
+    public void onEntityTarget(EntityTargetEvent event) {
+        if (event.getEntity() instanceof Player && event.getTarget() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            if (GladiatorManager.getInstance().getCustomInv().containsKey(player))
+                return;
+        }
+
+        event.setCancelled(true);
+    }
+
     @EventHandler
     public void onDamaged(EntityDamageByEntityEvent event) {
 
@@ -36,6 +42,9 @@ public class PlayerEntityDamageListener extends BadListener {
             BadblockPlayer player = (BadblockPlayer) event.getDamager();
             HubPlayer hubDamager = HubPlayer.get(player);
             HubPlayer hubEntity = HubPlayer.get((BadblockPlayer) event.getEntity());
+
+            if (GladiatorManager.getInstance().getCustomInv().containsKey(player))
+                return;
 
             if (hubDamager != null) {
                 event.setCancelled(true);

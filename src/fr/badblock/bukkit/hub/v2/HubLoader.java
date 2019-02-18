@@ -47,8 +47,7 @@ public class HubLoader {
 		// Load listener Particle
 		ParticleListener.registerParticleListener();
 
-		//new TinyProtocol(plugin);
-		//DisguiseUtil.register();
+		DisguiseUtil.register();
 	}
 	
 	private static void clean()

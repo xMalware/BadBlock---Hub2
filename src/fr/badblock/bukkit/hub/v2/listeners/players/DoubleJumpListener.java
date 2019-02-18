@@ -53,6 +53,11 @@ public class DoubleJumpListener extends BadListener {
 
         this.allowed.remove(player.getUniqueId());
 
+        if(FeatureUtils.isInAGame(player)){
+            player.setAllowFlight(false);
+            return;
+        }
+
         event.setCancelled(true);
 
         player.setVelocity(player.getLocation().getDirection().multiply(1.6D).setY(1.0D));

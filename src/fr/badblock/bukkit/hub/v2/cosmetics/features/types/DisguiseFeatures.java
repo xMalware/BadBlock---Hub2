@@ -101,6 +101,7 @@ public enum DisguiseFeatures implements IFeatureWorker {
     public void work(BadblockPlayer player) {
         DisguiseUtil disguiseUtil = new DisguiseUtil(customDisguise.getEntityType(), player);
         disguiseUtil.disguisePlayer(Bukkit.getOnlinePlayers());
+        disguiseUtil.setCustomName(player.getName());
     }
 
     public static void work(BadblockPlayer player, String featureName) {

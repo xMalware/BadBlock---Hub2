@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import net.md_5.bungee.api.chat.ClickEvent;
@@ -145,10 +146,16 @@ public class PartyInteract implements Listener {
                         }.runTaskTimer(BadBlockHub.getInstance(), 0, 20);
                     }
                 } else {
+                    String key = "Blockparty";
+
+                    if(GlobalFlags.has(key))
+                        return;
+
+                    GlobalFlags.set(key, 60000);
                     for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                         p.sendMessage("§5§m------------------------------");
                         p.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§3Un BlockParty va bientôt commencer !");
-                        TextComponent tc = new TextComponent(CourseManager.COURSE_PREFIX + "§cClique ici pour rejoindre la partie.");
+                        TextComponent tc = new TextComponent(BlockPartyManager.BLOCK_PREFIX + "§cClique ici pour rejoindre la partie.");
                         tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/goblockparty"));
                         tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
                         p.spigot().sendMessage(tc);

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -41,7 +42,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class CourseInteract implements Listener {
 
     static CourseGameRunnable runnable;
-    private Map<Player, Timestamp> time = new HashMap<>();
 
     @SuppressWarnings("deprecation")
 	@EventHandler
@@ -68,12 +68,6 @@ public class CourseInteract implements Listener {
                 List<BadblockPlayer> waitingPlayers = CourseManager.getInstance().getWaitingPlayers();
 
                 if (!waitingPlayers.contains(player)) {
-                    Timestamp ts = new Timestamp(System.currentTimeMillis());
-
-                    if(time.containsKey(player) && time.get(player).after(ts)){
-                        player.sendMessage("§cTu dois attendre 30 secondes avant de pouvoir revenir.");
-                        return;
-                    }
 
                     if(CourseManager.getInstance().getDoorsToEnter().get(block.getLocation())){
                         player.sendMessage("§cUn joueur est déjà présent dans cet endroit");
@@ -84,11 +78,6 @@ public class CourseInteract implements Listener {
                     player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu as rejoins la partie.");
                     CourseManager.getInstance().getDoorsToEnter().replace(block.getLocation(), true);
                     FeatureUtils.removeAllFeatures(player);
-
-                    // TODO REWRITE THIS! I'LL SHAKE!
-                    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                    timestamp.setSeconds(timestamp.getSeconds() + 30);
-                    time.put(player, timestamp);
 
                     int pos = 0;
                     for(int i = 0; i < CourseManager.getInstance().getDoorsToEnter().entrySet().size(); i++){
@@ -171,6 +160,13 @@ public class CourseInteract implements Listener {
                             }.runTaskTimer(BadBlockHub.getInstance(), 0, 20);
                         }
                     } else {
+                        String key = "Course";
+
+                        if(GlobalFlags.has(key))
+                            return;
+
+                        GlobalFlags.set(key, 60000);
+
                         for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                             p.sendMessage("§5§m------------------------------");
                             p.sendMessage(CourseManager.COURSE_PREFIX + "§3Une course va bientôt commencer !");

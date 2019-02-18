@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.games.shoot.utils;
 
 import fr.badblock.gameapi.utils.selections.CuboidSelection;
+import lombok.Data;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,6 +14,8 @@ import java.util.Random;
 /**
  * Created by Toinetoine1 on 18/01/2019.
  */
+
+@Data
 public class Box {
 
     private int blocksLeft = 20;
@@ -55,27 +58,8 @@ public class Box {
         blocksChanged.forEach(location -> location.getWorld().getBlockAt(location).setType(Material.AIR));
     }
 
-    boolean isTaken() {
-        return taken;
-    }
-
-    public void setTaken(boolean taken) {
-        this.taken = taken;
-    }
-
-    public List<Location> getBlocksChanged() {
-        return blocksChanged;
-    }
-
-    public Location getParticle() {
-        return particle;
-    }
-
-    public int removeBlock() {
+    public int removeBlock(){
         return blocksLeft--;
     }
 
-    public int getBlocksLeft() {
-        return blocksLeft;
-    }
 }

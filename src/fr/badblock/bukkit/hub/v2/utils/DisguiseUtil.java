@@ -1,8 +1,12 @@
 package fr.badblock.bukkit.hub.v2.utils;
 
-import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.gameapi.players.BadblockPlayer;
-import io.netty.channel.Channel;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -15,7 +19,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.Plugin;
 
-import java.util.*;
+import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class DisguiseUtil implements Listener {
 
@@ -526,48 +531,7 @@ public class DisguiseUtil implements Listener {
         return packageName.substring(packageName.lastIndexOf('.') + 1);
     }
 
-    /**
-     * Respawn player debug
-     *
-     * @author cocoraid
-     */
-    static class PacketEvent extends TinyProtocol.PacketListener {
-        private Class<?> packet = Reflection.getMinecraftClass("PacketPlayOutNamedEntitySpawn");
-        private Class<?> useEntityClass = Reflection.getClass("{nms}.PacketPlayInUseEntity");
-
-
-        @Override
-        public Object onPacketInAsync(final Player receiver, Channel channel, Object packet) {
-            if (useEntityClass.isInstance(packet)) {
-                int id = Reflection.getField(this.useEntityClass, int.class, 0).get(packet);
-                System.out.println("Async: "+id);
-                if (ids.contains(id))
-                    return null;
-            }
-            return super.onPacketOutAsync(receiver, channel, packet);
-        }
-
-        @Override
-        public Object onPacketOutAsync(final Player receiver, Channel channel, Object packet) {
-            if (!this.packet.isInstance(packet))
-                return packet;
-            if (receiver != null) {
-                if (DisguiseUtil.disguise.containsKey(receiver.getUniqueId())) {
-                    Bukkit.getScheduler().runTask(BadBlockHub.getInstance(), new Runnable() {
-                        @Override
-                        public void run() {
-                            if (instanceOf(receiver) != null)
-                                instanceOf(receiver).disguisePlayer(receiver);
-                        }
-                    });
-                }
-            }
-            return super.onPacketOutAsync(receiver, channel, packet);
-        }
-    }
-
     public static void register() {
-        TinyProtocol.getTinyProtocol().registerListener(new PacketEvent());
         instance.getServer().getPluginManager().registerEvents(new Listener() {
 
             @EventHandler
