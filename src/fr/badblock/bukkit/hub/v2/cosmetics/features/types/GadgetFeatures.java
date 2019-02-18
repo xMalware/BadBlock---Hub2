@@ -56,6 +56,8 @@ public enum GadgetFeatures implements IFeatureWorker {
 
     @Override
     public void work(BadblockPlayer player) {
+    	player.getInventory().setHeldItemSlot(4);
+    	
         if (gadgets.getItem() != null && !gadgets.isExternal())
             player.getInventory().setItem(gadgets.getSlot(), gadgets.getItem());
 
