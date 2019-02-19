@@ -19,6 +19,7 @@ import lombok.Getter;
 /**
  * Created by Toinetoine1 on 13/01/2019.
  */
+
 public class JumpManager extends AbstractGameModule {
 
     @Getter

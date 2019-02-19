@@ -74,6 +74,8 @@ public class PartyInteract implements Listener {
                 waitingPlayers.put(player, new BlockPlayer(player, false));
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu as rejoins la partie.");
                 FeatureUtils.removeAllFeatures(player);
+                player.setAllowFlight(false);
+                player.setFlying(false);
 
                 // TODO REWRITE THIS! I'LL SHAKE!
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());

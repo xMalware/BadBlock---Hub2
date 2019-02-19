@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 
 import java.util.HashMap;
@@ -52,11 +53,13 @@ public class SpleefManager extends AbstractGameModule {
     @Override
     public void registerBukkitListener() {
         PluginManager pm = Bukkit.getServer().getPluginManager();
+        Plugin instance = BadBlockHub.getInstance();
 
-        pm.registerEvents(new SpleefBreak(), BadBlockHub.getInstance());
-        pm.registerEvents(new SpleefDamage(), BadBlockHub.getInstance());
-        pm.registerEvents(new SpleefQuit(), BadBlockHub.getInstance());
-        pm.registerEvents(new SpleefMove(cuboid_loc1, cuboid_loc2), BadBlockHub.getInstance());
+        pm.registerEvents(new SpleefBreak(), instance);
+        pm.registerEvents(new SpleefDamage(), instance);
+        pm.registerEvents(new SpleefQuit(), instance);
+        pm.registerEvents(new SpleefMove(cuboid_loc1, cuboid_loc2), instance);
+        pm.registerEvents(new SpleefCommand(), instance);
     }
 
     @Override

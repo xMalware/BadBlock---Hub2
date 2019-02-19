@@ -12,7 +12,7 @@ public class WaitingTime extends BukkitRunnable {
 
     @Override
     public void run() {
-        if(GameState.WAITING.equals(BlockPartyManager.getInstance().getGameState())){
+        if(GameState.WAITING.equals(BlockPartyManager.getInstance().getGameState())  || BlockPartyManager.getInstance().getBlockPlayers().size() <= 0){
             cancel();
             return;
         }
