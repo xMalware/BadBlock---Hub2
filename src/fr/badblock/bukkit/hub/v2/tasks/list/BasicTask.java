@@ -1,13 +1,9 @@
 package fr.badblock.bukkit.hub.v2.tasks.list;
 
-import java.util.Random;
-
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
-import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.tasks.HubTask;
-import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.utils.BukkitUtils;
 
 public class BasicTask extends HubTask
