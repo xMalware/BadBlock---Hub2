@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.shoot.events;
 
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
+import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Sound;
@@ -15,9 +16,12 @@ public class ShootQuit implements Listener {
     public void onQuit(PlayerQuitEvent event){
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
-        Box box = ShootManager.getInstance().getShootPlayers().remove(player).getBox();
-        if(box != null && box.isTaken())
-            box.setTaken(false);
+        ShootPlayer shootPlayer = ShootManager.getInstance().getShootPlayers().get(player);
+        if(shootPlayer != null){
+            Box box = shootPlayer.getBox();
+            if(box != null && box.isTaken())
+                box.setTaken(false);
+        }
 
         if(ShootManager.getInstance().getShootPlayers().size() == 1){
             ShootManager.getInstance().getShootPlayers().forEach((p, shootPlayer1) -> {
