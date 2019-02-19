@@ -17,7 +17,7 @@ import fr.badblock.gameapi.players.BadblockPlayer;
 public class FeatureBuyConfirmInventory
 {
 
-	public static void confirm(BadblockPlayer player, String featureRawName)
+	public static void confirm(BadblockPlayer player, Feature feature, String featureRawName)
 	{
 		// Set temporary feature
 		HubPlayer hubPlayer = HubPlayer.get(player);
@@ -32,9 +32,9 @@ public class FeatureBuyConfirmInventory
 			{
 				continue;
 			}
-			inventory.setItem(i, getCancelItem(player, featureRawName));
+			inventory.setItem(i, getCancelItem(player, feature));
 		}
-		inventory.setItem(confirmItem, getConfirmItem(player, featureRawName));
+		inventory.setItem(confirmItem, getConfirmItem(player, feature));
 		
 		// Open it
 		player.openInventory(inventory);
@@ -42,22 +42,22 @@ public class FeatureBuyConfirmInventory
 		hubPlayer.setCustomInventory(CustomInventoryBuyConfirm.getInstance());
 	}
 	
-	public static ItemStack getCancelItem(BadblockPlayer player, String featureRawName)
+	public static ItemStack getCancelItem(BadblockPlayer player, Feature feature)
 	{
 		ItemStack itemStack = new ItemStack(Material.REDSTONE_BLOCK, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();
-		itemMeta.setDisplayName(player.getTranslatedMessage("hub.features.buy.cancel.name", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
-		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.features.buy.cancel.lore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
+		itemMeta.setDisplayName(player.getTranslatedMessage("hub.features.buy.cancel.name", feature.getName())[0]);
+		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.features.buy.cancel.lore", feature.getName())[0]));
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}
 	
-	public static ItemStack getConfirmItem(BadblockPlayer player, String featureRawName)
+	public static ItemStack getConfirmItem(BadblockPlayer player, Feature feature)
 	{
 		ItemStack itemStack = new ItemStack(Material.EMERALD_BLOCK, 1);
 		ItemMeta itemMeta = itemStack.getItemMeta();
-		itemMeta.setDisplayName(player.getTranslatedMessage("hub.features.buy.confirm.name", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])[0]);
-		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.features.buy.confirm.lore", player.getTranslatedMessage("hub.features.names." + featureRawName.replace("_", "."))[0])));
+		itemMeta.setDisplayName(player.getTranslatedMessage("hub.features.buy.confirm.name", feature.getName())[0]);
+		itemMeta.setLore(Arrays.asList(player.getTranslatedMessage("hub.features.buy.confirm.lore", feature.getName())[0]));
 		itemStack.setItemMeta(itemMeta);
 		return itemStack;
 	}

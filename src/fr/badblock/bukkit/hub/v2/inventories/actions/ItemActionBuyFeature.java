@@ -68,7 +68,7 @@ public class ItemActionBuyFeature extends CustomItemAction
 		}
 		
 		// Buy
-		FeatureBuyConfirmInventory.confirm(player, featureRawName);
+		FeatureBuyConfirmInventory.confirm(player, feature, featureRawName);
 	}
 
 }
