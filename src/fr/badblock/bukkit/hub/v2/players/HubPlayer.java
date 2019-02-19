@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.players;
 
+import java.sql.ResultSet;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,13 +19,18 @@ import fr.badblock.bukkit.hub.v2.inventories.InventoriesLoader;
 import fr.badblock.bukkit.hub.v2.inventories.custom.CustomInventory;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
+import fr.badblock.bukkit.hub.v2.npc.Hologram;
 import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
+import fr.badblock.bukkit.hub.v2.tasks.JoinTitleUpdateTask;
 import fr.badblock.bukkit.hub.v2.utils.effects.Effect;
+import fr.badblock.gameapi.GameAPI;
+import fr.badblock.gameapi.databases.SQLRequestType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer.BadblockMode;
 import fr.badblock.gameapi.players.bossbars.BossBarColor;
 import fr.badblock.gameapi.players.bossbars.BossBarStyle;
 import fr.badblock.gameapi.utils.BukkitUtils;
+import fr.badblock.gameapi.utils.general.Callback;
 import fr.badblock.gameapi.utils.threading.TempScheduler;
 import lombok.Data;
 import lombok.Getter;
@@ -55,6 +61,8 @@ public class HubPlayer
 	private AbstractGadgets currentWidget;
 	private CustomPet pet;
 	private Effect effect;
+
+	private long gamePoints = -1;
 
 	@Getter
 	public Entity	 mountEntity;
@@ -113,10 +121,12 @@ public class HubPlayer
 			@Override
 			public void run()
 			{
+				new JoinTitleUpdateTask(player);
+
 				for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
 				{
 					HubStoredPlayer stored = HubStoredPlayer.get(otherPlayer);
-					
+
 					if (stored != null && stored.isHidePlayers())
 					{
 						otherPlayer.hidePlayer(player);
@@ -126,14 +136,14 @@ public class HubPlayer
 						otherPlayer.showPlayer(player);
 					}
 				}
-				
+
 				if (storedPlayer.isHidePlayers())
 				{
 					for (BadblockPlayer otherPlayer : BukkitUtils.getAllPlayers())
 					{
 						player.hidePlayer(otherPlayer);
 					}
-					
+
 					getPlayer().sendTranslatedMessage("hub.toggleplayers.alwaysenabled");
 					return;
 				}
@@ -156,6 +166,31 @@ public class HubPlayer
 				getPlayer().sendTranslatedMessage("hub.toggleplayers.youcandisableplayers");
 			}
 		});
+
+		if (ConfigLoader.getGameHub().isEnabled())
+		{
+			String realName = player.getRealName() != null && !player.getRealName().isEmpty() ? player.getRealName() : player.getName();
+			GameAPI.getAPI().getSqlDatabase().call("SELECT _points FROM " + ConfigLoader.getGameHub().getRankedGameName() + "_" + Hologram.getDate() +
+					" WHERE playerName = '" + realName + "'", SQLRequestType.QUERY, new Callback<ResultSet>()
+			{
+
+				@Override
+				public void done(ResultSet result, Throwable error)
+				{
+					try
+					{
+						if (result.next())
+						{
+							gamePoints = result.getLong("_points");
+						}
+					}
+					catch (Exception err)
+					{
+						err.printStackTrace();
+					}
+				}
+			});
+		}
 
 		return this;
 	}

@@ -6,6 +6,7 @@ import fr.badblock.bukkit.hub.v2.config.configs.FeaturesConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.GameHubConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.HatConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.HubLocationsConfig;
+import fr.badblock.bukkit.hub.v2.config.configs.JoinTitleConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.ShopConfig;
 import fr.badblock.bukkit.hub.v2.config.configs.SwitcherConfig;
 import fr.badblock.gameapi.BadblockPlugin;
@@ -23,6 +24,7 @@ public class ConfigLoader
 	@Getter @Setter public static HatConfig		hat;
 	@Getter @Setter public static SwitcherConfig		switchers;
 	@Getter @Setter public static GameHubConfig		gameHub;
+	@Getter @Setter public static JoinTitleConfig	joinTitle;
 
 	public static void load(BadblockPlugin plugin)
 	{
@@ -34,6 +36,7 @@ public class ConfigLoader
 		setHat(new HatConfig(plugin, "cosmetics_hats"));
 		setSwitchers(new SwitcherConfig(plugin, "switchers"));
 		setGameHub(new GameHubConfig(plugin, "gameHub"));
+		setJoinTitle(new JoinTitleConfig(plugin, "joinTitle"));
 	}
 
 }

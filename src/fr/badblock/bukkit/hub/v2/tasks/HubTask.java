@@ -1,18 +1,25 @@
 package fr.badblock.bukkit.hub.v2.tasks;
 
+import java.util.UUID;
+
+import org.bukkit.scheduler.BukkitTask;
+
 import fr.badblock.gameapi.utils.threading.TaskManager;
 
 public abstract class HubTask implements Runnable
 {
 
+	protected BukkitTask task;
+	
 	public HubTask(boolean sync, int delay, int repeat)
 	{
 		if (sync)
 		{
-			TaskManager.scheduleSyncRepeatingTask(getTaskName(), this, delay, repeat);
+			task = TaskManager.scheduleSyncRepeatingTask(getTaskName() + "-" + UUID.randomUUID(), this, delay, repeat);
 			return;
 		}
-		TaskManager.scheduleAsyncRepeatingTask(getTaskName(), this, delay, repeat);
+		
+		task = TaskManager.scheduleAsyncRepeatingTask(getTaskName() + "-" + UUID.randomUUID(), this, delay, repeat);
 	}
 
 	private String getTaskName()

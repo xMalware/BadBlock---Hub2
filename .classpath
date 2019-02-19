@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="B:/BadBlock/NoteBlockAPI-1.2.5.jar"/>
 	<classpathentry kind="lib" path="C:/Users/root/Downloads/GadgetsMenu.jar"/>
 	<classpathentry kind="lib" path="C:/Users/root/Downloads/ProtocolLib.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/GoogleAuth"/>
 	<classpathentry kind="output" path="out/production/HubV2"/>
 </classpath>

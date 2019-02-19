@@ -44,10 +44,10 @@ public class NPC
 	private boolean					staff;
 	private FakeLocation			location;
 	private List<String>			permissions;
-	private List<ArmorStand> armorStands;
 	private String						sentryQueue;
-	private ArmorStand			playerText;
 
+	private transient List<ArmorStand> armorStands;
+	private transient ArmorStand			playerText;
 	private transient FakeEntity<?>	fakeEntity;
 
 	public NPC(BasicDBObject dbObject)

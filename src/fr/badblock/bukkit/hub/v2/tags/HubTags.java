@@ -9,6 +9,7 @@ import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoins;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsMultiplier;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagBadcoinsNeeded;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGamePlayers;
+import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGamePoints;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupPrefix;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagGroupSuffix;
 import fr.badblock.bukkit.hub.v2.tags.custom.HubTagHideGameMessages;
@@ -77,7 +78,8 @@ public enum HubTags
 	HIDE_PLAYERS(new HubTagHidePlayers(), "{hide_players}"),
 	STATE_TFA(new HubTagStateTFA(), "{state_tfa}"),
 	STATE_MODE(new HubTagStateOnlineMode(), "{state_mode}"),
-	STAT(new HubTagStat(), "{stat}");
+	STAT(new HubTagStat(), "{stat}"),
+	GAME_POINTS(new HubTagGamePoints(), "{gamePoints}");
 	
 	@Setter private HubTag 			hubTag;
 	@Setter private List<String>	tags;
