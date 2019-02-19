@@ -23,7 +23,9 @@ public class ShootQuit implements Listener {
                 box.setTaken(false);
         }
 
-        if(ShootManager.getInstance().getShootPlayers().size() == 1){
+        ShootManager.getInstance().getShootPlayers().remove(player);
+
+        if(ShootManager.getInstance().getShootPlayers().size() <= 1){
             ShootManager.getInstance().getShootPlayers().forEach((p, shootPlayer1) -> {
                 p.sendMessage(ShootManager.SHOOT_PREFIX + "§cVous gagnez la partie !");
                 p.playSound(p.getLocation(), Sound.LEVEL_UP, 2, 1);
