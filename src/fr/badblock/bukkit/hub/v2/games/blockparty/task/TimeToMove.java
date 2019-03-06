@@ -30,7 +30,7 @@ public class TimeToMove extends BukkitRunnable {
         this.cancel();
     }
 
-    static List<Block> getWool() {
+    public static List<Block> getWool() {
         return wool;
     }
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -39,6 +40,11 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class CourseInteract implements Listener {
 
     static CourseGameRunnable runnable;
+    private int i;
+
+    public CourseInteract() {
+        i = GamesManager.TIME_TO_START;
+    }
 
 	@EventHandler
     public void onInteract(PlayerInteractEvent event) {
@@ -64,15 +70,15 @@ public class CourseInteract implements Listener {
                 List<BadblockPlayer> waitingPlayers = CourseManager.getInstance().getWaitingPlayers();
 
                 if (!waitingPlayers.contains(player)) {
-
                     if(CourseManager.getInstance().getDoorsToEnter().get(block.getLocation())){
                         player.sendMessage("§cUn joueur est déjà présent dans cet endroit");
                         return;
                     }
 
                     waitingPlayers.add(player);
-                    player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu as rejoins la partie.");
-                    CourseManager.getInstance().getDoorsToEnter().replace(block.getLocation(), true);
+                    player.sendMessage(CourseManager.COURSE_PREFIX + "§bTu as rejoint la partie.");
+                    player.setFlying(false);
+                    player.setAllowFlight(false);
                     FeatureUtils.removeAllFeatures(player);
 
                     int pos = 0;
@@ -86,16 +92,16 @@ public class CourseInteract implements Listener {
                     player.teleport(CourseManager.getInstance().getWaitingPos().get(pos));
 
                     if (waitingPlayers.size() >= CourseManager.MIN_PLAYER) {
-                        player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
+                        player.sendMessage(CourseManager.COURSE_PREFIX + "§cLa partie va commencer ! Patientez "+i+"sec...");
 
                         CourseMove.closeDoors();
 
                         if(!GameState.STARTING.equals(CourseManager.getInstance().getState())){
+                            i = GamesManager.TIME_TO_START;
                             CourseManager.getInstance().setState(GameState.STARTING);
 
                             new BukkitRunnable() {
 
-                                int i = 60;
                                 List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
                                 @Override
@@ -115,7 +121,7 @@ public class CourseInteract implements Listener {
                                             if(timeToTick.contains(i)){
                                                 p.sendTitle("", "§c" + i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
-                                                p.sendMessage(CourseManager.COURSE_PREFIX+"La partie commence dans §c"+i);
+                                                p.sendMessage(CourseManager.COURSE_PREFIX+ "La partie commence dans §c" + i+ " §8secondes");
                                             }
                                         } else {
                                             if (waitingPlayers.size() < CourseManager.MIN_PLAYER) {
@@ -147,8 +153,11 @@ public class CourseInteract implements Listener {
                                         runnable.runTaskTimerAsynchronously(BadBlockHub.getInstance(), 0, 20);
                                     }
 
-                                    if (i <= 0)
+                                    if (i <= 0){
+                                        i = GamesManager.TIME_TO_START;
                                         cancel();
+                                        return;
+                                    }
 
                                     i--;
                                 }
@@ -176,9 +185,8 @@ public class CourseInteract implements Listener {
 
                 } else {
                     waitingPlayers.remove(player);
-                    player.performCommand("spawn");
+                    player.teleport(CourseManager.getInstance().getTeleportPoint());
                     player.sendMessage(CourseManager.COURSE_PREFIX + "§cTu viens de quitter la partie !");
-                    CourseManager.getInstance().getDoorsToEnter().put(block.getLocation(), false);
                 }
             } else if (CourseManager.getInstance().getDoorsToStart().stream().anyMatch(location -> block.getLocation().equals(location))) {
                 event.setCancelled(true);

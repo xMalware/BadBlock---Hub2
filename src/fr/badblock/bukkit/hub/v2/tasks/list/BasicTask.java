@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.tasks.list;
 
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
@@ -27,9 +28,11 @@ public class BasicTask extends HubTask
 			float xp = (float) player.getPlayerData().getXp();
 			
 			float progress = xp / nextXp;
-					
-			player.setLevel(player.getPlayerData().getLevel());
-			player.setExp(progress);
+
+			if(!FeatureUtils.isInAGame(player)){
+				player.setLevel(player.getPlayerData().getLevel());
+				player.setExp(progress);
+			}
 		});
 	}
 

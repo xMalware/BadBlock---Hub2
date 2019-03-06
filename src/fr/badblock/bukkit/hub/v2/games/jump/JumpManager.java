@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.badblock.bukkit.hub.v2.games.jump.events.JumpCommand;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -26,7 +28,7 @@ public class JumpManager extends AbstractGameModule {
     private static JumpManager instance;
     public static final String JUMP_PREFIX = "§8[§6Jump§8] ";
     @Getter
-    private Map<Player, JumpPlayer> jumpPlayers;
+    private Map<BadblockPlayer, JumpPlayer> jumpPlayers;
     @Getter
     private List<Location> checkpoint;
     @Getter
@@ -44,6 +46,7 @@ public class JumpManager extends AbstractGameModule {
         PluginManager pm = Bukkit.getServer().getPluginManager();
 
         pm.registerEvents(new JumpMove(), BadBlockHub.getInstance());
+        pm.registerEvents(new JumpCommand(), BadBlockHub.getInstance());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.games.course.events;
 
+import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -44,7 +45,7 @@ public class CourseMove implements Listener {
                     if (CourseManager.getInstance().getWinnersPlayersP().size() == CourseManager.getInstance().getWaitingPlayers().size()) {
                         CourseManager.getInstance().getWaitingPlayers().forEach(player1 -> {
                             player1.sendMessage(CourseManager.COURSE_PREFIX + "§cTout le monde a fini le parcours ! Bravo !");
-                            player1.performCommand("spawn");
+                            player1.teleport(CourseManager.getInstance().getTeleportPoint());
                         });
 
                         closeDoors();

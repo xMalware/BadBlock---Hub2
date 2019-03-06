@@ -1,11 +1,13 @@
 package fr.badblock.bukkit.hub.v2.games.course.events;
 
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
-import org.bukkit.GameMode;
-import org.bukkit.entity.Player;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Toinetoine1 on 14/01/2019.
@@ -13,14 +15,16 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 public class CourseCommand implements Listener {
 
     @EventHandler
-    public void onCommand(PlayerCommandPreprocessEvent e) {
-        Player p = e.getPlayer();
-        if (CourseManager.getInstance().getWaitingPlayers().contains(p)) {
-            if (p.getGameMode() == GameMode.CREATIVE || p.hasPermission("lobbygames.bypass")) {
-                return;
+    public void onCommand(PlayerCommandPreprocessEvent event) {
+        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+
+        if(CourseManager.getInstance().getWaitingPlayers().contains(player)){
+            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub","/lobby","/spawn"));
+            if(cmds.contains(event.getMessage())){
+                CourseManager.getInstance().getWaitingPlayers().remove(player);
+                CourseManager.getInstance().getWinnersPlayersP().remove(player);
+                player.sendMessage(CourseManager.COURSE_PREFIX + "§cTu viens de quitter la partie !");
             }
-            e.setCancelled(true);
-            p.sendMessage(CourseManager.COURSE_PREFIX + "§cTu ne peux pas exécuter une commande en partie.");
         }
     }
 

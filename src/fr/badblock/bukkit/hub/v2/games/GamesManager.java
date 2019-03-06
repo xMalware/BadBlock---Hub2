@@ -8,14 +8,21 @@ import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.games.utils.AbstractGameModule;
 import fr.badblock.bukkit.hub.v2.games.utils.config.GameConfigManager;
+import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import fr.badblock.gameapi.BadblockPlugin;
+import fr.badblock.gameapi.players.BadblockPlayer;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GamesManager {
+public class GamesManager implements Listener {
 
     private static List<AbstractGameModule> modules = new ArrayList<>();
+    public static final int TIME_TO_START = 30;
 
     public static void load(BadblockPlugin plugin) {
         new GameConfigManager();
@@ -34,5 +41,17 @@ public class GamesManager {
             module.registerBukkitListener();
             module.registerCommands();
         });
+
+        plugin.getServer().getPluginManager().registerEvents(new GamesManager(), plugin);
+    }
+
+    @EventHandler
+    public void onFlyExecute(PlayerCommandPreprocessEvent event){
+        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+        String message = event.getMessage();
+
+        if(FeatureUtils.isInAGame(player) && message.contains("/fly")){
+            event.setCancelled(true);
+        }
     }
 }

@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.course.events;
 
 import fr.badblock.bukkit.hub.v2.games.course.CourseManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import fr.badblock.gameapi.players.BadblockPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +17,7 @@ public class CourseQuit implements Listener {
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
+        BadblockPlayer player = (BadblockPlayer) e.getPlayer();
 
         CourseManager.getInstance().getWaitingPlayers().remove(player);
         CourseManager.getInstance().getWinnersPlayersP().remove(player);

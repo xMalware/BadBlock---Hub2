@@ -2,6 +2,8 @@ package fr.badblock.bukkit.hub.v2.games.blockparty;
 
 import java.util.HashMap;
 
+import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyCommand;
+import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyQuit;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -51,6 +53,8 @@ public class BlockPartyManager extends AbstractGameModule {
 
         pm.registerEvents(new PartyInteract(), BadBlockHub.getInstance());
         pm.registerEvents(new PartyMove(), BadBlockHub.getInstance());
+        pm.registerEvents(new PartyCommand(), BadBlockHub.getInstance());
+        pm.registerEvents(new PartyQuit(), BadBlockHub.getInstance());
     }
 
     @Override
