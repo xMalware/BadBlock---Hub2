@@ -1,12 +1,16 @@
 package fr.badblock.bukkit.hub.v2.tasks.list;
 
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
 
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
+import fr.badblock.bukkit.hub.v2.instances.hubs.Hub;
 import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.GameAPI;
+import fr.badblock.gameapi.game.GameState;
 import fr.badblock.gameapi.utils.BukkitUtils;
 
 public class RebootTask extends HubTask
@@ -39,15 +43,32 @@ public class RebootTask extends HubTask
 				return;
 			}
 			
-			BukkitUtils.getAllPlayers().forEach(player -> player.sendPlayer("lobby"));
+			String lobbyName = "lobby";
+			
+			List<Hub> h = Hub.getHubs().stream().filter(hub -> hub.getHubName().equals(Bukkit.getServerName())).collect(Collectors.toList());
+			
+			if (h != null && !h.isEmpty())
+			{
+				Hub hub = h.get(new Random().nextInt(h.size()));
+				
+				if (hub != null)
+				{
+					lobbyName = hub.getHubName();
+				}
+			}
+			
+			final String lName = lobbyName;
+			
+			BukkitUtils.getAllPlayers().forEach(player -> player.sendPlayer(lName));
 		}
 		
 		if (reboot == 60)
 		{
-			GameAPI.setJoinable(false);
+			GameAPI.getAPI().setShouldBeRemovedFromDocker(true);
+			GameAPI.getAPI().getGameServer().setGameState(GameState.STOPPING);
 		}
 
-		if (reboot <= 60 && (reboot % 10 == 0 || reboot <= 5))
+		if (reboot > 0 && reboot <= 60 && (reboot % 10 == 0 || reboot <= 5))
 		{
 			BukkitUtils.getAllPlayers().forEach(player -> player.sendTranslatedMessage("hub.reboot", reboot, (reboot > 1 ? "s" : "")));
 		}

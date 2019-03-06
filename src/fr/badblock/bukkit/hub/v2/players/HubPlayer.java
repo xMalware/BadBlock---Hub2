@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
@@ -22,6 +23,7 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.npc.Hologram;
 import fr.badblock.bukkit.hub.v2.players.addons.HubScoreboard;
 import fr.badblock.bukkit.hub.v2.tasks.JoinTitleUpdateTask;
+import fr.badblock.bukkit.hub.v2.utils.FNPC;
 import fr.badblock.bukkit.hub.v2.utils.effects.Effect;
 import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.databases.SQLRequestType;
@@ -34,6 +36,11 @@ import fr.badblock.gameapi.utils.general.Callback;
 import fr.badblock.gameapi.utils.threading.TempScheduler;
 import lombok.Data;
 import lombok.Getter;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityHeadRotation;
+import net.minecraft.server.v1_8_R3.PacketPlayOutNamedEntitySpawn;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerInfo;
+import net.minecraft.server.v1_8_R3.PlayerConnection;
 
 @Data
 public class HubPlayer
@@ -214,6 +221,35 @@ public class HubPlayer
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
 		setScoreboard(new HubScoreboard(getPlayer()));
+
+		Bukkit.getScheduler().runTaskLater(BadBlockHub.getInstance(), new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				for (FNPC npc : FNPC.npcs.values())
+				{
+					PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
+					connection.sendPacket(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER,
+							new EntityPlayer[] { npc.npc }));
+					connection.sendPacket(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.UPDATE_LATENCY,
+							new EntityPlayer[] { npc.npc }));
+					connection.sendPacket(new PacketPlayOutNamedEntitySpawn(npc.npc));
+					connection.sendPacket(new PacketPlayOutEntityHeadRotation(npc.npc, (byte) ((npc.getLocation().getYaw() * 256.0F) / 360.0F)));
+					
+					Bukkit.getScheduler().runTaskLater(BadBlockHub.getInstance(), new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							connection.sendPacket(new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER,
+									new EntityPlayer[] { npc.npc }));
+						}
+					}, 1);
+				}
+			}
+		}, 40);
+
 		return this;
 	}
 

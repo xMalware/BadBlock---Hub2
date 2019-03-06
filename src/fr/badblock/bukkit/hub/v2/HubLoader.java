@@ -21,6 +21,7 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.listeners.HubMapProtector;
 import fr.badblock.bukkit.hub.v2.listeners.ListenerPackages;
+import fr.badblock.bukkit.hub.v2.listeners.packets.UseEntityPacketListener;
 import fr.badblock.bukkit.hub.v2.npc.NPC;
 import fr.badblock.bukkit.hub.v2.rabbit.SEntryInfosListener;
 import fr.badblock.bukkit.hub.v2.tasks.HubTaskLoader;
@@ -93,6 +94,7 @@ public class HubLoader {
 		{
 			try
 			{
+				new UseEntityPacketListener();
 				String data = FileUtils.readFile(new File(plugin.getDataFolder(), "npc.json"));
 				List<NPC> npc = GameAPI.getGson().fromJson(data, npcType);
 				for (NPC n : npc)
