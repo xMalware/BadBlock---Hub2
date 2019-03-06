@@ -1,6 +1,7 @@
 package fr.badblock.bukkit.hub.v2.games.blockparty.events;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
+import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import fr.badblock.bukkit.hub.v2.games.blockparty.BlockPartyManager;
 import fr.badblock.bukkit.hub.v2.games.blockparty.task.MainTask;
 import fr.badblock.bukkit.hub.v2.games.blockparty.task.TimeToMove;
@@ -62,7 +63,7 @@ public class PartyCommand implements Listener {
     }
 
     static void checkWin(Player player) {
-        if (BlockPartyManager.getInstance().getBlockPlayers().values().stream().anyMatch(b -> !b.isDead())) {
+        if (BlockPartyManager.getInstance().getGameState() == GameState.INGAME && BlockPartyManager.getInstance().getBlockPlayers().values().stream().anyMatch(b -> !b.isDead())) {
             BlockPartyManager.getInstance().getBlockPlayers().forEach((player1, blockPlayer) -> {
                 player1.sendMessage(BlockPartyManager.BLOCK_PREFIX + "Le joueur " +
                         BlockPartyManager.getInstance().getBlockPlayers().values().stream().filter(b -> !b.isDead()).findFirst().get().getPlayer().getName() +

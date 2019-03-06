@@ -27,7 +27,7 @@ public class SpleefQuit implements Listener {
 
         List<SpleefPlayer> playersAlive = SpleefManager.getInstance().getSpleefPlayers().values().stream().filter(spleefPlayer -> !spleefPlayer.isDead()).collect(Collectors.toList());
 
-        if (playersAlive.size() <= 1) {
+        if (playersAlive.size() <= 1 && SpleefManager.getInstance().getGameState() == GameState.INGAME) {
             SpleefManager.getInstance().getSpleefPlayers().forEach((p, spleefPlayer) -> {
                 p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cUn joueur s'est déconnecté !");
                 spleefPlayer.getCustomInv().restoreInventory(p);

@@ -34,6 +34,7 @@ public class SpleefShoot implements Listener {
                     Block block = blockloc.getBlock();
                     block.setTypeIdAndData(hitBlock.getTypeId(), hitBlock.getData(), true);
                 } else if (hitBlock.getType() == Material.SNOW_BLOCK) {
+                    SpleefBreak.addBlock(hitBlock.getLocation());
                     break;
                 }
             }
@@ -43,7 +44,6 @@ public class SpleefShoot implements Listener {
             blockloc.setY(blockloc.getY() + 0.5D);
             blockloc.setZ(blockloc.getZ() + 0.5D);
             hitBlock.setType(Material.AIR);
-            SpleefBreak.addBlock(hitBlock.getLocation());
         }
     }
 

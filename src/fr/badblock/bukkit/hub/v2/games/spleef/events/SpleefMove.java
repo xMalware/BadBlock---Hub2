@@ -74,7 +74,7 @@ public class SpleefMove implements Listener {
 
                     SpleefManager.getInstance().getSpleefPlayers().get(player).getCustomInv().storeAndClearInventory(player);
 
-                    ItemStack shovel = new ItemBuilder(Material.DIAMOND_SPADE).setName("§cPelle (Clique droit pour lancer une boule de neige").setUnbreakable(true).toItemStack();
+                    ItemStack shovel = new ItemBuilder(Material.DIAMOND_SPADE).setName("§cPelle (Clique droit pour lancer une boule de neige)").setUnbreakable(true).toItemStack();
                     player.getInventory().setItem(4, shovel);
 
                     if (SpleefManager.getInstance().getSpleefPlayers().size() >= SpleefManager.MIN_PLAYER) {
