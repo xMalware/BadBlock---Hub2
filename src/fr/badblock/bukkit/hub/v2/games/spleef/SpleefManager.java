@@ -60,6 +60,8 @@ public class SpleefManager extends AbstractGameModule {
         pm.registerEvents(new SpleefQuit(), instance);
         pm.registerEvents(new SpleefMove(cuboid_loc1, cuboid_loc2), instance);
         pm.registerEvents(new SpleefCommand(), instance);
+        pm.registerEvents(new SpleefShoot(), instance);
+        pm.registerEvents(new SpleefInteract(), instance);
     }
 
     @Override

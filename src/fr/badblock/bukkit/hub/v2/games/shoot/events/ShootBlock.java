@@ -4,6 +4,7 @@ import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.games.shoot.ShootManager;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
+import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -66,7 +67,7 @@ public class ShootBlock implements Listener {
                                                 p.sendMessage(ShootManager.SHOOT_PREFIX + "§cLe joueur " + player.getName() + " gagne le tir à l'arc !");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 2, 1);
                                             shootPlayer1.getCustomPlayerInventory().restoreInventory(p);
-                                            p.performCommand("spawn");
+                                            p.teleport(ShootManager.getInstance().getTeleportPoint());
                                         });
 
                                         ShootManager.getInstance().getBoxes().forEach(box -> box.setTaken(false));

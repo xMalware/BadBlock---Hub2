@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import fr.badblock.api.common.utils.flags.GlobalFlags;
+import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -38,9 +39,12 @@ import net.md_5.bungee.api.chat.TextComponent;
 public class SpleefMove implements Listener {
 
     private CuboidSelection selection;
+    int i;
+
 
     public SpleefMove(Location loc1, Location loc2) {
         selection = new CuboidSelection(loc1, loc2);
+        i = GamesManager.TIME_TO_START;
     }
 
     @EventHandler
@@ -59,6 +63,8 @@ public class SpleefMove implements Listener {
                     SpleefManager.getInstance().getSpleefPlayers().put(player, new SpleefPlayer(player.getName(), player.getGameMode() == GameMode.CREATIVE));
                     player.sendMessage(SpleefManager.SPLEEF_PREFIX + "Vous rejoignez le Spleef !");
                     player.setGameMode(GameMode.ADVENTURE);
+                    player.setFlying(false);
+                    player.setAllowFlight(false);
                     FeatureUtils.removeAllFeatures(player);
 
                     TextComponent quitComponent = new TextComponent(SpleefManager.SPLEEF_PREFIX + "§c[Quitter le Spleef]");
@@ -68,21 +74,20 @@ public class SpleefMove implements Listener {
 
                     SpleefManager.getInstance().getSpleefPlayers().get(player).getCustomInv().storeAndClearInventory(player);
 
-                    ItemStack shovel = new ItemBuilder(Material.DIAMOND_SPADE).setUnbreakable(true).toItemStack();
+                    ItemStack shovel = new ItemBuilder(Material.DIAMOND_SPADE).setName("§cPelle (Clique droit pour lancer une boule de neige").setUnbreakable(true).toItemStack();
                     player.getInventory().setItem(4, shovel);
 
                     if (SpleefManager.getInstance().getSpleefPlayers().size() >= SpleefManager.MIN_PLAYER) {
-                        player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
+                        player.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLa partie va commencer ! Patientez "+i+"sec...");
 
                         if (!GameState.STARTING.equals(SpleefManager.getInstance().getGameState())) {
+                            i = GamesManager.TIME_TO_START;
                             SpleefManager.getInstance().setGameState(GameState.STARTING);
 
                             new BukkitRunnable() {
 
-                                int i = 60;
                                 List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
-                                @SuppressWarnings("deprecation")
                                 @Override
                                 public void run() {
                                     if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
@@ -102,7 +107,7 @@ public class SpleefMove implements Listener {
                                             if (timeToTick.contains(i)) {
                                                 p.sendTitle("", "§c" + i);
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
-                                                p.sendMessage(SpleefManager.SPLEEF_PREFIX + "La partie commence dans §c" + i);
+                                                p.sendMessage(SpleefManager.SPLEEF_PREFIX + "La partie commence dans §c" + i+ " §8secondes");
                                             }
                                         } else {
                                             if (SpleefManager.getInstance().getSpleefPlayers().size() < SpleefManager.MIN_PLAYER) {
@@ -123,8 +128,11 @@ public class SpleefMove implements Listener {
 
                                     });
 
-                                    if (i <= 0)
+                                    if (i <= 0){
+                                        i = GamesManager.TIME_TO_START;
                                         cancel();
+                                        return;
+                                    }
 
                                     i--;
                                 }
@@ -159,7 +167,7 @@ public class SpleefMove implements Listener {
 
         } else if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player) && player.getLocation().getBlock().getType() == Material.STATIONARY_WATER && GameState.INGAME.equals(SpleefManager.getInstance().getGameState()) && !SpleefManager.getInstance().getSpleefPlayers().get(player).isDead()) {
             SpleefManager.getInstance().getSpleefPlayers().get(player).setDead(true);
-            player.sendMessage("§cVous êtes éliminés !");
+            player.sendMessage("§cVous êtes éliminé !");
             player.setGameMode(GameMode.ADVENTURE);
             List<SpleefPlayer> playersAlive = SpleefManager.getInstance().getSpleefPlayers().values().stream().filter(spleefPlayer -> !spleefPlayer.isDead()).collect(Collectors.toList());
 
@@ -167,7 +175,7 @@ public class SpleefMove implements Listener {
                 SpleefManager.getInstance().getSpleefPlayers().forEach((p, spleefPlayer) -> {
                     p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cLe joueur " + playersAlive.get(0).getPlayerName() + " gagne le Spleef !");
                     spleefPlayer.getCustomInv().restoreInventory(p);
-                    p.performCommand("spawn");
+                    p.teleport(SpleefManager.getInstance().getTeleportPoint());
                     p.setGameMode(GameMode.ADVENTURE);
                 });
 

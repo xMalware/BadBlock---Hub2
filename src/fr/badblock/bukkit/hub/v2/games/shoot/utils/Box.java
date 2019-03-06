@@ -56,6 +56,7 @@ public class Box {
 
     public void restoreBlocks() {
         blocksChanged.forEach(location -> location.getWorld().getBlockAt(location).setType(Material.AIR));
+        blocksChanged.clear();
     }
 
     public int removeBlock(){

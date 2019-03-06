@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import fr.badblock.api.common.utils.flags.GlobalFlags;
+import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -36,8 +35,23 @@ import net.md_5.bungee.api.chat.TextComponent;
  */
 public class ShootInteract implements Listener {
 
+    private int i;
+
+    public ShootInteract() {
+        i = GamesManager.TIME_TO_START;
+    }
+
     @EventHandler
-    public void onInteract(PlayerInteractAtEntityEvent event){
+    public void onInteract(PlayerInteractEvent event){
+        BadblockPlayer player = (BadblockPlayer) event.getPlayer();
+
+        if(ShootManager.getInstance().getShootPlayers().containsKey(player) && ShootManager.getInstance().getGameState() != GameState.INGAME){
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onInteractAtEntity(PlayerInteractAtEntityEvent event){
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         Entity entity = event.getRightClicked();
 
@@ -60,8 +74,8 @@ public class ShootInteract implements Listener {
                 Map<BadblockPlayer, ShootPlayer> players = ShootManager.getInstance().getShootPlayers();
 
                 if (!players.containsKey(player)) {
-                    players.put((BadblockPlayer) player, new ShootPlayer(player, false));
-                    player.sendMessage(ShootManager.SHOOT_PREFIX + "§bTu as rejoins la partie.");
+                    players.put(player, new ShootPlayer(player, false));
+                    player.sendMessage(ShootManager.SHOOT_PREFIX + "§bTu as rejoint la partie.");
                     FeatureUtils.removeAllFeatures(player);
 
                     ShootPlayer shootPlayer = players.get(player);
@@ -81,14 +95,13 @@ public class ShootInteract implements Listener {
                     if (players.size() >= ShootManager.MIN_PLAYER) {
                         player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
 
-
                         if(!GameState.STARTING.equals(ShootManager.getInstance().getGameState())){
                             ShootManager.getInstance().setGameState(GameState.STARTING);
+                            i = GamesManager.TIME_TO_START;
 
                             new BukkitRunnable() {
 
-                                int i = 60;
-                                List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
+                                List<Integer> timeToTick = new ArrayList<>(Arrays.asList(30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
                                 @Override
                                 public void run() {
@@ -107,14 +120,16 @@ public class ShootInteract implements Listener {
                                             p.setLevel(i);
                                             if(timeToTick.contains(i)){
                                                 p.sendTitle("", "§c" + i);
-                                                p.sendMessage(ShootManager.SHOOT_PREFIX+"La partie commence dans §c"+i);
+                                                p.sendMessage(ShootManager.SHOOT_PREFIX+ "La partie commence dans §c" + i+ " §8secondes");
                                                 p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
                                             }
                                         } else {
 
                                             p.sendTitle("", "");
                                             p.playSound(p.getLocation(), Sound.LEVEL_UP, 1F, 1F);
-                                            p.teleport(shootPlayer1.getBox().getParticle());
+                                            Location location = shootPlayer1.getBox().getParticle();
+                                            location.setYaw(180);
+                                            p.teleport(location);
                                             p.sendMessage(ShootManager.SHOOT_PREFIX+"§cLa partie commence !");
                                             ShootManager.getInstance().setGameState(GameState.INGAME);
                                             shootPlayer1.getBox().spawnRandomBlocks();
@@ -124,8 +139,11 @@ public class ShootInteract implements Listener {
 
                                     });
 
-                                    if (i <= 0)
+                                    if (i <= 0){
+                                        i = GamesManager.TIME_TO_START;
                                         cancel();
+                                        return;
+                                    }
 
                                     i--;
                                 }
@@ -155,7 +173,7 @@ public class ShootInteract implements Listener {
                 } else {
                     players.get(player).getCustomPlayerInventory().restoreInventory(player);
                     players.remove(player);
-                    player.performCommand("spawn");
+                    player.teleport(ShootManager.getInstance().getTeleportPoint());
                     player.sendMessage(ShootManager.SHOOT_PREFIX + "§cTu viens de quitter la partie !");
                 }
             }

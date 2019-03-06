@@ -2,6 +2,7 @@ package fr.badblock.bukkit.hub.v2.games.jump.events;
 
 import fr.badblock.bukkit.hub.v2.utils.FeatureUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -26,7 +27,7 @@ public class JumpMove implements Listener {
                 jumpPlayer.removeLife();
                 if(jumpPlayer.getLife() == 0){
                     player.sendMessage(JumpManager.JUMP_PREFIX + "Vous n'avez plus de vie ! Retente ta chance ;)");
-                    player.performCommand("spawn");
+                    player.teleport(JumpManager.getInstance().getTeleportPoint());
                     if(player.hasPermission("hub.fly"))
                         player.setAllowFlight(true);
                     JumpManager.getInstance().getJumpPlayers().remove(player);
@@ -34,7 +35,7 @@ public class JumpMove implements Listener {
                     player.sendMessage(JumpManager.JUMP_PREFIX + "Vous êtes tombé ! Il vous reste §c"+jumpPlayer.getLife()+" "+(jumpPlayer.getLife() == 1 ? "vie" : "vies")+" !");
                     player.teleport(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint()));
                 }
-            } else if (JumpManager.getInstance().getCheckpoint().size() == jumpPlayer.getCheckpoint() + 1) {
+            } else if (JumpManager.getInstance().getCheckpoint().size() == jumpPlayer.getCheckpoint()) {
                 Bukkit.broadcastMessage(JumpManager.JUMP_PREFIX + "§cBravo à " + player.getName() + " qui a réussi le Jump !");
                 JumpManager.getInstance().getJumpPlayers().remove(player);
                 if(player.hasPermission("hub.fly"))
@@ -42,6 +43,15 @@ public class JumpMove implements Listener {
             } else if (player.getLocation().distance(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint() + 1)) <= 1 && !JumpManager.getInstance().getCheckpoint().isEmpty()) {
                 jumpPlayer.setCheckpoint(jumpPlayer.getCheckpoint() + 1);
                 jumpPlayer.getBukkitPlayer().sendMessage(JumpManager.JUMP_PREFIX + "Bravo, vous avez passé le checkpoint n°" + jumpPlayer.getCheckpoint());
+            } else if(JumpManager.getInstance().getCheckpoint().stream()
+                    .filter(location -> {
+                        int current = JumpManager.getInstance().getCheckpoint().indexOf(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint()));
+                        int loop = JumpManager.getInstance().getCheckpoint().indexOf(location);
+                        return current < loop;
+                    })
+                    .anyMatch(location -> player.getLocation().distance(location) <= 1)){
+                player.sendMessage(JumpManager.JUMP_PREFIX+"Vous avez oublié un checkpoint !");
+                player.teleport(JumpManager.getInstance().getCheckpoint().get(jumpPlayer.getCheckpoint()));
             }
 
         } else {

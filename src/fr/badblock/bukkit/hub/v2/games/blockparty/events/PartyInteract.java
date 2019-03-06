@@ -1,13 +1,12 @@
 package fr.badblock.bukkit.hub.v2.games.blockparty.events;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import fr.badblock.bukkit.hub.v2.games.GamesManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -37,16 +36,19 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class PartyInteract implements Listener {
 
-    private Map<Player, Timestamp> time = new HashMap<>();
+    private int i;
 
-    @SuppressWarnings("deprecation")
-	@EventHandler
-    public void onInteract(PlayerInteractEvent event){
+    public PartyInteract() {
+        i = GamesManager.TIME_TO_START;
+    }
+
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
         Action action = event.getAction();
         Block block = event.getClickedBlock();
 
-        if(action == Action.RIGHT_CLICK_BLOCK && block.getType() == Material.DARK_OAK_FENCE_GATE && BlockPartyManager.getInstance().getGate().equals(block.getLocation())){
+        if (action == Action.RIGHT_CLICK_BLOCK && block.getType() == Material.DARK_OAK_FENCE_GATE && BlockPartyManager.getInstance().getGate().equals(block.getLocation())) {
             event.setCancelled(true);
 
             if (GameState.INGAME.equals(BlockPartyManager.getInstance().getGameState())) {
@@ -54,45 +56,32 @@ public class PartyInteract implements Listener {
                 return;
             }
 
-            if(JumpManager.getInstance().getJumpPlayers().containsKey(player))
-            {
-            	JumpManager.getInstance().getJumpPlayers().remove(player);
+            if (JumpManager.getInstance().getJumpPlayers().containsKey(player)) {
+                JumpManager.getInstance().getJumpPlayers().remove(player);
                 player.sendMessage(JumpManager.JUMP_PREFIX + "§cVous avez quitté le jump.");
                 return;
             }
 
-             Map<Player, BlockPlayer> waitingPlayers = BlockPartyManager.getInstance().getBlockPlayers();
+            Map<Player, BlockPlayer> waitingPlayers = BlockPartyManager.getInstance().getBlockPlayers();
 
             if (!waitingPlayers.containsKey(player)) {
-                Timestamp ts = new Timestamp(System.currentTimeMillis());
-
-                if(time.containsKey(player) && time.get(player).after(ts)){
-                    player.sendMessage("§cTu dois attendre 30 secondes avant de pouvoir revenir à nouveau.");
-                    return;
-                }
-
                 waitingPlayers.put(player, new BlockPlayer(player, false));
-                player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu as rejoins la partie.");
+                player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§bTu as rejoint la partie.");
                 FeatureUtils.removeAllFeatures(player);
                 player.setAllowFlight(false);
                 player.setFlying(false);
 
-                // TODO REWRITE THIS! I'LL SHAKE!
-                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-                timestamp.setSeconds(timestamp.getSeconds() + 30);
-                time.put(player, timestamp);
-
                 player.teleport(BlockPartyManager.getInstance().getTeleport());
 
                 if (waitingPlayers.size() >= BlockPartyManager.MIN_PLAYER) {
-                    player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
-                    
-                    if(!GameState.STARTING.equals(BlockPartyManager.getInstance().getGameState())){
+                    player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cLa partie va commencer ! Patientez " + i + "sec...");
+
+                    if (!GameState.STARTING.equals(BlockPartyManager.getInstance().getGameState())) {
+                        i = GamesManager.TIME_TO_START;
                         BlockPartyManager.getInstance().setGameState(GameState.STARTING);
 
                         new BukkitRunnable() {
 
-                            int i = 10;
                             List<Integer> timeToTick = new ArrayList<>(Arrays.asList(60, 30, 15, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
 
                             @Override
@@ -109,7 +98,7 @@ public class PartyInteract implements Listener {
                                         p.setLevel(i);
                                         if (timeToTick.contains(i)) {
                                             player.sendTitle("", "§c" + i);
-                                            p.sendMessage(BlockPartyManager.BLOCK_PREFIX+"La partie commence dans §c"+i);
+                                            p.sendMessage(BlockPartyManager.BLOCK_PREFIX + "La partie commence dans §c" + i+ " §8secondes");
                                             p.playSound(p.getLocation(), Sound.NOTE_PIANO, 1F, 1F);
                                         }
                                     } else {
@@ -121,7 +110,7 @@ public class PartyInteract implements Listener {
                                         }
 
                                         player.sendTitle("", "");
-                                        player.sendMessage(BlockPartyManager.BLOCK_PREFIX+"La partie commence !");
+                                        player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "La partie commence !");
                                         BlockPartyManager.getInstance().setGameState(GameState.INGAME);
 
                                         RadioSongPlayer radioSongPlayer = blockPlayer.getRadioSongPlayer();
@@ -134,12 +123,15 @@ public class PartyInteract implements Listener {
                                     }
 
                                 });
-                                if(i == 0){
+                                if (i == 0) {
                                     new MainTask().runTaskLater(BadBlockHub.getInstance(), (new Random().nextInt(7) + 3) * 20);
                                 }
 
-                                if (i <= 0)
+                                if (i <= 0){
+                                    i = GamesManager.TIME_TO_START;
                                     cancel();
+                                    return;
+                                }
 
                                 i--;
                             }
@@ -149,7 +141,7 @@ public class PartyInteract implements Listener {
                 } else {
                     String key = "Blockparty";
 
-                    if(GlobalFlags.has(key))
+                    if (GlobalFlags.has(key))
                         return;
 
                     GlobalFlags.set(key, 60000);
@@ -166,7 +158,7 @@ public class PartyInteract implements Listener {
 
             } else {
                 waitingPlayers.remove(player);
-                player.performCommand("spawn");
+                player.teleport(BlockPartyManager.getInstance().getTeleportPoint());
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cTu viens de quitter la partie !");
             }
 
