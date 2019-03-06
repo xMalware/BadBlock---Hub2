@@ -17,7 +17,7 @@ public class BasicTask extends HubTask
 
 	@Override
 	public void run()
-	{
+	{	
 		for (World world : Bukkit.getWorlds())
 		{
 			world.setTime(1200);

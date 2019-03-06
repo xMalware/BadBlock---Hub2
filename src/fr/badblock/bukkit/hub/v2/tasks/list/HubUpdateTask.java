@@ -8,6 +8,7 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import fr.badblock.api.common.utils.permissions.PermissionsManager;
+import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
 import fr.badblock.bukkit.hub.v2.instances.hubs.HubAliveFactory;
 import fr.badblock.bukkit.hub.v2.tasks.HubTask;
 import fr.badblock.gameapi.GameAPI;
@@ -28,11 +29,21 @@ public class HubUpdateTask extends HubTask
 	@Override
 	public void run()
 	{
+		if (ConfigLoader.getGameHub().isEnabled())
+		{
+			return;
+		}
+		
 		sendPacket();
 	}
 
 	public void sendPacket()
 	{
+		if (ConfigLoader.getGameHub().isEnabled())
+		{
+			return;
+		}
+		
 		Map<String, Integer> ranks = new HashMap<>();
 		id = 0;
 		Map<String, String> order = new HashMap<>();

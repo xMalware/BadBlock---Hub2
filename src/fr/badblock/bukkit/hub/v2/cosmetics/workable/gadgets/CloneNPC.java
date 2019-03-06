@@ -12,12 +12,12 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
-import fr.badblock.bukkit.hub.v2.utils.NPC;
+import fr.badblock.bukkit.hub.v2.utils.FNPC;
 import fr.badblock.gameapi.players.BadblockPlayer;
 
 public class CloneNPC extends AbstractGadgets{
 
-    private NPC npc;
+    private FNPC npc;
 
     public CloneNPC(String internalName) {
         super(internalName, new ItemStack(Material.SKULL_ITEM), 4);
@@ -41,16 +41,14 @@ public class CloneNPC extends AbstractGadgets{
         String texture = property.getValue();
         String signature = property.getSignature();
 
-        npc = new NPC(badblockPlayer.getLocation(), "§c"+badblockPlayer.getName(), texture, signature);
-        npc.spawn();
-
-        Bukkit.getOnlinePlayers().forEach(player -> npc.show(player));
+        npc = new FNPC(texture, signature, badblockPlayer.getLocation(), null);
+        npc.spawn("§c§l" + badblockPlayer.getName());
 
         new BukkitRunnable(){
 
             @Override
             public void run() {
-                Bukkit.getOnlinePlayers().forEach(player -> npc.despawn(player));
+                Bukkit.getOnlinePlayers().forEach(player -> npc.despawn());
             }
         }.runTaskLater(BadBlockHub.getInstance(), 100);
 

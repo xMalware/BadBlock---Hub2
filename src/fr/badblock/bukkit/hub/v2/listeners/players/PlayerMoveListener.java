@@ -21,7 +21,7 @@ public class PlayerMoveListener extends BadListener
 
     private void autoTeleport(BadblockPlayer player, PlayerMoveEvent event) {
         Location to = event.getTo();
-        if (ConfigLoader.getGameHub().isEnabled() && to.getY() <= 90)
+        if (ConfigLoader.getGameHub().isEnabled() && to.getY() <= 75)
         {
             event.setTo(to.getWorld().getSpawnLocation());
             return;

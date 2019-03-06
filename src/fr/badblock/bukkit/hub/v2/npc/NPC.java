@@ -19,9 +19,8 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.rabbit.SEntryInfosListener;
 import fr.badblock.bukkit.hub.v2.utils.EntityUtils;
+import fr.badblock.bukkit.hub.v2.utils.FNPC;
 import fr.badblock.gameapi.GameAPI;
-import fr.badblock.gameapi.fakeentities.FakeEntity;
-import fr.badblock.gameapi.packets.watchers.WatcherZombie;
 import fr.badblock.gameapi.utils.i18n.Locale;
 import fr.badblock.gameapi.utils.i18n.TranslatableString;
 import lombok.AllArgsConstructor;
@@ -38,6 +37,8 @@ public class NPC
 
 	private String					uniqueId;
 	private String					displayName;
+	private String					texture;
+	private String					signature;
 	private EntityType				entityType;
 	private List<InventoryAction>	actions;
 	private boolean					vip;
@@ -48,7 +49,7 @@ public class NPC
 
 	private transient List<ArmorStand> armorStands;
 	private transient ArmorStand			playerText;
-	private transient FakeEntity<?>	fakeEntity;
+	private transient FNPC					fakeEntity;
 
 	public NPC(BasicDBObject dbObject)
 	{
@@ -90,6 +91,8 @@ public class NPC
 		this.uniqueId = uniqueId;
 		this.displayName = displayName;
 		this.sentryQueue = sentryQueue;
+		this.texture = "";
+		this.signature = "";
 		this.entityType = entityType;
 		this.actions = actions;
 		this.vip = vip;
@@ -104,6 +107,8 @@ public class NPC
 		result.append("uniqueId", uniqueId);
 		result.append("displayName", displayName);
 		result.append("sentryQueue", sentryQueue);
+		result.append("texture", texture);
+		result.append("signature", signature);
 		result.append("entityType", entityType.name());
 		BasicDBList dbList = new BasicDBList();
 		for (InventoryAction action : actions)
@@ -120,7 +125,7 @@ public class NPC
 
 	public boolean isAlive()
 	{
-		return getFakeEntity() != null && !getFakeEntity().isRemoved();
+		return getFakeEntity() != null;
 	}
 
 	public void spawn()
@@ -130,21 +135,17 @@ public class NPC
 			// Teleport
 			if (!getFakeEntity().getLocation().equals(location.toLocation()))
 			{
-				getFakeEntity().teleport(location.toLocation());
-			}
-
-			// Change type
-			if (!getFakeEntity().getType().equals(getEntityType()))
-			{
-				setFakeEntity(null);
-				spawn();
+				Location l = location.toLocation();
+				getFakeEntity().npc.setLocation(l.getX(), l.getY(), l.getZ(), l.getPitch(), l.getYaw());
 			}
 
 			return;
 		}
 
-		setFakeEntity(EntityUtils.spawn(getLocation().toLocation(), getEntityType(), WatcherZombie.class, false, false, false, false, ""));
-
+		FNPC fnpc = new FNPC(texture, signature, getLocation().toLocation(), this);
+		fnpc.spawn(displayName);
+		setFakeEntity(fnpc);
+		
 		if (getArmorStands() == null)
 		{
 			setArmorStands(new ArrayList<>());
@@ -185,8 +186,7 @@ public class NPC
 			return;
 		}
 
-		getFakeEntity().remove();
-		getFakeEntity().destroy();
+		getFakeEntity().despawn();
 
 		if (getArmorStands() != null)
 		{
