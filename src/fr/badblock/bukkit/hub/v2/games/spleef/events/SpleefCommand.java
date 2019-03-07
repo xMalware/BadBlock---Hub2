@@ -24,6 +24,7 @@ public class SpleefCommand implements Listener {
             ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
             if (cmds.contains(event.getMessage())) {
                 player.sendMessage(SpleefManager.SPLEEF_PREFIX+"Vous avez quitté le Spleef");
+                player.setGameMode(GameMode.ADVENTURE);
                 SpleefPlayer spleefPlayer = SpleefManager.getInstance().getSpleefPlayers().get(player);
                 spleefPlayer.getCustomInv().restoreInventory(player);
                 SpleefManager.getInstance().getSpleefPlayers().remove(player);
@@ -32,7 +33,7 @@ public class SpleefCommand implements Listener {
                     SpleefManager.getInstance().getSpleefPlayers().forEach((p, s) -> {
                         p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTous les joueurs ont déconnecté");
                         s.getCustomInv().restoreInventory(p);
-                        p.performCommand("spawn");
+                        p.teleport(SpleefManager.getInstance().getTeleportPoint());
                         p.setGameMode(GameMode.ADVENTURE);
                     });
 

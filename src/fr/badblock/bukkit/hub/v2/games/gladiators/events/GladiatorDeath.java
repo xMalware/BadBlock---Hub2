@@ -31,7 +31,7 @@ public class GladiatorDeath implements Listener {
             tc.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/playgladiator"));
             tc.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("§cClique ici !").create()));
             player.getKiller().setHealth(player.getMaxHealth());
-            player.performCommand("spawn");
+            player.teleport(GladiatorManager.getInstance().getTeleportPoint());
             map.getPlayers().remove(player);
             event.setDeathMessage(null);
             event.getDrops().clear();

@@ -81,7 +81,7 @@ public class ShootInteract implements Listener {
                     ShootPlayer shootPlayer = players.get(player);
 
                     if(shootPlayer.assignBox()){
-                        player.sendMessage(ShootManager.SHOOT_PREFIX+"§bUne box t'as été attribuée !");
+                        player.sendMessage(ShootManager.SHOOT_PREFIX+"§bUne box t'a été attribuée !");
                     } else {
                         player.sendMessage(ShootManager.SHOOT_PREFIX+"Erreur ! Aucune box trouvée ! Réessaye plus tard..");
                         players.remove(player);
@@ -93,7 +93,7 @@ public class ShootInteract implements Listener {
                     player.getInventory().setItem(1, new ItemStack(Material.ARROW, 64));
 
                     if (players.size() >= ShootManager.MIN_PLAYER) {
-                        player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie va commencer ! Patientez 60sec...");
+                        player.sendMessage(ShootManager.SHOOT_PREFIX + "§cLa partie va commencer ! Patientez "+i+"sec...");
 
                         if(!GameState.STARTING.equals(ShootManager.getInstance().getGameState())){
                             ShootManager.getInstance().setGameState(GameState.STARTING);

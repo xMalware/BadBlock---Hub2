@@ -12,7 +12,7 @@ public class PartyQuit implements Listener {
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
 
-        BlockPartyManager.getInstance().getBlockPlayers().remove(player);
+        BlockPartyManager.getInstance().getBlockPlayers().remove(player).getRadioSongPlayer().setPlaying(false);
         PartyCommand.restartGames();
         PartyCommand.checkWin(player);
     }

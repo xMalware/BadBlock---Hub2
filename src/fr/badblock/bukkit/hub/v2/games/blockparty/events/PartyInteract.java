@@ -115,7 +115,7 @@ public class PartyInteract implements Listener {
 
                                         RadioSongPlayer radioSongPlayer = blockPlayer.getRadioSongPlayer();
                                         radioSongPlayer.setPlaying(true);
-                                        MainTask.K = 10;
+                                        MainTask.K = 12;
                                         MainTask.TIME = 4 * 20;
                                         MainTask.blocksI = 15;
 

@@ -63,7 +63,9 @@ public class PartyCommand implements Listener {
     }
 
     static void checkWin(Player player) {
-        if (BlockPartyManager.getInstance().getGameState() == GameState.INGAME && BlockPartyManager.getInstance().getBlockPlayers().values().stream().anyMatch(b -> !b.isDead())) {
+        if (BlockPartyManager.getInstance().getGameState() == GameState.INGAME && BlockPartyManager.getInstance().getBlockPlayers().values().stream()
+                .filter(b -> !b.isDead())
+                .collect(Collectors.toList()).size() == 1) {
             BlockPartyManager.getInstance().getBlockPlayers().forEach((player1, blockPlayer) -> {
                 player1.sendMessage(BlockPartyManager.BLOCK_PREFIX + "Le joueur " +
                         BlockPartyManager.getInstance().getBlockPlayers().values().stream().filter(b -> !b.isDead()).findFirst().get().getPlayer().getName() +
@@ -72,6 +74,8 @@ public class PartyCommand implements Listener {
                 blockPlayer.getRadioSongPlayer().setPlaying(false);
                 blockPlayer.getRadioSongPlayer().removePlayer(player);
             });
+            BlockPartyManager.getInstance().setGameState(GameState.WAITING);
+            BlockPartyManager.getInstance().getBlockPlayers().clear();
         }
     }
 
