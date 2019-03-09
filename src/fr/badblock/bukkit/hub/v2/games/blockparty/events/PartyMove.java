@@ -21,18 +21,19 @@ public class PartyMove implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if (BlockPartyManager.getInstance().getBlockPlayers().containsKey(player) && GameState.INGAME.equals(BlockPartyManager.getInstance().getGameState())){
-            if(player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SEA_LANTERN){
+            if(player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SEA_LANTERN || player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.STONE){
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX+"§cNe triche pas !");
                 player.teleport(BlockPartyManager.getInstance().getTeleport());
             }
 
-            if ((BlockPartyManager.getInstance().getTeleport().getY() - 1) == player.getLocation().getY()) {
+            BlockPlayer bp = BlockPartyManager.getInstance().getBlockPlayers().get(player);
+
+            if ((BlockPartyManager.getInstance().getTeleport().getY() - 1) == player.getLocation().getY() && !bp.isDead()) {
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "Vous êtes éliminé !");
-                BlockPlayer bp = BlockPartyManager.getInstance().getBlockPlayers().get(player);
                 bp.setDead(true);
                 bp.getRadioSongPlayer().setPlaying(false);
                 BlockPartyManager.getInstance().getBlockPlayers().keySet().forEach(player1 -> player1.sendMessage(BlockPartyManager.BLOCK_PREFIX+"Le joueur "+player.getName()+" a été éliminé !"));
-                player.performCommand("spawn");
+                player.teleport(BlockPartyManager.getInstance().getTeleportPoint());
 
                 if (BlockPartyManager.getInstance().getBlockPlayers().values().stream().filter(blockPlayer -> !blockPlayer.isDead()).collect(Collectors.toList()).size() <= 1) {
                     PartyCommand.checkWin(player);
