@@ -16,8 +16,8 @@ public class JumpCommand implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if(JumpManager.getInstance().getJumpPlayers().containsKey(player)){
-            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub","/lobby","/spawn"));
-            if(cmds.contains(event.getMessage())){
+            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 JumpManager.getInstance().getJumpPlayers().remove(player);
                 player.sendMessage(JumpManager.JUMP_PREFIX+"§cVous quittez le Jump");
             }

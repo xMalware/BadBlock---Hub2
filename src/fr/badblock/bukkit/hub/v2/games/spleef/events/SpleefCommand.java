@@ -22,7 +22,7 @@ public class SpleefCommand implements Listener {
 
         if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
             ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
-            if (cmds.contains(event.getMessage())) {
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 player.sendMessage(SpleefManager.SPLEEF_PREFIX+"Vous avez quitté le Spleef");
                 player.setGameMode(GameMode.ADVENTURE);
                 SpleefPlayer spleefPlayer = SpleefManager.getInstance().getSpleefPlayers().get(player);

@@ -21,8 +21,8 @@ public class ShootCommand implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if(ShootManager.getInstance().getShootPlayers().containsKey(player)){
-            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub","/lobby","/spawn"));
-            if(cmds.contains(event.getMessage())){
+            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 player.sendMessage(ShootManager.SHOOT_PREFIX+"§cVous quittez le Tir à L'Arc");
                 removePlayerFromShoot(player);
             }

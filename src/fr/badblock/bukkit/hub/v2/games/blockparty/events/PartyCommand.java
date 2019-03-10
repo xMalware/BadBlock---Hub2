@@ -31,7 +31,7 @@ public class PartyCommand implements Listener {
 
         if (BlockPartyManager.getInstance().getBlockPlayers().containsKey(player)) {
             ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
-            if (cmds.contains(event.getMessage())) {
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 BlockPartyManager.getInstance().getBlockPlayers().remove(player).getRadioSongPlayer().setPlaying(false);
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cVous quittez le BlockParty");
 

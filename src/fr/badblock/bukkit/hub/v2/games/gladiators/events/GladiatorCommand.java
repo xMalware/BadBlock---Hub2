@@ -19,8 +19,8 @@ public class GladiatorCommand implements Listener {
         Player player = event.getPlayer();
 
         if(GladiatorManager.getInstance().getCustomInv().containsKey(player)){
-            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub","/lobby","/spawn"));
-            if(cmds.contains(event.getMessage())){
+            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 Map map = MapManager.get().getMaps().stream().filter(map1 -> map1.getPlayers().contains(player)).findAny().get();
 
                 GladiatorManager.getInstance().getCustomInv().remove(player).restoreInventory(player);
