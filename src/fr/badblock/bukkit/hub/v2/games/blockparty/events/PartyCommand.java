@@ -58,7 +58,7 @@ public class PartyCommand implements Listener {
                     MainTask.resetBlocks();
                     TimeToMove.getWool().forEach(block -> block.setType(Material.WOOL));
                     BlockPartyManager.getInstance().setGameState(GameState.WAITING);
-                    BlockPartyManager.getInstance().getGate().add(0, 1,0).getBlock().setType(Material.AIR);
+                    BlockPartyManager.getInstance().getGate().clone().add(0, 1,0).getBlock().setType(Material.AIR);
                 }
             }.runTaskLater(BadBlockHub.getInstance(), 100);
         }
@@ -78,7 +78,7 @@ public class PartyCommand implements Listener {
             });
             BlockPartyManager.getInstance().setGameState(GameState.WAITING);
             BlockPartyManager.getInstance().getBlockPlayers().clear();
-            BlockPartyManager.getInstance().getGate().add(0, 1,0).getBlock().setType(Material.BARRIER);
+            BlockPartyManager.getInstance().getGate().clone().add(0, 1,0).getBlock().setType(Material.BARRIER);
         }
     }
 

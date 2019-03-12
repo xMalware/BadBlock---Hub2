@@ -32,21 +32,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyInteract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="e#1449#1450#0" expanded="true" />
-                <element signature="e#1495#1496#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -58,9 +44,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ocel</find>
-      <find>rabbi</find>
-      <find>slime</find>
       <find>wither</find>
       <find>dismount</find>
       <find>removeD</find>
@@ -88,6 +71,9 @@
       <find>i</find>
       <find>rejoins</find>
       <find>TimeUnit</find>
+      <find>MIN_PLAYER</find>
+      <find>BlockPartyManager.getInstance().get</find>
+      <find>BlockPartyManager.getInstance().getGate()</find>
     </findStrings>
     <replaceStrings>
       <replace>getDefaultConfig()</replace>
@@ -96,6 +82,7 @@
     <dirStrings>
       <dir>C:\Users\Toinetoine1\Documents\BadBlock\HubV2\src\fr\badblock\bukkit\hub\v2\cosmetics\features</dir>
       <dir>C:\Users\Toinetoine1\Documents\BadBlock\HubV2\src\fr\badblock\bukkit\hub\v2\games</dir>
+      <dir>C:\Users\Toinetoine1\Documents\BadBlock\HubV2\src\fr\badblock\bukkit\hub\v2\games\blockparty</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -137,7 +124,6 @@
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/jump/events/JumpMove.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefQuit.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefMove.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/SpleefManager.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefShoot.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/events/GladiatorDeath.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/utils/Box.java" />
@@ -146,15 +132,16 @@
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/CommandsLoader.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/cosmetics/workable/gadgets/CreeperExploser.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/listeners/players/PlayerJoinListener.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/events/ShootCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/jump/events/JumpCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/gladiators/events/GladiatorCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/events/CourseCommand.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/shoot/events/ShootInteract.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyMove.java" />
-        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyCommand.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefCommand.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/SpleefManager.java" />
         <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyInteract.java" />
+        <option value="$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyCommand.java" />
       </list>
     </option>
   </component>
@@ -201,32 +188,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="v2" type="462c0819:PsiDirectoryNode" />
               <item name="games" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="v2" type="462c0819:PsiDirectoryNode" />
-              <item name="games" type="462c0819:PsiDirectoryNode" />
-              <item name="blockparty" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="v2" type="462c0819:PsiDirectoryNode" />
-              <item name="games" type="462c0819:PsiDirectoryNode" />
-              <item name="blockparty" type="462c0819:PsiDirectoryNode" />
-              <item name="events" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="HubV2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="HubV2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="v2" type="462c0819:PsiDirectoryNode" />
-              <item name="games" type="462c0819:PsiDirectoryNode" />
-              <item name="blockparty" type="462c0819:PsiDirectoryNode" />
-              <item name="task" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -366,12 +327,12 @@
       <workItem from="1552172747756" duration="1782000" />
       <workItem from="1552222922674" duration="333000" />
       <workItem from="1552225026563" duration="845000" />
-      <workItem from="1552411967949" duration="627000" />
+      <workItem from="1552411967949" duration="1690000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247394000" />
+    <option name="totallyTimeSpent" value="248457000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -384,7 +345,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49944258" visible="true" weight="0.35181236" />
       <window_info id="Structure" order="1" sideWeight="0.5005574" side_tool="true" weight="0.31823027" />
@@ -423,13 +383,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/net/minecraft/server/v1_8_R3/EntityProjectile.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../Libs/spigot-1.8.8.jar!/net/minecraft/server/v1_8_R3/EntitySnowball.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -467,16 +420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefInteract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="24" column="64" lean-forward="true" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -550,13 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefQuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/course/events/CourseQuit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -568,30 +504,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2093">
           <caret line="32" column="101" selection-start-line="32" selection-start-column="90" selection-end-line="32" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefMove.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/SpleefManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefShoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -682,13 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/commands/list/GladiatorQuitCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -771,31 +676,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyMove.java">
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefQuit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/SpleefManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefDamage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefShoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/spleef/events/SpleefInteract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="24" column="61" lean-forward="true" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="74" column="85" lean-forward="true" selection-start-line="74" selection-start-column="85" selection-end-line="74" selection-end-column="85" />
+        <state relative-caret-position="539">
+          <caret line="60" column="115" lean-forward="true" selection-start-line="60" selection-start-column="115" selection-end-line="60" selection-end-column="115" />
+          <folding>
+            <element signature="e#2314#2756#0" expanded="true" />
+            <element signature="e#2755#2756#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyQuit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/badblock/bukkit/hub/v2/games/blockparty/events/PartyInteract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="537">
+          <caret line="162" column="105" lean-forward="true" selection-start-line="162" selection-start-column="105" selection-end-line="162" selection-end-column="105" />
           <folding>
             <element signature="e#1449#1450#0" expanded="true" />
             <element signature="e#1495#1496#0" expanded="true" />

@@ -25,7 +25,7 @@ import static org.bukkit.Bukkit.getWorld;
 
 public class SpleefManager extends AbstractGameModule {
 
-    public static final int MIN_PLAYER = 1;
+    public static final int MIN_PLAYER = 2;
     public static String SPLEEF_PREFIX = "§8[§6Spleef§8] ";
 
     @Getter

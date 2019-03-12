@@ -29,7 +29,7 @@ public class SpleefCommand implements Listener {
                 spleefPlayer.getCustomInv().restoreInventory(player);
                 SpleefManager.getInstance().getSpleefPlayers().remove(player);
 
-                if (SpleefManager.getInstance().getSpleefPlayers().size() == 1) {
+                if (SpleefManager.getInstance().getSpleefPlayers().size() <= 1) {
                     SpleefManager.getInstance().getSpleefPlayers().forEach((p, s) -> {
                         p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTous les joueurs ont déconnecté");
                         s.getCustomInv().restoreInventory(p);

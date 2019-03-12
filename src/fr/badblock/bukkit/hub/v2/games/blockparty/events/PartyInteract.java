@@ -78,7 +78,7 @@ public class PartyInteract implements Listener {
 
                     if (!GameState.STARTING.equals(BlockPartyManager.getInstance().getGameState())) {
                         i = GamesManager.TIME_TO_START;
-                        BlockPartyManager.getInstance().getGate().add(0, 1,0).getBlock().setType(Material.BARRIER);
+                        BlockPartyManager.getInstance().getGate().clone().add(0, 1,0).getBlock().setType(Material.BARRIER);
                         BlockPartyManager.getInstance().setGameState(GameState.STARTING);
 
                         new BukkitRunnable() {
