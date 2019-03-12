@@ -172,7 +172,7 @@ public class ShootInteract implements Listener {
 
                 } else {
                     players.get(player).getCustomPlayerInventory().restoreInventory(player);
-                    players.remove(player);
+                    players.remove(player).getBox().setTaken(false);
                     player.teleport(ShootManager.getInstance().getTeleportPoint());
                     player.sendMessage(ShootManager.SHOOT_PREFIX + "§cTu viens de quitter la partie !");
                 }

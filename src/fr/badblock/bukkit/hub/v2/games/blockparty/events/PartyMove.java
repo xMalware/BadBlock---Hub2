@@ -21,7 +21,7 @@ public class PartyMove implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if (BlockPartyManager.getInstance().getBlockPlayers().containsKey(player) && GameState.INGAME.equals(BlockPartyManager.getInstance().getGameState())){
-            if(player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SEA_LANTERN || player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.STONE){
+            if(player.getLocation().getBlock().getRelative(BlockFace.DOWN).getType() == Material.SEA_LANTERN){
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX+"§cNe triche pas !");
                 player.teleport(BlockPartyManager.getInstance().getTeleport());
             }
