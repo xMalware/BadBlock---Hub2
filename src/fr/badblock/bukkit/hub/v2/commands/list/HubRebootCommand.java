@@ -12,7 +12,7 @@ public class HubRebootCommand extends AbstractCommand
 
 	public HubRebootCommand()
 	{
-		super("hubreboot", new TranslatableString("commands.spawn.usage"), GamePermission.ADMIN, GamePermission.ADMIN, GamePermission.ADMIN);
+		super("hubreboot", new TranslatableString("commands.spawn.usage"), "hub.reboot");
 		this.allowConsole(false);
 	}
 
