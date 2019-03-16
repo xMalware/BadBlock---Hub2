@@ -22,14 +22,14 @@ public class SpleefCommand implements Listener {
 
         if (SpleefManager.getInstance().getSpleefPlayers().containsKey(player)) {
             ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
-            if (cmds.contains(event.getMessage())) {
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 player.sendMessage(SpleefManager.SPLEEF_PREFIX+"Vous avez quitté le Spleef");
                 player.setGameMode(GameMode.ADVENTURE);
                 SpleefPlayer spleefPlayer = SpleefManager.getInstance().getSpleefPlayers().get(player);
                 spleefPlayer.getCustomInv().restoreInventory(player);
                 SpleefManager.getInstance().getSpleefPlayers().remove(player);
 
-                if (SpleefManager.getInstance().getSpleefPlayers().size() == 1) {
+                if (SpleefManager.getInstance().getSpleefPlayers().size() <= 1) {
                     SpleefManager.getInstance().getSpleefPlayers().forEach((p, s) -> {
                         p.sendMessage(SpleefManager.SPLEEF_PREFIX + "§cTous les joueurs ont déconnecté");
                         s.getCustomInv().restoreInventory(p);

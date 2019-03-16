@@ -11,6 +11,7 @@ import fr.badblock.bukkit.hub.v2.games.shoot.utils.Box;
 import fr.badblock.bukkit.hub.v2.games.shoot.utils.ShootPlayer;
 import fr.badblock.bukkit.hub.v2.games.spleef.SpleefManager;
 import fr.badblock.bukkit.hub.v2.games.states.GameState;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -31,7 +32,7 @@ public class PartyCommand implements Listener {
 
         if (BlockPartyManager.getInstance().getBlockPlayers().containsKey(player)) {
             ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
-            if (cmds.contains(event.getMessage())) {
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 BlockPartyManager.getInstance().getBlockPlayers().remove(player).getRadioSongPlayer().setPlaying(false);
                 player.sendMessage(BlockPartyManager.BLOCK_PREFIX + "§cVous quittez le BlockParty");
 
@@ -57,6 +58,7 @@ public class PartyCommand implements Listener {
                     MainTask.resetBlocks();
                     TimeToMove.getWool().forEach(block -> block.setType(Material.WOOL));
                     BlockPartyManager.getInstance().setGameState(GameState.WAITING);
+                    BlockPartyManager.getInstance().getGate().clone().add(0, 1,0).getBlock().setType(Material.AIR);
                 }
             }.runTaskLater(BadBlockHub.getInstance(), 100);
         }
@@ -76,6 +78,7 @@ public class PartyCommand implements Listener {
             });
             BlockPartyManager.getInstance().setGameState(GameState.WAITING);
             BlockPartyManager.getInstance().getBlockPlayers().clear();
+            BlockPartyManager.getInstance().getGate().clone().add(0, 1,0).getBlock().setType(Material.BARRIER);
         }
     }
 

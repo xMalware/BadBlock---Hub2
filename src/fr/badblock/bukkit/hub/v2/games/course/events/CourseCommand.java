@@ -19,8 +19,8 @@ public class CourseCommand implements Listener {
         BadblockPlayer player = (BadblockPlayer) event.getPlayer();
 
         if(CourseManager.getInstance().getWaitingPlayers().contains(player)){
-            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub","/lobby","/spawn"));
-            if(cmds.contains(event.getMessage())){
+            ArrayList<String> cmds = new ArrayList<>(Arrays.asList("/hub", "/lobby", "/spawn"));
+            if (cmds.contains(event.getMessage().toLowerCase())) {
                 CourseManager.getInstance().getWaitingPlayers().remove(player);
                 CourseManager.getInstance().getWinnersPlayersP().remove(player);
                 player.sendMessage(CourseManager.COURSE_PREFIX + "§cTu viens de quitter la partie !");
