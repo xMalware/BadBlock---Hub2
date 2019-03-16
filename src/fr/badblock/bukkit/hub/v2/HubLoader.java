@@ -69,8 +69,10 @@ public class HubLoader {
 		ParticleListener.registerParticleListener();
 
 		DisguiseUtil.register();
+		
+		// TODO Fix
 
-		if (ConfigLoader.getSwitchers().isGameEnabled())
+	/*	if (ConfigLoader.getSwitchers().isGameEnabled())
 		{
 			//tmp
 			Location l = new Location(Bukkit.getWorld("world"), -35, 108, -112);
@@ -88,7 +90,7 @@ public class HubLoader {
 			sign.setLine(2, "§7§lJoueurs:");
 			sign.setLine(3, "0");
 			sign.update();
-		}
+		}*/
 
 		if (ConfigLoader.getGameHub().isEnabled())
 		{
