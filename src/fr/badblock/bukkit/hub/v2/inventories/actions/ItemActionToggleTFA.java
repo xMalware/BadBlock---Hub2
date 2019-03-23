@@ -38,6 +38,7 @@ public class ItemActionToggleTFA extends CustomItemAction
 		}
 		
 		String realName = player.getRealName() != null && !player.getRealName().isEmpty() ? player.getRealName() : player.getName();
+		realName = realName.toLowerCase();
 		
 		String key = AuthUtils.getAuthKey(realName);
 		player.closeInventory();

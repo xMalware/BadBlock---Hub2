@@ -44,7 +44,8 @@ public class AuthKeyCommand extends AbstractCommand
 		}
 
 		String playerName = player.getRealName() != null && !player.getRealName().isEmpty() ? player.getRealName() : player.getName();
-
+		playerName = playerName.toLowerCase();
+		
 		String secretKey = AuthUtils.tempPlayersKeys.get(playerName);
 		
 		if (secretKey == null || secretKey.isEmpty()) 
