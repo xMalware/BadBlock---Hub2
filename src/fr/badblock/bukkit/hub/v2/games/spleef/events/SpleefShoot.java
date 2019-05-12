@@ -10,12 +10,13 @@ import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerEggThrowEvent;
 import org.bukkit.util.BlockIterator;
 
 
 public class SpleefShoot implements Listener {
 
-    @EventHandler
+    /*@EventHandler
     public void ProjectileHitEvent(ProjectileHitEvent event) {
         if (event.getEntity() instanceof Snowball && event.getEntity().getShooter() instanceof Player) {
             Player player = (Player) event.getEntity().getShooter();
@@ -45,6 +46,27 @@ public class SpleefShoot implements Listener {
             blockloc.setZ(blockloc.getZ() + 0.5D);
             hitBlock.setType(Material.AIR);
         }
+    }*/
+
+    @EventHandler
+    public void onEggLand(PlayerEggThrowEvent event)
+    {
+        BlockIterator blockIterator = new BlockIterator(event.getEgg().getWorld(), event.getEgg().getLocation().toVector(), event.getEgg().getVelocity().normalize(), 0.0D, 4);
+        Block hitBlock = null;
+        while (blockIterator.hasNext())
+        {
+            hitBlock = blockIterator.next();
+            if (hitBlock.getType() != Material.AIR)
+                break;
+        }
+
+        if (hitBlock != null && hitBlock.getType() == Material.SNOW_BLOCK){
+            hitBlock.setType(Material.AIR);
+            SpleefBreak.addBlock(hitBlock.getLocation());
+        }
+
+        event.setHatching(false);
+        event.setNumHatches((byte)0);
     }
 
 }
