@@ -1,12 +1,17 @@
 package fr.badblock.bukkit.hub.v2.games.blockparty;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyCommand;
 import fr.badblock.bukkit.hub.v2.games.blockparty.events.PartyQuit;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 
@@ -25,6 +30,19 @@ public class BlockPartyManager extends AbstractGameModule {
 
     @Getter
     private static BlockPartyManager instance;
+    private static List<Location> blocks = new ArrayList<>(Arrays.asList(
+            new Location(Bukkit.getWorld("world"), 2, 95, -120),
+            new Location(Bukkit.getWorld("world"), 2, 96, -120),
+
+            new Location(Bukkit.getWorld("world"), -2, 95, -120),
+            new Location(Bukkit.getWorld("world"), -2, 96, -120),
+
+            new Location(Bukkit.getWorld("world"), -2, 95, -124),
+            new Location(Bukkit.getWorld("world"), -2, 96, -124),
+
+            new Location(Bukkit.getWorld("world"), 2, 95, -124),
+            new Location(Bukkit.getWorld("world"), 2, 96, -124)
+    ));
 
     @Getter
     private HashMap<Player, BlockPlayer> blockPlayers;
@@ -45,6 +63,10 @@ public class BlockPartyManager extends AbstractGameModule {
         instance = this;
         blockPlayers = new HashMap<>();
         gameState = GameState.WAITING;
+
+        for(Location location : blocks){
+            location.getBlock().setType(Material.BARRIER);
+        }
     }
 
     @Override
