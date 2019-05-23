@@ -18,7 +18,7 @@ public class RebootTask extends HubTask
 {
 
 	public static long	rebootTime;
-	int reboot = 300;
+	public static int reboot = 300;
 
 	public RebootTask()
 	{

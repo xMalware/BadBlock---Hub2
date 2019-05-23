@@ -4,7 +4,6 @@ import org.bukkit.command.CommandSender;
 
 import fr.badblock.bukkit.hub.v2.tasks.list.RebootTask;
 import fr.badblock.gameapi.command.AbstractCommand;
-import fr.badblock.gameapi.players.BadblockPlayer.GamePermission;
 import fr.badblock.gameapi.utils.i18n.TranslatableString;
 
 public class HubRebootCommand extends AbstractCommand
@@ -19,6 +18,7 @@ public class HubRebootCommand extends AbstractCommand
 	@Override
 	public boolean executeCommand(CommandSender sender, String[] args)
 	{
+		RebootTask.rebootTime = 0;
 		RebootTask.reboot = 61;
 		return true;
 	}
