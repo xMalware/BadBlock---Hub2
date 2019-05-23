@@ -1,5 +1,6 @@
 package fr.badblock.bukkit.hub.v2.tasks.list;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -16,12 +17,23 @@ import fr.badblock.gameapi.utils.BukkitUtils;
 public class RebootTask extends HubTask
 {
 
-	public static int	reboot;
+	public static long	rebootTime;
+	int reboot = 300;
 
 	public RebootTask()
 	{
 		super (true, 20, 20);
-		reboot = 5400 + new Random().nextInt(1200);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(System.currentTimeMillis());
+		calendar.set(Calendar.HOUR, 4);
+		calendar.set(Calendar.MINUTE, 55);
+		while (calendar.getTimeInMillis() < System.currentTimeMillis())
+		{
+			calendar.add(Calendar.DAY_OF_YEAR, 1);
+			calendar.set(Calendar.HOUR, 4);
+			calendar.set(Calendar.MINUTE, 55);
+		}
+		rebootTime = calendar.getTimeInMillis();
 	}
 
 	@Override
@@ -30,6 +42,11 @@ public class RebootTask extends HubTask
 		if (ConfigLoader.getGameHub().isEnabled())
 		{
 			task.cancel();
+			return;
+		}
+		
+		if (System.currentTimeMillis() < rebootTime)
+		{
 			return;
 		}
 		
