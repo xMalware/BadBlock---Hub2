@@ -49,6 +49,7 @@ public abstract class CustomPet
 		if (hubPlayer.getPet() != null)
 		{
 			hubPlayer.getPet().undeploy(player);
+			hubPlayer.setPet(null);
 		}
 		
 		// Spawn part

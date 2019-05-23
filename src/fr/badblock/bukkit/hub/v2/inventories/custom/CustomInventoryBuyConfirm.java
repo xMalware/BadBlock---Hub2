@@ -53,6 +53,7 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 			player.sendTranslatedMessage("hub.features.buy.cancel.cancelled", displayFeatureName);
 			return true;
 		}
+		
 		// Confirm
 		if (itemStack.getType().equals(Material.EMERALD_BLOCK))
 		{
@@ -60,6 +61,7 @@ public class CustomInventoryBuyConfirm extends CustomInventory
 			confirm(player, hubPlayer, featureRawName);
 			return true;
 		}
+		
 		player.sendTranslatedMessage("hub.features.buy.errors.unknownaction", displayFeatureName);
 		return true;
 	}
