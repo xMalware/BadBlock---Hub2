@@ -162,7 +162,7 @@ public class NPC
 		{
 			InventoryAction action = actions.iterator().next();
 
-			if (action.getAction().equals(CustomItemActionType.TELEPORT_SERVER) && sentryQueue != null)
+			if ((action.getAction().equals(CustomItemActionType.TELEPORT_SERVER) || action.getAction().equals(CustomItemActionType.WAITING_LINE)) && sentryQueue != null)
 			{
 				loc = location.toLocation().clone();
 

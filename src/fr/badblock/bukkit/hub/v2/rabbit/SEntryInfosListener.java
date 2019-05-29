@@ -16,7 +16,7 @@ public class SEntryInfosListener extends RabbitAPIListener
 
 	public SEntryInfosListener()
 	{
-		super("networkdocker.sentry.infos", RabbitListenerType.SUBSCRIBER, true);
+		super("networkdocker.sentry.infos", RabbitListenerType.SUBSCRIBER, false);
 	}
 
 	@Override

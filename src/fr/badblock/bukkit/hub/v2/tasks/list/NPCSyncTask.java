@@ -42,7 +42,7 @@ public class NPCSyncTask extends HubTask
 		{
 			return;
 		}
-		
+
 		MongoService mongoService = GameAPI.getAPI().getMongoService();
 		DBCollection collection = mongoService.getDb().getCollection("npc");
 		BasicDBObject dbQuery = new BasicDBObject();
@@ -78,21 +78,22 @@ public class NPCSyncTask extends HubTask
 						npc.spawn();
 						NPC.getNpcs().put(npc.getUniqueId(), npc);
 					}
-					
+				}
+				
+				for (NPC npc : NPC.getNpcs().values())
+				{
 					if (npc.getActions() != null && !npc.getActions().isEmpty())
 					{
 						InventoryAction action = npc.getActions().iterator().next();
-
-						if (action.getAction().equals(CustomItemActionType.TELEPORT_SERVER) && npc.getSentryQueue() != null && npc.getPlayerText() != null)
+						if ((action.getAction().equals(CustomItemActionType.TELEPORT_SERVER) || action.getAction().equals(CustomItemActionType.WAITING_LINE)) && npc.getSentryQueue() != null && npc.getPlayerText() != null)
 						{
 							int count = -1;
-							
 							if (SEntryInfosListener.sentries.containsKey(npc.getSentryQueue()))
 							{
 								FullSEntry sentry = SEntryInfosListener.sentries.get(npc.getSentryQueue());
 								count = sentry.getIngamePLayers() + sentry.getWaitinglinePlayers();
 							}
-							
+
 							npc.getPlayerText().setCustomName(new TranslatableString("hub.gamepnj.ingameplayers", count).getAsLine(Locale.FRENCH_FRANCE));
 						}
 					}

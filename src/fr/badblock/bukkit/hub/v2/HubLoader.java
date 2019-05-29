@@ -92,11 +92,11 @@ public class HubLoader {
 			sign.update();
 		}*/
 
+		new UseEntityPacketListener();
 		if (ConfigLoader.getGameHub().isEnabled())
 		{
 			try
 			{
-				new UseEntityPacketListener();
 				String data = FileUtils.readFile(new File(plugin.getDataFolder(), "npc.json"));
 				List<NPC> npc = GameAPI.getGson().fromJson(data, npcType);
 				for (NPC n : npc)
