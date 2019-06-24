@@ -28,7 +28,7 @@ public class BossBarsUpdateTask extends HubTask
 	@Override
 	public void run()
 	{
-		update();
+		//update();
 	}
 
 	private void update()
@@ -104,7 +104,7 @@ public class BossBarsUpdateTask extends HubTask
 			percent = 1.0f;
 		}
 
-		for (BadblockPlayer player : BukkitUtils.getAllPlayers())
+		/*for (BadblockPlayer player : BukkitUtils.getAllPlayers())
 		{
 			String line = player.getTranslatedMessage(bossBar.getI18nKey())[0];
 
@@ -115,7 +115,7 @@ public class BossBarsUpdateTask extends HubTask
 			// Send bossbar
 			player.changeBossBar("hub", line);
 			player.changeBossBarStyle("hub", percent, bossBar.getColor(), BossBarStyle.SOLID);
-		}
+		}*/
 	}
 
 }
