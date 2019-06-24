@@ -22,6 +22,7 @@ import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryItemObject;
 import fr.badblock.bukkit.hub.v2.inventories.objects.InventoryObject;
+import fr.badblock.bukkit.hub.v2.players.HubPlayer;
 import fr.badblock.bukkit.hub.v2.players.HubStoredPlayer;
 import fr.badblock.bukkit.hub.v2.tags.TagManager;
 import fr.badblock.gameapi.players.BadblockPlayer;
@@ -55,7 +56,21 @@ public class BukkitInventories
 	private static Inventory createInventory(BadblockPlayer player, InventoryObject inventoryObject)
 	{
 		String name = player.getTranslatedMessage(inventoryObject.getI18name())[0];
-		Inventory inventory = Bukkit.createInventory(null, 9 * inventoryObject.getLines(), name);
+		
+		int lines = inventoryObject.getLines();
+		if (InventoryFillers.SHOW_FRIEND_LIST.name().equalsIgnoreCase(inventoryObject.getFiller()))
+		{
+			HubPlayer hubPlayer = HubPlayer.get(player);
+			
+			double bp = ((double) hubPlayer.getFriends().size() * 1.0D) / 9D;
+			if (bp < 1)
+			{
+				bp = 1;
+			}
+			lines = (int) Math.ceil(bp);
+		}
+		
+		Inventory inventory = Bukkit.createInventory(null, 9 * lines, name);
 
 		for (InventoryItemObject inventoryItemObject : inventoryObject.getItems())
 		{
