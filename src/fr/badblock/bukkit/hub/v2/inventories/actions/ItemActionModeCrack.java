@@ -1,5 +1,7 @@
 package fr.badblock.bukkit.hub.v2.inventories.actions;
 
+import com.google.gson.JsonObject;
+
 import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
@@ -23,11 +25,6 @@ public class ItemActionModeCrack extends CustomItemAction
 		// 10s antispam
 		GlobalFlags.set(spamKey, 5000);
 
-		if (player.getObject() != null)
-		{
-			player.getObject().addProperty("onlineMode", false);
-		}
-
 		HubStoredPlayer hubStoredPlayer = HubStoredPlayer.get(player);
 		
 		if (!hubStoredPlayer.isModeSelected())
@@ -36,8 +33,10 @@ public class ItemActionModeCrack extends CustomItemAction
 			hubStoredPlayer.save(player);
 		}
 		
-		player.saveGameData();
-
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("onlineMode", "false");
+		player.saveGameData(jsonObject);
+		
 		player.sendTranslatedMessage("hub.mode.nowcrack");
 		player.closeInventory();
 	}

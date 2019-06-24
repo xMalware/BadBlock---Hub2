@@ -1,5 +1,7 @@
 package fr.badblock.bukkit.hub.v2.inventories.actions;
 
+import com.google.gson.JsonObject;
+
 import fr.badblock.api.common.utils.flags.GlobalFlags;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemAction;
 import fr.badblock.bukkit.hub.v2.inventories.objects.CustomItemActionType;
@@ -36,7 +38,9 @@ public class ItemActionModePremium extends CustomItemAction
 			hubStoredPlayer.save(player);
 		}
 		
-		player.getObject().addProperty("onlineMode", true);
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("onlineMode", "true");
+		player.saveGameData(jsonObject);
 		
 		player.sendTranslatedMessage("hub.mode.nowpremium");
 		player.closeInventory();
