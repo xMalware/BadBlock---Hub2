@@ -1,14 +1,25 @@
 package fr.badblock.bukkit.hub.v2.players;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 
 import fr.badblock.bukkit.hub.v2.BadBlockHub;
 import fr.badblock.bukkit.hub.v2.config.ConfigLoader;
@@ -29,8 +40,6 @@ import fr.badblock.gameapi.GameAPI;
 import fr.badblock.gameapi.databases.SQLRequestType;
 import fr.badblock.gameapi.players.BadblockPlayer;
 import fr.badblock.gameapi.players.BadblockPlayer.BadblockMode;
-import fr.badblock.gameapi.players.bossbars.BossBarColor;
-import fr.badblock.gameapi.players.bossbars.BossBarStyle;
 import fr.badblock.gameapi.utils.BukkitUtils;
 import fr.badblock.gameapi.utils.general.Callback;
 import fr.badblock.gameapi.utils.threading.TempScheduler;
@@ -74,11 +83,69 @@ public class HubPlayer
 	@Getter
 	public Entity	 mountEntity;
 
+	private List<Friend> friends = new ArrayList<>();
+
 	public HubPlayer(BadblockPlayer player)
 	{
 		this.setPlayer(player);
 		this.setName(player.getName());
+
+		updateFriends();
+
 		players.put(getName(), this);
+	}
+
+	public void updateFriends()
+	{
+		new Thread()
+		{
+			@Override
+			public void run()
+			{
+				List<Friend> tmp = new ArrayList<>();
+
+				DB db = GameAPI.getAPI().getMongoService().getDb();
+				DBCollection collection = db.getCollection("friendlist");
+
+				DBObject query = new BasicDBObject();
+				query.put("_owner", player.getUniqueId().toString());
+
+				DBCursor cursor = collection.find(query);
+
+				if (cursor.hasNext())
+				{
+					DBObject obj = cursor.next();
+					@SuppressWarnings("unchecked")
+					Map<String, BasicDBObject> players = (Map<String, BasicDBObject>) obj.get("players");
+					for (Entry<String, BasicDBObject> player : players.entrySet())
+					{
+						DBCollection users = db.getCollection("players");
+						DBObject q = new BasicDBObject();
+						q.put("uniqueId", player.getKey());
+
+						boolean accepted = "ACCEPTED".equals(player.getValue().getString("state"));
+
+						DBCursor c = users.find(q);
+
+						if (c.hasNext())
+						{
+							BasicDBObject co = (BasicDBObject) c.next();
+							String name = co.getString("name");
+							long keepalive = 0;
+							if (co.containsField("keepalive"))
+							{
+								keepalive = co.getLong("keepalive");
+							}
+							String lastServer = co.getString("lastServer");
+							Friend f = new Friend(name, accepted, keepalive > System.currentTimeMillis(), lastServer);
+							tmp.add(f);
+						}
+					}
+				}
+
+				friends = tmp;
+			}
+		}.start();
 	}
 
 	public HubPlayer loadEverything()
@@ -211,7 +278,7 @@ public class HubPlayer
 
 		getPlayer().setGameMode(GameMode.ADVENTURE);
 		getPlayer().teleport(ConfigLoader.getLoc().getLocation("spawn"));
-		getPlayer().addBossBar("hub", "", 1f, BossBarColor.RED, BossBarStyle.SOLID);
+		//	getPlayer().addBossBar("hub", "", 1f, BossBarColor.RED, BossBarStyle.SOLID);
 		InventoriesLoader.loadInventories(BadBlockHub.getInstance());
 		giveDefaultInventory();
 		setScoreboard(new HubScoreboard(getPlayer()));
@@ -230,7 +297,7 @@ public class HubPlayer
 							new EntityPlayer[] { npc.npc }));
 					connection.sendPacket(new PacketPlayOutNamedEntitySpawn(npc.npc));
 					connection.sendPacket(new PacketPlayOutEntityHeadRotation(npc.npc, (byte) ((npc.getLocation().getYaw() * 256.0F) / 360.0F)));
-					
+
 					Bukkit.getScheduler().runTaskLater(BadBlockHub.getInstance(), new Runnable()
 					{
 						@Override
