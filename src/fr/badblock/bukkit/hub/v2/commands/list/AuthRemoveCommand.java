@@ -75,7 +75,7 @@ public class AuthRemoveCommand extends AbstractCommand
 	public void updateAuthKey(BadblockPlayer player, String secretCode)
 	{
 		JsonObject jsonObject = new JsonObject();
-		player.getObject().addProperty("authKey", "");
+		jsonObject.addProperty("authKey", secretCode);
 		player.saveGameData(jsonObject);
 	}
 
